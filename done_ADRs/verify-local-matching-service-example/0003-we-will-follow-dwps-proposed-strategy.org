@@ -1,0 +1,79 @@
+* 3. We will follow DWP's proposed matching strategy
+
+Date: 2017-12-19
+
+** Status
+
+Accepted
+
+** Context
+
+DWP performed an investigation into matching using their dataset. They propose a
+matching strategy which works well for their particular use case.
+
+The following is a much-simplified version of the proposed matching strategy.
+
+#+BEGIN_SRC plantuml :exports results :file images/flow.png
+skinparam shadowing false
+skinparam activity {
+  BorderColor black
+}
+
+start
+:Select all records matching any historical surname and date of birth;
+if (One or more match?) then (yes)
+  if (Postcode present in Verify matching dataset?) then (yes)
+    :Filter only records matching any historical postcode;
+    if (One or more match?) then (yes)
+    else (no)
+      #DF3034:No match;
+      stop
+    endif
+  else (no)
+  endif
+  :Filter only records matching given name or middlename;
+  if (Exactly one match?) then (yes)
+    #00823B:Match;
+    stop
+  elseif (More than one match?) then (yes)
+    if (Cycle 3 attribute present?) then (yes)
+      :Filter only records matching Cycle 3 attribute;
+      if (Exactly one match?) then (yes)
+        #00823B:Match;
+        stop
+      else (no)
+        #DF3034:No match;
+        stop
+      endif
+    else (no)
+      #DF3034:No match;
+      stop
+    endif
+  else (no)
+    #DF3034:No match;
+    stop
+  endif
+else (no)
+  #DF3034:No match;
+  stop
+endif
+#+END_SRC
+
+#+RESULTS:
+[[file:images/flow.png]]
+
+** Decision
+
+We will implement the above matching strategy.
+
+For simplicity, we will ignore any attributes where "verified" is set to "false".
+
+** Consequences
+
+This strategy should be a good starting point for services in similar situations
+to DWP (large, pre-existing dataset, high chance of new users already being
+present in the dataset).
+
+The strategy may work less well for services in other situations, for example
+those without a pre-existing database of users who plan on creating a new
+dataset from Verify users.

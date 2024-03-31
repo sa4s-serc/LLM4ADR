@@ -1,0 +1,16 @@
+X
+## Context
+## Context and Problem Statement
+## Decision Drivers
+## Decision Drivers <!-- optional -->
+## Pros and Cons of the Options
+## Considered Alternatives
+## Pros and Cons of the Alternatives
+## Alternatives
+## Problem
+## Pros and Cons of the Options <!-- optional -->
+
+Y
+## Decision
+## Decision Outcome
+## Decisions

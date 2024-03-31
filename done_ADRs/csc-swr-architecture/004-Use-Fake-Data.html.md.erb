@@ -1,0 +1,32 @@
+---
+title: 004. Use Fake Data
+weight: 2
+hide_in_navigation: true
+parent: /decisions
+last_reviewed_on: 2021-01-07
+review_in: 3 months
+---
+
+# 004. Use Fake Data
+
+Date: 2020-11-06
+
+## Status
+
+Approved
+
+## Context
+
+The Childrens Social Care Placement Service is in the [Alpha] phase of delivery. As such it is not expected to process real data for users, more to the point, it is an exploratory phase for building prototypes and testing different ideas.
+
+## Decision
+
+The placement alpha prototypes and development work will only process fake data.
+
+The reasoning for this is to allow the Service Team to focus on developing features in fast iteration feedback loops, rather than undertaking the additional non-functional needs for processing live data. The Security needs, including passing the "Authority to Operate" governance gateway alone, would jeopardise the desired delivery timeframe for Alpha of January 2021.
+
+## Consequences
+
+All data in each environment is to be generated fake data. Where data entry is permitted, users will be warned to act responsibly and warned against entering real values.
+
+<%= partial 'partials/links' %>
