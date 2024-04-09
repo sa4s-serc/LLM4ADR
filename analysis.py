@@ -2,6 +2,9 @@ import os
 import csv
 from pprint import pprint
 
+x = ['Context', 'Context and Problem Statement', 'Decision Drivers', 'Decision Drivers <!-- optional -->', 'Pros and Cons of the Options', 'Problem', 'Pros and Cons of the Options <!-- optional -->']
+y = ['Decision', 'Decision Outcome', 'Decisions']
+
 def extract(file):
     lines = file.readlines()
     context = ''
@@ -12,11 +15,11 @@ def extract(file):
         if '##' in line:
             decision_on = False
             context_on = False
-        if 'Context' in line:
+        # if any of the elements in x is in line, then context_on = True
+        if any([ele in line for ele in x]):
             context_on = True
             continue
-        if 'Decision' in line:
-            context_on = False
+        if any([ele in line for ele in y]):
             decision_on = True
             continue
         if context_on and line.strip() != '':
@@ -39,7 +42,7 @@ def get_context_decision(parent_dir, output_file='context_decision.csv'):
                 # print('Context:', context)
                 # print('Decision:', decision)
                 if context == '' or decision == '':
-                    print(f'Error in {file_path}')
+                    # print(f'Error in {file_path}')
                     continue
                 writer.writerow([f'{folder}/{file}',context, decision])
             # break
@@ -70,8 +73,8 @@ def get_headings(parent_dir, output_file='headings.csv'):
         writer.writerow([heading, count])
     
 def main():
-    get_headings('./done_ADRs')
-    # get_context_decision('./done_ADRs')
+    # get_headings('./done_ADRs')
+    get_context_decision('./done_ADRs')
     
 if __name__ == '__main__':
     main()
