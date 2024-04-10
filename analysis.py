@@ -28,8 +28,8 @@ def extract(file):
             decision += line.strip() + '\\n'
     return context, decision
 
-def get_context_decision(parent_dir, output_file='context_decision.csv'):
-    writer = csv.writer(open(output_file, 'w'), delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
+def get_context_decision(parent_dir, output_file='context_decision.tsv'):
+    writer = csv.writer(open(output_file, 'w'), delimiter='\t', quotechar='"', quoting=csv.QUOTE_MINIMAL)
     writer.writerow(['File Name','Context', 'Decision'])
     # get all folders in the parent directory
     folders = [f for f in os.listdir(parent_dir) if os.path.isdir(os.path.join(parent_dir, f))]
@@ -48,7 +48,7 @@ def get_context_decision(parent_dir, output_file='context_decision.csv'):
             # break
         # break
         
-def get_headings(parent_dir, output_file='headings.csv'):
+def get_headings(parent_dir, output_file='headings.tsv'):
     headings = {}
     folders = [f for f in os.listdir(parent_dir) if os.path.isdir(os.path.join(parent_dir, f))]
     for folder in folders:
@@ -67,7 +67,7 @@ def get_headings(parent_dir, output_file='headings.csv'):
     # print headings sorted by count
     sorted_headings = sorted(headings.items(), key=lambda x: x[1], reverse=True)
     # write sorted headings to file
-    writer = csv.writer(open(output_file, 'w'), delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
+    writer = csv.writer(open(output_file, 'w'), delimiter='\t', quotechar='"', quoting=csv.QUOTE_MINIMAL)
     writer.writerow(['Heading', 'Count'])
     for heading, count in sorted_headings[:20]:
         writer.writerow([heading, count])
