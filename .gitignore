@@ -1,1 +1,3 @@
 .env
+research/
+__pycache__
