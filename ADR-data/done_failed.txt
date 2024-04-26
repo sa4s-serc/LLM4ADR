@@ -31,11 +31,6 @@ https://raw.githubusercontent.com/SFDigitalServices/cloud-storage-microservice/d
 https://raw.githubusercontent.com/adr/madr/docs/decisions/0003-include-in-adr-tools.md
 https://raw.githubusercontent.com/adr/madr/docs/decisions/0001-use-CC0-as-license.md
 https://raw.githubusercontent.com/adr/madr/docs/decisions/0000-use-markdown-architectural-decision-records.md
-https://raw.githubusercontent.com/qbit86/arborescence/docs/adr/0004-restrict-language-version-to-csharp-8.md
-https://raw.githubusercontent.com/qbit86/arborescence/docs/adr/0003-place-using-directives-inside-namespace.md
-https://raw.githubusercontent.com/qbit86/arborescence/docs/adr/0002-configure-line-endings-in-gitattributes.md
-https://raw.githubusercontent.com/qbit86/arborescence/docs/adr/0001-keep-editorconfig-sorted.md
-https://raw.githubusercontent.com/qbit86/arborescence/docs/adr/0000-use-markdown-architectural-decision-records.md
 https://raw.githubusercontent.com/vwt-digital/operational-data-hub/architecture/adr/0050-expand-pip-requirements (DEPRECATED).md
 https://raw.githubusercontent.com/ctoec/care-4-kids-auto-notifier/docs/arch/application-flow_08-25-19.md
 https://raw.githubusercontent.com/Trendyol/ios-architecture-decision-logs/adr/0001-every-view-which-has-logic-inside-should(must)-have-presenter.md

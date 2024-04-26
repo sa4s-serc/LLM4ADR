@@ -13,7 +13,7 @@ def extract(file):
     decision_on = False
     reached_decision = False
     for line in lines:
-        if '##' in line:
+        if '##' in line and '###' not in line:
             decision_on = False
             context_on = False
         # if any of the elements in x is in line, then context_on = True
@@ -41,14 +41,9 @@ def get_context_decision(parent_dir, output_file='../context_decision.csv'):
             file_path = os.path.join(parent_dir, folder, file)
             with open(file_path, 'r') as f:
                 context, decision = extract(f)
-                # print('Context:', context)
-                # print('Decision:', decision)
                 if context == '' or decision == '':
-                    # print(f'Error in {file_path}')
                     continue
                 writer.writerow([f'{folder}/{file}',context, decision])
-            # break
-        # break
         
 def get_headings(parent_dir, output_file='../headings.csv'):
     headings = {}

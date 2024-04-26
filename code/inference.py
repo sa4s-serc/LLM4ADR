@@ -40,7 +40,7 @@ context, decision, removed = get_data(data, model_max_length)
 
 tokenizer = AutoTokenizer.from_pretrained(model_name, cache_dir=CACHE_DIR, model_max_length=model_max_length)
 
-model = AutoModelForSeq2SeqLM.from_pretrained(model_name, cache_dir=CACHE_DIR, device_map="auto")
+model = AutoModelForSeq2SeqLM.from_pretrained(model_name, cache_dir=CACHE_DIR, device_map="cuda:0")
 
 predicted_decision = []
 
@@ -61,7 +61,8 @@ print(f"Prediction done for {len(predicted_decision)} records")
 for i in removed:
     predicted_decision.insert(i, "")
     
-context_2 = [c.replace("\n", "\\n") for c in data['Context'].tolist()]
-df = pd.DataFrame({'Context': context_2 , 'Decision': data['Decision'].tolist(), model_name.split('/')[-1]: predicted_decision})
+df = pd.read_csv('../results/results.csv')
+col_name = model_name.split('/')[0]
+df = df.assign(col_name=predicted_decision)
 
 df.to_csv(f'../results/results.csv', index=False)
