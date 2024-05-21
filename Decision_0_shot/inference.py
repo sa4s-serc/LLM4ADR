@@ -8,6 +8,7 @@ import logging
 import torch
 
 CACHE_DIR = '/scratch/adyansh/cache'
+CUDA_DEVICE = 'cuda:0' # 'cuda:0' or 'cuda:1' or 'auto'
 
 data = pd.read_csv('../ADR-data/context_decision.csv')
 
@@ -23,7 +24,7 @@ def get_data(data: pd.DataFrame, max_length = -1):
         context_new = []
         decision_new = []
         for i, (c, d) in enumerate(zip(context, decision)):
-            if len(c) < max_length and len(d) < max_length:
+            if len(c) <= max_length:
                 context_new.append(c)
                 decision_new.append(d)
             else:
@@ -33,18 +34,26 @@ def get_data(data: pd.DataFrame, max_length = -1):
         
     return context, decision, removed
 
-model_name = "google/flan-t5-small"
-model_max_length = 2000
+def replace_newline(text: list):
+    for i in range(len(text)):
+        text[i] = text[i].replace('\n', '\\n')
+    print(len(text))
+    return text
+
+model_name = "google-t5/t5-base"
+# model_name = "google/flan-t5-base"
+model_max_length = 2500
 
 context, decision, removed = get_data(data, model_max_length)
+print(f"Data loaded for {len(context)} records")
 
 tokenizer = AutoTokenizer.from_pretrained(model_name, cache_dir=CACHE_DIR, model_max_length=model_max_length)
 
-model = AutoModelForSeq2SeqLM.from_pretrained(model_name, cache_dir=CACHE_DIR, device_map="cuda:0")
+model = AutoModelForSeq2SeqLM.from_pretrained(model_name, cache_dir=CACHE_DIR, device_map=CUDA_DEVICE)
 
 predicted_decision = []
 
-BATCH_SIZE = 64
+BATCH_SIZE = 16
 
 inputs = tokenizer(context, return_tensors="pt", padding=True, truncation=True, max_length=model_max_length, return_attention_mask=True)
 
@@ -61,8 +70,8 @@ print(f"Prediction done for {len(predicted_decision)} records")
 for i in removed:
     predicted_decision.insert(i, "")
     
-df = pd.read_csv('../results/results.csv')
-col_name = model_name.split('/')[0]
-df = df.assign(col_name=predicted_decision)
+model = model_name.split('/')[1]
 
-df.to_csv(f'../results/results.csv', index=False)
+df = pd.DataFrame({'Context': replace_newline(data['Context']), 'Decision': replace_newline(data['Decision']), model: replace_newline(predicted_decision)})
+
+df.to_csv(f'../results/{model}.csv', index=False)
