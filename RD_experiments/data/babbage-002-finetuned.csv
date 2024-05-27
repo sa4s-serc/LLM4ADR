@@ -1,0 +1,904 @@
+Context,Decision,Prediction
+"island.is will be maintaining and publishing content from many different government agencies and institutions. Their technical skill may vary a great deal, the content skill may also be lacking, therefore it is paramount for the system to be user friendly and intuitive.
+Agencies and institutions should have enough autonomy with regards to editing content they are responsible for, to minimise the manual labour required by the island.is editors.
+Which CMS system would best suit the needs of island.is?
+Decision Drivers
+Content needs to be editable by non technical usersContent needs to be accessible across multiple domains and platformsSetup should be simple for developers new to the projectThe system should manage flexible content structures to limit systems impact on designThe system should be user friendly and easy to use for a non technical personThe system needs to offer a suitable workflow option to ease content management once multiple agencies start to contribute","Devs narrowed the choice down to two options Contentful and Contentstack.
+Both systems meet the required featureset.
+A decision from management was made to use Contentful. Contentful is deemed to have a larger presence in the Icelandic dev community. Contentful is also believed to have a stronger funding base. Contentful is already implemented in some of our projects.","
+Positive Consequences
+The system is easy to setup and maintain for developersThe system can be customised to fit the needs of island.is and its stakeholdersChosen option: Jekyll
+Positive Consequences Positive Consequences Positive Consequences Positive Consequences Positive Consequences Positive Consequences Positive Consequences Positive Consequences Positive Consequences Positive Consequences Positive Consequences Positive Consequences Positive Consequences Positive Consequences Positive Consequences Positive Consequences Positive Consequences Positive Consequences Positive Consequences Positive Consequences Positive Consequences Positive Consequences Positive Consequences Positive Consequences Positive Consequences Positive Consequences Positive Consequences Positive Consequences Positive Consequences Positive Consequences Positive Consequences Positive Consequences Positive Consequences Positive Consequences Positive Consequences Positive Consequences Positive Consequences Positive Consequences Positive Consequences Positive Consequences Positive Consequences Positive Consequences Positive Consequences Positive Consequences Positive Consequences Positive Consequences Positive Consequences Positive Consequences Positive Consequences Positive Consequences Positive Consequences Positive Consequences Positive Consequences Positive Consequences Positive Consequences Positive Consequences Positive Consequences Positive Consequences Positive Consequences Positive Consequences Positive Consequences Positive Consequences Positive Consequences Positive Consequences Positive Consequences Positive Consequences Positive Consequences Positive Consequences Positive Consequences Positive Consequences Positive Consequences Positive Consequences Positive Con"
+"The Chimera data model (as described in ADR-15 and ADR-16) includes the concepts of _entity types_ in the domain data model: a defined entity type may have supertypes, and inherits all the attributes of a given supertype 
+
+This is quite expressive, and is a good fit for certain types of data stores (such as Datomic, graph databases, and some object stores.) It makes it possible to compose types, and re-use attributes effectively.
+
+However, it leads to a number of conceptual problems, as well as implementation complexities. These issues include but are not limited to:
+
+- There is a desire for some types to be ""abstract"", in that they exist purely to be extended and are not intented to be reified in the target database (e.g, as a table.) In the current model it is ambiguous whether this is the case or not.
+- A singe `extend-type` migration operation may need to create multiple columns in multiple tables, which some databases do not support transactionally.
+- When doing a lookup by attribute that exists in multiple types, it is ambiguous which type is intended.
+- In a SQL database, how to best model an extended type becomes ambiguous: copying the column leads to ""denormalization"", which might not be desired. On the other hand, creating a separate table for the shared columns leads to more complex queries with more joins.
+
+All of these issues can be resolved or worked around. But they add a variable amount of complexity cost to every Chimera adapter, and create a domain with large amounts of ambigous behavior that must be resolved (and which might not be discovered until writing a particular adapter.)","The concept of type extension and attribute inheritance does not provide benefits proportional to the cost.
+
+We will remove all concept of supertypes, subtypes and attribute inheritance from Chimera's data model.
+
+Chimera's data model will remain ""flat"". In order to achieve attribute reuse for data stores for which that is idiomatic (such as Datomic), multiple Chimera attributes can be mapped to a single DB-level attribute in the adapter mapping metadata.
+   
+","Therefore, we will adopt the Chimera data model for all entities and attributes in our target domain. This will allow us to more easily compose types and reuse attributes in the future, and avoid the conceptual and implementation challenges that come with the current model.
+
+We will use the Chimera data model for all entities and attributes in our target domain. This will allow us to more easily compose types and reuse attributes in the future, and avoid the conceptual and implementation challenges that come with the current model.We will use the Chimera data model for all entities and attributes in our target domain. This will allow us to more easily compose types and reuse attributes in the future, and avoid the conceptual and implementation challenges that come with the current model.We will adopt the Chimera data model for all entities and attributes in our target domain. This will allow us to more easily compose types and reuse attributes in the future, and avoid the conceptual and implementation challenges that come with the current model.We will adopt the Chimera data model for all entities and attributes in our target domain. This will allow us to more easily compose types and reuse attributes in the future, and avoid the conceptual and implementation challenges that come with the current model.We will adopt the Chimera data model for all entities and attributes in"
+"Arachne has several very explicit goals that make the practice and
+discipline of architecture very important:
+
+- We want to think deeply about all our architectural decisions,
+  exploring all alternatives and making a careful, considered,
+  well-researched choice.
+- We want to be as transparent as possible in our decision-making
+  process.
+- We don't want decisions to be made unilaterally in a
+  vacuum. Specifically, we want to give our steering group the
+  opportunity to review every major decision.
+- Despite being a geographically and temporally distributed team, we
+  want our contributors to have a strong shared understanding of the
+  technical rationale behind decisions.
+- We want to be able to revisit prior decisions to determine fairly if
+  they still make sense, and if the motivating circumstances or
+  conditions have changed.","We will document every architecture-level decision for Arachne and its
+core modules with an
+[Architecture Decision Record](http://thinkrelevance.com/blog/2011/11/15/documenting-architecture-decisions). These
+are a well structured, relatively lightweight way to capture
+architectural proposals. They can serve as an artifact for discussion,
+and remain as an enduring record of the context and motivation of past
+decisions.
+
+The workflow will be:
+
+1. A developer creates an ADR document outlining an approach for a
+   particular question or problem. The ADR has an initial status of ""proposed.""
+2. The developers and steering group discuss the ADR. During this
+   period, the ADR should be updated to reflect additional context,
+   concerns raised, and proposed changes.
+3. Once consensus is reached, ADR can be transitioned to either an
+   ""accepted"" or ""rejected"" state.
+4. Only after an ADR is accepted should implementing code be committed
+   to the master branch of the relevant project/module.
+5. If a decision is revisited and a different conclusion is reached, a
+   new ADR should be created documenting the context and rationale for
+   the change. The new ADR should reference the old one, and once the
+   new one is accepted, the old one should (in its ""status"" section)
+   be updated to point to the new one. The old ADR should not be
+   removed or otherwise modified except for the annotation pointing to
+   the new ADR.
+
+","- In order to achieve these goals, we will adopt the following
+  decision-making process:
+
+- Every decision will be made by a combination of the following two
+  methods:
+
+    - A formal, systematic, and iterative process of decision
+      re-consideration (see ""Re-Consideration"" below) will be used to
+      determine at each decision point whether the benefits of a
+      particular course of action still outweigh the costs.
+
+    - If the benefits of a particular course of action still
+      outweigh the costs, we will adopt that decision unilaterally. If
+      the costs outweigh the benefits, we will seek the advice and
+      consent of our steering group, and seek to reach a
+      consensus.
+
+- All decisions will be made in good faith, and will be subject to
+  revision if and when the circumstances or conditions on which the
+  decision was made change.
+
+- Decisions will be made in a manner that is as transparent and
+  communicative as possible, and will make every effort to minimize
+  the potential for ""hidden"" costs.
+
+- Decisions will be subject to the same level of formal and
+  systematic re-consideration as any other high-level technical
+  decision.
+
+- Decisions"
+"The organization is planning to migrate from traditional on-premises infrastructure to cloud infrastructure. In order to achieve this, the organization has evaluated multiple cloud service providers such as Amazon Web Services (AWS), Google Cloud Platform (GCP), Microsoft Azure, and IBM Cloud. Each provider has its own set of features, benefits, and pricing structure. After a detailed analysis, it was concluded that Microsoft Azure is the most suitable option for our organization.",Adopt Microsoft Azure as the cloud infrastructure for our organization.,"We have decided to adopt Microsoft Azure as our preferred cloud infrastructure platform. Microsoft Azure offers a wide range of services, including compute, storage, networking, database, analytics, AI, and more. It also provides a robust set of tools and resources for building and deploying applications quickly and efficiently. In addition, Microsoft Azure offers a wide range of services that can be used to support our existing on-premises infrastructure needs. This includes enterprise applications, data warehousing, and business intelligence.We will use Microsoft Azure as our preferred cloud infrastructure platform. By adopting Microsoft Azure, our organization will be able to take full advantage of its advanced technology and resources, including its global network of data centers, integrated suite of cloud-based productivity and collaboration tools, and advanced analytics capabilities. In addition, Microsoft Azure can be used to support our existing on-premises infrastructure needs, including enterprise applications, data warehousing, and business intelligence. With Microsoft Azure, our organization will be able to leverage its extensive partner ecosystem and global reach to quickly and efficiently build and deploy applications. We will also be able to take advantage of its advanced technology and resources, including its global network of data centers, integrated suite of cloud-based productivity and collaboration tools, and advanced analytics capabilities. In addition, Microsoft Azure can be"
+"While many Arachne applications will use a transient config which is rebuilt from its initialization scripts every time an instance is started, some users might wish instead to store their config persistently in a full Datomic instance.
+
+There are a number of possible benefits to this approach:
+
+- Deployments from the same configuration are highly reproducible
+- Organizations can maintain an immutable persistent log of configuration changes over time.
+- External tooling can be used to persistently build and define configurations, up to and including full ""drag and drop"" architecture or application design.
+
+Doing this introduces a number of additional challenges:
+
+- **Initialization Scripts**: Having a persistent configuration introduces the question of what role initialization scripts play in the setup. Merely having a persistent config does not make it easier to modify by hand - quite the opposite. While an init script could be used to create the configuration, it's not clear how they would be updated from that point (absent a full config editor UI.)
+  
+  Re-running a modified configuration script on an existing configuration poses challenges as well; it would require that all scripts be idempotent, so as not to create spurious objects on subsequent runs. Also, scripts would then need to support some concept of retraction.
+- **Scope & Naming**: It is extremely convenient to use `:db.unique/identity` attributes to identify particular entities in a configuration and configuration init scripts. This is not only convenient, but *required* if init scripts are to be idempotent, since this is the only mechanism by which Datomic can determine that a new entity is ""the same"" as an older entity in the system.
+
+  However, if there are multiple different configurations in the same database, there is the risk that some of these unique values might be unintentionally the same and ""collide"", causing inadvertent linkages between what ought to be logically distinct configurations.
+ 
+  While this can be mitigated in the simple case by ensuring that every config uses its own unique namespace, it is still something to keep in mind.
+
+- **Configuration Copying & Versioning** Although Datomic supports a full history, that history is linear. Datomic does not currently support ""forking"" or maintaining multiple concurrent versions of the same logical data set.
+
+  This does introduce complexities when thinking about ""modifying"" a configuration, while still keeping the old one. This kind of ""fork"" would require a deep clone of all the entities in the config, *as well as* renaming all of the `:db.unique/identity` attrs.
+  
+  Renaming identity attributes compounds the complexity, since it implies that either idents cannot be hardcoded in initialization scripts, or the same init script cannot be used to generate or update two different configurations.
+
+- **Environment-specific Configuration**: Some applications need slightly different configurations for different instances of the ""same"" application. For instance, some software needs to be told what its own IP address is. While it makes sense to put this data in the configuration, this means that there would no longer be a single configuration, but N distinct (yet 99% identical) configurations.
+
+  One solution would be to not store this data in the configuration (instead picking it up at runtime from an environment variable or secondary config file), but multiplying the sources of configuration runs counter to Arachne's overriding philosophy of putting everything in the configuration to start with.
+  
+- **Relationship with module load process**: Would the stored configuration represent only the ""initial"" configuration, before being updated by the active modules? Or would it represent the complete configuration, after all the modules have completed their updates?
+
+  Both alternatives present issues.
+  
+  If only the user-supplied, initial config is stored, then the usefulness of the stored config is diminished, since it does not provide a comprehensive, complete view of the configuration.
+  
+  On the other hand, if the complete, post-module config is persisted, it raises more questions. What happens if the user edits the configuration in ways that would cause modules to do something different with the config? Is it possible to run the module update process multiple times on the same config? If so, how would ""old"" or stale module-generated values be removed?
+
+#### Goals
+
+We need a technical approach with good answers to the challenges described above, that enables a clean user workflow. As such, it is useful to enumerate the specific activities that it would be useful for a persistent config implementation to support:
+
+- Define a new configuration from an init script.
+- Run an init script on an existing configuration, updating it.
+- Edit an existing configuration using the REPL.
+- Edit an existing configuration using a UI.
+- Clone a configuration
+- Deploy based on a specific configuration
+
+At the same time, we need to be careful not to overly complicate things for the common case; most applications will still use the pattern of generating a configuration from an init script immediately before running an application using it.","We will not attempt to implement a concrete strategy for config persistence at this time; it runs the risk of becoming a quagmire that will halt forward momentum.
+
+Instead, we will make a minimal set of choices and observations that will enable forward progress while preserving the ability to revisit the issue of persistent configuration at some point in the future.
+
+1. The configuration schema itself should be compatible with having several configurations present in the same persistent database. Specifically:
+  - Each logical configuration should have its own namespace, which will be used as the namespace of all `:db.unique/identity` values, ensuring their global uniqueness.
+  - There is a 'configuration' entity that reifies a config, its possible root components, how it was constructed, etc.
+  - The entities in a configuration must form a connected graph. That is, every entity in a configuration must be reachable from the base 'config' entity. This is required to have any ability to identify the config as a whole within for any purpose.
+
+2. The current initial _tooling_ for building configurations (including the init scripts) will focus on building configurations from scratch. Tooling capable of ""editing"" an existing configuration is sufficiently different, with a different set of requirements and constraints, that it needs its own design process.
+
+3. Any future tooling for storing, viewing and editing configurations will need to explicitly determine whether it wants to work with the configuration before or after processing by the modules, since there is a distinct set of tradeoffs.
+
+"," Since this approach is simple and intuitive, and avoids many of the more challenging issues that would arise if a persistent config were required, we will not pursue this option.
+
+Instead, we will focus on the more difficult cases where it is useful to store a persistent config, but where the benefits of doing so are outweighed by the costs. We will adopt the following goals:
+
+- **Reproducibility**: It is important that users be able to reproduce their configurations as closely as possible, by running an init script.
+
+  This will enable organizations to more easily maintain an immutable log of configuration changes over time, and to more easily automate the setup of their environments.
+
+- **Consistency**: It is important that an entity's configuration properties are consistently defined across different entities in the same database.
+
+  This will enable organizations to more easily maintain consistent schemas, and to more easily avoid the need to explicitly define entity properties in an init script.
+
+- **Pluggability**: It is important that an entity's configuration properties can be plugged into other entities in the same database, without requiring that they be defined explicitly.
+
+  This will enable organizations to more easily reuse the configuration of an application running on one database in another, without having to reconfigure their own environments.
+
+- **IDempotency"
+"Google Cloud Platform (GCP) is a prominent cloud computing platform that offers various cloud services, including computing, storage, and networking solutions. This ADR aims to document the architectural decisions made for developing and implementing a GCP-based infrastructure for our organization.","Our organization has decided to use Google Cloud Platform as the cloud infrastructure for our application. The primary considerations for this decision are:
+
+   - Cost-effectiveness
+
+   - Scalability
+
+   - Reliability
+
+   - Flexibility","We will use Google Cloud Platform (GCP) as a prominent cloud computing platform that offers various cloud services, including computing, storage, and networking solutions. This ADR will document the architectural decisions made for developing and implementing a GCP-based infrastructure for our organization.We will use Google Cloud Platform (GCP) as a prominent cloud computing platform that offers various cloud services, including computing, storage, and networking solutions. This ADR will document the architectural decisions made for developing and implementing a GCP-based infrastructure for our organization.We will use Google Cloud Platform (GCP) as a prominent cloud computing platform that offers various cloud services, including computing, storage, and networking solutions. This ADR will document the architectural decisions made for developing and implementing a GCP-based infrastructure for our organization.We will use Google Cloud Platform (GCP) as a prominent cloud computing platform that offers various cloud services, including computing, storage, and networking solutions. This ADR will document the architectural decisions made for developing and implementing a GCP-based infrastructure for our organization.We will use Google Cloud Platform (GCP) as a prominent cloud computing platform that offers various cloud services, including computing, storage, and networking solutions. This ADR will document the architectural decisions made for developing and implementing"
+"We want to use a CSS framework to create our web applications:
+
+  * We want user experience to be fast and reliable, on all popular browsers and screen sizes.
+
+  * We want rapid iteration on design, layout, UI/UX, etc.
+
+  * We want responsive applications, especially for smaller screens such as on mobile devices, larger screens such as on 4K widescreens, and dynamic screens such as rotatable displays.  
+",Decided on Bulma.,"Decided against:
+
+  * Bootstrap. We don't like its visual style and its reliance on third-party components, which we will avoid using at all costs.  
+  * Foundation. We don't like its visual style and its reliance on third-party components, which we will avoid using at all costs.  
+  * Materialize. We don't like its visual style and its reliance on third-party components, which we will avoid using at all costs.  
+  * Zurb Foundation. We don't like its visual style and its reliance on third-party components, which we will avoid using at all costs.  
+  * Zurb Foundation Icons. We don't like its visual style and its reliance on third-party icons, which we will avoid using at all costs.  
+  * Semantic UI. We don't like its visual style and its reliance on third-party components, which we will avoid using at all costs.  
+  * Skeleton. We don't like its visual style and its reliance on third-party components, which we will avoid using at all costs.  
+  * Smashing UI. We don't like its visual style and its reliance on third-party components, which we will avoid using at all costs.  
+  * Twitter Bootstrap. We don't like its visual"
+"Our project involves developing three major categories of software:
+
+  * Front-end GUIs
+  * Middleware services
+  * Back-end servers
+
+When we develop, our source code management (SCM) version control system (VCS) is git.
+
+We need to choose how we use git to organize our code.
+
+The top-level choice is to organize as a ""monorepo"" or ""polyrepo"" or ""hybrid"":
+
+  * Monorepo means we put all pieces into one big repo
+  * Polyrepo means we put each piece in its own repo
+  * Hybrid means some mix of monorepo and polyrepo
+
+For more please see https://github.com/joelparkerhenderson/monorepo-vs-polyrepo
+","Monorepo when an organization/team/project is relatively small, and rapid iteration is higher priority than sustaining stability.
+
+Polyrepo when an organization/team/project is relatively large, and sustaining stability is higher priority than rapid iteration.","For more please see https://github.com/joelparkerhenderson/hybrid-vs-monorepo
+
+We will use git as our VCS.
+
+We will use a git-based version control system (VCS) for all of our code.
+
+We will use a git-based version control system (VCS) for all of our code.
+
+We will use a git-based version control system (VCS) for all of our code.
+
+We will use a git-based version control system (VCS) for all of our code.
+
+We will use a git-based version control system (VCS) for all of our code.
+
+We will use a git-based version control system (VCS) for all of our code.
+
+We will use a git-based version control system (VCS) for all of our code.
+
+We will use a git-based version control system (VCS) for all of our code.
+
+We will use a git-based version control system (VCS) for all of our code.
+
+We will use a git-based version control system (VCS) for all of our code.
+
+We will use a git-based version control system (VCS) for all of our code.
+
+We will use a git-based version control system (VCS) for all of"
+"Reflection test for TOSCA YAML builder
+
+The TOSCA YAML builder converts Java Objects to instances of TOSCA YAML classes. To get clean an good instances validation is needed. Reflection test are Junit5 test which take yaml service templates with metadata that describes what assertions should be made for the resulting TOSCA YAML class instances. 
+
+```
+...
+metadata:
+  assert: |
+    repositories.rp1.url = http://github.com/kleinech
+    node_types.ntp1.requirements.0.rqr1.capability = cbt1
+...
+```
+Each assert line contains a keyname and a value.
+*[context and problem statement]*
+*[decision drivers | forces]* <!-- optional -->
+
+## Considered Alternatives
+
+* *reflection tests*
+* *manual test*","* Chosen Alternative: *reflection tests*
+* Only alternative, which meets simplifies the effort to make complete tests 
+"," *Chosen Alternative: reflection tests*
+
+## Consequences
+
+* [reproducibility] * JUnit5 test cases are easily readable and can be reused.
+* [maintainability] * JUnit5 is the most commonly used JUnit variant and thus the one that most people are familiar with.
+* [security] * Reflection tests expose the JARs that are used for TOSCA YAML services.
+* [business impact] * There is no business impact related to the choice of TOSCA YAML builder.
+* [costs] * There are no costs related to the choice of TOSCA YAML builder.
+* [time needed] * There are no time costs related to the choice of TOSCA YAML builder.
+* [chance of failure] * There is no chance of failure related to the choice of TOSCA YAML builder.
+* [reliability] * There is no reliability impact related to the choice of TOSCA YAML builder.
+* [reproducibility] * JUnit5 is the most commonly used JUnit variant and thus the one that most people are familiar with.
+* [maintainability] * JUnit5 is the most commonly used JUnit variant and thus the one that most people are familiar with.
+"
+"Per [ADR-003](adr-003-config-implementation.md), Arachne uses
+Datomic-shaped data for configuration. Although this is a flexible,
+extensible data structure which is a great fit for programmatic
+manipulation, in its literal form it is quite verbose.
+
+It is quite difficult to understand the structure of Datomic data by
+reading its native textual representation, and it is similarly hard to
+write, containing enough repeated elements that copying and pasting
+quickly becomes the default.
+
+One of Arachne's core values is ease of use and a fluent experience
+for developers. Since much of a developer's interaction with Arachne
+will be writing to the config, it is of paramount importance that
+there be some easy way to create configuration data.
+
+The question is, what is the best way for developers of Arachne
+applications to interact with their application's configuration?
+
+#### Option: Raw Datomic Txdata
+
+This would require end users to write Datomic transaction data by hand
+in order to configure their application.
+
+This is the ""simplest"" option, and has the fewest moving
+parts. However, as mentioned above, it is very far from ideal for
+human interactions.
+
+#### Option: Custom EDN data formats
+
+In this scenario, users would write EDN data in some some nested
+structure of maps, sets, seqs and primitives. This is currently the
+most common way to configure Clojure applications.
+
+Each module would then need to provide a mapping from the EDN config
+format to the underlying Datomic-style config data.
+
+Because Arachne's configuration is so much broader, and defines so
+much more of an application than a typical application config file, 
+it is questionable if standard nested EDN data would be a good fit 
+for representing it.
+
+#### Option: Code-based configuration
+
+Another option would be to go in the direction of some other
+frameworks, such as Ruby on Rails, and have the user-facing
+configuration be *code* rather than data.
+
+It should be noted that the primary motivation for having a
+data-oriented configuration language, that it makes it easier to
+interact with programmatically, doesn't really apply in Arachne's
+case. Since applications are always free to interact richly with
+Arachne's full configuration database, the ability to programmatically
+manipulate the precursor data is moot. As such, one major argument
+against a code-based configuration strategy does not apply.","Developers will have the option of writing configuration using either
+native Datomic-style, data, or code-based *configuration
+scripts*. Configuration scripts are Clojure files which, when
+evaluated, update a configuration stored in an atom currently in
+context (using a dynamically bound var.)
+
+Configuration scripts are Clojure source files in a distinct directory
+that by convention is *outside* the application's classpath:
+configuration code is conceptually and physically separate from
+application code. Conceptually, loading the configuration scripts
+could take place in an entirely different process from the primary
+application, serializing the resulting config before handing it to the
+runtime application.
+
+To further emphasize the difference between configuration scripts and
+runtime code, and because they are not on the classpath, configuration
+scripts will not have namespaces and will instead include each other
+via Clojure's `load` function.
+
+Arachne will provide code supporting the ability of module authors to
+write ""configuration DSLs"" for users to invoke from their
+configuration scripts. These DSLs will emphasize making it easy to
+create appropriate entities in the configuration. In general, DSL
+forms will have an imperative style: they will convert their arguments
+to configuration data and immediately transact it to the context
+configuration.
+
+As a trivial example, instead of writing the verbose configuration data:
+
+```clojure
+{:arachne/id :my.app/server
+ :arachne.http.server/port 8080
+ :arachne.http.server/debug true}
+ ```
+
+You could write the corresponding DSL:
+
+```clojure
+(server :id :my.app/server, :port 8080, :debug true)
+```
+
+Note that this is an illustrative example and does not represent the
+actual DSL or config for the HTTP module.
+
+DSLs should make heavy use of Spec to make errors as comprehensible as possible.
+
+"," However,
+the ability to write code to manipulate the configuration data is
+still a very powerful tool, and one that could be very useful in
+some situations.
+
+#### Option: Configuration metadata
+
+Another option would be to have configuration metadata, such as the
+EDN schema, stored as a separate config atom. This configuration
+metadata would be used by the code-based configuration strategy to
+generate code to manipulate the precursor data.
+
+This would be a more flexible option, as it would allow users to
+generate configuration data in a more traditional textual
+format, and would not require modifying the underlying EDN data
+format.
+
+However, it would be more cumbersome to implement, and would likely
+require additional configuration metadata to be generated for
+every configuration format supported by Arachne.
+
+#### Option: Custom EDN schema
+
+In this scenario, users would write EDN schema data directly in the
+config atom, similar to how they would write a Datomic schema
+definition. This configuration metadata would be used by the code-
+based configuration strategy to generate code to manipulate the
+predecessor config atom.
+
+This is the most flexible option, as it allows users to write
+configuration data in whatever format they desire, and would not
+require modifying the underlying EDN data format.
+
+"
+"Use Builder Pattern for Model Classes
+
+Model classes should be instantiable simple without using large constructors.
+
+## Considered Alternatives
+
+* [Builders]
+* Setters, getters and default constructor 
+* Large constructors
+* Factories","* Chosen Alternative: *Builders*
+* Flexible
+* Simple for complex objects
+* Extensions cause problems (solved with generic builders) 
+
+### Generic Builders
+
+Generic Builders are used to enable safe method chaining for Builders with extend other Builders.
+Another discussion is made at [stackoverflow].
+
+The method `self()` is necessary because all setter methods should return the Builder used for instantiation and not the builder that is extended. `self()` can not be replace by `this` because the expected type is `<T>` and casting to `<T>` results in warnings.
+
+Builders which are not abstract and are extended by other builders are generic and implement the `self()` method by casting `this` to `<T>`. To reduce warnings this casting is only used in this case.
+
+Example:
+```java
+// part of ExtensibleElements.Builder
+public abstract static class Builder<T extends Builder<T>> {
+    private List<TDocumentation> documentation;
+    
+    // setter returns generic <T> 
+    public T setDocumentation(List<TDocumentation> documentation) {
+        this.documentation = documentation;
+        // return this; => IncompatibleType exception either cast with warnings or use self() method
+        return self();
+    }
+    
+    // overwritten method
+    public abstract T self();
+}
+
+// part of TEntityType.Builder
+public abstract static class Builder<T extends Builder<T>> extends TExtensibleElements.Builder<T> {
+	
+}
+
+// part of TNodeType.Builder
+public static class Builder extends TEntityType.Builder<Builder> {
+    @Override
+    public Builder self() {
+        return this;
+    }
+}
+```
+
+
+
+[Builders]:(https://en.wikipedia.org/wiki/Builder_pattern)
+[stackoverflow]: https://stackoverflow.com/a/5818701/8235252
+
+","* Chosen Alternative: Builders
+
+Builders are the simplest and most flexible alternative for instantiating models.
+
+They allow for simple and clean code and can be used for different use cases.
+
+They can be used to create immutable models and can be used for creating default
+
+values for fields without using explicit getters and setters.
+
+Additionally, they can be used to create complex models with many fields and
+
+generating boilerplate code for constructors.
+
+Builders can be used for different use cases and can be used to create different types
+
+of models.
+
+## Consequences
+
+* [Builders] are the simplest and most flexible alternative for instantiating models.
+
+  They allow for simple and clean code and can be used for different use cases.
+
+  They can be used to create immutable models and can be used for creating default
+
+  values for fields without using explicit getters and setters.
+
+  Additionally, they can be used to create complex models with many fields and
+
+  generating boilerplate code for constructors.
+
+  Additionally, they can be used to create default values for fields without using explicit
+
+  getters and setters.
+
+  Additionally, they can be used to create default values for fields without using explicit
+
+  getters and setters.
+
+  Additionally, they can be used to create default values for fields without using explicit
+
+ "
+"In addition to handling arbitrary HTTP requests, we would like for Arachne to make it easy to serve up certain types of well-known resources, such as static HTML, images, CSS, and JavaScript.
+
+These ""static assets"" can generally be served to users as files directly, without processing at the time they are served. However, it is extremely useful to provide *pre-processing*, to convert assets in one format to another format prior to serving them. Examples of such transformations include:
+
+- SCSS/LESS to CSS
+- CoffeeScript to JavaScript
+- ClojureScript to JavaScript
+- Full-size images to thumbnails
+- Compress files using gzip
+
+Additionally, in some cases, several such transformations might be required, on the same resource. For example, a file might need to be converted from CoffeeScript to JavaScript, then minified, then gzipped.
+
+In this case, asset transformations form a logical pipeline, applying a set of transformations in a known order to resources that meet certain criteria.
+
+Arachne needs a module that defines a way to specify what assets are, and what transformations ought to apply and in what order. Like everything else, this system needs to be open to extension by other modules, to provide custom processing steps.
+
+### Development vs Production
+
+Regardless of how the asset pipeline is implemented, it must provide a good development experience such that the developer can see their changes immediately. When the user modifies an asset file, it should be automatically reflected in the running application in near realtime. This keeps development cycle times low, and provides a fluid, low-friction development experience that allows developers to focus on their application.
+
+Production usage, however, has a different set of priorities. Being able to reflect changes is less important; instead, minimizing processing cost and response time is paramount. In production, systems will generally want to do as much processing as they can ahead of time (during or before deployment), and then cache aggressively.
+
+### Deployment & Distribution
+
+For development and simple deployments, Arachne should be capable of serving assets itself. However, whatever technique it uses to implement the asset pipeline, it should also be capable of sending the final assets to a separate cache or CDN such that they can be served statically with optimal efficiency. This may be implemented as a separate module from the core asset pipeline, however.
+
+### Entirely Static Sites
+
+There is a large class of websites which actually do not require any dynamic behavior at all; they can be built entirely from static assets (and associated pre-processing.) Examples of frameworks that cater specifically to this type of ""static site generation"" include Jekyll, Middleman, Brunch, and many more.
+
+By including the asset pipeline module, and *not* the HTTP or Pedestal modules, Arachne also ought to be able to function as a capable and extensible static site generator.","Arachne will use Boot to provide an abstract asset pipeline. Boot has built-in support for immutable Filesets, temp directory management, and file watchers.
+
+As with everything in Arachne, the pipeline will be specified as pure data in the configuration, specifying inputs, outputs, and transformations explicitly.
+
+Modules that participate in the asset pipeline will develop against a well-defined API built around Boot Filesets.
+
+"," It would be possible, for example, to use Arachne as a wrapper around a Jekyll or Gulp-based generator, to automatically generate static websites for an organization.
+
+### Static Assets
+
+Arachne will provide a module that defines a set of transformation rules which will be applied to resources to generate static files in a specific format. These resources can be any file type that can be served by a web server (including images, CSS, JavaScript, and compressed files.)
+
+Arachne will not provide a module that defines a transformation process itself; this is a job for a separate module called ""Compression"". Compression will take a set of resources, and compress them using a lossy compression algorithm, such as ZIP or GZIP, to reduce the size of the final file while maintaining as much information as possible.
+
+### Pre-Processing
+
+Arachne will not provide a module that performs any pre-processing on the resources it transforms. This is a task that should be left for a separate module, such as Compression.
+
+### Optimized File Names
+
+Arachne will not perform any optimization of file names. This is the job of a separate module such as Compression.
+
+### Compression
+
+Arachne will provide a module that takes a set of resources and a compression algorithm (such"
+"Use filesystem as backend
+
+Winery needs to store its contents.
+These contents need to be shared.
+
+## Considered Alternatives
+
+* Filesystem
+* Database","* *Chosen Alternative: Filesystem*
+
+","* Chosen Alternative: Filesystem
+* Because the contents of a Winery's database are frequently
+changed, a database backend is not suitable. Therefore, a
+filesystem is the best fit for storing the contents of a Winery's
+database.
+
+## Consequences of the Alternative Consequences of the Alternative
+  Consequences of the Alternative Consequences of the Alternative
+  Consequences of the Alternative Consequences of the Alternative
+  Consequences of the Alternative
+  Consequences of the Alternative
+  Consequences of the Alternative
+  Consequences of the Alternative
+  Consequences of the Alternative
+  Consequences of the Alternative
+  Consequences of the Alternative
+  Consequences of the Alternative
+  Consequences of the Alternative
+  Consequences of the Alternative
+  Consequences of the Alternative
+  Consequences of the Alternative
+  Consequences of the Alternative
+  Consequences of the Alternative
+  Consequences of the Alternative
+  Consequences of the Alternative
+  Consequences of the Alternative
+  Consequences of the Alternative
+  Consequences of the Alternative
+  Consequences of the Alternative
+  Consequences of the Alternative
+  Consequences of the Alternative
+  Consequences of the Alternative
+  Consequences of the Alternative
+ "
+"We want a monorepo tool to help us to scale development up for multiple projects and teams. It should not be too much in the way, but help us manage code, dependencies and CI/CD.
+Decision Drivers
+Low complexity and overhead in development.Fit for our stack.Optimize CI/CD with dependency graphs and/or caching.Flexible.","Chosen option: ""Nx"", because:
+It's specially designed around our stack (TypeScript, React, Node.JS, NPM, ESLint, Prettier, Cypress, Jest, NextJS).It's relatively easy to learn with focused documentation.It has schematics to generate apps, libraries and components that includes all of our tools.It is opinionated, which gives us a good base to start developing faster. Many things can still be configured or extended."," Can be used for other purposes as well.
+Positive Consequences
+No negative consequences for our development process.Code quality and team culture not affected.Decided against Gatsby because we want to use our own stack and don't want to use a pre-built monorepo.We will use next best thing - a Gatsby plugin - to build our own monorepo tool. This will be a plugin for our GatsbyJS development environment, that will allow us to reuse most of the features without having to write any code ourselves.We will use Gatsby's official plugin for CI/CD integration. It will allow us to easily integrate our Gatsby sites with our CI/CD systems, such as CircleCI or Travis CI.Positive Consequences will be minimal. Gatsby plugin will not provide any CI/CD features out of the box. We will have to write some custom plugins if we want to take advantage of them.Positive Consequences will be that we can reuse most of the features of a Gatsby plugin without having to write any code ourselves. This will allow us to start building our own monorepo tool quickly and easily without any major roadblocks.
+Positive Consequences will be that we can easily build our own monorepo tool using the Gatsby plugin"
+"We are in search for a means to document our architectural and design decisions for all of our components. In order to do that, there is practice called architectural decision records (“ADR”), that we can integrate into our workflow.
+
+This does not replace actual architecture documentation, but provides people who are contributing:
+
+    the means to understand architectural and design decisions that were made
+
+    a framework for proposing changes to the current architecture
+
+For each decision, it is important to consider the following factors:
+
+    what we have decided to do
+
+    why we have made this decision
+
+    what we expect the impact of this decision to be
+
+    what we have learned in the process
+
+As we’re already using rST, Sphinxdoc and readthedocs, it would be practical to integrate these ADRs as part of our current documentation infrastructure.","We will use ADRs to document, propose and discuss any important or significant architectural and design decisions.
+
+    The ADR format will follow the format described in Implications section.
+
+    We will follow the convention of storing those ADRs as rST or Markdown formatted documents stored under the docs/adr directory, as exemplified in Nat Pryce’s adr-tools. This does not imply that we will be using adr-tools itself, as we might diverge from the proposed structure.
+
+    We will keep rejected ADRs
+
+    We will strive, if possible, to create an ADR as early as possible in relation to the actual implementation."," We could use Sphinxdoc as the documentation tool for ADRs, and use readthedocs as the documentation generator for Sphinxdoc.
+
+After evaluating the options, we have decided to use Sphinxdoc as the documentation tool for ADRs. We believe that Sphinxdoc provides the best balance between ease of use, flexibility and completeness for our documentation needs.
+
+Sphinxdoc provides a rich set of features for managing and documenting an organization’s documentation, including:
+
+    version control
+
+    branching and merging
+
+    version templates
+
+    linting and formatting
+
+    package management
+
+    package documentation
+
+    package install documentation
+
+    unit testing
+
+    linting and formatting
+
+    dependency management
+
+    and more
+
+Sphinxdoc is a Python package that can be used to document an organization’s documentation, and can be used as a standalone tool or as a dependency in another documentation tool (e.g. Docutils).
+
+Sphinxdoc is a well-established open-source project, and is widely used both within the open-source community and for enterprise organizations. It has a large and active development community, and is regularly updated and maintained.
+
+Sphinxdoc is a mature and well-established open-source project, and is widely used both within the open-source community and for enterprise organizations. It has a large and"
+"We intended to build a web-based application that could run on multiple operating systems. Our project required a language that could provide strong security features, handle concurrency, support large code bases, and be versatile enough to meet our future growth requirements. We evaluated several languages, considering their strengths and limitations, before deciding on Java.
+
+### Considerations
+
+1. **Security:**  Java provides excellent security features through its well-defined security policies and access control. It also incorporates features like bytecode verification, which helps prevent malicious software from running on a system.
+
+2. **Concurrency:**  Java has built-in support for multithreading, which allows applications to perform several tasks simultaneously. This feature makes Java an excellent choice for developing large, complex applications with multiple features and functionalities.
+
+3. **Large codebases:**  Java supports object-oriented programming, which makes it a suitable choice for developing large codebases. Its modular nature and use of encapsulation and abstraction patterns further add to the software development process's ease.
+
+4. **Versatility:**  Java is versatile and provides the ability to use a wide range of libraries and frameworks, making it an excellent choice for both web-based and enterprise-level applications.","We have decided to use the Java programming language for our project, considering its security features, concurrency support, ability to handle large codebases, and versatility. This decision aligns with our project requirements, and we believe that choosing Java will ensure its success. ","It is also popular among developers, which makes it a good option for hiring.Finally, Java's well-established community and support resources make it a popular choice among developers.### **Final Considerations**
+
+We decided to use Java for building our web-based application. We decided to use Java for building our web-based application.We decided to use Java for building our web-based application.We decided to use Java for building our web-based application.We decided to use Java for building our web-based application.We decided to use Java for building our web-based application.We decided to use Java for building our web-based application.We decided to use Java for building our web-based application.We decided to use Java for building our web-based application.We decided to use Java for building our web-based application.We decided to use Java for building our web-based application.We decided to use Java for building our web-based application.We decided to use Java for building our web-based application.We decided to use Java for building our web-based application.We decided to use Java for building our web-based application.We decided to use Java for building our web-based application.We decided to use Java for building our web-based application.We decided to use Java for building our web-based application."
+"At some point, every Arachne application needs to start; to bootstrap
+itself from a static project or deployment artifact, initialize what
+needs initializing, and begin servicing requests, connecting to
+databases, processing data, etc.
+
+There are several logically inherent subtasks to this bootstrapping process, which can be broken down as follows.
+
+- Starting the JVM
+    - Assembling the project's dependencies
+    - Building a JVM classpath
+    - Starting a JVM
+- Arachne Specific
+    - Reading the initial user-supplied configuration (i.e, the configuration scripts from [ADR-005](adr-005-user-facing-config.md))
+    - Initializing the Arachne configuration given a project's set of modules (described in [ADR-002](adr-002-configuration.md) and [ADR-004](adr-004-module-loading.md))
+- Application Specific
+    - Instantiate user and module-defined objects that needs to exist at runtime.
+    - Start and stop user and module-defined services
+
+As discussed in [ADR-004](adr-004-module-loading.md), tasks in the ""starting the JVM"" category are not in-scope for Arachne; rather, they are offloaded to whatever build/dependency tool the project is using (usually either [boot](http://boot-clj.com) or [leiningen](http://leiningen.org).)
+
+This leaves the Arachne and application-specific startup tasks. Arachne should provide an orderly, structured startup (and shutdown) procedure, and make it possible for modules and application authors to hook into it to ensure that their own code initializes, starts and stops as desired.
+
+Additionally, it must be possible for different system components to have dependencies on eachother, such that when starting, services start *after* the services upon which they depend. Stopping should occur in reverse-dependency order, such that a service is never in a state where it is running but one of its dependencies is stopped.","#### Components
+
+Arachne uses the [Component](https://github.com/stuartsierra/component) library to manage system components. Instead of requiring users to define a component system map manually, however, Arachne itself builds one based upon the Arachne config via *Configuration Entities* that appear in the configuration.
+
+Component entities may be added to the config directly by end users (via a initialization script as per [ADR-005](adr-005-user-facing-config.md)), or by modules in their `configure` function ([ADR-004](adr-004-module-loading.md).)
+
+Component entities have attributes which indicates which other components they depend upon. Circular dependencies are not allowed; the component dependency structure must form a Directed Acyclic Graph (DAG.) The dependency attributes also specify the key that Component will use to `assoc` dependencies.
+
+Component entities also have an attribute that specifies a *component constructor function* (via a fully qualified name.) Component constructor functions must take two arguments: the configuration, and the entity ID of the component that is to be constructed. When invoked, a component constructor must return a runtime component object, to be used by the Component library. This may be any object that implements `clojure.lang.Associative`, and may also optionally satisfy Component's `Lifecycle` protocol.
+
+#### Arachne Runtime
+
+The top-level entity in an Arachne system is a reified *Arachne Runtime* object. This object contains both the Component system object, and the configuration value upon which the runtime is based. It satisfies the `Lifecycle` protocol itself; when it is started or stopped, all of the component objects it contains are started or stopped in the appropriate order.
+
+The constructor function for a Runtime takes a configuration value and some number of ""roots""; entity IDs or lookup refs of Component entities in the config. Only these root components and their transitive dependencies will be instantiated or added to the Component system. In other words, only component entities that are actually used will be instantiated; unused component entities defined in the config will be ignored.
+
+A `lookup` function will be provided to find the runtime object instance of a component, given its entity ID or lookup ref in the configuraiton.
+
+#### Startup Procedure
+
+Arachne will rely upon an external build tool (such as boot or leiningen.) to handle downloading dependencies, assembling a classpath, and starting a JVM.
+
+Once JVM with the correct classpath is running, the following steps are required to yield a running Arachne runtime:
+
+1. Determine a set of modules to use (the ""active modules"")
+2. Build a configuration schema by querying each active module using its `schema` function ([ADR-004](module-loading.md))
+3. Update the config with initial configuration data from user init scripts ([ADR-005](adr-005-user-facing-config.md))
+4. In module dependency order, give each module a chance to query and update the configuration using its `configure` function ([ADR-004](module-loading.md))
+5. Create a new Arachne runtime, given the configuration and a set of root components.
+6. Call the runtime's `start` method. 
+
+The Arachne codebase will provide entry points to automatically perform these steps for common development and production scenarios. Alternatively, they can always be be executed individually in a REPL, or composed in custom startup functions.
+ 
+","Arachne will provide an orderly, structured startup and shutdown procedure. The startup procedure will be invoked as a sequence of steps, starting from the top-most module and working down through the dependency graph to the lowest level of system calls. The procedure will terminate gracefully, returning control to the calling module.
+
+Arachne will not provide any special mechanisms for enabling or disabling startup/shutdown components, or for specifying which components are required and which are not. Modules and applications should provide their own appropriate startup/shutdown procedures, to be invoked as appropriate.
+
+Arachne will not provide any special mechanism for configuring or managing the startup/shutdown process. Instead, it will rely on the build/dependency tool to take care of this for it.
+
+Finally, it must be possible for different system components to have dependencies on eachother, such that when starting, services start *after* the services upon which they depend. Stopping should occur in reverse-dependency order, such that a service is never in a state where it is running but one of its dependencies is stopped.Arachne will provide an orderly, structured startup and shutdown procedure. The startup procedure will be invoked as a sequence of steps, starting from the top-most module and working down through the dependency graph to the lowest level of"
+"The following code samples were executed with cabal repl plutus-ledger on the plutus-apps commit hash 172873e87789d8aac623e014eff9a39364c719ae.
+
+Currently, the plutus-ledger-constraint library has the MustValidateIn constraint which
+
+    validates that a given POSIXTimeRange` contains the TxInfo’s validity range
+
+    creates a transaction with the provided POSIXTimeRange
+
+The implementation of 1) is trivial. However, a major issue arises for the implementation of 2). Setting the validity interval of a Cardano transaction is done by specifing the slot of the lower bound and the slot of the upper bound. Therefore, the MustValidateIn constraint needs to convert the provided POSIXTimeRange to essentially a (Maybe Slot, Maybe Slot). The problem is that there are many ways to convert a POSIXTime to a Slot.
+
+Currently, provided a POSIXTimeRange, plutus-contract does the following:
+
+    convert the time range to a slot range with Ledger.TimeSlot.posixTimeRangeToContainedSlotRange :: POSIXTimeRange -> SlotRange
+
+    convert the SlotRange to (Cardano.Api.TxValidityLowerBound, Cardano.Api.TxValidityUpperBound) (essentially a (Maybe Slot, Maybe Slot))
+
+The issue with these conversion is that the POSIXTimeRange and SlotRange intervals are type synonyms of the Plutus.V1.Ledger.Api.Interval.Interval a datatype which has has a “Closure” flag for each of the bounds.
+
+Therefore, the conversions yields a discrepency when cardano-ledger converts the (Cardano.Api.TxValidityLowerBound, Cardano.Api.TxValidityUpperBound) to a POSIXTimeRange when creating the TxInfo.
+
+Let’s show some examples to showcase the issue.
+
+> let sc = SlotConfig 1000 0
+> let interval = (Interval (LowerBound (Finite 999) False) (UpperBound PosInf True))
+> let r = posixTimeRangeToContainedSlotRange sc interval
+> r
+Interval {ivFrom = LowerBound (Finite (Slot {getSlot = 0})) False, ivTo = UpperBound PosInf True}
+> let txValidRange = toCardanoValidityRange r
+> txValidRange
+Right (TxValidityLowerBound ValidityLowerBoundInBabbageEra (SlotNo 1),TxValidityNoUpperBound ValidityNoUpperBoundInBabbageEra)
+
+When creating the TxInfo, cardano-ledger will convert the previous cardano-api validity slot range to:
+
+(Interval (LowerBound (Finite 1000) True) (UpperBound PosInf True))
+
+In practical reasoning, LowerBound (Finite 999) False and LowerBound (Finite 1000) True are equal considering the precision of 1000 milliseconds per slot. However, given Interval semantics, these are not the same values. Therefore, if the constraint mustValidateIn interval is used both to create a transaction and inside a Plutus script (corresponds to the check interval `contains` txInfoValidRange scriptContextTxInfo), then the Plutus script will yield False.
+
+We can identify a similar behavior with the upper bound.
+
+> let sc = SlotConfig 1000 0
+> let interval = (Interval (LowerBound NegInf True) (UpperBound (Finite 999) True))
+> let r = posixTimeRangeToContainedSlotRange sc interval
+> r
+Interval {ivFrom = LowerBound NegInf True, ivTo = UpperBound (Finite (Slot {getSlot = 0})) True}
+> let txValidRange = toCardanoValidityRange r
+> txValidRange
+Right (TxValidityNoLowerBound,TxValidityUpperBound ValidityUpperBoundInBabbageEra (SlotNo 1))
+
+When creating the TxInfo, cardano-ledger will convert the previous cardano-api validity slot range to:
+
+(Interval (LowerBound NegInf True) (UpperBound (Finite 1000) False))
+
+Again, a Plutus script with interval `contains` txInfoValidRange scriptContextTxInfo will yield False.
+
+Additionnaly, the current behavior makes it hard to reason about how a POSIXTime gets translated into a Slot when creating a transaction. Ultimately, a DApp developer should have control over how his POSIXTime gets translated to a Slot.","We will create the following datatype:
+
+    -- | ValidityInterval is a half open interval. Closed (inclusive) on the bottom, open
+    -- (exclusive) on the top. A 'Nothing' on the bottom is negative infinity, and a 'Nothing'
+    -- on the top is positive infinity.
+    data ValidityInterval a = ValidityInterval
+      { invalidBefore :: !(Maybe a) -- ^ Inclusive lower bound or negative infinity
+      , invalidHereafter :: !(Maybe a) -- ^ Exclusive upper bound or positive infinity
+      }
+
+    We will add the following constraint and smart constructor:
+
+    data TxConstraint =
+      ...
+      MustValidateInTimeRange !(ValidityInterval POSIXTime)
+
+    mustValidateInTimeRange :: !(ValidityInterval POSIXTime) -> TxConstraints
+
+    We will remove the MustValidateIn constraint and deprecate the the mustValidateIn smart constructor which will be replaced by mustValidateInTimeRange.
+
+    We will create the smart constructor
+
+    mustValidateInSlotRange :: !(ValidityInterval Slot) -> TxConstraints
+
+    which will translate the provide validity slot range into a POSIXTimeRange using Ledger.TimeSlot.posixTimeRangeToContainedSlotRange."," Therefore, we believe that the MustValidateIn constraint should be removed from the Plutus Ledgers.
+
+We will keep the upper bound constraint in the Plutus Contracts. However, we will remove the MustValidateIn constraint for the constraint library. We will also add the option to disable the upper bound constraint for Plutus contracts. Therefore, developers can enable/disable the constraint as they see fit.
+
+    We will remove the MustValidateIn constraint from the constraint library. We will instead require that the target slot and the validity interval are compatible (i.e. the slot bounds are within the validity interval). We will also add an option to disable the constraint for Plutus contracts.
+
+    We will remove the MustValidateIn constraint from the Plutus Contracts. We will instead require that the target slot and the validity interval are compatible (i.e. the slot bounds are within the validity interval). We will also add an option to disable the constraint for Plutus DApps.
+
+    We will remove the upper bound constraint in the Plutus Contracts. We will instead require that the target slot and the validity interval are compatible (i.e. the slot bounds are within the validity interval). We will also add an option to disable the upper bound constraint for Plutus"
+"As much as possible, an Arachne application should be defined by its configuration. If something is wrong with the configuration, there is no way that an application can be expected to work correctly.
+
+Therefore, it is desirable to validate that a configuration is correct to the greatest extent possible, at the earliest possible moment. This is important for two distinct reasons:
+
+- Ease of use and developer friendliness. Config validation can return helpful errors that point out exactly what's wrong instead of deep failures with lengthy debug sessions.
+- Program correctness. Some types of errors in configs might not be discovered at all during testing or development, and aggressively failing on invalid configs will prevent those issues from affecting end users in production.
+
+There are two ""kinds"" of config validation.
+
+The first is ensuring that a configuration as data is structurally correct; that it adheres to its own schema. This includes validating types and cardinalities as expressed by the Arachne's core ontology system.
+
+The second is ensuring that the Arachne Runtime constructed from a given configuration is correct; that the runtime component instances returned by component constructors are of the correct type and likely to work.","Arachne will perform both kinds of validation. To disambiguate them (since they are logically distinct), we will term the structural/schema validation ""configuration validation"", while the validation of the runtime objects will be ""runtime validation.""
+
+Both styles of validation should be extensible by modules, so modules can specify additional validations, where necessary.
+
+#### Configuration Validation
+
+Configuration validation is ensuring that an Arachne configuration object is consistent with itself and with its schema.
+
+Because this is ultimately validating a set of Datomic style `eavt` tuples, the natural form for checking tuple data is Datalog queries and query rules, to search for and locate data that is ""incorrect."" 
+
+Each logical validation will have its own ""validator"", a function which takes a config, queries it, and either returns or throws an exception. To validate a config, it is passed through every validator as the final step of building a module.
+
+The set of validators is open, and defined in the configuration itself. To add new validators, a module can transact entities for them during its configuration building phase.
+
+#### Runtime Validation
+
+Runtime validation occurs after a runtime is instantiated, but before it is started. Validation happens on the component level; each component may be subject to validation.
+
+Unlike Configuration validation, Runtime validation uses Spec. What specs should be applied to each component are defined in the configuration using a keyword-valued attribute. Specs may be defined on individual component entities, or to the *type* of a component entity. When a component is validated, it is validated using all the specs defined for it or any of its supertypes.
+
+","This includes ensuring that the configuration's runtime is initialized correctly, that the correct set of meta-classes are available, and that the runtime component instances returned by component constructors are of the correct type.
+
+Arachne provides two main means for configuring itself: configuration files and runtime instances.
+
+Configuration files provide a textual format for defining a configuration, and are used to define data that is structurally valid.
+
+Arachne Runtime instances provide a textual format for defining a configuration, and are used to initialize a runtime component. Runtime instances can be used to initialize any data that is structurally valid, including configuration data.
+
+The core ontology system of Arachne provides a set of concrete types that define the structural elements of a configuration. These types are defined in the core ontology at ontology/arachne/configuration.
+
+A configuration's data is structurally valid if it conforms to the concrete types defined in the core ontology.
+
+Arachne Runtime instances initialize a configuration's runtime component. Runtime instances can be used to initialize any data structurally valid in the configuration, including configuration data.
+
+Arachne Runtime instances are defined in the core ontology at runtime/arachne/runtime.
+
+Arachne provides two main means for configuring itself: configuration files and runtime instances.
+
+Configuration files provide a textual format for defining a"
