@@ -1,0 +1,56 @@
+---
+title: 003. Platform and Hosting
+weight: 2
+hide_in_navigation: true
+parent: /decisions
+last_reviewed_on: 2021-01-07
+review_in: 3 months
+---
+
+# 003. Platform and Hosting
+
+Date: 2020-11-05
+
+## Status
+
+Approved
+
+## Context
+
+The Childrens Social Care Placement service is in Alpha and needs to explore solutions to the domain problem. Given this is still very much an exploratory phase in the Software Delivery LifeCycle (SDLC) it seems appropriate to optimise around developer productivity so that the service can flex to the most appropriate fit.
+
+## Decision
+
+The decision is to use the [Gov.UK PaaS].
+
+**What does Gov.UK PaaS offer?**
+
+Gov.UK PaaS is a fully managed platform service which has central government accredition for Offical data and provides teams with:-
+
+* Fast application delivery, with short cycles
+* Flexible development tools
+* Simplified DevOps
+* Seamless scalability
+* Integrated data services
+* A secure, trusted platform
+* 24x7 support
+
+It is also important to note that Ruby on Rails is a first class citizen on Gov.UK as one of its core buildpack languages and frameworks.
+
+**Why not DfE Azure?**
+
+There are two primary reasons why; simplified DevOps and increased developer productivity.
+
+**Is it secure?**
+
+One of the main drivers for Departmental Platforms is security assurance. Gov.UK PaaS is accredited by for Official information.
+
+Some useful URLs for security in general on Gov.UK PaaS are [here](https://www.cloud.service.gov.uk/security/) and the [security principles](https://www.cloud.service.gov.uk/cloud-security-principles/).
+
+And for the DfE there is a specific [paper](https://docs.google.com/document/d/1_81bqO2snLDn95p9W5OyMXwqzUqX5qcHSYJvV5CUeeQ/edit#heading=h.du8tl2830srf) from MBS.
+
+## Consequences
+
+Alpha is optimised around developer productivity. Hence the ability of the service team to meet tight deadlines for Alpha and MVP is greatly enhanced. This decision is for Alpha, it will need revalidating thereafter.
+
+<%= partial 'partials/links' %>
