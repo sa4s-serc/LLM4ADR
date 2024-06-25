@@ -1,9 +1,12 @@
 import os
 import csv
 from pprint import pprint
+from transformers import AutoTokenizer
+import pandas as pd
 
 x = ['Context', 'Context and Problem Statement', 'Decision Drivers', 'Decision Drivers <!-- optional -->', 'Pros and Cons of the Options', 'Problem', 'Pros and Cons of the Options <!-- optional -->']
 y = ['Decision', 'Decision Outcome', 'Decisions']
+CACHE_DIR = '/scratch/adyansh/cache'
 
 def extract(file):
     lines = file.readlines()
@@ -68,10 +71,30 @@ def get_headings(parent_dir, output_file='../headings.csv'):
     writer.writerow(['Heading', 'Count'])
     for heading, count in sorted_headings[:20]:
         writer.writerow([heading, count])
+        
+tokenizer = AutoTokenizer.from_pretrained("google-t5/t5-small", cache_dir=CACHE_DIR)
+        
+def count_tokens(text):
+    tokens = tokenizer(text, truncation=False)['input_ids']
+    return len(tokens)
+        
+def get_count(num_tokens: int) -> int:
+    data = pd.read_csv('../ADR-data/context_decision.csv')
+    print(len(data), end=' ')
     
+    data['total'] = data['Context'] + data['Decision']
+    # print(data.iloc[0])
+    data['num_tokens'] = data['total'].apply(count_tokens)
+    return len(data[data['num_tokens'] <= num_tokens])
+
 def main():
     # get_headings('./done_ADRs')
-    get_context_decision('../../done_ADRs')
+    # get_context_decision('../../done_ADRs')
+    print(get_count(500))
+    print(get_count(1000))
+    print(get_count(2000))
+    print(get_count(4000))
+    print(get_count(8000))
     
 if __name__ == '__main__':
     main()
