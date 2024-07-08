@@ -38,7 +38,10 @@ def calculate_scores(cache_dir: str, data: pd.DataFrame, pred_col: str, true_col
     results['bartscore_recall'] = pd.Series(results['bartscore_recall']).mean()
     results['bartscore_precision'] = pd.Series(results['bartscore_precision']).mean()
     results['bartscore_f1'] = (results['bartscore_recall'] + results['bartscore_precision'])/2
-    with open(result_dir, 'w') as f:json.dump(results, f)
+    
+    with open(result_dir, 'w') as f:
+        json.dump(results, f)
+    
 def main():
     calculate_scores(CACHE_DIR, pd.read_csv(DATA_DIR), PREDICTION_COL, TRUE_COL, RESULT_DIR)
 
