@@ -1,0 +1,116 @@
+Rank,Name,Arena Score,95% CI,Votes,Organization,License,Knowledge Cutoff
+1,GPT-4o-2024-05-13,1287,+3/-3,56905,OpenAI,Proprietary,2023/10
+2,Claude 3.5 Sonnet,1272,+4/-4,24913,Anthropic,Proprietary,2024/4
+2,Gemini-Advanced-0514,1267,+3/-3,42981,Google,Proprietary,Online
+3,Gemini-1.5-Pro-API-0514,1262,+3/-3,49828,Google,Proprietary,2023/11
+4,Gemini-1.5-Pro-API-0409-Preview,1258,+3/-3,55567,Google,Proprietary,2023/11
+4,GPT-4-Turbo-2024-04-09,1257,+3/-4,72512,OpenAI,Proprietary,2023/12
+6,GPT-4-1106-preview,1251,+3/-3,86474,OpenAI,Proprietary,2023/4
+7,Claude 3 Opus,1248,+2/-2,143189,Anthropic,Proprietary,2023/8
+8,GPT-4-0125-preview,1246,+3/-2,79732,OpenAI,Proprietary,2023/12
+9,Yi-Large-preview,1241,+3/-4,47636,01 AI,Proprietary,Unknown
+11,Gemini-1.5-Flash-API-0514,1229,+3/-3,43427,Google,Proprietary,2023/11
+12,Gemma-2-27B-it,1216,+7/-6,13030,Google,Gemma license,2024/6
+12,Yi-Large,1216,+6/-5,12419,01 AI,Proprietary,Unknown
+12,Bard (Gemini Pro),1209,+4/-6,11830,Google,Proprietary,Online
+12,Nemotron-4-340B-Instruct,1208,+5/-5,19143,Nvidia,NVIDIA Open Model,2023/6
+12,GLM-4-0520,1207,+5/-5,10248,Zhipu AI,Proprietary,Unknown
+14,Llama-3-70b-Instruct,1207,+2/-3,147550,Meta,Llama 3 Community,2023/12
+15,Claude 3 Sonnet,1201,+2/-3,109552,Anthropic,Proprietary,2023/8
+15,Reka-Core-20240501,1200,+3/-4,57567,Reka AI,Proprietary,Unknown
+20,Command R+,1190,+3/-3,76298,Cohere,CC-BY-NC-4.0,2024/3
+20,Qwen2-72B-Instruct,1188,+4/-4,27466,Alibaba,Qianwen LICENSE,2024/6
+20,GPT-4-0314,1186,+3/-3,55958,OpenAI,Proprietary,2021/9
+20,Gemma-2-9B-it,1186,+5/-4,13245,Google,Gemma license,2024/6
+20,Qwen-Max-0428,1183,+4/-4,25557,Alibaba,Proprietary,Unknown
+20,GLM-4-0116,1183,+6/-6,7558,Zhipu AI,Proprietary,Unknown
+21,DeepSeek-Coder-V2-Instruct,1179,+5/-5,12335,DeepSeek AI,DeepSeek License,2024/6
+24,Claude 3 Haiku,1179,+3/-2,100215,Anthropic,Proprietary,2023/8
+28,Reka-Flash-Preview-20240611,1165,+5/-5,15583,Reka AI,Proprietary,Unknown
+28,Qwen1.5-110B-Chat,1162,+4/-4,27384,Alibaba,Qianwen LICENSE,2024/4
+28,GPT-4-0613,1162,+3/-3,83405,OpenAI,Proprietary,2021/9
+28,Yi-1.5-34B-Chat,1158,+4/-5,23794,01 AI,Apache-2.0,2024/5
+29,Mistral-Large-2402,1157,+3/-3,62387,Mistral,Proprietary,Unknown
+29,Reka-Flash-21B-online,1156,+5/-4,15980,Reka AI,Proprietary,Online
+31,Llama-3-8b-Instruct,1152,+3/-3,97969,Meta,Llama 3 Community,2023/3
+32,Claude-1,1149,+4/-4,21179,Anthropic,Proprietary,Unknown
+33,Mistral Medium,1148,+4/-4,35536,Mistral,Proprietary,Unknown
+34,Command R,1148,+3/-3,53600,Cohere,CC-BY-NC-4.0,2024/3
+34,Reka-Flash-21B,1148,+4/-4,25770,Reka AI,Proprietary,2023/11
+34,Qwen1.5-72B-Chat,1147,+3/-3,40640,Alibaba,Qianwen LICENSE,2024/2
+35,Mixtral-8x22b-Instruct-v0.1,1146,+3/-4,43648,Mistral,Apache 2.0,2024/4
+41,Claude-2.0,1132,+6/-6,12776,Anthropic,Proprietary,Unknown
+41,Gemini Pro (Dev API),1131,+6/-4,18803,Google,Proprietary,2023/4
+41,Zephyr-ORPO-141b-A35b-v0.1,1127,+8/-7,4861,HuggingFace,Apache 2.0,2024/4
+41,Qwen1.5-32B-Chat,1125,+4/-5,22763,Alibaba,Qianwen LICENSE,2024/2
+41,Mistral-Next,1124,+6/-6,12385,Mistral,Proprietary,Unknown
+41,Phi-3-Medium-4k-Instruct,1123,+5/-3,16295,Microsoft,MIT,2023/10
+43,Starling-LM-7B-beta,1119,+4/-5,16663,Nexusflow,Apache-2.0,2024/3
+43,Claude-2.1,1118,+3/-3,37695,Anthropic,Proprietary,Unknown
+45,GPT-3.5-Turbo-0613,1117,+4/-3,38990,OpenAI,Proprietary,2021/9
+47,Yi-34B-Chat,1111,+4/-5,15917,01 AI,Yi License,2023/6
+47,Claude-Instant-1,1111,+4/-4,20640,Anthropic,Proprietary,Unknown
+47,Gemini Pro,1111,+7/-7,6575,Google,Proprietary,2023/4
+48,Mixtral-8x7b-Instruct-v0.1,1114,+0/-0,71138,Mistral,Apache 2.0,2023/12
+50,GPT-3.5-Turbo-0314,1106,+8/-8,5655,OpenAI,Proprietary,2021/9
+51,Qwen1.5-14B-Chat,1109,+4/-4,18640,Alibaba,Qianwen LICENSE,2024/2
+51,WizardLM-70B-v1.0,1106,+7/-7,8407,Microsoft,Llama 2 Community,2023/8
+52,GPT-3.5-Turbo-0125,1105,+2/-3,65338,OpenAI,Proprietary,2021/9
+52,DBRX-Instruct-Preview,1103,+4/-3,33734,Databricks,DBRX LICENSE,2023/12
+52,Phi-3-Small-8k-Instruct,1103,+5/-4,17568,Microsoft,MIT,2023/10
+53,Tulu-2-DPO-70B,1099,+7/-8,6661,AllenAI/UW,AI2 ImpACT Low-risk,2023/11
+59,OpenChat-3.5-0106,1091,+7/-6,12991,OpenChat,Apache-2.0,2024/1
+60,Llama-2-70b-chat,1093,+3/-3,39638,Meta,Llama 2 Community,2023/7
+60,Vicuna-33B,1090,+5/-4,22961,LMSYS,Non-commercial,2023/8
+60,Snowflake Arctic Instruct,1090,+4/-4,34132,Snowflake,Apache 2.0,2024/4
+60,Starling-LM-7B-alpha,1088,+6/-6,10424,UC Berkeley,CC-BY-NC-4.0,2023/11
+60,Nous-Hermes-2-Mixtral-8x7B-DPO,1084,+9/-9,3838,NousResearch,Apache-2.0,2024/1
+61,NV-Llama2-70B-SteerLM-Chat,1081,+10/-8,3643,Nvidia,Llama 2 Community,2023/11
+62,Gemma-1.1-7B-it,1084,+4/-3,25085,Google,Gemma license,2024/2
+65,pplx-70b-online,1078,+7/-9,6906,Perplexity AI,Proprietary,Online
+65,DeepSeek-LLM-67B-Chat,1077,+8/-7,4995,DeepSeek AI,DeepSeek License,2023/11
+65,OpenChat-3.5,1077,+7/-7,8106,OpenChat,Apache-2.0,2023/11
+66,OpenHermes-2.5-Mistral-7b,1074,+6/-9,5092,NousResearch,Apache-2.0,2023/11
+67,Mistral-7B-Instruct-v0.2,1072,+3/-4,20063,Mistral,Apache-2.0,2023/12
+67,Qwen1.5-7B-Chat,1070,+7/-8,4866,Alibaba,Qianwen LICENSE,2024/2
+68,GPT-3.5-Turbo-1106,1068,+5/-5,17050,OpenAI,Proprietary,2021/9
+68,Dolphin-2.2.1-Mistral-7B,1063,+11/-13,1715,Cognitive Computations,Apache-2.0,2023/10
+69,Phi-3-Mini-4k-Instruct,1067,+4/-4,21107,Microsoft,MIT,2023/10
+70,SOLAR-10.7B-Instruct-v1.0,1062,+8/-9,4291,Upstage AI,CC-BY-NC-4.0,2023/11
+72,Llama-2-13b-chat,1063,+5/-5,19725,Meta,Llama 2 Community,2023/7
+72,WizardLM-13b-v1.2,1058,+10/-7,7194,Microsoft,Llama 2 Community,2023/7
+73,Phi-3-Mini-4k-Instruct-June-24,1058,+10/-12,2788,Microsoft,MIT,2023/10
+77,Zephyr-7b-beta,1053,+6/-5,11330,HuggingFace,MIT,2023/10
+77,CodeLlama-70B-instruct,1043,+17/-16,1193,Meta,Llama 2 Community,2024/1
+78,MPT-30B-chat,1045,+10/-11,2647,MosaicML,CC-BY-NC-SA-4.0,2023/6
+78,Zephyr-7b-alpha,1041,+16/-12,1810,HuggingFace,MIT,2023/10
+79,falcon-180b-chat,1034,+19/-19,1328,TII,Falcon-180B TII License,2023/9
+80,pplx-7b-online,1044,+7/-6,6346,Perplexity AI,Proprietary,Online
+81,CodeLlama-34B-instruct,1043,+7/-7,7509,Meta,Llama 2 Community,2023/7
+82,Vicuna-13B,1042,+4/-6,19803,LMSYS,Llama 2 Community,2023/7
+83,Gemma-7B-it,1037,+5/-5,9187,Google,Gemma license,2024/2
+83,Llama-2-7b-chat,1037,+5/-4,14572,Meta,Llama 2 Community,2023/7
+83,Phi-3-Mini-128k-Instruct,1036,+5/-5,21603,Microsoft,MIT,2023/10
+83,Qwen-14B-Chat,1034,+5/-9,5072,Alibaba,Qianwen LICENSE,2023/8
+83,Guanaco-33B,1032,+11/-11,2998,UW,Non-commercial,2023/5
+93,Gemma-1.1-2B-it,1020,+5/-5,11333,Google,Gemma license,2024/2
+93,StripedHyena-Nous-7B,1018,+8/-9,5282,Together AI,Apache 2.0,2023/12
+93,OLMo-7B-instruct,1015,+8/-7,6510,Allen AI,Apache-2.0,2024/2
+96,Mistral-7B-Instruct-v0.1,1008,+6/-6,9151,Mistral,Apache 2.0,2023/9
+96,Vicuna-7B,1004,+8/-6,7015,LMSYS,Llama 2 Community,2023/7
+96,PaLM-Chat-Bison-001,1004,+7/-7,8749,Google,Proprietary,2021/6
+100,Qwen1.5-4B-Chat,988,+9/-7,7829,Alibaba,Qianwen LICENSE,2024/2
+101,Gemma-2B-it,989,+7/-10,4928,Google,Gemma license,2024/2
+103,Koala-13B,964,+8/-7,7034,UC Berkeley,Non-commercial,2023/4
+103,ChatGLM3-6B,955,+7/-9,4763,Tsinghua,Apache-2.0,2023/10
+105,GPT4All-13B-Snoozy,932,+12/-13,1790,Nomic AI,Non-commercial,2023/3
+105,MPT-7B-Chat,927,+11/-10,4019,MosaicML,CC-BY-NC-SA-4.0,2023/5
+105,ChatGLM2-6B,924,+11/-13,2709,Tsinghua,Apache-2.0,2023/6
+105,RWKV-4-Raven-14B,921,+9/-9,4941,RWKV,Apache 2.0,2023/4
+109,Alpaca-13B,901,+8/-9,5876,Stanford,Non-commercial,2023/3
+109,OpenAssistant-Pythia-12B,893,+8/-10,6383,OpenAssistant,Apache 2.0,2023/4
+110,ChatGLM-6B,879,+10/-9,4998,Tsinghua,Non-commercial,2023/3
+111,FastChat-T5-3B,868,+9/-7,4307,LMSYS,Apache 2.0,2023/4
+113,StableLM-Tuned-Alpha-7B,840,+11/-11,3341,Stability AI,CC-BY-NC-SA-4.0,2023/4
+113,Dolly-V2-12B,822,+11/-13,3489,Databricks,MIT,2023/4
+114,LLaMA-13B,799,+13/-14,2447,Meta,Non-commercial,2023/2
