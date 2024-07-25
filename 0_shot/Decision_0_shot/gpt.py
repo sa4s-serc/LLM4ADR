@@ -59,12 +59,12 @@ COMPLETION_MODELS = ['babbage-002']
 def run(start=0, days=10000):
     data = pd.read_json(INPUT_FILE, lines=True)
     print(f'Generating predictions using {MODEL_NAME}')
-    print(f'Total records: {len(data)}')
 
     data, removed = get_data(data)
     done = 0
 
     total = len(data[start:]) if days > len(data[start:]) else days
+    print(f"Total records: {len(data[start:])}")
 
     failed = []
 
@@ -90,10 +90,10 @@ def run(start=0, days=10000):
 
             elif MODEL_NAME in COMPLETION_MODELS:
                 response = openai.completions.create(
-                    model='babbage-002',
-                    prompt='This is an Architectural Decision Record for a software'
+                    model=MODEL_NAME,
+                    prompt="This is an Architectural Decision Record for a software"
                     + row['Context']
-                    + '\n## Decision\n',
+                    + "\n## Decision\n",
                     temperature=1,
                     max_tokens=2500,
                     top_p=1,
@@ -103,16 +103,16 @@ def run(start=0, days=10000):
                 row['Predicted'] = response.choices[0].text
 
             else:
-                raise KeyError('Invalid model')
+                raise KeyError("Invalid model")
 
-            row['GenTime'] = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+            row['GenTime'] = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
             row = row.to_frame().T
             save_jsonl(row, f'../results/{MODEL_NAME}_{start}_{days}.jsonl')
             done += 1
 
         except Exception as e:
-            print(f'Exception: {e}')
-            print(f'Failed for {row['id']}')
+            print(f"Exception: {e}")
+            print(f"Failed for {row['id']}")
             failed.append((row['id'], e))
 
     print(f'Done for {done} records')
@@ -121,8 +121,8 @@ def run(start=0, days=10000):
         failed_df = data[data['id'].isin([f[0] for f in failed])]
         failed_df['Error'] = [f[1] for f in failed]
         save_jsonl(
-            failed_df, f'../results/{MODEL_NAME}_failed_{start}_{days}.jsonl', False)
-        print(f'Failed for {len(failed)} records')
+            failed_df, f"../results/{MODEL_NAME}_failed_{start}_{days}.jsonl", False)
+        print(f"Failed for {len(failed)} records")
 
 
 if __name__ == "__main__":
