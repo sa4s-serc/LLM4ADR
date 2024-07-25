@@ -80,11 +80,7 @@ def run(start=0, days=10000):
                         {'role': 'system', 'content': system_message},
                         {'role': 'user', 'content': row['Context']},
                     ],
-                    temperature=1,
-                    max_tokens=2500,
-                    top_p=1,
-                    frequency_penalty=0,
-                    presence_penalty=0,
+                    max_tokens=1000
                 )
                 row['Predicted'] = response.choices[0].message.content
 
@@ -94,11 +90,7 @@ def run(start=0, days=10000):
                     prompt="This is an Architectural Decision Record for a software"
                     + row['Context']
                     + "\n## Decision\n",
-                    temperature=1,
-                    max_tokens=2500,
-                    top_p=1,
-                    frequency_penalty=0,
-                    presence_penalty=0,
+                    max_tokens=1000
                 )
                 row['Predicted'] = response.choices[0].text
 
