@@ -1,0 +1,1154 @@
+{
+    "data": [
+        [
+            "1",
+            "\u003ca target=\"_blank\" href=\"https://openai.com/index/hello-gpt-4o/\" style=\"color: var(--link-text-color); text-decoration: underline;text-decoration-style: dotted;\"\u003eGPT-4o-2024-05-13\u003c/a\u003e",
+            1287,
+            "+3/-3",
+            56905,
+            "OpenAI",
+            "Proprietary",
+            "2023/10"
+        ],
+        [
+            "2",
+            "\u003ca target=\"_blank\" href=\"https://www.anthropic.com/news/claude-3-5-sonnet\" style=\"color: var(--link-text-color); text-decoration: underline;text-decoration-style: dotted;\"\u003eClaude 3.5 Sonnet\u003c/a\u003e",
+            1272,
+            "+4/-4",
+            24913,
+            "Anthropic",
+            "Proprietary",
+            "2024/4"
+        ],
+        [
+            "2",
+            "\u003ca target=\"_blank\" href=\"https://gemini.google.com/advanced\" style=\"color: var(--link-text-color); text-decoration: underline;text-decoration-style: dotted;\"\u003eGemini-Advanced-0514\u003c/a\u003e",
+            1267,
+            "+3/-3",
+            42981,
+            "Google",
+            "Proprietary",
+            "Online"
+        ],
+        [
+            "3",
+            "\u003ca target=\"_blank\" href=\"https://deepmind.google/technologies/gemini/pro\" style=\"color: var(--link-text-color); text-decoration: underline;text-decoration-style: dotted;\"\u003eGemini-1.5-Pro-API-0514\u003c/a\u003e",
+            1262,
+            "+3/-3",
+            49828,
+            "Google",
+            "Proprietary",
+            "2023/11"
+        ],
+        [
+            "4",
+            "\u003ca target=\"_blank\" href=\"https://blog.google/technology/ai/google-gemini-next-generation-model-february-2024/\" style=\"color: var(--link-text-color); text-decoration: underline;text-decoration-style: dotted;\"\u003eGemini-1.5-Pro-API-0409-Preview\u003c/a\u003e",
+            1258,
+            "+3/-3",
+            55567,
+            "Google",
+            "Proprietary",
+            "2023/11"
+        ],
+        [
+            "4",
+            "\u003ca target=\"_blank\" href=\"https://platform.openai.com/docs/models/gpt-4-turbo-and-gpt-4\" style=\"color: var(--link-text-color); text-decoration: underline;text-decoration-style: dotted;\"\u003eGPT-4-Turbo-2024-04-09\u003c/a\u003e",
+            1257,
+            "+3/-4",
+            72512,
+            "OpenAI",
+            "Proprietary",
+            "2023/12"
+        ],
+        [
+            "6",
+            "\u003ca target=\"_blank\" href=\"https://openai.com/blog/new-models-and-developer-products-announced-at-devday\" style=\"color: var(--link-text-color); text-decoration: underline;text-decoration-style: dotted;\"\u003eGPT-4-1106-preview\u003c/a\u003e",
+            1251,
+            "+3/-3",
+            86474,
+            "OpenAI",
+            "Proprietary",
+            "2023/4"
+        ],
+        [
+            "7",
+            "\u003ca target=\"_blank\" href=\"https://www.anthropic.com/news/claude-3-family\" style=\"color: var(--link-text-color); text-decoration: underline;text-decoration-style: dotted;\"\u003eClaude 3 Opus\u003c/a\u003e",
+            1248,
+            "+2/-2",
+            143189,
+            "Anthropic",
+            "Proprietary",
+            "2023/8"
+        ],
+        [
+            "8",
+            "\u003ca target=\"_blank\" href=\"https://openai.com/blog/new-models-and-developer-products-announced-at-devday\" style=\"color: var(--link-text-color); text-decoration: underline;text-decoration-style: dotted;\"\u003eGPT-4-0125-preview\u003c/a\u003e",
+            1246,
+            "+3/-2",
+            79732,
+            "OpenAI",
+            "Proprietary",
+            "2023/12"
+        ],
+        [
+            "9",
+            "\u003ca target=\"_blank\" href=\"https://platform.lingyiwanwu.com/docs#%E6%A8%A1%E5%9E%8B\" style=\"color: var(--link-text-color); text-decoration: underline;text-decoration-style: dotted;\"\u003eYi-Large-preview\u003c/a\u003e",
+            1241,
+            "+3/-4",
+            47636,
+            "01 AI",
+            "Proprietary",
+            "Unknown"
+        ],
+        [
+            "11",
+            "\u003ca target=\"_blank\" href=\"https://deepmind.google/technologies/gemini/flash/\" style=\"color: var(--link-text-color); text-decoration: underline;text-decoration-style: dotted;\"\u003eGemini-1.5-Flash-API-0514\u003c/a\u003e",
+            1229,
+            "+3/-3",
+            43427,
+            "Google",
+            "Proprietary",
+            "2023/11"
+        ],
+        [
+            "12",
+            "\u003ca target=\"_blank\" href=\"https://ai.google.dev/gemma\" style=\"color: var(--link-text-color); text-decoration: underline;text-decoration-style: dotted;\"\u003eGemma-2-27B-it\u003c/a\u003e",
+            1216,
+            "+7/-6",
+            13030,
+            "Google",
+            "Gemma license",
+            "2024/6"
+        ],
+        [
+            "12",
+            "\u003ca target=\"_blank\" href=\"https://platform.01.ai/docs#models-and-pricing\" style=\"color: var(--link-text-color); text-decoration: underline;text-decoration-style: dotted;\"\u003eYi-Large\u003c/a\u003e",
+            1216,
+            "+6/-5",
+            12419,
+            "01 AI",
+            "Proprietary",
+            "Unknown"
+        ],
+        [
+            "12",
+            "\u003ca target=\"_blank\" href=\"https://bard.google.com/\" style=\"color: var(--link-text-color); text-decoration: underline;text-decoration-style: dotted;\"\u003eBard (Gemini Pro)\u003c/a\u003e",
+            1209,
+            "+4/-6",
+            11830,
+            "Google",
+            "Proprietary",
+            "Online"
+        ],
+        [
+            "12",
+            "\u003ca target=\"_blank\" href=\"https://huggingface.co/nvidia/Nemotron-4-340B-Instruct\" style=\"color: var(--link-text-color); text-decoration: underline;text-decoration-style: dotted;\"\u003eNemotron-4-340B-Instruct\u003c/a\u003e",
+            1208,
+            "+5/-5",
+            19143,
+            "Nvidia",
+            "NVIDIA Open Model",
+            "2023/6"
+        ],
+        [
+            "12",
+            "\u003ca target=\"_blank\" href=\"https://open.bigmodel.cn/dev/api#language\" style=\"color: var(--link-text-color); text-decoration: underline;text-decoration-style: dotted;\"\u003eGLM-4-0520\u003c/a\u003e",
+            1207,
+            "+5/-5",
+            10248,
+            "Zhipu AI",
+            "Proprietary",
+            "Unknown"
+        ],
+        [
+            "14",
+            "\u003ca target=\"_blank\" href=\"https://llama.meta.com/llama3/\" style=\"color: var(--link-text-color); text-decoration: underline;text-decoration-style: dotted;\"\u003eLlama-3-70b-Instruct\u003c/a\u003e",
+            1207,
+            "+2/-3",
+            147550,
+            "Meta",
+            "Llama 3 Community",
+            "2023/12"
+        ],
+        [
+            "15",
+            "\u003ca target=\"_blank\" href=\"https://www.anthropic.com/news/claude-3-family\" style=\"color: var(--link-text-color); text-decoration: underline;text-decoration-style: dotted;\"\u003eClaude 3 Sonnet\u003c/a\u003e",
+            1201,
+            "+2/-3",
+            109552,
+            "Anthropic",
+            "Proprietary",
+            "2023/8"
+        ],
+        [
+            "15",
+            "\u003ca target=\"_blank\" href=\"https://www.reka.ai/news/reka-core-our-frontier-class-multimodal-language-model\" style=\"color: var(--link-text-color); text-decoration: underline;text-decoration-style: dotted;\"\u003eReka-Core-20240501\u003c/a\u003e",
+            1200,
+            "+3/-4",
+            57567,
+            "Reka AI",
+            "Proprietary",
+            "Unknown"
+        ],
+        [
+            "20",
+            "\u003ca target=\"_blank\" href=\"https://txt.cohere.com/command-r-plus-microsoft-azure/\" style=\"color: var(--link-text-color); text-decoration: underline;text-decoration-style: dotted;\"\u003eCommand R+\u003c/a\u003e",
+            1190,
+            "+3/-3",
+            76298,
+            "Cohere",
+            "CC-BY-NC-4.0",
+            "2024/3"
+        ],
+        [
+            "20",
+            "\u003ca target=\"_blank\" href=\"https://qwenlm.github.io/blog/qwen2/\" style=\"color: var(--link-text-color); text-decoration: underline;text-decoration-style: dotted;\"\u003eQwen2-72B-Instruct\u003c/a\u003e",
+            1188,
+            "+4/-4",
+            27466,
+            "Alibaba",
+            "Qianwen LICENSE",
+            "2024/6"
+        ],
+        [
+            "20",
+            "\u003ca target=\"_blank\" href=\"https://openai.com/research/gpt-4\" style=\"color: var(--link-text-color); text-decoration: underline;text-decoration-style: dotted;\"\u003eGPT-4-0314\u003c/a\u003e",
+            1186,
+            "+3/-3",
+            55958,
+            "OpenAI",
+            "Proprietary",
+            "2021/9"
+        ],
+        [
+            "20",
+            "\u003ca target=\"_blank\" href=\"https://ai.google.dev/gemma\" style=\"color: var(--link-text-color); text-decoration: underline;text-decoration-style: dotted;\"\u003eGemma-2-9B-it\u003c/a\u003e",
+            1186,
+            "+5/-4",
+            13245,
+            "Google",
+            "Gemma license",
+            "2024/6"
+        ],
+        [
+            "20",
+            "\u003ca target=\"_blank\" href=\"https://help.aliyun.com/zh/dashscope/developer-reference/api-details\" style=\"color: var(--link-text-color); text-decoration: underline;text-decoration-style: dotted;\"\u003eQwen-Max-0428\u003c/a\u003e",
+            1183,
+            "+4/-4",
+            25557,
+            "Alibaba",
+            "Proprietary",
+            "Unknown"
+        ],
+        [
+            "20",
+            "\u003ca target=\"_blank\" href=\"https://open.bigmodel.cn/\" style=\"color: var(--link-text-color); text-decoration: underline;text-decoration-style: dotted;\"\u003eGLM-4-0116\u003c/a\u003e",
+            1183,
+            "+6/-6",
+            7558,
+            "Zhipu AI",
+            "Proprietary",
+            "Unknown"
+        ],
+        [
+            "21",
+            "\u003ca target=\"_blank\" href=\"https://huggingface.co/deepseek-ai/DeepSeek-Coder-V2-Instruct\" style=\"color: var(--link-text-color); text-decoration: underline;text-decoration-style: dotted;\"\u003eDeepSeek-Coder-V2-Instruct\u003c/a\u003e",
+            1179,
+            "+5/-5",
+            12335,
+            "DeepSeek AI",
+            "DeepSeek License",
+            "2024/6"
+        ],
+        [
+            "24",
+            "\u003ca target=\"_blank\" href=\"https://www.anthropic.com/news/claude-3-family\" style=\"color: var(--link-text-color); text-decoration: underline;text-decoration-style: dotted;\"\u003eClaude 3 Haiku\u003c/a\u003e",
+            1179,
+            "+3/-2",
+            100215,
+            "Anthropic",
+            "Proprietary",
+            "2023/8"
+        ],
+        [
+            "28",
+            "\u003ca target=\"_blank\" href=\"https://docs.reka.ai/http-api.html#generation\" style=\"color: var(--link-text-color); text-decoration: underline;text-decoration-style: dotted;\"\u003eReka-Flash-Preview-20240611\u003c/a\u003e",
+            1165,
+            "+5/-5",
+            15583,
+            "Reka AI",
+            "Proprietary",
+            "Unknown"
+        ],
+        [
+            "28",
+            "\u003ca target=\"_blank\" href=\"https://qwenlm.github.io/blog/qwen1.5-110b/\" style=\"color: var(--link-text-color); text-decoration: underline;text-decoration-style: dotted;\"\u003eQwen1.5-110B-Chat\u003c/a\u003e",
+            1162,
+            "+4/-4",
+            27384,
+            "Alibaba",
+            "Qianwen LICENSE",
+            "2024/4"
+        ],
+        [
+            "28",
+            "\u003ca target=\"_blank\" href=\"https://platform.openai.com/docs/models/gpt-4-and-gpt-4-turbo\" style=\"color: var(--link-text-color); text-decoration: underline;text-decoration-style: dotted;\"\u003eGPT-4-0613\u003c/a\u003e",
+            1162,
+            "+3/-3",
+            83405,
+            "OpenAI",
+            "Proprietary",
+            "2021/9"
+        ],
+        [
+            "28",
+            "\u003ca target=\"_blank\" href=\"https://huggingface.co/01-ai/Yi-1.5-34B-Chat\" style=\"color: var(--link-text-color); text-decoration: underline;text-decoration-style: dotted;\"\u003eYi-1.5-34B-Chat\u003c/a\u003e",
+            1158,
+            "+4/-5",
+            23794,
+            "01 AI",
+            "Apache-2.0",
+            "2024/5"
+        ],
+        [
+            "29",
+            "\u003ca target=\"_blank\" href=\"https://mistral.ai/news/mistral-large/\" style=\"color: var(--link-text-color); text-decoration: underline;text-decoration-style: dotted;\"\u003eMistral-Large-2402\u003c/a\u003e",
+            1157,
+            "+3/-3",
+            62387,
+            "Mistral",
+            "Proprietary",
+            "Unknown"
+        ],
+        [
+            "29",
+            "\u003ca target=\"_blank\" href=\"https://docs.reka.ai/http-api.html#generation\" style=\"color: var(--link-text-color); text-decoration: underline;text-decoration-style: dotted;\"\u003eReka-Flash-21B-online\u003c/a\u003e",
+            1156,
+            "+5/-4",
+            15980,
+            "Reka AI",
+            "Proprietary",
+            "Online"
+        ],
+        [
+            "31",
+            "\u003ca target=\"_blank\" href=\"https://llama.meta.com/llama3/\" style=\"color: var(--link-text-color); text-decoration: underline;text-decoration-style: dotted;\"\u003eLlama-3-8b-Instruct\u003c/a\u003e",
+            1152,
+            "+3/-3",
+            97969,
+            "Meta",
+            "Llama 3 Community",
+            "2023/3"
+        ],
+        [
+            "32",
+            "\u003ca target=\"_blank\" href=\"https://www.anthropic.com/index/introducing-claude\" style=\"color: var(--link-text-color); text-decoration: underline;text-decoration-style: dotted;\"\u003eClaude-1\u003c/a\u003e",
+            1149,
+            "+4/-4",
+            21179,
+            "Anthropic",
+            "Proprietary",
+            "Unknown"
+        ],
+        [
+            "33",
+            "\u003ca target=\"_blank\" href=\"https://mistral.ai/news/la-plateforme/\" style=\"color: var(--link-text-color); text-decoration: underline;text-decoration-style: dotted;\"\u003eMistral Medium\u003c/a\u003e",
+            1148,
+            "+4/-4",
+            35536,
+            "Mistral",
+            "Proprietary",
+            "Unknown"
+        ],
+        [
+            "34",
+            "\u003ca target=\"_blank\" href=\"https://txt.cohere.com/command-r\" style=\"color: var(--link-text-color); text-decoration: underline;text-decoration-style: dotted;\"\u003eCommand R\u003c/a\u003e",
+            1148,
+            "+3/-3",
+            53600,
+            "Cohere",
+            "CC-BY-NC-4.0",
+            "2024/3"
+        ],
+        [
+            "34",
+            "\u003ca target=\"_blank\" href=\"https://www.reka.ai/news/reka-flash-efficient-and-capable-multimodal-language-models\" style=\"color: var(--link-text-color); text-decoration: underline;text-decoration-style: dotted;\"\u003eReka-Flash-21B\u003c/a\u003e",
+            1148,
+            "+4/-4",
+            25770,
+            "Reka AI",
+            "Proprietary",
+            "2023/11"
+        ],
+        [
+            "34",
+            "\u003ca target=\"_blank\" href=\"https://qwenlm.github.io/blog/qwen1.5/\" style=\"color: var(--link-text-color); text-decoration: underline;text-decoration-style: dotted;\"\u003eQwen1.5-72B-Chat\u003c/a\u003e",
+            1147,
+            "+3/-3",
+            40640,
+            "Alibaba",
+            "Qianwen LICENSE",
+            "2024/2"
+        ],
+        [
+            "35",
+            "\u003ca target=\"_blank\" href=\"https://mistral.ai/news/mixtral-8x22b/\" style=\"color: var(--link-text-color); text-decoration: underline;text-decoration-style: dotted;\"\u003eMixtral-8x22b-Instruct-v0.1\u003c/a\u003e",
+            1146,
+            "+3/-4",
+            43648,
+            "Mistral",
+            "Apache 2.0",
+            "2024/4"
+        ],
+        [
+            "41",
+            "\u003ca target=\"_blank\" href=\"https://www.anthropic.com/index/claude-2\" style=\"color: var(--link-text-color); text-decoration: underline;text-decoration-style: dotted;\"\u003eClaude-2.0\u003c/a\u003e",
+            1132,
+            "+6/-6",
+            12776,
+            "Anthropic",
+            "Proprietary",
+            "Unknown"
+        ],
+        [
+            "41",
+            "\u003ca target=\"_blank\" href=\"https://ai.google.dev/docs/gemini_api_overview\" style=\"color: var(--link-text-color); text-decoration: underline;text-decoration-style: dotted;\"\u003eGemini Pro (Dev API)\u003c/a\u003e",
+            1131,
+            "+6/-4",
+            18803,
+            "Google",
+            "Proprietary",
+            "2023/4"
+        ],
+        [
+            "41",
+            "\u003ca target=\"_blank\" href=\"https://huggingface.co/HuggingFaceH4/zephyr-orpo-141b-A35b-v0.1\" style=\"color: var(--link-text-color); text-decoration: underline;text-decoration-style: dotted;\"\u003eZephyr-ORPO-141b-A35b-v0.1\u003c/a\u003e",
+            1127,
+            "+8/-7",
+            4861,
+            "HuggingFace",
+            "Apache 2.0",
+            "2024/4"
+        ],
+        [
+            "41",
+            "\u003ca target=\"_blank\" href=\"https://qwenlm.github.io/blog/qwen1.5-32b/\" style=\"color: var(--link-text-color); text-decoration: underline;text-decoration-style: dotted;\"\u003eQwen1.5-32B-Chat\u003c/a\u003e",
+            1125,
+            "+4/-5",
+            22763,
+            "Alibaba",
+            "Qianwen LICENSE",
+            "2024/2"
+        ],
+        [
+            "41",
+            "\u003ca target=\"_blank\" href=\"https://chat.mistral.ai/chat\" style=\"color: var(--link-text-color); text-decoration: underline;text-decoration-style: dotted;\"\u003eMistral-Next\u003c/a\u003e",
+            1124,
+            "+6/-6",
+            12385,
+            "Mistral",
+            "Proprietary",
+            "Unknown"
+        ],
+        [
+            "41",
+            "\u003ca target=\"_blank\" href=\"https://huggingface.co/microsoft/Phi-3-medium-4k-instruct\" style=\"color: var(--link-text-color); text-decoration: underline;text-decoration-style: dotted;\"\u003ePhi-3-Medium-4k-Instruct\u003c/a\u003e",
+            1123,
+            "+5/-3",
+            16295,
+            "Microsoft",
+            "MIT",
+            "2023/10"
+        ],
+        [
+            "43",
+            "\u003ca target=\"_blank\" href=\"https://huggingface.co/Nexusflow/Starling-LM-7B-beta\" style=\"color: var(--link-text-color); text-decoration: underline;text-decoration-style: dotted;\"\u003eStarling-LM-7B-beta\u003c/a\u003e",
+            1119,
+            "+4/-5",
+            16663,
+            "Nexusflow",
+            "Apache-2.0",
+            "2024/3"
+        ],
+        [
+            "43",
+            "\u003ca target=\"_blank\" href=\"https://www.anthropic.com/index/claude-2-1\" style=\"color: var(--link-text-color); text-decoration: underline;text-decoration-style: dotted;\"\u003eClaude-2.1\u003c/a\u003e",
+            1118,
+            "+3/-3",
+            37695,
+            "Anthropic",
+            "Proprietary",
+            "Unknown"
+        ],
+        [
+            "45",
+            "\u003ca target=\"_blank\" href=\"https://platform.openai.com/docs/models/gpt-3-5\" style=\"color: var(--link-text-color); text-decoration: underline;text-decoration-style: dotted;\"\u003eGPT-3.5-Turbo-0613\u003c/a\u003e",
+            1117,
+            "+4/-3",
+            38990,
+            "OpenAI",
+            "Proprietary",
+            "2021/9"
+        ],
+        [
+            "47",
+            "\u003ca target=\"_blank\" href=\"https://huggingface.co/01-ai/Yi-34B-Chat\" style=\"color: var(--link-text-color); text-decoration: underline;text-decoration-style: dotted;\"\u003eYi-34B-Chat\u003c/a\u003e",
+            1111,
+            "+4/-5",
+            15917,
+            "01 AI",
+            "Yi License",
+            "2023/6"
+        ],
+        [
+            "47",
+            "\u003ca target=\"_blank\" href=\"https://www.anthropic.com/index/introducing-claude\" style=\"color: var(--link-text-color); text-decoration: underline;text-decoration-style: dotted;\"\u003eClaude-Instant-1\u003c/a\u003e",
+            1111,
+            "+4/-4",
+            20640,
+            "Anthropic",
+            "Proprietary",
+            "Unknown"
+        ],
+        [
+            "47",
+            "\u003ca target=\"_blank\" href=\"https://blog.google/technology/ai/gemini-api-developers-cloud/\" style=\"color: var(--link-text-color); text-decoration: underline;text-decoration-style: dotted;\"\u003eGemini Pro\u003c/a\u003e",
+            1111,
+            "+7/-7",
+            6575,
+            "Google",
+            "Proprietary",
+            "2023/4"
+        ],
+        [
+            "48",
+            "\u003ca target=\"_blank\" href=\"https://mistral.ai/news/mixtral-of-experts/\" style=\"color: var(--link-text-color); text-decoration: underline;text-decoration-style: dotted;\"\u003eMixtral-8x7b-Instruct-v0.1\u003c/a\u003e",
+            1114,
+            "+0/-0",
+            71138,
+            "Mistral",
+            "Apache 2.0",
+            "2023/12"
+        ],
+        [
+            "50",
+            "\u003ca target=\"_blank\" href=\"https://platform.openai.com/docs/models/gpt-3-5\" style=\"color: var(--link-text-color); text-decoration: underline;text-decoration-style: dotted;\"\u003eGPT-3.5-Turbo-0314\u003c/a\u003e",
+            1106,
+            "+8/-8",
+            5655,
+            "OpenAI",
+            "Proprietary",
+            "2021/9"
+        ],
+        [
+            "51",
+            "\u003ca target=\"_blank\" href=\"https://qwenlm.github.io/blog/qwen1.5/\" style=\"color: var(--link-text-color); text-decoration: underline;text-decoration-style: dotted;\"\u003eQwen1.5-14B-Chat\u003c/a\u003e",
+            1109,
+            "+4/-4",
+            18640,
+            "Alibaba",
+            "Qianwen LICENSE",
+            "2024/2"
+        ],
+        [
+            "51",
+            "\u003ca target=\"_blank\" href=\"https://huggingface.co/WizardLM/WizardLM-70B-V1.0\" style=\"color: var(--link-text-color); text-decoration: underline;text-decoration-style: dotted;\"\u003eWizardLM-70B-v1.0\u003c/a\u003e",
+            1106,
+            "+7/-7",
+            8407,
+            "Microsoft",
+            "Llama 2 Community",
+            "2023/8"
+        ],
+        [
+            "52",
+            "\u003ca target=\"_blank\" href=\"https://platform.openai.com/docs/models/gpt-3-5-turbo\" style=\"color: var(--link-text-color); text-decoration: underline;text-decoration-style: dotted;\"\u003eGPT-3.5-Turbo-0125\u003c/a\u003e",
+            1105,
+            "+2/-3",
+            65338,
+            "OpenAI",
+            "Proprietary",
+            "2021/9"
+        ],
+        [
+            "52",
+            "\u003ca target=\"_blank\" href=\"https://www.databricks.com/blog/introducing-dbrx-new-state-art-open-llm\" style=\"color: var(--link-text-color); text-decoration: underline;text-decoration-style: dotted;\"\u003eDBRX-Instruct-Preview\u003c/a\u003e",
+            1103,
+            "+4/-3",
+            33734,
+            "Databricks",
+            "DBRX LICENSE",
+            "2023/12"
+        ],
+        [
+            "52",
+            "\u003ca target=\"_blank\" href=\"https://huggingface.co/microsoft/Phi-3-small-8k-instruct\" style=\"color: var(--link-text-color); text-decoration: underline;text-decoration-style: dotted;\"\u003ePhi-3-Small-8k-Instruct\u003c/a\u003e",
+            1103,
+            "+5/-4",
+            17568,
+            "Microsoft",
+            "MIT",
+            "2023/10"
+        ],
+        [
+            "53",
+            "\u003ca target=\"_blank\" href=\"https://huggingface.co/allenai/tulu-2-dpo-70b\" style=\"color: var(--link-text-color); text-decoration: underline;text-decoration-style: dotted;\"\u003eTulu-2-DPO-70B\u003c/a\u003e",
+            1099,
+            "+7/-8",
+            6661,
+            "AllenAI/UW",
+            "AI2 ImpACT Low-risk",
+            "2023/11"
+        ],
+        [
+            "59",
+            "\u003ca target=\"_blank\" href=\"https://huggingface.co/openchat/openchat-3.5-0106\" style=\"color: var(--link-text-color); text-decoration: underline;text-decoration-style: dotted;\"\u003eOpenChat-3.5-0106\u003c/a\u003e",
+            1091,
+            "+7/-6",
+            12991,
+            "OpenChat",
+            "Apache-2.0",
+            "2024/1"
+        ],
+        [
+            "60",
+            "\u003ca target=\"_blank\" href=\"https://huggingface.co/meta-llama/Llama-2-70b-chat-hf\" style=\"color: var(--link-text-color); text-decoration: underline;text-decoration-style: dotted;\"\u003eLlama-2-70b-chat\u003c/a\u003e",
+            1093,
+            "+3/-3",
+            39638,
+            "Meta",
+            "Llama 2 Community",
+            "2023/7"
+        ],
+        [
+            "60",
+            "\u003ca target=\"_blank\" href=\"https://huggingface.co/lmsys/vicuna-33b-v1.3\" style=\"color: var(--link-text-color); text-decoration: underline;text-decoration-style: dotted;\"\u003eVicuna-33B\u003c/a\u003e",
+            1090,
+            "+5/-4",
+            22961,
+            "LMSYS",
+            "Non-commercial",
+            "2023/8"
+        ],
+        [
+            "60",
+            "\u003ca target=\"_blank\" href=\"https://www.snowflake.com/blog/arctic-open-efficient-foundation-language-models-snowflake/\" style=\"color: var(--link-text-color); text-decoration: underline;text-decoration-style: dotted;\"\u003eSnowflake Arctic Instruct\u003c/a\u003e",
+            1090,
+            "+4/-4",
+            34132,
+            "Snowflake",
+            "Apache 2.0",
+            "2024/4"
+        ],
+        [
+            "60",
+            "\u003ca target=\"_blank\" href=\"https://huggingface.co/berkeley-nest/Starling-LM-7B-alpha\" style=\"color: var(--link-text-color); text-decoration: underline;text-decoration-style: dotted;\"\u003eStarling-LM-7B-alpha\u003c/a\u003e",
+            1088,
+            "+6/-6",
+            10424,
+            "UC Berkeley",
+            "CC-BY-NC-4.0",
+            "2023/11"
+        ],
+        [
+            "60",
+            "\u003ca target=\"_blank\" href=\"https://huggingface.co/NousResearch/Nous-Hermes-2-Mixtral-8x7B-DPO\" style=\"color: var(--link-text-color); text-decoration: underline;text-decoration-style: dotted;\"\u003eNous-Hermes-2-Mixtral-8x7B-DPO\u003c/a\u003e",
+            1084,
+            "+9/-9",
+            3838,
+            "NousResearch",
+            "Apache-2.0",
+            "2024/1"
+        ],
+        [
+            "61",
+            "\u003ca target=\"_blank\" href=\"https://huggingface.co/nvidia/Llama2-70B-SteerLM-Chat\" style=\"color: var(--link-text-color); text-decoration: underline;text-decoration-style: dotted;\"\u003eNV-Llama2-70B-SteerLM-Chat\u003c/a\u003e",
+            1081,
+            "+10/-8",
+            3643,
+            "Nvidia",
+            "Llama 2 Community",
+            "2023/11"
+        ],
+        [
+            "62",
+            "\u003ca target=\"_blank\" href=\"https://huggingface.co/google/gemma-1.1-7b-it\" style=\"color: var(--link-text-color); text-decoration: underline;text-decoration-style: dotted;\"\u003eGemma-1.1-7B-it\u003c/a\u003e",
+            1084,
+            "+4/-3",
+            25085,
+            "Google",
+            "Gemma license",
+            "2024/2"
+        ],
+        [
+            "65",
+            "\u003ca target=\"_blank\" href=\"https://blog.perplexity.ai/blog/introducing-pplx-online-llms\" style=\"color: var(--link-text-color); text-decoration: underline;text-decoration-style: dotted;\"\u003epplx-70b-online\u003c/a\u003e",
+            1078,
+            "+7/-9",
+            6906,
+            "Perplexity AI",
+            "Proprietary",
+            "Online"
+        ],
+        [
+            "65",
+            "\u003ca target=\"_blank\" href=\"https://huggingface.co/deepseek-ai/deepseek-llm-67b-chat\" style=\"color: var(--link-text-color); text-decoration: underline;text-decoration-style: dotted;\"\u003eDeepSeek-LLM-67B-Chat\u003c/a\u003e",
+            1077,
+            "+8/-7",
+            4995,
+            "DeepSeek AI",
+            "DeepSeek License",
+            "2023/11"
+        ],
+        [
+            "65",
+            "\u003ca target=\"_blank\" href=\"https://huggingface.co/openchat/openchat_3.5\" style=\"color: var(--link-text-color); text-decoration: underline;text-decoration-style: dotted;\"\u003eOpenChat-3.5\u003c/a\u003e",
+            1077,
+            "+7/-7",
+            8106,
+            "OpenChat",
+            "Apache-2.0",
+            "2023/11"
+        ],
+        [
+            "66",
+            "\u003ca target=\"_blank\" href=\"https://huggingface.co/teknium/OpenHermes-2.5-Mistral-7B\" style=\"color: var(--link-text-color); text-decoration: underline;text-decoration-style: dotted;\"\u003eOpenHermes-2.5-Mistral-7b\u003c/a\u003e",
+            1074,
+            "+6/-9",
+            5092,
+            "NousResearch",
+            "Apache-2.0",
+            "2023/11"
+        ],
+        [
+            "67",
+            "\u003ca target=\"_blank\" href=\"https://huggingface.co/mistralai/Mistral-7B-Instruct-v0.2\" style=\"color: var(--link-text-color); text-decoration: underline;text-decoration-style: dotted;\"\u003eMistral-7B-Instruct-v0.2\u003c/a\u003e",
+            1072,
+            "+3/-4",
+            20063,
+            "Mistral",
+            "Apache-2.0",
+            "2023/12"
+        ],
+        [
+            "67",
+            "\u003ca target=\"_blank\" href=\"https://qwenlm.github.io/blog/qwen1.5/\" style=\"color: var(--link-text-color); text-decoration: underline;text-decoration-style: dotted;\"\u003eQwen1.5-7B-Chat\u003c/a\u003e",
+            1070,
+            "+7/-8",
+            4866,
+            "Alibaba",
+            "Qianwen LICENSE",
+            "2024/2"
+        ],
+        [
+            "68",
+            "\u003ca target=\"_blank\" href=\"https://platform.openai.com/docs/models/gpt-3-5\" style=\"color: var(--link-text-color); text-decoration: underline;text-decoration-style: dotted;\"\u003eGPT-3.5-Turbo-1106\u003c/a\u003e",
+            1068,
+            "+5/-5",
+            17050,
+            "OpenAI",
+            "Proprietary",
+            "2021/9"
+        ],
+        [
+            "68",
+            "\u003ca target=\"_blank\" href=\"https://huggingface.co/ehartford/dolphin-2.2.1-mistral-7b\" style=\"color: var(--link-text-color); text-decoration: underline;text-decoration-style: dotted;\"\u003eDolphin-2.2.1-Mistral-7B\u003c/a\u003e",
+            1063,
+            "+11/-13",
+            1715,
+            "Cognitive Computations",
+            "Apache-2.0",
+            "2023/10"
+        ],
+        [
+            "69",
+            "\u003ca target=\"_blank\" href=\"https://huggingface.co/microsoft/Phi-3-mini-4k-instruct\" style=\"color: var(--link-text-color); text-decoration: underline;text-decoration-style: dotted;\"\u003ePhi-3-Mini-4k-Instruct\u003c/a\u003e",
+            1067,
+            "+4/-4",
+            21107,
+            "Microsoft",
+            "MIT",
+            "2023/10"
+        ],
+        [
+            "70",
+            "\u003ca target=\"_blank\" href=\"https://huggingface.co/upstage/SOLAR-10.7B-Instruct-v1.0\" style=\"color: var(--link-text-color); text-decoration: underline;text-decoration-style: dotted;\"\u003eSOLAR-10.7B-Instruct-v1.0\u003c/a\u003e",
+            1062,
+            "+8/-9",
+            4291,
+            "Upstage AI",
+            "CC-BY-NC-4.0",
+            "2023/11"
+        ],
+        [
+            "72",
+            "\u003ca target=\"_blank\" href=\"https://huggingface.co/meta-llama/Llama-2-13b-chat-hf\" style=\"color: var(--link-text-color); text-decoration: underline;text-decoration-style: dotted;\"\u003eLlama-2-13b-chat\u003c/a\u003e",
+            1063,
+            "+5/-5",
+            19725,
+            "Meta",
+            "Llama 2 Community",
+            "2023/7"
+        ],
+        [
+            "72",
+            "\u003ca target=\"_blank\" href=\"https://huggingface.co/WizardLM/WizardLM-13B-V1.2\" style=\"color: var(--link-text-color); text-decoration: underline;text-decoration-style: dotted;\"\u003eWizardLM-13b-v1.2\u003c/a\u003e",
+            1058,
+            "+10/-7",
+            7194,
+            "Microsoft",
+            "Llama 2 Community",
+            "2023/7"
+        ],
+        [
+            "73",
+            "\u003ca target=\"_blank\" href=\"https://huggingface.co/microsoft/Phi-3-mini-4k-instruct\" style=\"color: var(--link-text-color); text-decoration: underline;text-decoration-style: dotted;\"\u003ePhi-3-Mini-4k-Instruct-June-24\u003c/a\u003e",
+            1058,
+            "+10/-12",
+            2788,
+            "Microsoft",
+            "MIT",
+            "2023/10"
+        ],
+        [
+            "77",
+            "\u003ca target=\"_blank\" href=\"https://huggingface.co/HuggingFaceH4/zephyr-7b-beta\" style=\"color: var(--link-text-color); text-decoration: underline;text-decoration-style: dotted;\"\u003eZephyr-7b-beta\u003c/a\u003e",
+            1053,
+            "+6/-5",
+            11330,
+            "HuggingFace",
+            "MIT",
+            "2023/10"
+        ],
+        [
+            "77",
+            "\u003ca target=\"_blank\" href=\"https://huggingface.co/codellama/CodeLlama-70b-hf\" style=\"color: var(--link-text-color); text-decoration: underline;text-decoration-style: dotted;\"\u003eCodeLlama-70B-instruct\u003c/a\u003e",
+            1043,
+            "+17/-16",
+            1193,
+            "Meta",
+            "Llama 2 Community",
+            "2024/1"
+        ],
+        [
+            "78",
+            "\u003ca target=\"_blank\" href=\"https://huggingface.co/mosaicml/mpt-30b-chat\" style=\"color: var(--link-text-color); text-decoration: underline;text-decoration-style: dotted;\"\u003eMPT-30B-chat\u003c/a\u003e",
+            1045,
+            "+10/-11",
+            2647,
+            "MosaicML",
+            "CC-BY-NC-SA-4.0",
+            "2023/6"
+        ],
+        [
+            "78",
+            "\u003ca target=\"_blank\" href=\"https://huggingface.co/HuggingFaceH4/zephyr-7b-alpha\" style=\"color: var(--link-text-color); text-decoration: underline;text-decoration-style: dotted;\"\u003eZephyr-7b-alpha\u003c/a\u003e",
+            1041,
+            "+16/-12",
+            1810,
+            "HuggingFace",
+            "MIT",
+            "2023/10"
+        ],
+        [
+            "79",
+            "\u003ca target=\"_blank\" href=\"https://huggingface.co/tiiuae/falcon-180B-chat\" style=\"color: var(--link-text-color); text-decoration: underline;text-decoration-style: dotted;\"\u003efalcon-180b-chat\u003c/a\u003e",
+            1034,
+            "+19/-19",
+            1328,
+            "TII",
+            "Falcon-180B TII License",
+            "2023/9"
+        ],
+        [
+            "80",
+            "\u003ca target=\"_blank\" href=\"https://blog.perplexity.ai/blog/introducing-pplx-online-llms\" style=\"color: var(--link-text-color); text-decoration: underline;text-decoration-style: dotted;\"\u003epplx-7b-online\u003c/a\u003e",
+            1044,
+            "+7/-6",
+            6346,
+            "Perplexity AI",
+            "Proprietary",
+            "Online"
+        ],
+        [
+            "81",
+            "\u003ca target=\"_blank\" href=\"https://huggingface.co/codellama/CodeLlama-34b-Instruct-hf\" style=\"color: var(--link-text-color); text-decoration: underline;text-decoration-style: dotted;\"\u003eCodeLlama-34B-instruct\u003c/a\u003e",
+            1043,
+            "+7/-7",
+            7509,
+            "Meta",
+            "Llama 2 Community",
+            "2023/7"
+        ],
+        [
+            "82",
+            "\u003ca target=\"_blank\" href=\"https://huggingface.co/lmsys/vicuna-13b-v1.5\" style=\"color: var(--link-text-color); text-decoration: underline;text-decoration-style: dotted;\"\u003eVicuna-13B\u003c/a\u003e",
+            1042,
+            "+4/-6",
+            19803,
+            "LMSYS",
+            "Llama 2 Community",
+            "2023/7"
+        ],
+        [
+            "83",
+            "\u003ca target=\"_blank\" href=\"https://huggingface.co/google/gemma-7b-it\" style=\"color: var(--link-text-color); text-decoration: underline;text-decoration-style: dotted;\"\u003eGemma-7B-it\u003c/a\u003e",
+            1037,
+            "+5/-5",
+            9187,
+            "Google",
+            "Gemma license",
+            "2024/2"
+        ],
+        [
+            "83",
+            "\u003ca target=\"_blank\" href=\"https://huggingface.co/meta-llama/Llama-2-7b-chat-hf\" style=\"color: var(--link-text-color); text-decoration: underline;text-decoration-style: dotted;\"\u003eLlama-2-7b-chat\u003c/a\u003e",
+            1037,
+            "+5/-4",
+            14572,
+            "Meta",
+            "Llama 2 Community",
+            "2023/7"
+        ],
+        [
+            "83",
+            "\u003ca target=\"_blank\" href=\"https://azure.microsoft.com/en-us/blog/introducing-phi-3-redefining-whats-possible-with-slms/\" style=\"color: var(--link-text-color); text-decoration: underline;text-decoration-style: dotted;\"\u003ePhi-3-Mini-128k-Instruct\u003c/a\u003e",
+            1036,
+            "+5/-5",
+            21603,
+            "Microsoft",
+            "MIT",
+            "2023/10"
+        ],
+        [
+            "83",
+            "\u003ca target=\"_blank\" href=\"https://huggingface.co/Qwen/Qwen-14B-Chat\" style=\"color: var(--link-text-color); text-decoration: underline;text-decoration-style: dotted;\"\u003eQwen-14B-Chat\u003c/a\u003e",
+            1034,
+            "+5/-9",
+            5072,
+            "Alibaba",
+            "Qianwen LICENSE",
+            "2023/8"
+        ],
+        [
+            "83",
+            "\u003ca target=\"_blank\" href=\"https://huggingface.co/timdettmers/guanaco-33b-merged\" style=\"color: var(--link-text-color); text-decoration: underline;text-decoration-style: dotted;\"\u003eGuanaco-33B\u003c/a\u003e",
+            1032,
+            "+11/-11",
+            2998,
+            "UW",
+            "Non-commercial",
+            "2023/5"
+        ],
+        [
+            "93",
+            "\u003ca target=\"_blank\" href=\"https://huggingface.co/google/gemma-1.1-2b-it\" style=\"color: var(--link-text-color); text-decoration: underline;text-decoration-style: dotted;\"\u003eGemma-1.1-2B-it\u003c/a\u003e",
+            1020,
+            "+5/-5",
+            11333,
+            "Google",
+            "Gemma license",
+            "2024/2"
+        ],
+        [
+            "93",
+            "\u003ca target=\"_blank\" href=\"https://huggingface.co/togethercomputer/StripedHyena-Nous-7B\" style=\"color: var(--link-text-color); text-decoration: underline;text-decoration-style: dotted;\"\u003eStripedHyena-Nous-7B\u003c/a\u003e",
+            1018,
+            "+8/-9",
+            5282,
+            "Together AI",
+            "Apache 2.0",
+            "2023/12"
+        ],
+        [
+            "93",
+            "\u003ca target=\"_blank\" href=\"https://huggingface.co/allenai/OLMo-7B-Instruct\" style=\"color: var(--link-text-color); text-decoration: underline;text-decoration-style: dotted;\"\u003eOLMo-7B-instruct\u003c/a\u003e",
+            1015,
+            "+8/-7",
+            6510,
+            "Allen AI",
+            "Apache-2.0",
+            "2024/2"
+        ],
+        [
+            "96",
+            "\u003ca target=\"_blank\" href=\"https://huggingface.co/mistralai/Mistral-7B-Instruct-v0.1\" style=\"color: var(--link-text-color); text-decoration: underline;text-decoration-style: dotted;\"\u003eMistral-7B-Instruct-v0.1\u003c/a\u003e",
+            1008,
+            "+6/-6",
+            9151,
+            "Mistral",
+            "Apache 2.0",
+            "2023/9"
+        ],
+        [
+            "96",
+            "\u003ca target=\"_blank\" href=\"https://huggingface.co/lmsys/vicuna-7b-v1.5\" style=\"color: var(--link-text-color); text-decoration: underline;text-decoration-style: dotted;\"\u003eVicuna-7B\u003c/a\u003e",
+            1004,
+            "+8/-6",
+            7015,
+            "LMSYS",
+            "Llama 2 Community",
+            "2023/7"
+        ],
+        [
+            "96",
+            "\u003ca target=\"_blank\" href=\"https://cloud.google.com/vertex-ai/docs/generative-ai/learn/models#foundation_models\" style=\"color: var(--link-text-color); text-decoration: underline;text-decoration-style: dotted;\"\u003ePaLM-Chat-Bison-001\u003c/a\u003e",
+            1004,
+            "+7/-7",
+            8749,
+            "Google",
+            "Proprietary",
+            "2021/6"
+        ],
+        [
+            "100",
+            "\u003ca target=\"_blank\" href=\"https://qwenlm.github.io/blog/qwen1.5/\" style=\"color: var(--link-text-color); text-decoration: underline;text-decoration-style: dotted;\"\u003eQwen1.5-4B-Chat\u003c/a\u003e",
+            988,
+            "+9/-7",
+            7829,
+            "Alibaba",
+            "Qianwen LICENSE",
+            "2024/2"
+        ],
+        [
+            "101",
+            "\u003ca target=\"_blank\" href=\"https://huggingface.co/google/gemma-2b-it\" style=\"color: var(--link-text-color); text-decoration: underline;text-decoration-style: dotted;\"\u003eGemma-2B-it\u003c/a\u003e",
+            989,
+            "+7/-10",
+            4928,
+            "Google",
+            "Gemma license",
+            "2024/2"
+        ],
+        [
+            "103",
+            "\u003ca target=\"_blank\" href=\"https://bair.berkeley.edu/blog/2023/04/03/koala/\" style=\"color: var(--link-text-color); text-decoration: underline;text-decoration-style: dotted;\"\u003eKoala-13B\u003c/a\u003e",
+            964,
+            "+8/-7",
+            7034,
+            "UC Berkeley",
+            "Non-commercial",
+            "2023/4"
+        ],
+        [
+            "103",
+            "\u003ca target=\"_blank\" href=\"https://huggingface.co/THUDM/chatglm3-6b\" style=\"color: var(--link-text-color); text-decoration: underline;text-decoration-style: dotted;\"\u003eChatGLM3-6B\u003c/a\u003e",
+            955,
+            "+7/-9",
+            4763,
+            "Tsinghua",
+            "Apache-2.0",
+            "2023/10"
+        ],
+        [
+            "105",
+            "\u003ca target=\"_blank\" href=\"https://huggingface.co/nomic-ai/gpt4all-13b-snoozy\" style=\"color: var(--link-text-color); text-decoration: underline;text-decoration-style: dotted;\"\u003eGPT4All-13B-Snoozy\u003c/a\u003e",
+            932,
+            "+12/-13",
+            1790,
+            "Nomic AI",
+            "Non-commercial",
+            "2023/3"
+        ],
+        [
+            "105",
+            "\u003ca target=\"_blank\" href=\"https://huggingface.co/mosaicml/mpt-7b-chat\" style=\"color: var(--link-text-color); text-decoration: underline;text-decoration-style: dotted;\"\u003eMPT-7B-Chat\u003c/a\u003e",
+            927,
+            "+11/-10",
+            4019,
+            "MosaicML",
+            "CC-BY-NC-SA-4.0",
+            "2023/5"
+        ],
+        [
+            "105",
+            "\u003ca target=\"_blank\" href=\"https://huggingface.co/THUDM/chatglm2-6b\" style=\"color: var(--link-text-color); text-decoration: underline;text-decoration-style: dotted;\"\u003eChatGLM2-6B\u003c/a\u003e",
+            924,
+            "+11/-13",
+            2709,
+            "Tsinghua",
+            "Apache-2.0",
+            "2023/6"
+        ],
+        [
+            "105",
+            "\u003ca target=\"_blank\" href=\"https://huggingface.co/BlinkDL/rwkv-4-raven\" style=\"color: var(--link-text-color); text-decoration: underline;text-decoration-style: dotted;\"\u003eRWKV-4-Raven-14B\u003c/a\u003e",
+            921,
+            "+9/-9",
+            4941,
+            "RWKV",
+            "Apache 2.0",
+            "2023/4"
+        ],
+        [
+            "109",
+            "\u003ca target=\"_blank\" href=\"https://crfm.stanford.edu/2023/03/13/alpaca.html\" style=\"color: var(--link-text-color); text-decoration: underline;text-decoration-style: dotted;\"\u003eAlpaca-13B\u003c/a\u003e",
+            901,
+            "+8/-9",
+            5876,
+            "Stanford",
+            "Non-commercial",
+            "2023/3"
+        ],
+        [
+            "109",
+            "\u003ca target=\"_blank\" href=\"https://huggingface.co/OpenAssistant/oasst-sft-4-pythia-12b-epoch-3.5\" style=\"color: var(--link-text-color); text-decoration: underline;text-decoration-style: dotted;\"\u003eOpenAssistant-Pythia-12B\u003c/a\u003e",
+            893,
+            "+8/-10",
+            6383,
+            "OpenAssistant",
+            "Apache 2.0",
+            "2023/4"
+        ],
+        [
+            "110",
+            "\u003ca target=\"_blank\" href=\"https://huggingface.co/THUDM/chatglm-6b\" style=\"color: var(--link-text-color); text-decoration: underline;text-decoration-style: dotted;\"\u003eChatGLM-6B\u003c/a\u003e",
+            879,
+            "+10/-9",
+            4998,
+            "Tsinghua",
+            "Non-commercial",
+            "2023/3"
+        ],
+        [
+            "111",
+            "\u003ca target=\"_blank\" href=\"https://huggingface.co/lmsys/fastchat-t5-3b-v1.0\" style=\"color: var(--link-text-color); text-decoration: underline;text-decoration-style: dotted;\"\u003eFastChat-T5-3B\u003c/a\u003e",
+            868,
+            "+9/-7",
+            4307,
+            "LMSYS",
+            "Apache 2.0",
+            "2023/4"
+        ],
+        [
+            "113",
+            "\u003ca target=\"_blank\" href=\"https://huggingface.co/stabilityai/stablelm-tuned-alpha-7b\" style=\"color: var(--link-text-color); text-decoration: underline;text-decoration-style: dotted;\"\u003eStableLM-Tuned-Alpha-7B\u003c/a\u003e",
+            840,
+            "+11/-11",
+            3341,
+            "Stability AI",
+            "CC-BY-NC-SA-4.0",
+            "2023/4"
+        ],
+        [
+            "113",
+            "\u003ca target=\"_blank\" href=\"https://huggingface.co/databricks/dolly-v2-12b\" style=\"color: var(--link-text-color); text-decoration: underline;text-decoration-style: dotted;\"\u003eDolly-V2-12B\u003c/a\u003e",
+            822,
+            "+11/-13",
+            3489,
+            "Databricks",
+            "MIT",
+            "2023/4"
+        ],
+        [
+            "114",
+            "\u003ca target=\"_blank\" href=\"https://arxiv.org/abs/2302.13971\" style=\"color: var(--link-text-color); text-decoration: underline;text-decoration-style: dotted;\"\u003eLLaMA-13B\u003c/a\u003e",
+            799,
+            "+13/-14",
+            2447,
+            "Meta",
+            "Non-commercial",
+            "2023/2"
+        ]
+    ]
+}

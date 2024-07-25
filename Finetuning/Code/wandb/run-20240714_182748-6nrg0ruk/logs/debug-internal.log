@@ -1,0 +1,308 @@
+2024-07-14 18:27:48,332 INFO    StreamThr :28849 [internal.py:wandb_internal():85] W&B internal server running at pid: 28849, started at: 2024-07-14 18:27:48.331504
+2024-07-14 18:27:48,335 DEBUG   HandlerThread:28849 [handler.py:handle_request():158] handle_request: status
+2024-07-14 18:27:48,346 INFO    WriterThread:28849 [datastore.py:open_for_write():87] open: /home2/adyansh/LLM4ADR/Finetuning/Code/wandb/run-20240714_182748-6nrg0ruk/run-6nrg0ruk.wandb
+2024-07-14 18:27:48,347 DEBUG   SenderThread:28849 [sender.py:send():379] send: header
+2024-07-14 18:27:48,360 DEBUG   SenderThread:28849 [sender.py:send():379] send: run
+2024-07-14 18:27:49,108 INFO    SenderThread:28849 [dir_watcher.py:__init__():211] watching files in: /home2/adyansh/LLM4ADR/Finetuning/Code/wandb/run-20240714_182748-6nrg0ruk/files
+2024-07-14 18:27:49,108 INFO    SenderThread:28849 [sender.py:_start_run_threads():1188] run started: 6nrg0ruk with start time 1720961868.33467
+2024-07-14 18:27:49,126 DEBUG   HandlerThread:28849 [handler.py:handle_request():158] handle_request: check_version
+2024-07-14 18:27:49,126 DEBUG   SenderThread:28849 [sender.py:send_request():406] send_request: check_version
+2024-07-14 18:27:49,316 DEBUG   HandlerThread:28849 [handler.py:handle_request():158] handle_request: run_start
+2024-07-14 18:27:49,335 DEBUG   HandlerThread:28849 [system_info.py:__init__():26] System info init
+2024-07-14 18:27:49,335 DEBUG   HandlerThread:28849 [system_info.py:__init__():41] System info init done
+2024-07-14 18:27:49,335 INFO    HandlerThread:28849 [system_monitor.py:start():194] Starting system monitor
+2024-07-14 18:27:49,335 INFO    SystemMonitor:28849 [system_monitor.py:_start():158] Starting system asset monitoring threads
+2024-07-14 18:27:49,335 INFO    HandlerThread:28849 [system_monitor.py:probe():214] Collecting system info
+2024-07-14 18:27:49,337 INFO    SystemMonitor:28849 [interfaces.py:start():188] Started cpu monitoring
+2024-07-14 18:27:49,338 INFO    SystemMonitor:28849 [interfaces.py:start():188] Started disk monitoring
+2024-07-14 18:27:49,340 INFO    SystemMonitor:28849 [interfaces.py:start():188] Started gpu monitoring
+2024-07-14 18:27:49,341 INFO    SystemMonitor:28849 [interfaces.py:start():188] Started memory monitoring
+2024-07-14 18:27:49,342 INFO    SystemMonitor:28849 [interfaces.py:start():188] Started network monitoring
+2024-07-14 18:27:49,388 DEBUG   HandlerThread:28849 [system_info.py:probe():152] Probing system
+2024-07-14 18:27:49,391 DEBUG   HandlerThread:28849 [system_info.py:_probe_git():137] Probing git
+2024-07-14 18:27:49,409 DEBUG   HandlerThread:28849 [system_info.py:_probe_git():145] Probing git done
+2024-07-14 18:27:49,410 DEBUG   HandlerThread:28849 [system_info.py:probe():200] Probing system done
+2024-07-14 18:27:49,410 DEBUG   HandlerThread:28849 [system_monitor.py:probe():223] {'os': 'Linux-4.15.0-213-generic-x86_64-with-glibc2.27', 'python': '3.11.3', 'heartbeatAt': '2024-07-14T12:57:49.388631', 'startedAt': '2024-07-14T12:57:48.312618', 'docker': None, 'cuda': None, 'args': (), 'state': 'running', 'program': '/home2/adyansh/LLM4ADR/Finetuning/Code/local-script.py', 'codePathLocal': 'local-script.py', 'codePath': 'Finetuning/Code/local-script.py', 'git': {'remote': 'https://github.com/sa4s-serc/LLM4ADR', 'commit': '20ef968a79ae096b682e72c48b09c9785f1659e5'}, 'email': 'adyansh.kakran@research.iiit.ac.in', 'root': '/home2/adyansh/LLM4ADR', 'host': 'gnode078', 'username': 'adyansh', 'executable': '/home2/adyansh/LLM4ADR/research/bin/python3', 'cpu_count': 20, 'cpu_count_logical': 40, 'cpu_freq': {'current': 1236.93835, 'min': 1200.0, 'max': 3400.0}, 'cpu_freq_per_core': [{'current': 1203.122, 'min': 1200.0, 'max': 3400.0}, {'current': 1203.073, 'min': 1200.0, 'max': 3400.0}, {'current': 1202.715, 'min': 1200.0, 'max': 3400.0}, {'current': 1463.075, 'min': 1200.0, 'max': 3400.0}, {'current': 1202.661, 'min': 1200.0, 'max': 3400.0}, {'current': 1202.774, 'min': 1200.0, 'max': 3400.0}, {'current': 1202.77, 'min': 1200.0, 'max': 3400.0}, {'current': 1202.482, 'min': 1200.0, 'max': 3400.0}, {'current': 1202.923, 'min': 1200.0, 'max': 3400.0}, {'current': 1201.324, 'min': 1200.0, 'max': 3400.0}, {'current': 1202.5, 'min': 1200.0, 'max': 3400.0}, {'current': 1202.497, 'min': 1200.0, 'max': 3400.0}, {'current': 1202.834, 'min': 1200.0, 'max': 3400.0}, {'current': 1202.682, 'min': 1200.0, 'max': 3400.0}, {'current': 1200.944, 'min': 1200.0, 'max': 3400.0}, {'current': 1202.212, 'min': 1200.0, 'max': 3400.0}, {'current': 1202.566, 'min': 1200.0, 'max': 3400.0}, {'current': 1202.652, 'min': 1200.0, 'max': 3400.0}, {'current': 1403.513, 'min': 1200.0, 'max': 3400.0}, {'current': 1630.516, 'min': 1200.0, 'max': 3400.0}, {'current': 1200.42, 'min': 1200.0, 'max': 3400.0}, {'current': 1201.066, 'min': 1200.0, 'max': 3400.0}, {'current': 1200.62, 'min': 1200.0, 'max': 3400.0}, {'current': 1835.577, 'min': 1200.0, 'max': 3400.0}, {'current': 1201.291, 'min': 1200.0, 'max': 3400.0}, {'current': 1200.633, 'min': 1200.0, 'max': 3400.0}, {'current': 1201.297, 'min': 1200.0, 'max': 3400.0}, {'current': 1200.614, 'min': 1200.0, 'max': 3400.0}, {'current': 1200.669, 'min': 1200.0, 'max': 3400.0}, {'current': 1201.671, 'min': 1200.0, 'max': 3400.0}, {'current': 1201.14, 'min': 1200.0, 'max': 3400.0}, {'current': 1201.403, 'min': 1200.0, 'max': 3400.0}, {'current': 1200.784, 'min': 1200.0, 'max': 3400.0}, {'current': 1201.05, 'min': 1200.0, 'max': 3400.0}, {'current': 1200.569, 'min': 1200.0, 'max': 3400.0}, {'current': 1200.952, 'min': 1200.0, 'max': 3400.0}, {'current': 1200.945, 'min': 1200.0, 'max': 3400.0}, {'current': 1200.72, 'min': 1200.0, 'max': 3400.0}, {'current': 1400.151, 'min': 1200.0, 'max': 3400.0}, {'current': 2021.934, 'min': 1200.0, 'max': 3400.0}], 'disk': {'/': {'total': 219.00129318237305, 'used': 64.02839279174805}}, 'gpu': 'NVIDIA GeForce RTX 2080 Ti', 'gpu_count': 4, 'gpu_devices': [{'name': 'NVIDIA GeForce RTX 2080 Ti', 'memory_total': 11811160064}, {'name': 'NVIDIA GeForce RTX 2080 Ti', 'memory_total': 11811160064}, {'name': 'NVIDIA GeForce RTX 2080 Ti', 'memory_total': 11811160064}, {'name': 'NVIDIA GeForce RTX 2080 Ti', 'memory_total': 11811160064}], 'memory': {'total': 125.78252792358398}}
+2024-07-14 18:27:49,410 INFO    HandlerThread:28849 [system_monitor.py:probe():224] Finished collecting system info
+2024-07-14 18:27:49,410 INFO    HandlerThread:28849 [system_monitor.py:probe():227] Publishing system info
+2024-07-14 18:27:49,411 DEBUG   HandlerThread:28849 [system_info.py:_save_conda():209] Saving list of conda packages installed into the current environment
+2024-07-14 18:27:50,111 INFO    Thread-12 :28849 [dir_watcher.py:_on_file_created():271] file/dir created: /home2/adyansh/LLM4ADR/Finetuning/Code/wandb/run-20240714_182748-6nrg0ruk/files/conda-environment.yaml
+2024-07-14 18:27:57,749 DEBUG   HandlerThread:28849 [system_info.py:_save_conda():224] Saving conda packages done
+2024-07-14 18:27:57,752 INFO    HandlerThread:28849 [system_monitor.py:probe():229] Finished publishing system info
+2024-07-14 18:27:57,774 DEBUG   HandlerThread:28849 [handler.py:handle_request():158] handle_request: status_report
+2024-07-14 18:27:57,775 DEBUG   HandlerThread:28849 [handler.py:handle_request():158] handle_request: keepalive
+2024-07-14 18:27:57,775 DEBUG   SenderThread:28849 [sender.py:send():379] send: files
+2024-07-14 18:27:57,776 INFO    SenderThread:28849 [sender.py:_save_file():1454] saving file wandb-metadata.json with policy now
+2024-07-14 18:27:58,116 INFO    Thread-12 :28849 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home2/adyansh/LLM4ADR/Finetuning/Code/wandb/run-20240714_182748-6nrg0ruk/files/conda-environment.yaml
+2024-07-14 18:27:58,117 INFO    Thread-12 :28849 [dir_watcher.py:_on_file_created():271] file/dir created: /home2/adyansh/LLM4ADR/Finetuning/Code/wandb/run-20240714_182748-6nrg0ruk/files/wandb-metadata.json
+2024-07-14 18:27:58,158 DEBUG   HandlerThread:28849 [handler.py:handle_request():158] handle_request: python_packages
+2024-07-14 18:27:58,158 DEBUG   SenderThread:28849 [sender.py:send_request():406] send_request: python_packages
+2024-07-14 18:27:58,160 DEBUG   HandlerThread:28849 [handler.py:handle_request():158] handle_request: stop_status
+2024-07-14 18:27:58,161 DEBUG   SenderThread:28849 [sender.py:send_request():406] send_request: stop_status
+2024-07-14 18:27:58,165 DEBUG   HandlerThread:28849 [handler.py:handle_request():158] handle_request: internal_messages
+2024-07-14 18:27:58,582 DEBUG   SenderThread:28849 [sender.py:send():379] send: telemetry
+2024-07-14 18:27:58,582 DEBUG   SenderThread:28849 [sender.py:send():379] send: config
+2024-07-14 18:27:58,584 DEBUG   SenderThread:28849 [sender.py:send():379] send: telemetry
+2024-07-14 18:27:58,584 DEBUG   SenderThread:28849 [sender.py:send():379] send: metric
+2024-07-14 18:27:58,585 DEBUG   SenderThread:28849 [sender.py:send():379] send: telemetry
+2024-07-14 18:27:58,585 DEBUG   SenderThread:28849 [sender.py:send():379] send: metric
+2024-07-14 18:27:58,585 WARNING SenderThread:28849 [sender.py:send_metric():1405] Seen metric with glob (shouldn't happen)
+2024-07-14 18:27:58,585 DEBUG   SenderThread:28849 [sender.py:send():379] send: telemetry
+2024-07-14 18:27:58,585 DEBUG   SenderThread:28849 [sender.py:send():379] send: config
+2024-07-14 18:27:58,587 DEBUG   SenderThread:28849 [sender.py:send():379] send: metric
+2024-07-14 18:27:58,587 DEBUG   SenderThread:28849 [sender.py:send():379] send: metric
+2024-07-14 18:27:58,587 WARNING SenderThread:28849 [sender.py:send_metric():1405] Seen metric with glob (shouldn't happen)
+2024-07-14 18:27:58,852 INFO    wandb-upload_0:28849 [upload_job.py:push():130] Uploaded file /tmp/tmp_w57cpwwwandb/7fhlvyog-wandb-metadata.json
+2024-07-14 18:27:59,118 INFO    Thread-12 :28849 [dir_watcher.py:_on_file_created():271] file/dir created: /home2/adyansh/LLM4ADR/Finetuning/Code/wandb/run-20240714_182748-6nrg0ruk/files/requirements.txt
+2024-07-14 18:27:59,118 INFO    Thread-12 :28849 [dir_watcher.py:_on_file_created():271] file/dir created: /home2/adyansh/LLM4ADR/Finetuning/Code/wandb/run-20240714_182748-6nrg0ruk/files/output.log
+2024-07-14 18:27:59,160 DEBUG   HandlerThread:28849 [handler.py:handle_request():158] handle_request: internal_messages
+2024-07-14 18:27:59,589 DEBUG   HandlerThread:28849 [handler.py:handle_request():158] handle_request: status_report
+2024-07-14 18:28:00,161 DEBUG   HandlerThread:28849 [handler.py:handle_request():158] handle_request: internal_messages
+2024-07-14 18:28:01,120 INFO    Thread-12 :28849 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home2/adyansh/LLM4ADR/Finetuning/Code/wandb/run-20240714_182748-6nrg0ruk/files/output.log
+2024-07-14 18:28:01,161 DEBUG   HandlerThread:28849 [handler.py:handle_request():158] handle_request: internal_messages
+2024-07-14 18:28:02,161 DEBUG   HandlerThread:28849 [handler.py:handle_request():158] handle_request: internal_messages
+2024-07-14 18:28:03,161 DEBUG   HandlerThread:28849 [handler.py:handle_request():158] handle_request: internal_messages
+2024-07-14 18:28:04,161 DEBUG   HandlerThread:28849 [handler.py:handle_request():158] handle_request: internal_messages
+2024-07-14 18:28:05,160 DEBUG   HandlerThread:28849 [handler.py:handle_request():158] handle_request: status_report
+2024-07-14 18:28:05,161 DEBUG   HandlerThread:28849 [handler.py:handle_request():158] handle_request: internal_messages
+2024-07-14 18:28:06,161 DEBUG   HandlerThread:28849 [handler.py:handle_request():158] handle_request: internal_messages
+2024-07-14 18:28:07,162 DEBUG   HandlerThread:28849 [handler.py:handle_request():158] handle_request: internal_messages
+2024-07-14 18:28:08,162 DEBUG   HandlerThread:28849 [handler.py:handle_request():158] handle_request: internal_messages
+2024-07-14 18:28:09,128 INFO    Thread-12 :28849 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home2/adyansh/LLM4ADR/Finetuning/Code/wandb/run-20240714_182748-6nrg0ruk/files/output.log
+2024-07-14 18:28:09,162 DEBUG   HandlerThread:28849 [handler.py:handle_request():158] handle_request: internal_messages
+2024-07-14 18:28:10,162 DEBUG   HandlerThread:28849 [handler.py:handle_request():158] handle_request: internal_messages
+2024-07-14 18:28:10,336 DEBUG   HandlerThread:28849 [handler.py:handle_request():158] handle_request: status_report
+2024-07-14 18:28:11,130 INFO    Thread-12 :28849 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home2/adyansh/LLM4ADR/Finetuning/Code/wandb/run-20240714_182748-6nrg0ruk/files/output.log
+2024-07-14 18:28:11,162 DEBUG   HandlerThread:28849 [handler.py:handle_request():158] handle_request: internal_messages
+2024-07-14 18:28:12,162 DEBUG   HandlerThread:28849 [handler.py:handle_request():158] handle_request: internal_messages
+2024-07-14 18:28:13,132 INFO    Thread-12 :28849 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home2/adyansh/LLM4ADR/Finetuning/Code/wandb/run-20240714_182748-6nrg0ruk/files/output.log
+2024-07-14 18:28:13,159 DEBUG   HandlerThread:28849 [handler.py:handle_request():158] handle_request: stop_status
+2024-07-14 18:28:13,160 DEBUG   SenderThread:28849 [sender.py:send_request():406] send_request: stop_status
+2024-07-14 18:28:13,163 DEBUG   HandlerThread:28849 [handler.py:handle_request():158] handle_request: internal_messages
+2024-07-14 18:28:14,162 DEBUG   HandlerThread:28849 [handler.py:handle_request():158] handle_request: internal_messages
+2024-07-14 18:28:15,135 INFO    Thread-12 :28849 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home2/adyansh/LLM4ADR/Finetuning/Code/wandb/run-20240714_182748-6nrg0ruk/files/output.log
+2024-07-14 18:28:15,163 DEBUG   HandlerThread:28849 [handler.py:handle_request():158] handle_request: internal_messages
+2024-07-14 18:28:15,722 DEBUG   HandlerThread:28849 [handler.py:handle_request():158] handle_request: status_report
+2024-07-14 18:28:16,163 DEBUG   HandlerThread:28849 [handler.py:handle_request():158] handle_request: internal_messages
+2024-07-14 18:28:17,137 INFO    Thread-12 :28849 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home2/adyansh/LLM4ADR/Finetuning/Code/wandb/run-20240714_182748-6nrg0ruk/files/output.log
+2024-07-14 18:28:17,163 DEBUG   HandlerThread:28849 [handler.py:handle_request():158] handle_request: internal_messages
+2024-07-14 18:28:18,163 DEBUG   HandlerThread:28849 [handler.py:handle_request():158] handle_request: internal_messages
+2024-07-14 18:28:19,139 INFO    Thread-12 :28849 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home2/adyansh/LLM4ADR/Finetuning/Code/wandb/run-20240714_182748-6nrg0ruk/files/output.log
+2024-07-14 18:28:19,163 DEBUG   HandlerThread:28849 [handler.py:handle_request():158] handle_request: internal_messages
+2024-07-14 18:28:20,163 DEBUG   HandlerThread:28849 [handler.py:handle_request():158] handle_request: internal_messages
+2024-07-14 18:28:21,122 DEBUG   HandlerThread:28849 [handler.py:handle_request():158] handle_request: status_report
+2024-07-14 18:28:21,142 INFO    Thread-12 :28849 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home2/adyansh/LLM4ADR/Finetuning/Code/wandb/run-20240714_182748-6nrg0ruk/files/output.log
+2024-07-14 18:28:21,163 DEBUG   HandlerThread:28849 [handler.py:handle_request():158] handle_request: internal_messages
+2024-07-14 18:28:22,143 INFO    Thread-12 :28849 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home2/adyansh/LLM4ADR/Finetuning/Code/wandb/run-20240714_182748-6nrg0ruk/files/config.yaml
+2024-07-14 18:28:22,163 DEBUG   HandlerThread:28849 [handler.py:handle_request():158] handle_request: internal_messages
+2024-07-14 18:28:23,145 INFO    Thread-12 :28849 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home2/adyansh/LLM4ADR/Finetuning/Code/wandb/run-20240714_182748-6nrg0ruk/files/output.log
+2024-07-14 18:28:23,163 DEBUG   HandlerThread:28849 [handler.py:handle_request():158] handle_request: internal_messages
+2024-07-14 18:28:24,163 DEBUG   HandlerThread:28849 [handler.py:handle_request():158] handle_request: internal_messages
+2024-07-14 18:28:25,147 INFO    Thread-12 :28849 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home2/adyansh/LLM4ADR/Finetuning/Code/wandb/run-20240714_182748-6nrg0ruk/files/output.log
+2024-07-14 18:28:25,163 DEBUG   HandlerThread:28849 [handler.py:handle_request():158] handle_request: internal_messages
+2024-07-14 18:28:26,164 DEBUG   HandlerThread:28849 [handler.py:handle_request():158] handle_request: internal_messages
+2024-07-14 18:28:26,892 DEBUG   HandlerThread:28849 [handler.py:handle_request():158] handle_request: status_report
+2024-07-14 18:28:27,149 INFO    Thread-12 :28849 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home2/adyansh/LLM4ADR/Finetuning/Code/wandb/run-20240714_182748-6nrg0ruk/files/output.log
+2024-07-14 18:28:27,164 DEBUG   HandlerThread:28849 [handler.py:handle_request():158] handle_request: internal_messages
+2024-07-14 18:28:28,159 DEBUG   HandlerThread:28849 [handler.py:handle_request():158] handle_request: stop_status
+2024-07-14 18:28:28,160 DEBUG   SenderThread:28849 [sender.py:send_request():406] send_request: stop_status
+2024-07-14 18:28:28,164 DEBUG   HandlerThread:28849 [handler.py:handle_request():158] handle_request: internal_messages
+2024-07-14 18:28:29,151 INFO    Thread-12 :28849 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home2/adyansh/LLM4ADR/Finetuning/Code/wandb/run-20240714_182748-6nrg0ruk/files/output.log
+2024-07-14 18:28:29,164 DEBUG   HandlerThread:28849 [handler.py:handle_request():158] handle_request: internal_messages
+2024-07-14 18:28:30,165 DEBUG   HandlerThread:28849 [handler.py:handle_request():158] handle_request: internal_messages
+2024-07-14 18:28:31,154 INFO    Thread-12 :28849 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home2/adyansh/LLM4ADR/Finetuning/Code/wandb/run-20240714_182748-6nrg0ruk/files/output.log
+2024-07-14 18:28:31,165 DEBUG   HandlerThread:28849 [handler.py:handle_request():158] handle_request: internal_messages
+2024-07-14 18:28:32,317 DEBUG   HandlerThread:28849 [handler.py:handle_request():158] handle_request: internal_messages
+2024-07-14 18:28:32,735 DEBUG   HandlerThread:28849 [handler.py:handle_request():158] handle_request: status_report
+2024-07-14 18:28:33,157 INFO    Thread-12 :28849 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home2/adyansh/LLM4ADR/Finetuning/Code/wandb/run-20240714_182748-6nrg0ruk/files/output.log
+2024-07-14 18:28:33,316 DEBUG   HandlerThread:28849 [handler.py:handle_request():158] handle_request: internal_messages
+2024-07-14 18:28:34,327 DEBUG   HandlerThread:28849 [handler.py:handle_request():158] handle_request: internal_messages
+2024-07-14 18:28:35,162 INFO    Thread-12 :28849 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home2/adyansh/LLM4ADR/Finetuning/Code/wandb/run-20240714_182748-6nrg0ruk/files/output.log
+2024-07-14 18:28:35,320 DEBUG   HandlerThread:28849 [handler.py:handle_request():158] handle_request: internal_messages
+2024-07-14 18:28:36,321 DEBUG   HandlerThread:28849 [handler.py:handle_request():158] handle_request: internal_messages
+2024-07-14 18:28:37,166 INFO    Thread-12 :28849 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home2/adyansh/LLM4ADR/Finetuning/Code/wandb/run-20240714_182748-6nrg0ruk/files/output.log
+2024-07-14 18:28:37,321 DEBUG   HandlerThread:28849 [handler.py:handle_request():158] handle_request: internal_messages
+2024-07-14 18:28:38,161 DEBUG   HandlerThread:28849 [handler.py:handle_request():158] handle_request: status_report
+2024-07-14 18:28:38,528 DEBUG   HandlerThread:28849 [handler.py:handle_request():158] handle_request: internal_messages
+2024-07-14 18:28:39,168 INFO    Thread-12 :28849 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home2/adyansh/LLM4ADR/Finetuning/Code/wandb/run-20240714_182748-6nrg0ruk/files/output.log
+2024-07-14 18:28:39,520 DEBUG   HandlerThread:28849 [handler.py:handle_request():158] handle_request: internal_messages
+2024-07-14 18:28:40,523 DEBUG   HandlerThread:28849 [handler.py:handle_request():158] handle_request: internal_messages
+2024-07-14 18:28:41,170 INFO    Thread-12 :28849 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home2/adyansh/LLM4ADR/Finetuning/Code/wandb/run-20240714_182748-6nrg0ruk/files/output.log
+2024-07-14 18:28:41,519 DEBUG   HandlerThread:28849 [handler.py:handle_request():158] handle_request: internal_messages
+2024-07-14 18:28:42,519 DEBUG   HandlerThread:28849 [handler.py:handle_request():158] handle_request: internal_messages
+2024-07-14 18:28:43,160 DEBUG   HandlerThread:28849 [handler.py:handle_request():158] handle_request: stop_status
+2024-07-14 18:28:43,160 DEBUG   SenderThread:28849 [sender.py:send_request():406] send_request: stop_status
+2024-07-14 18:28:43,172 INFO    Thread-12 :28849 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home2/adyansh/LLM4ADR/Finetuning/Code/wandb/run-20240714_182748-6nrg0ruk/files/output.log
+2024-07-14 18:28:43,454 DEBUG   HandlerThread:28849 [handler.py:handle_request():158] handle_request: status_report
+2024-07-14 18:28:43,520 DEBUG   HandlerThread:28849 [handler.py:handle_request():158] handle_request: internal_messages
+2024-07-14 18:28:44,519 DEBUG   HandlerThread:28849 [handler.py:handle_request():158] handle_request: internal_messages
+2024-07-14 18:28:45,174 INFO    Thread-12 :28849 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home2/adyansh/LLM4ADR/Finetuning/Code/wandb/run-20240714_182748-6nrg0ruk/files/output.log
+2024-07-14 18:28:45,519 DEBUG   HandlerThread:28849 [handler.py:handle_request():158] handle_request: internal_messages
+2024-07-14 18:28:46,519 DEBUG   HandlerThread:28849 [handler.py:handle_request():158] handle_request: internal_messages
+2024-07-14 18:28:47,176 INFO    Thread-12 :28849 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home2/adyansh/LLM4ADR/Finetuning/Code/wandb/run-20240714_182748-6nrg0ruk/files/output.log
+2024-07-14 18:28:47,519 DEBUG   HandlerThread:28849 [handler.py:handle_request():158] handle_request: internal_messages
+2024-07-14 18:28:48,520 DEBUG   HandlerThread:28849 [handler.py:handle_request():158] handle_request: internal_messages
+2024-07-14 18:28:48,709 DEBUG   HandlerThread:28849 [handler.py:handle_request():158] handle_request: status_report
+2024-07-14 18:28:49,178 INFO    Thread-12 :28849 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home2/adyansh/LLM4ADR/Finetuning/Code/wandb/run-20240714_182748-6nrg0ruk/files/output.log
+2024-07-14 18:28:49,343 DEBUG   SystemMonitor:28849 [system_monitor.py:_start():172] Starting system metrics aggregation loop
+2024-07-14 18:28:49,346 DEBUG   SenderThread:28849 [sender.py:send():379] send: stats
+2024-07-14 18:28:49,520 DEBUG   HandlerThread:28849 [handler.py:handle_request():158] handle_request: internal_messages
+2024-07-14 18:28:50,520 DEBUG   HandlerThread:28849 [handler.py:handle_request():158] handle_request: internal_messages
+2024-07-14 18:28:51,181 INFO    Thread-12 :28849 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home2/adyansh/LLM4ADR/Finetuning/Code/wandb/run-20240714_182748-6nrg0ruk/files/output.log
+2024-07-14 18:28:51,655 DEBUG   HandlerThread:28849 [handler.py:handle_request():158] handle_request: internal_messages
+2024-07-14 18:28:52,635 DEBUG   HandlerThread:28849 [handler.py:handle_request():158] handle_request: internal_messages
+2024-07-14 18:28:53,183 INFO    Thread-12 :28849 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home2/adyansh/LLM4ADR/Finetuning/Code/wandb/run-20240714_182748-6nrg0ruk/files/output.log
+2024-07-14 18:28:53,667 DEBUG   HandlerThread:28849 [handler.py:handle_request():158] handle_request: internal_messages
+2024-07-14 18:28:54,123 DEBUG   HandlerThread:28849 [handler.py:handle_request():158] handle_request: status_report
+2024-07-14 18:28:54,635 DEBUG   HandlerThread:28849 [handler.py:handle_request():158] handle_request: internal_messages
+2024-07-14 18:28:55,185 INFO    Thread-12 :28849 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home2/adyansh/LLM4ADR/Finetuning/Code/wandb/run-20240714_182748-6nrg0ruk/files/output.log
+2024-07-14 18:28:55,635 DEBUG   HandlerThread:28849 [handler.py:handle_request():158] handle_request: internal_messages
+2024-07-14 18:28:56,638 DEBUG   HandlerThread:28849 [handler.py:handle_request():158] handle_request: internal_messages
+2024-07-14 18:28:57,187 INFO    Thread-12 :28849 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home2/adyansh/LLM4ADR/Finetuning/Code/wandb/run-20240714_182748-6nrg0ruk/files/output.log
+2024-07-14 18:28:57,640 DEBUG   HandlerThread:28849 [handler.py:handle_request():158] handle_request: internal_messages
+2024-07-14 18:28:58,160 DEBUG   HandlerThread:28849 [handler.py:handle_request():158] handle_request: stop_status
+2024-07-14 18:28:58,161 DEBUG   SenderThread:28849 [sender.py:send_request():406] send_request: stop_status
+2024-07-14 18:28:58,632 DEBUG   SenderThread:28849 [sender.py:send():379] send: exit
+2024-07-14 18:28:58,632 INFO    SenderThread:28849 [sender.py:send_exit():586] handling exit code: 255
+2024-07-14 18:28:58,632 INFO    SenderThread:28849 [sender.py:send_exit():588] handling runtime: 69
+2024-07-14 18:28:58,634 INFO    SenderThread:28849 [sender.py:_save_file():1454] saving file wandb-summary.json with policy end
+2024-07-14 18:28:58,635 INFO    SenderThread:28849 [sender.py:send_exit():594] send defer
+2024-07-14 18:28:58,635 DEBUG   HandlerThread:28849 [handler.py:handle_request():158] handle_request: defer
+2024-07-14 18:28:58,635 INFO    HandlerThread:28849 [handler.py:handle_request_defer():184] handle defer: 0
+2024-07-14 18:28:58,635 DEBUG   SenderThread:28849 [sender.py:send_request():406] send_request: defer
+2024-07-14 18:28:58,635 INFO    SenderThread:28849 [sender.py:send_request_defer():610] handle sender defer: 0
+2024-07-14 18:28:58,636 INFO    SenderThread:28849 [sender.py:transition_state():614] send defer: 1
+2024-07-14 18:28:58,636 DEBUG   HandlerThread:28849 [handler.py:handle_request():158] handle_request: defer
+2024-07-14 18:28:58,636 INFO    HandlerThread:28849 [handler.py:handle_request_defer():184] handle defer: 1
+2024-07-14 18:28:58,636 DEBUG   SenderThread:28849 [sender.py:send_request():406] send_request: defer
+2024-07-14 18:28:58,636 INFO    SenderThread:28849 [sender.py:send_request_defer():610] handle sender defer: 1
+2024-07-14 18:28:58,636 INFO    SenderThread:28849 [sender.py:transition_state():614] send defer: 2
+2024-07-14 18:28:58,636 DEBUG   HandlerThread:28849 [handler.py:handle_request():158] handle_request: defer
+2024-07-14 18:28:58,636 INFO    HandlerThread:28849 [handler.py:handle_request_defer():184] handle defer: 2
+2024-07-14 18:28:58,636 INFO    HandlerThread:28849 [system_monitor.py:finish():203] Stopping system monitor
+2024-07-14 18:28:58,636 DEBUG   SystemMonitor:28849 [system_monitor.py:_start():179] Finished system metrics aggregation loop
+2024-07-14 18:28:58,637 DEBUG   SystemMonitor:28849 [system_monitor.py:_start():183] Publishing last batch of metrics
+2024-07-14 18:28:58,639 INFO    HandlerThread:28849 [interfaces.py:finish():200] Joined cpu monitor
+2024-07-14 18:28:58,639 INFO    HandlerThread:28849 [interfaces.py:finish():200] Joined disk monitor
+2024-07-14 18:28:58,921 INFO    HandlerThread:28849 [interfaces.py:finish():200] Joined gpu monitor
+2024-07-14 18:28:58,921 INFO    HandlerThread:28849 [interfaces.py:finish():200] Joined memory monitor
+2024-07-14 18:28:58,921 INFO    HandlerThread:28849 [interfaces.py:finish():200] Joined network monitor
+2024-07-14 18:28:58,923 DEBUG   SenderThread:28849 [sender.py:send_request():406] send_request: defer
+2024-07-14 18:28:58,923 INFO    SenderThread:28849 [sender.py:send_request_defer():610] handle sender defer: 2
+2024-07-14 18:28:58,923 INFO    SenderThread:28849 [sender.py:transition_state():614] send defer: 3
+2024-07-14 18:28:58,923 DEBUG   SenderThread:28849 [sender.py:send():379] send: stats
+2024-07-14 18:28:58,924 DEBUG   HandlerThread:28849 [handler.py:handle_request():158] handle_request: defer
+2024-07-14 18:28:58,925 INFO    HandlerThread:28849 [handler.py:handle_request_defer():184] handle defer: 3
+2024-07-14 18:28:58,925 DEBUG   SenderThread:28849 [sender.py:send_request():406] send_request: defer
+2024-07-14 18:28:58,925 INFO    SenderThread:28849 [sender.py:send_request_defer():610] handle sender defer: 3
+2024-07-14 18:28:58,926 INFO    SenderThread:28849 [sender.py:transition_state():614] send defer: 4
+2024-07-14 18:28:58,926 DEBUG   HandlerThread:28849 [handler.py:handle_request():158] handle_request: defer
+2024-07-14 18:28:58,926 INFO    HandlerThread:28849 [handler.py:handle_request_defer():184] handle defer: 4
+2024-07-14 18:28:58,926 DEBUG   SenderThread:28849 [sender.py:send_request():406] send_request: defer
+2024-07-14 18:28:58,926 INFO    SenderThread:28849 [sender.py:send_request_defer():610] handle sender defer: 4
+2024-07-14 18:28:58,926 INFO    SenderThread:28849 [sender.py:transition_state():614] send defer: 5
+2024-07-14 18:28:58,926 DEBUG   HandlerThread:28849 [handler.py:handle_request():158] handle_request: defer
+2024-07-14 18:28:58,926 INFO    HandlerThread:28849 [handler.py:handle_request_defer():184] handle defer: 5
+2024-07-14 18:28:58,927 DEBUG   SenderThread:28849 [sender.py:send():379] send: summary
+2024-07-14 18:28:58,929 INFO    SenderThread:28849 [sender.py:_save_file():1454] saving file wandb-summary.json with policy end
+2024-07-14 18:28:58,930 DEBUG   SenderThread:28849 [sender.py:send_request():406] send_request: defer
+2024-07-14 18:28:58,930 INFO    SenderThread:28849 [sender.py:send_request_defer():610] handle sender defer: 5
+2024-07-14 18:28:58,930 INFO    SenderThread:28849 [sender.py:transition_state():614] send defer: 6
+2024-07-14 18:28:58,930 DEBUG   HandlerThread:28849 [handler.py:handle_request():158] handle_request: defer
+2024-07-14 18:28:58,930 INFO    HandlerThread:28849 [handler.py:handle_request_defer():184] handle defer: 6
+2024-07-14 18:28:58,930 DEBUG   SenderThread:28849 [sender.py:send_request():406] send_request: defer
+2024-07-14 18:28:58,930 INFO    SenderThread:28849 [sender.py:send_request_defer():610] handle sender defer: 6
+2024-07-14 18:28:58,930 INFO    SenderThread:28849 [sender.py:transition_state():614] send defer: 7
+2024-07-14 18:28:58,931 DEBUG   HandlerThread:28849 [handler.py:handle_request():158] handle_request: status_report
+2024-07-14 18:28:58,931 DEBUG   HandlerThread:28849 [handler.py:handle_request():158] handle_request: defer
+2024-07-14 18:28:58,931 INFO    HandlerThread:28849 [handler.py:handle_request_defer():184] handle defer: 7
+2024-07-14 18:28:58,931 DEBUG   SenderThread:28849 [sender.py:send_request():406] send_request: defer
+2024-07-14 18:28:58,931 INFO    SenderThread:28849 [sender.py:send_request_defer():610] handle sender defer: 7
+2024-07-14 18:28:59,191 INFO    Thread-12 :28849 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home2/adyansh/LLM4ADR/Finetuning/Code/wandb/run-20240714_182748-6nrg0ruk/files/output.log
+2024-07-14 18:28:59,191 INFO    Thread-12 :28849 [dir_watcher.py:_on_file_created():271] file/dir created: /home2/adyansh/LLM4ADR/Finetuning/Code/wandb/run-20240714_182748-6nrg0ruk/files/wandb-summary.json
+2024-07-14 18:28:59,633 DEBUG   HandlerThread:28849 [handler.py:handle_request():158] handle_request: poll_exit
+2024-07-14 18:29:00,696 INFO    SenderThread:28849 [sender.py:transition_state():614] send defer: 8
+2024-07-14 18:29:00,696 DEBUG   SenderThread:28849 [sender.py:send_request():406] send_request: poll_exit
+2024-07-14 18:29:00,696 DEBUG   HandlerThread:28849 [handler.py:handle_request():158] handle_request: defer
+2024-07-14 18:29:00,697 INFO    HandlerThread:28849 [handler.py:handle_request_defer():184] handle defer: 8
+2024-07-14 18:29:00,698 DEBUG   SenderThread:28849 [sender.py:send_request():406] send_request: defer
+2024-07-14 18:29:00,698 INFO    SenderThread:28849 [sender.py:send_request_defer():610] handle sender defer: 8
+2024-07-14 18:29:00,698 INFO    SenderThread:28849 [job_builder.py:build():440] Attempting to build job artifact
+2024-07-14 18:29:00,702 INFO    SenderThread:28849 [job_builder.py:_get_source_type():569] is repo sourced job
+2024-07-14 18:29:00,766 INFO    SenderThread:28849 [job_builder.py:build():545] adding wandb-job metadata file
+2024-07-14 18:29:00,825 INFO    SenderThread:28849 [sender.py:transition_state():614] send defer: 9
+2024-07-14 18:29:00,825 DEBUG   HandlerThread:28849 [handler.py:handle_request():158] handle_request: defer
+2024-07-14 18:29:00,825 DEBUG   SenderThread:28849 [sender.py:send():379] send: artifact
+2024-07-14 18:29:00,825 INFO    HandlerThread:28849 [handler.py:handle_request_defer():184] handle defer: 9
+2024-07-14 18:29:01,193 INFO    Thread-12 :28849 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home2/adyansh/LLM4ADR/Finetuning/Code/wandb/run-20240714_182748-6nrg0ruk/files/output.log
+2024-07-14 18:29:01,634 DEBUG   HandlerThread:28849 [handler.py:handle_request():158] handle_request: poll_exit
+2024-07-14 18:29:02,305 INFO    SenderThread:28849 [sender.py:send_artifact():1530] sent artifact job-https___github.com_sa4s-serc_LLM4ADR_Finetuning_Code_local-script.py - {'id': 'QXJ0aWZhY3Q6OTcxODkxMDIx', 'state': 'COMMITTED', 'artifactSequence': {'id': 'QXJ0aWZhY3RDb2xsZWN0aW9uOjI2NDgwODU4Mg==', 'latestArtifact': {'id': 'QXJ0aWZhY3Q6OTcxODkxMDIx', 'versionIndex': 1}}}
+2024-07-14 18:29:02,305 DEBUG   SenderThread:28849 [sender.py:send_request():406] send_request: defer
+2024-07-14 18:29:02,305 INFO    SenderThread:28849 [sender.py:send_request_defer():610] handle sender defer: 9
+2024-07-14 18:29:02,305 INFO    SenderThread:28849 [dir_watcher.py:finish():358] shutting down directory watcher
+2024-07-14 18:29:03,195 INFO    SenderThread:28849 [dir_watcher.py:finish():388] scan: /home2/adyansh/LLM4ADR/Finetuning/Code/wandb/run-20240714_182748-6nrg0ruk/files
+2024-07-14 18:29:03,196 INFO    SenderThread:28849 [dir_watcher.py:finish():402] scan save: /home2/adyansh/LLM4ADR/Finetuning/Code/wandb/run-20240714_182748-6nrg0ruk/files/requirements.txt requirements.txt
+2024-07-14 18:29:03,196 INFO    SenderThread:28849 [dir_watcher.py:finish():402] scan save: /home2/adyansh/LLM4ADR/Finetuning/Code/wandb/run-20240714_182748-6nrg0ruk/files/wandb-summary.json wandb-summary.json
+2024-07-14 18:29:03,201 INFO    SenderThread:28849 [dir_watcher.py:finish():402] scan save: /home2/adyansh/LLM4ADR/Finetuning/Code/wandb/run-20240714_182748-6nrg0ruk/files/config.yaml config.yaml
+2024-07-14 18:29:03,202 INFO    SenderThread:28849 [dir_watcher.py:finish():402] scan save: /home2/adyansh/LLM4ADR/Finetuning/Code/wandb/run-20240714_182748-6nrg0ruk/files/output.log output.log
+2024-07-14 18:29:03,206 INFO    SenderThread:28849 [dir_watcher.py:finish():402] scan save: /home2/adyansh/LLM4ADR/Finetuning/Code/wandb/run-20240714_182748-6nrg0ruk/files/conda-environment.yaml conda-environment.yaml
+2024-07-14 18:29:03,215 INFO    SenderThread:28849 [dir_watcher.py:finish():402] scan save: /home2/adyansh/LLM4ADR/Finetuning/Code/wandb/run-20240714_182748-6nrg0ruk/files/wandb-metadata.json wandb-metadata.json
+2024-07-14 18:29:03,215 INFO    SenderThread:28849 [sender.py:transition_state():614] send defer: 10
+2024-07-14 18:29:03,216 DEBUG   SenderThread:28849 [sender.py:send_request():406] send_request: poll_exit
+2024-07-14 18:29:03,221 DEBUG   HandlerThread:28849 [handler.py:handle_request():158] handle_request: defer
+2024-07-14 18:29:03,221 INFO    HandlerThread:28849 [handler.py:handle_request_defer():184] handle defer: 10
+2024-07-14 18:29:03,222 DEBUG   SenderThread:28849 [sender.py:send_request():406] send_request: defer
+2024-07-14 18:29:03,222 INFO    SenderThread:28849 [sender.py:send_request_defer():610] handle sender defer: 10
+2024-07-14 18:29:03,222 INFO    SenderThread:28849 [file_pusher.py:finish():169] shutting down file pusher
+2024-07-14 18:29:03,635 DEBUG   HandlerThread:28849 [handler.py:handle_request():158] handle_request: poll_exit
+2024-07-14 18:29:03,636 DEBUG   SenderThread:28849 [sender.py:send_request():406] send_request: poll_exit
+2024-07-14 18:29:03,847 INFO    wandb-upload_0:28849 [upload_job.py:push():130] Uploaded file /home2/adyansh/LLM4ADR/Finetuning/Code/wandb/run-20240714_182748-6nrg0ruk/files/requirements.txt
+2024-07-14 18:29:04,111 INFO    wandb-upload_1:28849 [upload_job.py:push():130] Uploaded file /home2/adyansh/LLM4ADR/Finetuning/Code/wandb/run-20240714_182748-6nrg0ruk/files/wandb-summary.json
+2024-07-14 18:29:04,125 INFO    wandb-upload_4:28849 [upload_job.py:push():130] Uploaded file /home2/adyansh/LLM4ADR/Finetuning/Code/wandb/run-20240714_182748-6nrg0ruk/files/conda-environment.yaml
+2024-07-14 18:29:04,150 INFO    wandb-upload_3:28849 [upload_job.py:push():130] Uploaded file /home2/adyansh/LLM4ADR/Finetuning/Code/wandb/run-20240714_182748-6nrg0ruk/files/output.log
+2024-07-14 18:29:04,165 INFO    wandb-upload_2:28849 [upload_job.py:push():130] Uploaded file /home2/adyansh/LLM4ADR/Finetuning/Code/wandb/run-20240714_182748-6nrg0ruk/files/config.yaml
+2024-07-14 18:29:04,365 INFO    Thread-11 (_thread_body):28849 [sender.py:transition_state():614] send defer: 11
+2024-07-14 18:29:04,365 DEBUG   HandlerThread:28849 [handler.py:handle_request():158] handle_request: defer
+2024-07-14 18:29:04,366 INFO    HandlerThread:28849 [handler.py:handle_request_defer():184] handle defer: 11
+2024-07-14 18:29:04,366 DEBUG   SenderThread:28849 [sender.py:send_request():406] send_request: defer
+2024-07-14 18:29:04,367 INFO    SenderThread:28849 [sender.py:send_request_defer():610] handle sender defer: 11
+2024-07-14 18:29:04,367 INFO    SenderThread:28849 [file_pusher.py:join():175] waiting for file pusher
+2024-07-14 18:29:04,367 INFO    SenderThread:28849 [sender.py:transition_state():614] send defer: 12
+2024-07-14 18:29:04,368 DEBUG   HandlerThread:28849 [handler.py:handle_request():158] handle_request: defer
+2024-07-14 18:29:04,368 INFO    HandlerThread:28849 [handler.py:handle_request_defer():184] handle defer: 12
+2024-07-14 18:29:04,368 DEBUG   SenderThread:28849 [sender.py:send_request():406] send_request: defer
+2024-07-14 18:29:04,368 INFO    SenderThread:28849 [sender.py:send_request_defer():610] handle sender defer: 12
+2024-07-14 18:29:04,369 INFO    SenderThread:28849 [file_stream.py:finish():601] file stream finish called
+2024-07-14 18:29:04,636 DEBUG   HandlerThread:28849 [handler.py:handle_request():158] handle_request: poll_exit
+2024-07-14 18:29:05,360 INFO    SenderThread:28849 [file_stream.py:finish():605] file stream finish is done
+2024-07-14 18:29:05,360 INFO    SenderThread:28849 [sender.py:transition_state():614] send defer: 13
+2024-07-14 18:29:05,361 DEBUG   SenderThread:28849 [sender.py:send_request():406] send_request: poll_exit
+2024-07-14 18:29:05,361 DEBUG   HandlerThread:28849 [handler.py:handle_request():158] handle_request: defer
+2024-07-14 18:29:05,361 INFO    HandlerThread:28849 [handler.py:handle_request_defer():184] handle defer: 13
+2024-07-14 18:29:05,362 DEBUG   SenderThread:28849 [sender.py:send_request():406] send_request: defer
+2024-07-14 18:29:05,362 INFO    SenderThread:28849 [sender.py:send_request_defer():610] handle sender defer: 13
+2024-07-14 18:29:05,362 INFO    SenderThread:28849 [sender.py:transition_state():614] send defer: 14
+2024-07-14 18:29:05,362 DEBUG   HandlerThread:28849 [handler.py:handle_request():158] handle_request: defer
+2024-07-14 18:29:05,363 INFO    HandlerThread:28849 [handler.py:handle_request_defer():184] handle defer: 14
+2024-07-14 18:29:05,363 DEBUG   SenderThread:28849 [sender.py:send():379] send: final
+2024-07-14 18:29:05,364 DEBUG   SenderThread:28849 [sender.py:send():379] send: footer
+2024-07-14 18:29:05,364 DEBUG   SenderThread:28849 [sender.py:send_request():406] send_request: defer
+2024-07-14 18:29:05,364 INFO    SenderThread:28849 [sender.py:send_request_defer():610] handle sender defer: 14
+2024-07-14 18:29:05,365 DEBUG   HandlerThread:28849 [handler.py:handle_request():158] handle_request: poll_exit
+2024-07-14 18:29:05,365 DEBUG   SenderThread:28849 [sender.py:send_request():406] send_request: poll_exit
+2024-07-14 18:29:05,366 DEBUG   HandlerThread:28849 [handler.py:handle_request():158] handle_request: server_info
+2024-07-14 18:29:05,367 DEBUG   SenderThread:28849 [sender.py:send_request():406] send_request: server_info
+2024-07-14 18:29:05,371 DEBUG   HandlerThread:28849 [handler.py:handle_request():158] handle_request: poll_exit
+2024-07-14 18:29:05,372 DEBUG   HandlerThread:28849 [handler.py:handle_request():158] handle_request: get_summary
+2024-07-14 18:29:05,372 DEBUG   HandlerThread:28849 [handler.py:handle_request():158] handle_request: sampled_history
+2024-07-14 18:29:05,373 DEBUG   HandlerThread:28849 [handler.py:handle_request():158] handle_request: internal_messages
+2024-07-14 18:29:05,640 DEBUG   SenderThread:28849 [sender.py:send_request():406] send_request: poll_exit
+2024-07-14 18:29:05,641 INFO    MainThread:28849 [wandb_run.py:_footer_history_summary_info():3991] rendering history
+2024-07-14 18:29:05,641 INFO    MainThread:28849 [wandb_run.py:_footer_history_summary_info():4023] rendering summary
+2024-07-14 18:29:05,642 INFO    MainThread:28849 [wandb_run.py:_footer_sync_info():3950] logging synced files
+2024-07-14 18:29:05,643 DEBUG   HandlerThread:28849 [handler.py:handle_request():158] handle_request: shutdown
+2024-07-14 18:29:05,643 INFO    HandlerThread:28849 [handler.py:finish():882] shutting down handler
+2024-07-14 18:29:06,372 INFO    WriterThread:28849 [datastore.py:close():296] close: /home2/adyansh/LLM4ADR/Finetuning/Code/wandb/run-20240714_182748-6nrg0ruk/run-6nrg0ruk.wandb
+2024-07-14 18:29:06,641 INFO    SenderThread:28849 [sender.py:finish():1608] shutting down sender
+2024-07-14 18:29:06,641 INFO    SenderThread:28849 [file_pusher.py:finish():169] shutting down file pusher
+2024-07-14 18:29:06,641 INFO    SenderThread:28849 [file_pusher.py:join():175] waiting for file pusher
