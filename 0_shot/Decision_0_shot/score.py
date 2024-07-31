@@ -3,11 +3,11 @@ import pandas as pd
 import nltk
 import json
 
-MODEL_NAME = "flan-t5-base"
+MODEL_NAME = "gpt-4o"
 CACHE_DIR = '/scratch/adyansh/cache' 
 DATA_DIR = f'../results/{MODEL_NAME}.jsonl'
 RESULT_DIR = f'../metrics/{MODEL_NAME}.json'
-PREDICTION_COL = 'Predictions'
+PREDICTION_COL = 'Predicted'
 TRUE_COL = 'Decision'
 
 def calculate_scores(data: pd.DataFrame) -> None:
@@ -17,7 +17,7 @@ def calculate_scores(data: pd.DataFrame) -> None:
     meteor = load('meteor', cache_dir=CACHE_DIR)
     bertscore = load("bertscore", cache_dir=CACHE_DIR)
     
-    data.rename(columns={'Prediction': 'babbage-002'}, inplace=True)
+    # data.rename(columns={'Prediction': 'babbage-002'}, inplace=True)
     data = data.dropna(subset=PREDICTION_COL)
     
     print('Your data is of length: ', len(data))
