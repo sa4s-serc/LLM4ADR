@@ -1,11 +1,8 @@
 from transformers import AutoTokenizer, AutoModelForSeq2SeqLM, DataCollatorForSeq2Seq, AutoModelForCausalLM, DataCollatorForLanguageModeling
 from transformers import Seq2SeqTrainingArguments, Seq2SeqTrainer
-import nltk
-import evaluate
 import pandas as pd
 import torch
-import time
-import wandb
+import sys
 from transformers.integrations import WandbCallback
 import os
 
@@ -14,11 +11,17 @@ os.environ["WANDB_LOG_MODEL"]="true"
 os.environ["WANDB_WATCH"]="false"
 
 # MODEL_NAME = "google/flan-t5-base"
-MODEL_NAME = "gpt2"
+# MODEL_NAME = "gpt2"
+MODEL_NAME = sys.argv[1]
+if MODEL_NAME is None:
+    print("Please provide a model name")
+    exit(1)
+    
 CACHE_DIR = "/scratch/adyansh/cache"
 
 tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME, cache_dir=CACHE_DIR)
 tokenizer.pad_token = tokenizer.eos_token
+
 if MODEL_NAME == "gpt2":
     model  = AutoModelForCausalLM.from_pretrained(MODEL_NAME, cache_dir=CACHE_DIR)
     data_collator = DataCollatorForLanguageModeling(tokenizer=tokenizer, mlm=False)
@@ -32,9 +35,9 @@ TRAIN_PATH = "../../Data/ADR-data/data_train.jsonl"
 VAL_PATH = "../../Data/ADR-data/data_val.jsonl"
 TEST_PATH = "../../Data/ADR-data/data_test.jsonl"
 
-train = pd.read_json(TRAIN_PATH, lines=True).sample(frac=0.01)
-val = pd.read_json(VAL_PATH, lines=True).sample(frac=0.01)
-test = pd.read_json(TEST_PATH, lines=True).sample(frac=0.01)
+train = pd.read_json(TRAIN_PATH, lines=True)
+val = pd.read_json(VAL_PATH, lines=True)
+test = pd.read_json(TEST_PATH, lines=True)
 
 max_decision = int(max(train["Decision"].map(len).max(), val["Decision"].map(len).max(), test["Decision"].map(len).max()))
 
@@ -54,11 +57,11 @@ tokenized_train = preprocess_function(train)
 tokenized_val = preprocess_function(val)
 tokenized_test = preprocess_function(test)
 
-nltk.download("punkt", quiet=True)
-rouge = evaluate.load("rouge")
-bleu = evaluate.load('bleu', cache_dir=CACHE_DIR)
-meteor = evaluate.load('meteor', cache_dir=CACHE_DIR)
-bertscore = evaluate.load("bertscore", cache_dir=CACHE_DIR)
+# nltk.download("punkt", quiet=True)
+# rouge = evaluate.load("rouge")
+# bleu = evaluate.load('bleu', cache_dir=CACHE_DIR)
+# meteor = evaluate.load('meteor', cache_dir=CACHE_DIR)
+# bertscore = evaluate.load("bertscore", cache_dir=CACHE_DIR)
 
 class FineTuningDataset(torch.utils.data.Dataset):
      def __init__(self, encodings, labels):
@@ -84,15 +87,20 @@ NUM_EPOCHS = 20
 # Set up training arguments
 training_args = Seq2SeqTrainingArguments(
     output_dir=f'/scratch/adyansh/results/{MODEL_NAME}',
-    evaluation_strategy="steps",
-    logging_dir=f'./logs/{time.time()}/',
-    logging_steps=100,
-    per_device_train_batch_size=BATCH_SIZE,
+    evaluation_strategy="epoch",
+    save_strategy="epoch",
+    logging_steps=1,
+    save_steps=1,
     save_total_limit=SAVE_TOTAL_LIM,
+    per_device_train_batch_size=BATCH_SIZE,
+    per_device_eval_batch_size=BATCH_SIZE,
     num_train_epochs=NUM_EPOCHS,
     push_to_hub=False,
     generation_max_length=1000,
     report_to="wandb",
+    load_best_model_at_end=True,
+    metric_for_best_model="eval_loss",
+    greater_is_better=False,
 )
 
 trainer = Seq2SeqTrainer(

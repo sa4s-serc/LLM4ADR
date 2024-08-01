@@ -1,0 +1,265 @@
+
+  0%|                                                   | 0/160 [00:00<?, ?it/s]/home2/adyansh/LLM4ADR/research/lib/python3.11/site-packages/torch/nn/parallel/_functions.py:68: UserWarning: Was asked to gather along dimension 0, but all input tensors were scalars; will instead unsqueeze and return a vector.
+  warnings.warn('Was asked to gather along dimension 0, but all '
+  2%|▊                                          | 3/160 [00:09<06:00,  2.30s/it]
+{'loss': 4.3284, 'grad_norm': 11.300854682922363, 'learning_rate': 4.96875e-05, 'epoch': 0.12}
+{'loss': 4.8316, 'grad_norm': 24.16248893737793, 'learning_rate': 4.937500000000001e-05, 'epoch': 0.25}
+{'loss': 5.1333, 'grad_norm': 22.963363647460938, 'learning_rate': 4.90625e-05, 'epoch': 0.38}
+
+  5%|██▏                                        | 8/160 [00:11<01:24,  1.80it/s]
+{'loss': 3.8155, 'grad_norm': 20.42513084411621, 'learning_rate': 4.8437500000000005e-05, 'epoch': 0.62}
+{'loss': 3.2514, 'grad_norm': 20.41168785095215, 'learning_rate': 4.8125000000000004e-05, 'epoch': 0.75}
+{'loss': 4.0692, 'grad_norm': 12.85881519317627, 'learning_rate': 4.7812500000000003e-05, 'epoch': 0.88}
+{'loss': 4.2611, 'grad_norm': 15.254226684570312, 'learning_rate': 4.75e-05, 'epoch': 1.0}
+
+  5%|██▏                                        | 8/160 [00:12<01:24,  1.80it/s]/home2/adyansh/LLM4ADR/research/lib/python3.11/site-packages/torch/nn/parallel/_functions.py:68: UserWarning: Was asked to gather along dimension 0, but all input tensors were scalars; will instead unsqueeze and return a vector.
+  warnings.warn('Was asked to gather along dimension 0, but all '
+  8%|███▏                                      | 12/160 [00:15<01:46,  1.39it/s]
+{'loss': 3.5005, 'grad_norm': 17.035839080810547, 'learning_rate': 4.71875e-05, 'epoch': 1.12}
+{'loss': 3.162, 'grad_norm': 17.928665161132812, 'learning_rate': 4.6875e-05, 'epoch': 1.25}
+{'loss': 3.4173, 'grad_norm': 12.996341705322266, 'learning_rate': 4.65625e-05, 'epoch': 1.38}
+{'loss': 3.1625, 'grad_norm': 13.575940132141113, 'learning_rate': 4.6250000000000006e-05, 'epoch': 1.5}
+
+ 10%|████▏                                     | 16/160 [00:17<00:57,  2.51it/s]
+{'loss': 2.6882, 'grad_norm': 15.298121452331543, 'learning_rate': 4.5625e-05, 'epoch': 1.75}
+{'loss': 3.1224, 'grad_norm': 14.153682708740234, 'learning_rate': 4.5312500000000004e-05, 'epoch': 1.88}
+{'loss': 3.672, 'grad_norm': 22.57703399658203, 'learning_rate': 4.5e-05, 'epoch': 2.0}
+{'eval_loss': 3.6130218505859375, 'eval_runtime': 0.5285, 'eval_samples_per_second': 18.92, 'eval_steps_per_second': 1.892, 'epoch': 2.0}
+ 10%|████▏                                     | 16/160 [00:17<00:57,  2.51it/s]/home2/adyansh/LLM4ADR/research/lib/python3.11/site-packages/torch/nn/parallel/_functions.py:68: UserWarning: Was asked to gather along dimension 0, but all input tensors were scalars; will instead unsqueeze and return a vector.
+  warnings.warn('Was asked to gather along dimension 0, but all '
+ 12%|█████▎                                    | 20/160 [00:21<01:35,  1.46it/s]
+{'loss': 2.3751, 'grad_norm': 10.85435676574707, 'learning_rate': 4.4375e-05, 'epoch': 2.25}
+{'loss': 3.2222, 'grad_norm': 7.227315425872803, 'learning_rate': 4.40625e-05, 'epoch': 2.38}
+{'loss': 3.27, 'grad_norm': 10.129578590393066, 'learning_rate': 4.375e-05, 'epoch': 2.5}
+
+ 15%|██████▎                                   | 24/160 [00:23<00:53,  2.55it/s]
+{'loss': 1.9749, 'grad_norm': 22.551868438720703, 'learning_rate': 4.3125000000000005e-05, 'epoch': 2.75}
+{'loss': 3.1695, 'grad_norm': 16.842519760131836, 'learning_rate': 4.28125e-05, 'epoch': 2.88}
+{'loss': 4.0218, 'grad_norm': 28.37772560119629, 'learning_rate': 4.25e-05, 'epoch': 3.0}
+ 15%|██████▎                                   | 24/160 [00:23<00:53,  2.55it/s]/home2/adyansh/LLM4ADR/research/lib/python3.11/site-packages/torch/nn/parallel/_functions.py:68: UserWarning: Was asked to gather along dimension 0, but all input tensors were scalars; will instead unsqueeze and return a vector.
+  warnings.warn('Was asked to gather along dimension 0, but all '
+{'loss': 2.3995, 'grad_norm': 12.242274284362793, 'learning_rate': 4.21875e-05, 'epoch': 3.12}
+ 18%|███████▌                                  | 29/160 [00:27<01:18,  1.67it/s]
+{'loss': 3.3763, 'grad_norm': 12.03377914428711, 'learning_rate': 4.1875e-05, 'epoch': 3.25}
+{'loss': 1.8768, 'grad_norm': 17.47976303100586, 'learning_rate': 4.156250000000001e-05, 'epoch': 3.38}
+{'loss': 3.1003, 'grad_norm': 12.242182731628418, 'learning_rate': 4.125e-05, 'epoch': 3.5}
+{'loss': 1.7456, 'grad_norm': 10.738402366638184, 'learning_rate': 4.09375e-05, 'epoch': 3.62}
+
+ 20%|████████▍                                 | 32/160 [00:29<00:50,  2.55it/s]
+{'loss': 3.1557, 'grad_norm': 11.966216087341309, 'learning_rate': 4.0312500000000004e-05, 'epoch': 3.88}
+{'loss': 2.8744, 'grad_norm': 11.412810325622559, 'learning_rate': 4e-05, 'epoch': 4.0}
+ 20%|████████▍                                 | 32/160 [00:29<00:50,  2.55it/s]/home2/adyansh/LLM4ADR/research/lib/python3.11/site-packages/torch/nn/parallel/_functions.py:68: UserWarning: Was asked to gather along dimension 0, but all input tensors were scalars; will instead unsqueeze and return a vector.
+  warnings.warn('Was asked to gather along dimension 0, but all '
+ 21%|████████▋                                 | 33/160 [00:31<02:41,  1.27s/it]
+{'loss': 2.1807, 'grad_norm': 13.164185523986816, 'learning_rate': 3.96875e-05, 'epoch': 4.12}
+
+ 24%|█████████▉                                | 38/160 [00:33<01:06,  1.84it/s]
+{'loss': 2.6712, 'grad_norm': 14.275932312011719, 'learning_rate': 3.90625e-05, 'epoch': 4.38}
+{'loss': 2.4661, 'grad_norm': 13.67133617401123, 'learning_rate': 3.875e-05, 'epoch': 4.5}
+{'loss': 1.9481, 'grad_norm': 14.8025484085083, 'learning_rate': 3.8437500000000006e-05, 'epoch': 4.62}
+{'loss': 1.8969, 'grad_norm': 16.101306915283203, 'learning_rate': 3.8125e-05, 'epoch': 4.75}
+
+ 25%|██████████▌                               | 40/160 [00:34<00:47,  2.53it/s]
+{'loss': 3.2001, 'grad_norm': 18.022972106933594, 'learning_rate': 3.7500000000000003e-05, 'epoch': 5.0}
+ 25%|██████████▌                               | 40/160 [00:34<00:47,  2.53it/s]/home2/adyansh/LLM4ADR/research/lib/python3.11/site-packages/torch/nn/parallel/_functions.py:68: UserWarning: Was asked to gather along dimension 0, but all input tensors were scalars; will instead unsqueeze and return a vector.
+  warnings.warn('Was asked to gather along dimension 0, but all '
+ 26%|██████████▊                               | 41/160 [00:37<02:33,  1.29s/it]
+{'loss': 1.5476, 'grad_norm': 14.243792533874512, 'learning_rate': 3.71875e-05, 'epoch': 5.12}
+
+ 29%|████████████                              | 46/160 [00:39<01:02,  1.83it/s]
+{'loss': 2.3073, 'grad_norm': 11.651716232299805, 'learning_rate': 3.65625e-05, 'epoch': 5.38}
+{'loss': 2.5192, 'grad_norm': 10.88420295715332, 'learning_rate': 3.625e-05, 'epoch': 5.5}
+{'loss': 1.9902, 'grad_norm': 9.850653648376465, 'learning_rate': 3.59375e-05, 'epoch': 5.62}
+{'loss': 1.7688, 'grad_norm': 13.177066802978516, 'learning_rate': 3.5625000000000005e-05, 'epoch': 5.75}
+{'loss': 2.4818, 'grad_norm': 12.468799591064453, 'learning_rate': 3.5312500000000005e-05, 'epoch': 5.88}
+
+ 30%|████████████▌                             | 48/160 [00:40<00:44,  2.52it/s]
+ 30%|████████████▌                             | 48/160 [00:40<00:44,  2.52it/s]/home2/adyansh/LLM4ADR/research/lib/python3.11/site-packages/torch/nn/parallel/_functions.py:68: UserWarning: Was asked to gather along dimension 0, but all input tensors were scalars; will instead unsqueeze and return a vector.
+  warnings.warn('Was asked to gather along dimension 0, but all '
+ 31%|████████████▊                             | 49/160 [00:43<02:21,  1.27s/it]
+{'loss': 2.4732, 'grad_norm': 11.943575859069824, 'learning_rate': 3.46875e-05, 'epoch': 6.12}
+
+ 34%|██████████████▏                           | 54/160 [00:45<00:57,  1.84it/s]
+{'loss': 2.2598, 'grad_norm': 11.796795845031738, 'learning_rate': 3.40625e-05, 'epoch': 6.38}
+{'loss': 1.6117, 'grad_norm': 12.951671600341797, 'learning_rate': 3.375000000000001e-05, 'epoch': 6.5}
+{'loss': 1.6804, 'grad_norm': 13.91434097290039, 'learning_rate': 3.34375e-05, 'epoch': 6.62}
+{'loss': 1.7141, 'grad_norm': 13.181961059570312, 'learning_rate': 3.3125e-05, 'epoch': 6.75}
+{'loss': 1.8553, 'grad_norm': 10.907817840576172, 'learning_rate': 3.2812500000000005e-05, 'epoch': 6.88}
+
+ 35%|██████████████▋                           | 56/160 [00:46<00:41,  2.53it/s]
+ 35%|██████████████▋                           | 56/160 [00:46<00:41,  2.53it/s]/home2/adyansh/LLM4ADR/research/lib/python3.11/site-packages/torch/nn/parallel/_functions.py:68: UserWarning: Was asked to gather along dimension 0, but all input tensors were scalars; will instead unsqueeze and return a vector.
+  warnings.warn('Was asked to gather along dimension 0, but all '
+ 36%|██████████████▉                           | 57/160 [00:49<02:13,  1.30s/it]
+{'loss': 1.4461, 'grad_norm': 16.57400131225586, 'learning_rate': 3.21875e-05, 'epoch': 7.12}
+{'loss': 1.4082, 'grad_norm': 12.1581392288208, 'learning_rate': 3.1875e-05, 'epoch': 7.25}
+
+ 39%|████████████████▎                         | 62/160 [00:51<00:53,  1.82it/s]
+{'loss': 2.568, 'grad_norm': 11.718252182006836, 'learning_rate': 3.125e-05, 'epoch': 7.5}
+{'loss': 2.024, 'grad_norm': 8.218280792236328, 'learning_rate': 3.09375e-05, 'epoch': 7.62}
+{'loss': 1.6078, 'grad_norm': 11.153549194335938, 'learning_rate': 3.0625000000000006e-05, 'epoch': 7.75}
+{'loss': 1.44, 'grad_norm': 13.55972671508789, 'learning_rate': 3.0312499999999998e-05, 'epoch': 7.88}
+
+ 40%|████████████████▊                         | 64/160 [00:52<00:38,  2.52it/s]
+ 40%|████████████████▊                         | 64/160 [00:52<00:38,  2.52it/s]/home2/adyansh/LLM4ADR/research/lib/python3.11/site-packages/torch/nn/parallel/_functions.py:68: UserWarning: Was asked to gather along dimension 0, but all input tensors were scalars; will instead unsqueeze and return a vector.
+  warnings.warn('Was asked to gather along dimension 0, but all '
+ 41%|█████████████████                         | 65/160 [00:55<02:09,  1.37s/it]
+{'loss': 1.4963, 'grad_norm': 11.560433387756348, 'learning_rate': 2.96875e-05, 'epoch': 8.12}
+
+ 43%|██████████████████                        | 69/160 [00:57<01:05,  1.40it/s]
+{'loss': 1.2267, 'grad_norm': 9.525500297546387, 'learning_rate': 2.9062500000000005e-05, 'epoch': 8.38}
+{'loss': 1.9377, 'grad_norm': 13.66976547241211, 'learning_rate': 2.8749999999999997e-05, 'epoch': 8.5}
+{'loss': 2.468, 'grad_norm': 11.066311836242676, 'learning_rate': 2.84375e-05, 'epoch': 8.62}
+{'loss': 1.9307, 'grad_norm': 10.213231086730957, 'learning_rate': 2.8125000000000003e-05, 'epoch': 8.75}
+
+ 45%|██████████████████▉                       | 72/160 [00:59<00:38,  2.31it/s]
+{'loss': 1.3038, 'grad_norm': 28.038841247558594, 'learning_rate': 2.7500000000000004e-05, 'epoch': 9.0}
+ 45%|██████████████████▉                       | 72/160 [00:59<00:38,  2.31it/s]/home2/adyansh/LLM4ADR/research/lib/python3.11/site-packages/torch/nn/parallel/_functions.py:68: UserWarning: Was asked to gather along dimension 0, but all input tensors were scalars; will instead unsqueeze and return a vector.
+  warnings.warn('Was asked to gather along dimension 0, but all '
+{'loss': 2.0443, 'grad_norm': 8.999584197998047, 'learning_rate': 2.71875e-05, 'epoch': 9.12}
+{'loss': 1.2595, 'grad_norm': 13.708328247070312, 'learning_rate': 2.6875e-05, 'epoch': 9.25}
+ 48%|████████████████████▏                     | 77/160 [01:03<00:51,  1.60it/s]
+{'loss': 1.7439, 'grad_norm': 10.835949897766113, 'learning_rate': 2.6562500000000002e-05, 'epoch': 9.38}
+{'loss': 1.7779, 'grad_norm': 9.502030372619629, 'learning_rate': 2.625e-05, 'epoch': 9.5}
+{'loss': 0.7104, 'grad_norm': 12.982515335083008, 'learning_rate': 2.5937500000000004e-05, 'epoch': 9.62}
+{'loss': 1.7189, 'grad_norm': 9.78834342956543, 'learning_rate': 2.5625e-05, 'epoch': 9.75}
+
+ 50%|█████████████████████                     | 80/160 [01:05<00:32,  2.49it/s]
+{'loss': 2.3224, 'grad_norm': 22.19951629638672, 'learning_rate': 2.5e-05, 'epoch': 10.0}
+ 50%|█████████████████████                     | 80/160 [01:05<00:32,  2.49it/s]/home2/adyansh/LLM4ADR/research/lib/python3.11/site-packages/torch/nn/parallel/_functions.py:68: UserWarning: Was asked to gather along dimension 0, but all input tensors were scalars; will instead unsqueeze and return a vector.
+  warnings.warn('Was asked to gather along dimension 0, but all '
+ 51%|█████████████████████▎                    | 81/160 [01:07<01:41,  1.29s/it]
+{'loss': 0.5413, 'grad_norm': 11.563301086425781, 'learning_rate': 2.4687500000000004e-05, 'epoch': 10.12}
+
+ 54%|██████████████████████▌                   | 86/160 [01:09<00:40,  1.83it/s]
+{'loss': 1.632, 'grad_norm': 11.241800308227539, 'learning_rate': 2.4062500000000002e-05, 'epoch': 10.38}
+{'loss': 1.6506, 'grad_norm': 8.510382652282715, 'learning_rate': 2.375e-05, 'epoch': 10.5}
+{'loss': 1.6476, 'grad_norm': 9.888943672180176, 'learning_rate': 2.34375e-05, 'epoch': 10.62}
+{'loss': 2.2214, 'grad_norm': 11.966158866882324, 'learning_rate': 2.3125000000000003e-05, 'epoch': 10.75}
+{'loss': 1.3951, 'grad_norm': 10.09638500213623, 'learning_rate': 2.28125e-05, 'epoch': 10.88}
+
+ 55%|███████████████████████                   | 88/160 [01:11<00:28,  2.52it/s]
+ 55%|███████████████████████                   | 88/160 [01:11<00:28,  2.52it/s]/home2/adyansh/LLM4ADR/research/lib/python3.11/site-packages/torch/nn/parallel/_functions.py:68: UserWarning: Was asked to gather along dimension 0, but all input tensors were scalars; will instead unsqueeze and return a vector.
+  warnings.warn('Was asked to gather along dimension 0, but all '
+ 56%|███████████████████████▎                  | 89/160 [01:13<01:33,  1.31s/it]
+{'loss': 1.7558, 'grad_norm': 10.281039237976074, 'learning_rate': 2.21875e-05, 'epoch': 11.12}
+
+ 59%|████████████████████████▋                 | 94/160 [01:15<00:36,  1.81it/s]
+{'loss': 0.5959, 'grad_norm': 12.003449440002441, 'learning_rate': 2.1562500000000002e-05, 'epoch': 11.38}
+{'loss': 1.0471, 'grad_norm': 10.828333854675293, 'learning_rate': 2.125e-05, 'epoch': 11.5}
+{'loss': 2.1519, 'grad_norm': 9.764930725097656, 'learning_rate': 2.09375e-05, 'epoch': 11.62}
+{'loss': 1.4703, 'grad_norm': 11.456891059875488, 'learning_rate': 2.0625e-05, 'epoch': 11.75}
+{'loss': 1.5458, 'grad_norm': 11.94037914276123, 'learning_rate': 2.0312500000000002e-05, 'epoch': 11.88}
+
+ 60%|█████████████████████████▏                | 96/160 [01:17<00:25,  2.50it/s]
+ 60%|█████████████████████████▏                | 96/160 [01:17<00:25,  2.50it/s]/home2/adyansh/LLM4ADR/research/lib/python3.11/site-packages/torch/nn/parallel/_functions.py:68: UserWarning: Was asked to gather along dimension 0, but all input tensors were scalars; will instead unsqueeze and return a vector.
+  warnings.warn('Was asked to gather along dimension 0, but all '
+ 61%|█████████████████████████▍                | 97/160 [01:19<01:22,  1.31s/it]
+{'loss': 1.5266, 'grad_norm': 8.90234088897705, 'learning_rate': 1.96875e-05, 'epoch': 12.12}
+
+ 64%|██████████████████████████▏              | 102/160 [01:21<00:31,  1.82it/s]
+{'loss': 0.8188, 'grad_norm': 12.941398620605469, 'learning_rate': 1.90625e-05, 'epoch': 12.38}
+{'loss': 1.8061, 'grad_norm': 9.438698768615723, 'learning_rate': 1.8750000000000002e-05, 'epoch': 12.5}
+{'loss': 1.4022, 'grad_norm': 9.161663055419922, 'learning_rate': 1.84375e-05, 'epoch': 12.62}
+{'loss': 0.8635, 'grad_norm': 10.244654655456543, 'learning_rate': 1.8125e-05, 'epoch': 12.75}
+{'loss': 1.9458, 'grad_norm': 11.620509147644043, 'learning_rate': 1.7812500000000003e-05, 'epoch': 12.88}
+
+ 65%|██████████████████████████▋              | 104/160 [01:22<00:22,  2.51it/s]
+ 65%|██████████████████████████▋              | 104/160 [01:22<00:22,  2.51it/s]/home2/adyansh/LLM4ADR/research/lib/python3.11/site-packages/torch/nn/parallel/_functions.py:68: UserWarning: Was asked to gather along dimension 0, but all input tensors were scalars; will instead unsqueeze and return a vector.
+  warnings.warn('Was asked to gather along dimension 0, but all '
+ 66%|██████████████████████████▉              | 105/160 [01:25<01:13,  1.34s/it]
+{'loss': 1.0407, 'grad_norm': 9.352664947509766, 'learning_rate': 1.71875e-05, 'epoch': 13.12}
+
+ 69%|████████████████████████████▏            | 110/160 [01:27<00:27,  1.80it/s]
+{'loss': 1.0084, 'grad_norm': 10.304848670959473, 'learning_rate': 1.65625e-05, 'epoch': 13.38}
+{'loss': 1.8086, 'grad_norm': 12.352595329284668, 'learning_rate': 1.6250000000000002e-05, 'epoch': 13.5}
+{'loss': 1.2169, 'grad_norm': 10.243423461914062, 'learning_rate': 1.59375e-05, 'epoch': 13.62}
+{'loss': 0.6197, 'grad_norm': 7.407773494720459, 'learning_rate': 1.5625e-05, 'epoch': 13.75}
+{'loss': 1.1109, 'grad_norm': 9.699088096618652, 'learning_rate': 1.5312500000000003e-05, 'epoch': 13.88}
+
+ 70%|████████████████████████████▋            | 112/160 [01:29<00:19,  2.49it/s]
+ 70%|████████████████████████████▋            | 112/160 [01:29<00:19,  2.49it/s]/home2/adyansh/LLM4ADR/research/lib/python3.11/site-packages/torch/nn/parallel/_functions.py:68: UserWarning: Was asked to gather along dimension 0, but all input tensors were scalars; will instead unsqueeze and return a vector.
+  warnings.warn('Was asked to gather along dimension 0, but all '
+ 71%|████████████████████████████▉            | 113/160 [01:31<00:59,  1.27s/it]
+{'loss': 0.7401, 'grad_norm': 7.593221187591553, 'learning_rate': 1.4687500000000001e-05, 'epoch': 14.12}
+
+ 74%|██████████████████████████████▏          | 118/160 [01:33<00:22,  1.84it/s]
+{'loss': 0.9064, 'grad_norm': 9.413354873657227, 'learning_rate': 1.4062500000000001e-05, 'epoch': 14.38}
+{'loss': 1.7501, 'grad_norm': 11.118380546569824, 'learning_rate': 1.3750000000000002e-05, 'epoch': 14.5}
+{'loss': 0.9501, 'grad_norm': 10.051654815673828, 'learning_rate': 1.34375e-05, 'epoch': 14.62}
+{'loss': 0.8777, 'grad_norm': 9.120967864990234, 'learning_rate': 1.3125e-05, 'epoch': 14.75}
+{'loss': 1.1269, 'grad_norm': 7.645924091339111, 'learning_rate': 1.28125e-05, 'epoch': 14.88}
+
+ 75%|██████████████████████████████▊          | 120/160 [01:34<00:15,  2.52it/s]
+ 75%|██████████████████████████████▊          | 120/160 [01:34<00:15,  2.52it/s]/home2/adyansh/LLM4ADR/research/lib/python3.11/site-packages/torch/nn/parallel/_functions.py:68: UserWarning: Was asked to gather along dimension 0, but all input tensors were scalars; will instead unsqueeze and return a vector.
+  warnings.warn('Was asked to gather along dimension 0, but all '
+ 76%|███████████████████████████████          | 121/160 [01:37<00:50,  1.29s/it]
+{'loss': 0.9914, 'grad_norm': 9.53062629699707, 'learning_rate': 1.21875e-05, 'epoch': 15.12}
+{'loss': 1.1233, 'grad_norm': 6.5859599113464355, 'learning_rate': 1.1875e-05, 'epoch': 15.25}
+
+ 79%|████████████████████████████████▎        | 126/160 [01:39<00:18,  1.83it/s]
+{'loss': 1.6056, 'grad_norm': 8.16446590423584, 'learning_rate': 1.125e-05, 'epoch': 15.5}
+{'loss': 0.9551, 'grad_norm': 7.85447359085083, 'learning_rate': 1.09375e-05, 'epoch': 15.62}
+{'loss': 0.9835, 'grad_norm': 12.712423324584961, 'learning_rate': 1.0625e-05, 'epoch': 15.75}
+{'loss': 0.8227, 'grad_norm': 9.360613822937012, 'learning_rate': 1.03125e-05, 'epoch': 15.88}
+
+ 80%|████████████████████████████████▊        | 128/160 [01:40<00:12,  2.52it/s]
+ 80%|████████████████████████████████▊        | 128/160 [01:40<00:12,  2.52it/s]/home2/adyansh/LLM4ADR/research/lib/python3.11/site-packages/torch/nn/parallel/_functions.py:68: UserWarning: Was asked to gather along dimension 0, but all input tensors were scalars; will instead unsqueeze and return a vector.
+  warnings.warn('Was asked to gather along dimension 0, but all '
+ 81%|█████████████████████████████████▎       | 130/160 [01:44<00:31,  1.04s/it]
+{'loss': 1.178, 'grad_norm': 8.206398010253906, 'learning_rate': 9.6875e-06, 'epoch': 16.12}
+{'loss': 1.3585, 'grad_norm': 7.621649265289307, 'learning_rate': 9.375000000000001e-06, 'epoch': 16.25}
+
+ 84%|██████████████████████████████████▌      | 135/160 [01:46<00:12,  1.98it/s]
+{'loss': 0.9816, 'grad_norm': 8.469733238220215, 'learning_rate': 8.75e-06, 'epoch': 16.5}
+{'loss': 1.3313, 'grad_norm': 12.125178337097168, 'learning_rate': 8.437500000000002e-06, 'epoch': 16.62}
+{'loss': 1.4267, 'grad_norm': 8.403141975402832, 'learning_rate': 8.125000000000001e-06, 'epoch': 16.75}
+{'loss': 0.9857, 'grad_norm': 6.4467997550964355, 'learning_rate': 7.8125e-06, 'epoch': 16.88}
+
+ 85%|██████████████████████████████████▊      | 136/160 [01:46<00:09,  2.51it/s]
+ 85%|██████████████████████████████████▊      | 136/160 [01:46<00:09,  2.51it/s]/home2/adyansh/LLM4ADR/research/lib/python3.11/site-packages/torch/nn/parallel/_functions.py:68: UserWarning: Was asked to gather along dimension 0, but all input tensors were scalars; will instead unsqueeze and return a vector.
+  warnings.warn('Was asked to gather along dimension 0, but all '
+ 86%|███████████████████████████████████▎     | 138/160 [01:50<00:23,  1.05s/it]
+{'loss': 1.0561, 'grad_norm': 9.123344421386719, 'learning_rate': 7.187499999999999e-06, 'epoch': 17.12}
+{'loss': 1.5928, 'grad_norm': 8.614541053771973, 'learning_rate': 6.875000000000001e-06, 'epoch': 17.25}
+
+ 89%|████████████████████████████████████▋    | 143/160 [01:52<00:08,  1.98it/s]
+{'loss': 0.8094, 'grad_norm': 10.885162353515625, 'learning_rate': 6.25e-06, 'epoch': 17.5}
+{'loss': 0.8672, 'grad_norm': 8.430712699890137, 'learning_rate': 5.9375e-06, 'epoch': 17.62}
+{'loss': 1.2902, 'grad_norm': 8.87209415435791, 'learning_rate': 5.625e-06, 'epoch': 17.75}
+{'loss': 0.5618, 'grad_norm': 9.378358840942383, 'learning_rate': 5.3125e-06, 'epoch': 17.88}
+
+ 90%|████████████████████████████████████▉    | 144/160 [01:52<00:06,  2.49it/s]
+ 90%|████████████████████████████████████▉    | 144/160 [01:52<00:06,  2.49it/s]/home2/adyansh/LLM4ADR/research/lib/python3.11/site-packages/torch/nn/parallel/_functions.py:68: UserWarning: Was asked to gather along dimension 0, but all input tensors were scalars; will instead unsqueeze and return a vector.
+  warnings.warn('Was asked to gather along dimension 0, but all '
+ 91%|█████████████████████████████████████▏   | 145/160 [01:56<00:21,  1.41s/it]
+{'loss': 0.5986, 'grad_norm': 9.803107261657715, 'learning_rate': 4.6875000000000004e-06, 'epoch': 18.12}
+
+ 94%|██████████████████████████████████████▍  | 150/160 [01:58<00:05,  1.76it/s]
+{'loss': 0.7556, 'grad_norm': 8.01418399810791, 'learning_rate': 4.0625000000000005e-06, 'epoch': 18.38}
+{'loss': 1.309, 'grad_norm': 8.133084297180176, 'learning_rate': 3.75e-06, 'epoch': 18.5}
+{'loss': 0.9248, 'grad_norm': 11.297233581542969, 'learning_rate': 3.4375000000000005e-06, 'epoch': 18.62}
+{'loss': 1.4534, 'grad_norm': 7.805445194244385, 'learning_rate': 3.125e-06, 'epoch': 18.75}
+{'loss': 1.4283, 'grad_norm': 8.401145935058594, 'learning_rate': 2.8125e-06, 'epoch': 18.88}
+
+ 95%|██████████████████████████████████████▉  | 152/160 [01:59<00:03,  2.45it/s]
+ 95%|██████████████████████████████████████▉  | 152/160 [01:59<00:03,  2.45it/s]/home2/adyansh/LLM4ADR/research/lib/python3.11/site-packages/torch/nn/parallel/_functions.py:68: UserWarning: Was asked to gather along dimension 0, but all input tensors were scalars; will instead unsqueeze and return a vector.
+  warnings.warn('Was asked to gather along dimension 0, but all '
+ 96%|███████████████████████████████████████▏ | 153/160 [02:01<00:09,  1.30s/it]
+{'loss': 0.7926, 'grad_norm': 9.208831787109375, 'learning_rate': 2.1875e-06, 'epoch': 19.12}
+
+ 99%|████████████████████████████████████████▍| 158/160 [02:03<00:01,  1.82it/s]
+{'loss': 1.031, 'grad_norm': 8.015791893005371, 'learning_rate': 1.5625e-06, 'epoch': 19.38}
+{'loss': 1.2043, 'grad_norm': 7.395308971405029, 'learning_rate': 1.25e-06, 'epoch': 19.5}
+{'loss': 1.1277, 'grad_norm': 9.36328125, 'learning_rate': 9.375e-07, 'epoch': 19.62}
+{'loss': 1.4128, 'grad_norm': 8.094785690307617, 'learning_rate': 6.25e-07, 'epoch': 19.75}
+{'loss': 1.2422, 'grad_norm': 9.82978343963623, 'learning_rate': 3.125e-07, 'epoch': 19.88}
+
+100%|█████████████████████████████████████████| 160/160 [02:05<00:00,  2.51it/s]
+100%|█████████████████████████████████████████| 160/160 [02:05<00:00,  2.51it/s]There were missing keys in the checkpoint model loaded: ['lm_head.weight'].
+100%|█████████████████████████████████████████| 160/160 [02:07<00:00,  2.51it/s]Detected kernel version 4.15.0, which is below the recommended minimum of 5.5.0; this can cause the process to hang. It is recommended to upgrade the kernel to the minimum version or higher.
+{'train_runtime': 140.2134, 'train_samples_per_second': 4.137, 'train_steps_per_second': 1.141, 'train_loss': 1.8558979822439141, 'epoch': 20.0}
+Detected kernel version 4.15.0, which is below the recommended minimum of 5.5.0; this can cause the process to hang. It is recommended to upgrade the kernel to the minimum version or higher.
+100%|█████████████████████████████████████████| 160/160 [02:19<00:00,  1.15it/s]
+/home2/adyansh/LLM4ADR/research/lib/python3.11/site-packages/torch/nn/parallel/_functions.py:68: UserWarning: Was asked to gather along dimension 0, but all input tensors were scalars; will instead unsqueeze and return a vector.
+  warnings.warn('Was asked to gather along dimension 0, but all '
+100%|█████████████████████████████████████████████| 1/1 [00:00<00:00, 11.57it/s]
