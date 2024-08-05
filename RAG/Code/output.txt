@@ -1,0 +1,45 @@
+==========================================
+SLURM_JOB_ID = 1180742
+SLURM_NODELIST = gnode056
+SLURM_JOB_GPUS = 0
+==========================================
+2024-08-03 12:08:13.763244: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:479] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+2024-08-03 12:08:13.794676: E external/local_xla/xla/stream_executor/cuda/cuda_dnn.cc:10575] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+2024-08-03 12:08:13.794739: E external/local_xla/xla/stream_executor/cuda/cuda_blas.cc:1442] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+2024-08-03 12:08:13.814596: I tensorflow/core/platform/cpu_feature_guard.cc:210] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2024-08-03 12:08:16.066766: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
+No sentence-transformers model found with name bert-base-uncased. Creating a new one with mean pooling.
+/home2/adyansh/LLM4ADR/research/lib/python3.11/site-packages/huggingface_hub/file_download.py:1150: FutureWarning: `resume_download` is deprecated and will be removed in version 1.0.0. Downloads always resume when possible. If you want to force a new download, use `force_download=True`.
+  warnings.warn(
+  0%|          | 0/62 [00:00<?, ?it/s]  2%|▏         | 1/62 [00:24<24:45, 24.36s/it]  3%|▎         | 2/62 [00:48<24:20, 24.33s/it]  5%|▍         | 3/62 [01:12<23:54, 24.32s/it]  6%|▋         | 4/62 [01:37<23:28, 24.29s/it]  8%|▊         | 5/62 [02:01<23:03, 24.27s/it] 10%|▉         | 6/62 [02:25<22:38, 24.25s/it] 11%|█▏        | 7/62 [02:49<22:13, 24.24s/it] 13%|█▎        | 8/62 [03:14<21:48, 24.23s/it] 15%|█▍        | 9/62 [03:38<21:23, 24.22s/it] 16%|█▌        | 10/62 [04:02<20:59, 24.22s/it] 18%|█▊        | 11/62 [04:26<20:35, 24.22s/it] 19%|█▉        | 12/62 [04:50<20:11, 24.22s/it] 21%|██        | 13/62 [05:15<19:47, 24.23s/it] 23%|██▎       | 14/62 [05:39<19:22, 24.23s/it] 24%|██▍       | 15/62 [06:03<18:59, 24.24s/it] 26%|██▌       | 16/62 [06:27<18:34, 24.23s/it] 27%|██▋       | 17/62 [06:52<18:10, 24.24s/it] 29%|██▉       | 18/62 [07:16<17:46, 24.24s/it] 31%|███       | 19/62 [07:40<17:22, 24.24s/it] 32%|███▏      | 20/62 [08:04<16:58, 24.25s/it] 34%|███▍      | 21/62 [08:29<16:34, 24.25s/it] 35%|███▌      | 22/62 [08:53<16:09, 24.24s/it] 37%|███▋      | 23/62 [09:17<15:46, 24.26s/it] 39%|███▊      | 24/62 [09:41<15:22, 24.26s/it] 40%|████      | 25/62 [10:06<14:58, 24.29s/it] 42%|████▏     | 26/62 [10:30<14:35, 24.32s/it] 44%|████▎     | 27/62 [10:55<14:12, 24.35s/it] 45%|████▌     | 28/62 [11:19<13:48, 24.36s/it] 47%|████▋     | 29/62 [11:43<13:22, 24.32s/it] 48%|████▊     | 30/62 [12:07<12:57, 24.30s/it] 50%|█████     | 31/62 [12:32<12:32, 24.28s/it] 52%|█████▏    | 32/62 [12:56<12:08, 24.27s/it] 53%|█████▎    | 33/62 [13:20<11:43, 24.26s/it] 55%|█████▍    | 34/62 [13:44<11:19, 24.25s/it] 56%|█████▋    | 35/62 [14:09<10:54, 24.24s/it] 58%|█████▊    | 36/62 [14:33<10:30, 24.24s/it] 60%|█████▉    | 37/62 [14:57<10:05, 24.24s/it] 61%|██████▏   | 38/62 [15:21<09:41, 24.24s/it] 63%|██████▎   | 39/62 [15:46<09:17, 24.23s/it] 65%|██████▍   | 40/62 [16:10<08:53, 24.23s/it] 66%|██████▌   | 41/62 [16:34<08:29, 24.25s/it] 68%|██████▊   | 42/62 [16:58<08:05, 24.25s/it] 69%|██████▉   | 43/62 [17:23<07:40, 24.25s/it] 71%|███████   | 44/62 [17:47<07:16, 24.26s/it] 73%|███████▎  | 45/62 [18:11<06:52, 24.28s/it] 74%|███████▍  | 46/62 [18:35<06:28, 24.26s/it] 76%|███████▌  | 47/62 [19:00<06:03, 24.26s/it] 77%|███████▋  | 48/62 [19:24<05:39, 24.26s/it] 79%|███████▉  | 49/62 [19:48<05:15, 24.26s/it] 81%|████████  | 50/62 [20:12<04:51, 24.25s/it] 82%|████████▏ | 51/62 [20:37<04:26, 24.25s/it] 84%|████████▍ | 52/62 [21:01<04:02, 24.25s/it] 85%|████████▌ | 53/62 [21:25<03:38, 24.25s/it] 87%|████████▋ | 54/62 [21:49<03:13, 24.24s/it] 89%|████████▊ | 55/62 [22:14<02:49, 24.24s/it] 90%|█████████ | 56/62 [22:38<02:25, 24.24s/it] 92%|█████████▏| 57/62 [23:02<02:01, 24.25s/it] 94%|█████████▎| 58/62 [23:26<01:37, 24.26s/it] 95%|█████████▌| 59/62 [23:51<01:12, 24.25s/it] 97%|█████████▋| 60/62 [24:15<00:48, 24.25s/it] 98%|█████████▊| 61/62 [24:39<00:24, 24.24s/it]100%|██████████| 62/62 [25:03<00:00, 24.04s/it]100%|██████████| 62/62 [25:03<00:00, 24.25s/it]
+Prediction done for 983 records
+2024-08-03 12:34:16.209480: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:479] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+2024-08-03 12:34:16.232054: E external/local_xla/xla/stream_executor/cuda/cuda_dnn.cc:10575] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+2024-08-03 12:34:16.232085: E external/local_xla/xla/stream_executor/cuda/cuda_blas.cc:1442] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+2024-08-03 12:34:16.255490: I tensorflow/core/platform/cpu_feature_guard.cc:210] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2024-08-03 12:34:18.898204: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
+/home2/adyansh/LLM4ADR/RAG/Code/score.py:42: FutureWarning: Passing literal json to 'read_json' is deprecated and will be removed in a future version. To read from a literal string, wrap it in a 'StringIO' object.
+  calculate_scores(pd.read_json(DATA_DIR, lines=True))
+Traceback (most recent call last):
+  File "/home2/adyansh/LLM4ADR/RAG/Code/score.py", line 45, in <module>
+    main()
+  File "/home2/adyansh/LLM4ADR/RAG/Code/score.py", line 42, in main
+    calculate_scores(pd.read_json(DATA_DIR, lines=True))
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home2/adyansh/LLM4ADR/research/lib/python3.11/site-packages/pandas/io/json/_json.py", line 815, in read_json
+    return json_reader.read()
+           ^^^^^^^^^^^^^^^^^^
+  File "/home2/adyansh/LLM4ADR/research/lib/python3.11/site-packages/pandas/io/json/_json.py", line 1023, in read
+    obj = self._get_object_parser(self._combine_lines(data_lines))
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home2/adyansh/LLM4ADR/research/lib/python3.11/site-packages/pandas/io/json/_json.py", line 1051, in _get_object_parser
+    obj = FrameParser(json, **kwargs).parse()
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home2/adyansh/LLM4ADR/research/lib/python3.11/site-packages/pandas/io/json/_json.py", line 1187, in parse
+    self._parse()
+  File "/home2/adyansh/LLM4ADR/research/lib/python3.11/site-packages/pandas/io/json/_json.py", line 1403, in _parse
+    ujson_loads(json, precise_float=self.precise_float), dtype=None
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: Expected object or value
