@@ -14,14 +14,6 @@ MODEL_NAME = "gpt-4o"
 # MODEL_NAME = 'babbage-002'
 
 
-def load_jsonl(file_path):
-    data = []
-    with open(file_path, "r") as f:
-        for line in f:
-            data.append(json.loads(line))
-    return data
-
-
 def save_jsonl(data: pd.DataFrame, file_path, append=True):
     if append:
         with open(file_path, "a") as file:
@@ -129,7 +121,7 @@ def run(start=0, days=10000):
 
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(prog="Gemini")
+    parser = argparse.ArgumentParser(prog="GPT")
     parser.add_argument("--start", type=int, default=0, help="Start index")
     parser.add_argument("--day", type=int, default=10000, help="Number of days to run")
     args = parser.parse_args()
