@@ -1,0 +1,35 @@
+  0%|                                                                                                        | 0/16 [00:00<?, ?it/s]/home2/adyansh/LLM4ADR/research/lib/python3.11/site-packages/transformers/data/data_collator.py:656: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Please consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at ../torch/csrc/utils/tensor_new.cpp:275.)
+  batch["labels"] = torch.tensor(batch["labels"], dtype=torch.int64)
+/home2/adyansh/LLM4ADR/research/lib/python3.11/site-packages/torch/nn/parallel/_functions.py:68: UserWarning: Was asked to gather along dimension 0, but all input tensors were scalars; will instead unsqueeze and return a vector.
+  warnings.warn('Was asked to gather along dimension 0, but all '
+ 31%|██████████████████████████████                                                                  | 5/16 [00:10<00:11,  1.06s/it]
+{'loss': 4.6133, 'grad_norm': 130.61988830566406, 'learning_rate': 4.6875e-05, 'epoch': 0.12}
+{'loss': 3.6657, 'grad_norm': 239.10508728027344, 'learning_rate': 4.375e-05, 'epoch': 0.25}
+{'loss': 3.3059, 'grad_norm': 68.63674926757812, 'learning_rate': 4.0625000000000005e-05, 'epoch': 0.38}
+{'loss': 3.4505, 'grad_norm': 133.32687377929688, 'learning_rate': 3.7500000000000003e-05, 'epoch': 0.5}
+{'loss': 1.9831, 'grad_norm': 72.71223449707031, 'learning_rate': 3.4375e-05, 'epoch': 0.62}
+
+ 50%|████████████████████████████████████████████████                                                | 8/16 [00:11<00:03,  2.03it/s]
+{'loss': 2.6071, 'grad_norm': 18.242019653320312, 'learning_rate': 2.8125000000000003e-05, 'epoch': 0.88}
+{'loss': 1.1738, 'grad_norm': 43.33327102661133, 'learning_rate': 2.5e-05, 'epoch': 1.0}
+ 50%|████████████████████████████████████████████████                                                | 8/16 [00:11<00:03,  2.03it/s]/home2/adyansh/LLM4ADR/research/lib/python3.11/site-packages/torch/nn/parallel/_functions.py:68: UserWarning: Was asked to gather along dimension 0, but all input tensors were scalars; will instead unsqueeze and return a vector.
+  warnings.warn('Was asked to gather along dimension 0, but all '
+ 69%|█████████████████████████████████████████████████████████████████▎                             | 11/16 [00:13<00:03,  1.53it/s]
+{'loss': 1.2189, 'grad_norm': 37.574073791503906, 'learning_rate': 2.1875e-05, 'epoch': 1.12}
+100%|███████████████████████████████████████████████████████████████████████████████████████████████| 16/16 [00:15<00:00,  3.38it/s]/home2/adyansh/LLM4ADR/research/lib/python3.11/site-packages/torch/nn/parallel/_functions.py:68: UserWarning: Was asked to gather along dimension 0, but all input tensors were scalars; will instead unsqueeze and return a vector.
+  warnings.warn('Was asked to gather along dimension 0, but all '
+{'loss': 2.0184, 'grad_norm': 23.79790687561035, 'learning_rate': 1.5625e-05, 'epoch': 1.38}
+{'loss': 0.9039, 'grad_norm': 27.820417404174805, 'learning_rate': 1.25e-05, 'epoch': 1.5}
+{'loss': 1.9597, 'grad_norm': 16.255685806274414, 'learning_rate': 9.375000000000001e-06, 'epoch': 1.62}
+{'loss': 0.8159, 'grad_norm': 14.256918907165527, 'learning_rate': 6.25e-06, 'epoch': 1.75}
+{'loss': 3.2301, 'grad_norm': 76.4935073852539, 'learning_rate': 3.125e-06, 'epoch': 1.88}
+{'loss': 0.7092, 'grad_norm': 9.07436752319336, 'learning_rate': 0.0, 'epoch': 2.0}
+100%|███████████████████████████████████████████████████████████████████████████████████████████████| 16/16 [00:16<00:00,  3.38it/s]
+100%|███████████████████████████████████████████████████████████████████████████████████████████████| 16/16 [00:16<00:00,  3.38it/s]There were missing keys in the checkpoint model loaded: ['encoder.embed_tokens.weight', 'decoder.embed_tokens.weight'].
+100%|███████████████████████████████████████████████████████████████████████████████████████████████| 16/16 [00:22<00:00,  3.38it/s]Detected kernel version 4.15.0, which is below the recommended minimum of 5.5.0; this can cause the process to hang. It is recommended to upgrade the kernel to the minimum version or higher.
+{'train_runtime': 44.056, 'train_samples_per_second': 1.317, 'train_steps_per_second': 0.363, 'train_loss': 2.346920520067215, 'epoch': 2.0}
+Detected kernel version 4.15.0, which is below the recommended minimum of 5.5.0; this can cause the process to hang. It is recommended to upgrade the kernel to the minimum version or higher.
+100%|███████████████████████████████████████████████████████████████████████████████████████████████| 16/16 [00:30<00:00,  1.90s/it]
+/home2/adyansh/LLM4ADR/research/lib/python3.11/site-packages/torch/nn/parallel/_functions.py:68: UserWarning: Was asked to gather along dimension 0, but all input tensors were scalars; will instead unsqueeze and return a vector.
+  warnings.warn('Was asked to gather along dimension 0, but all '
+100%|█████████████████████████████████████████████████████████████████████████████████████████████████| 3/3 [00:00<00:00,  4.38it/s]

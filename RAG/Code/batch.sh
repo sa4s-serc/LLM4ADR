@@ -1,7 +1,7 @@
 #!/bin/bash
 #SBATCH -n 10
 #SBATCH --gres=gpu:1
-#SBATCH -w gnode056
+#SBATCH -w gnode080
 #SBATCH --mem-per-cpu=2G
 #SBATCH --output=output.txt
 #SBATCH --time=12:00:00

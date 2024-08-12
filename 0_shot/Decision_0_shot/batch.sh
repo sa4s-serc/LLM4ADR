@@ -8,7 +8,7 @@
 source /home2/ameyk/miniconda3/bin/activate
 
 # eval "$(conda shell.bash hook)"
-mkdir -p /scratch/ameyk/cache
+mkdir -p /scratch/llm4adr/cache
 conda activate research
 
 python3 /home2/ameyk/LLM4ADR/0_shot/Decision_0_shot/llama.py 
