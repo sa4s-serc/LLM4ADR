@@ -1,0 +1,75 @@
+  0%|                                                                                                        | 0/58 [00:00<?, ?it/s]/home2/adyansh/LLM4ADR/research/lib/python3.11/site-packages/transformers/data/data_collator.py:656: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Please consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at ../torch/csrc/utils/tensor_new.cpp:275.)
+  batch["labels"] = torch.tensor(batch["labels"], dtype=torch.int64)
+ 43%|████████████████████████████████████████▉                                                      | 25/58 [00:04<00:05,  5.55it/s]
+{'loss': 2.2779, 'grad_norm': 65.34325408935547, 'learning_rate': 4.913793103448276e-05, 'epoch': 0.03}
+{'loss': 1.204, 'grad_norm': 37.60274124145508, 'learning_rate': 4.827586206896552e-05, 'epoch': 0.07}
+{'loss': 0.3417, 'grad_norm': 14.546285629272461, 'learning_rate': 4.741379310344828e-05, 'epoch': 0.1}
+{'loss': 2.1348, 'grad_norm': 3.3599212169647217, 'learning_rate': 4.655172413793104e-05, 'epoch': 0.14}
+{'loss': 0.1803, 'grad_norm': 7.891291618347168, 'learning_rate': 4.5689655172413794e-05, 'epoch': 0.17}
+{'loss': 0.1698, 'grad_norm': 6.596439361572266, 'learning_rate': 4.482758620689655e-05, 'epoch': 0.21}
+{'loss': 0.958, 'grad_norm': 3.695496082305908, 'learning_rate': 4.396551724137931e-05, 'epoch': 0.24}
+{'loss': 0.0354, 'grad_norm': 1.048132300376892, 'learning_rate': 4.3103448275862066e-05, 'epoch': 0.28}
+{'loss': 0.0117, 'grad_norm': 0.6850152611732483, 'learning_rate': 4.224137931034483e-05, 'epoch': 0.31}
+{'loss': 1.4307, 'grad_norm': 3.5742106437683105, 'learning_rate': 4.1379310344827587e-05, 'epoch': 0.34}
+{'loss': 0.1058, 'grad_norm': 2.062429666519165, 'learning_rate': 4.0517241379310344e-05, 'epoch': 0.38}
+{'loss': 0.5114, 'grad_norm': 1.106818675994873, 'learning_rate': 3.965517241379311e-05, 'epoch': 0.41}
+{'loss': 2.4033, 'grad_norm': 4.697516441345215, 'learning_rate': 3.8793103448275865e-05, 'epoch': 0.45}
+{'loss': 0.8674, 'grad_norm': 4.526712894439697, 'learning_rate': 3.793103448275862e-05, 'epoch': 0.48}
+{'loss': 0.1754, 'grad_norm': 2.2615795135498047, 'learning_rate': 3.7068965517241385e-05, 'epoch': 0.52}
+{'loss': 0.0525, 'grad_norm': 1.1894787549972534, 'learning_rate': 3.620689655172414e-05, 'epoch': 0.55}
+{'loss': 1.1039, 'grad_norm': 2.0363898277282715, 'learning_rate': 3.53448275862069e-05, 'epoch': 0.59}
+{'loss': 0.05, 'grad_norm': 0.8711887001991272, 'learning_rate': 3.4482758620689657e-05, 'epoch': 0.62}
+{'loss': 0.003, 'grad_norm': 0.1955576092004776, 'learning_rate': 3.3620689655172414e-05, 'epoch': 0.66}
+{'loss': 1.0799, 'grad_norm': 3.314605236053467, 'learning_rate': 3.275862068965517e-05, 'epoch': 0.69}
+{'loss': 1.8242, 'grad_norm': 3.7433807849884033, 'learning_rate': 3.1896551724137935e-05, 'epoch': 0.72}
+{'loss': 0.0396, 'grad_norm': 0.8702995777130127, 'learning_rate': 3.103448275862069e-05, 'epoch': 0.76}
+{'loss': 0.0019, 'grad_norm': 0.12420091032981873, 'learning_rate': 3.017241379310345e-05, 'epoch': 0.79}
+
+ 50%|███████████████████████████████████████████████▌                                               | 29/58 [00:06<00:05,  5.53it/s]
+{'loss': 0.0537, 'grad_norm': 1.9324302673339844, 'learning_rate': 2.844827586206897e-05, 'epoch': 0.86}
+{'loss': 3.0434, 'grad_norm': 3.3311171531677246, 'learning_rate': 2.7586206896551727e-05, 'epoch': 0.9}
+{'loss': 0.1758, 'grad_norm': 2.3543097972869873, 'learning_rate': 2.672413793103448e-05, 'epoch': 0.93}
+{'loss': 0.0075, 'grad_norm': 0.37500593066215515, 'learning_rate': 2.5862068965517244e-05, 'epoch': 0.97}
+{'loss': 0.0424, 'grad_norm': 0.9263172149658203, 'learning_rate': 2.5e-05, 'epoch': 1.0}
+
+ 53%|██████████████████████████████████████████████████▊                                            | 31/58 [00:12<00:43,  1.62s/it]
+
+ 76%|████████████████████████████████████████████████████████████████████████                       | 44/58 [00:14<00:02,  5.51it/s]
+{'loss': 0.0194, 'grad_norm': 0.25850680470466614, 'learning_rate': 2.327586206896552e-05, 'epoch': 1.07}
+{'loss': 0.023, 'grad_norm': 0.6399320960044861, 'learning_rate': 2.2413793103448276e-05, 'epoch': 1.1}
+{'loss': 1.7785, 'grad_norm': 2.59946346282959, 'learning_rate': 2.1551724137931033e-05, 'epoch': 1.14}
+{'loss': 0.0173, 'grad_norm': 0.4912533164024353, 'learning_rate': 2.0689655172413793e-05, 'epoch': 1.17}
+{'loss': 1.957, 'grad_norm': 2.50434947013855, 'learning_rate': 1.9827586206896554e-05, 'epoch': 1.21}
+{'loss': 0.0466, 'grad_norm': 1.4594930410385132, 'learning_rate': 1.896551724137931e-05, 'epoch': 1.24}
+{'loss': 0.4838, 'grad_norm': 0.7829627990722656, 'learning_rate': 1.810344827586207e-05, 'epoch': 1.28}
+{'loss': 0.0029, 'grad_norm': 0.12801791727542877, 'learning_rate': 1.7241379310344828e-05, 'epoch': 1.31}
+{'loss': 0.0098, 'grad_norm': 0.6713480949401855, 'learning_rate': 1.6379310344827585e-05, 'epoch': 1.34}
+{'loss': 0.1625, 'grad_norm': 2.8824775218963623, 'learning_rate': 1.5517241379310346e-05, 'epoch': 1.38}
+{'loss': 0.0018, 'grad_norm': 0.13724859058856964, 'learning_rate': 1.4655172413793103e-05, 'epoch': 1.41}
+{'loss': 1.1491, 'grad_norm': 2.000051498413086, 'learning_rate': 1.3793103448275863e-05, 'epoch': 1.45}
+
+ 97%|███████████████████████████████████████████████████████████████████████████████████████████▋   | 56/58 [00:17<00:00,  5.94it/s]
+{'loss': 0.0009, 'grad_norm': 0.045654501765966415, 'learning_rate': 1.206896551724138e-05, 'epoch': 1.52}
+{'loss': 0.0018, 'grad_norm': 0.12482163310050964, 'learning_rate': 1.1206896551724138e-05, 'epoch': 1.55}
+{'loss': 0.0039, 'grad_norm': 0.2959275543689728, 'learning_rate': 1.0344827586206897e-05, 'epoch': 1.59}
+{'loss': 1.0118, 'grad_norm': 1.4617599248886108, 'learning_rate': 9.482758620689655e-06, 'epoch': 1.62}
+{'loss': 0.0299, 'grad_norm': 1.3476598262786865, 'learning_rate': 8.620689655172414e-06, 'epoch': 1.66}
+{'loss': 0.0334, 'grad_norm': 0.8906840085983276, 'learning_rate': 7.758620689655173e-06, 'epoch': 1.69}
+{'loss': 0.0549, 'grad_norm': 1.343505620956421, 'learning_rate': 6.896551724137932e-06, 'epoch': 1.72}
+{'loss': 0.039, 'grad_norm': 1.8158776760101318, 'learning_rate': 6.03448275862069e-06, 'epoch': 1.76}
+{'loss': 0.0339, 'grad_norm': 1.0284613370895386, 'learning_rate': 5.172413793103448e-06, 'epoch': 1.79}
+{'loss': 0.9923, 'grad_norm': 2.2105321884155273, 'learning_rate': 4.310344827586207e-06, 'epoch': 1.83}
+{'loss': 2.9946, 'grad_norm': 3.384133815765381, 'learning_rate': 3.448275862068966e-06, 'epoch': 1.86}
+
+100%|███████████████████████████████████████████████████████████████████████████████████████████████| 58/58 [00:17<00:00,  5.95it/s]
+{'loss': 0.6489, 'grad_norm': 2.2321364879608154, 'learning_rate': 1.724137931034483e-06, 'epoch': 1.93}
+{'loss': 0.003, 'grad_norm': 0.16583266854286194, 'learning_rate': 8.620689655172415e-07, 'epoch': 1.97}
+{'loss': 0.0367, 'grad_norm': 0.8033257722854614, 'learning_rate': 0.0, 'epoch': 2.0}
+ 60%|█████████████████████████████████████████████████████████▌                                      | 6/10 [00:00<00:00, 15.89it/s]
+
+100%|███████████████████████████████████████████████████████████████████████████████████████████████| 58/58 [00:27<00:00,  5.95it/s]There were missing keys in the checkpoint model loaded: ['encoder.embed_tokens.weight', 'decoder.embed_tokens.weight'].
+100%|███████████████████████████████████████████████████████████████████████████████████████████████| 58/58 [00:48<00:00,  5.95it/s]Detected kernel version 4.15.0, which is below the recommended minimum of 5.5.0; this can cause the process to hang. It is recommended to upgrade the kernel to the minimum version or higher.
+{'train_runtime': 71.6946, 'train_samples_per_second': 0.809, 'train_steps_per_second': 0.809, 'train_loss': 0.600798513214425, 'epoch': 2.0}
+Detected kernel version 4.15.0, which is below the recommended minimum of 5.5.0; this can cause the process to hang. It is recommended to upgrade the kernel to the minimum version or higher.
+100%|███████████████████████████████████████████████████████████████████████████████████████████████| 58/58 [01:14<00:00,  1.28s/it]
+100%|███████████████████████████████████████████████████████████████████████████████████████████████| 10/10 [00:00<00:00, 23.60it/s]

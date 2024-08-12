@@ -4,7 +4,7 @@ import torch
 from tqdm import tqdm
 
 MODEL_NAME = "gpt2"
-CACHE_DIR = "/scratch/adyansh/cache"
+CACHE_DIR = "/scratch/llm4adr/cache"
 MODEL_PATH = "./models/gpt2"
 
 def infer(tokenizer, data, device) -> pd.DataFrame:

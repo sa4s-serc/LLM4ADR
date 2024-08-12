@@ -1,0 +1,33 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+100%|███████████████████████████████████████████████████████████████████████████████████████████████| 14/14 [00:43<00:00,  2.81s/it]/home2/adyansh/LLM4ADR/research/lib/python3.11/site-packages/peft/utils/other.py:619: UserWarning: Unable to fetch remote file due to the following error 401 Client Error. (Request ID: Root=1-66b73b44-506bbc686b2869b838dd2d99;1bae5b92-c77f-4ca7-9ade-ac0d6c5d1828)
+Cannot access gated repo for url https://huggingface.co/meta-llama/Meta-Llama-3-8B-Instruct/resolve/main/config.json.
+Access to model meta-llama/Meta-Llama-3-8B-Instruct is restricted. You must be authenticated to access it. - silently ignoring the lookup for the file config.json in meta-llama/Meta-Llama-3-8B-Instruct.
+  warnings.warn(
+/home2/adyansh/LLM4ADR/research/lib/python3.11/site-packages/peft/utils/save_and_load.py:218: UserWarning: Could not find a config file in meta-llama/Meta-Llama-3-8B-Instruct - will assume that the vocabulary was not modified.
+  warnings.warn(
+100%|███████████████████████████████████████████████████████████████████████████████████████████████| 14/14 [00:45<00:00,  2.81s/it]We detected that you are passing `past_key_values` as a tuple and this is deprecated and will be removed in v4.43. Please use an appropriate `Cache` class (https://huggingface.co/docs/transformers/v4.41.3/en/internal/generation_utils#transformers.Cache)
+ 20%|███████████████████▏                                                                            | 2/10 [00:00<00:02,  3.22it/s]
+
+
+ 80%|████████████████████████████████████████████████████████████████████████████▊                   | 8/10 [00:04<00:01,  1.38it/s]
+Cannot access gated repo for url https://huggingface.co/meta-llama/Meta-Llama-3-8B-Instruct/resolve/main/config.json.
+Access to model meta-llama/Meta-Llama-3-8B-Instruct is restricted. You must be authenticated to access it. - silently ignoring the lookup for the file config.json in meta-llama/Meta-Llama-3-8B-Instruct.
+  warnings.warn(
+/home2/adyansh/LLM4ADR/research/lib/python3.11/site-packages/peft/utils/save_and_load.py:218: UserWarning: Could not find a config file in meta-llama/Meta-Llama-3-8B-Instruct - will assume that the vocabulary was not modified.
+  warnings.warn(
+{'eval_loss': 2.8653724193573, 'eval_runtime': 6.3993, 'eval_samples_per_second': 1.563, 'eval_steps_per_second': 1.563, 'epoch': 0.97}
+100%|███████████████████████████████████████████████████████████████████████████████████████████████| 14/14 [00:55<00:00,  3.93s/it]
+{'train_runtime': 69.4353, 'train_samples_per_second': 0.418, 'train_steps_per_second': 0.202, 'train_loss': 2.622351510184152, 'epoch': 0.97}

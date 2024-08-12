@@ -5,7 +5,7 @@ import pandas as pd
 import torch
 from tqdm import tqdm
 
-CACHE_DIR = "/scratch/adyansh/cache"
+CACHE_DIR = "/scratch/llm4adr/cache"
 EMBEDDING_MODEL = "bert-base-uncased"
 MODEL_NAME = "google/flan-t5-base"
 MODEL_MAX_LENGTH = 1000
@@ -19,9 +19,9 @@ db = FAISS.deserialize_from_bytes(embeddings=embeddings, serialized=pkl, allow_d
 def construct_context(query: str, db: FAISS, embeddings: HuggingFaceEmbeddings, top_k: int = 2) -> str:
     results = db.similarity_search(query, k=top_k)
     
-    context = "These are a few contexts and their respective decisions for you to refer to:\n"
+    context = "Use the provided contexts and decisions to make a more informed decision:\n\n"
     for result in results:
-        context += result.page_content + "\n## Decision\n" + result.metadata['Decision'] + "\n\n"
+        context += "## Context\n" + result.page_content + "\n## Decision\n" + result.metadata['Decision'] + "\n\n"
         
     context += f"Make sure to give decisions that are similar to the ones above.\nNow provide a decision according to the context given below:\n{query}\n## Decision\n"
     
