@@ -13,7 +13,7 @@ load_dotenv()
 INPUT_FILE = "../../Data/ADR-data/data.jsonl"
 
 HUGGINGFACE_TOKEN = os.getenv("HUGGINGFACE")
-SCRATCH_DIR = "/scratch/ameyk/cache"
+SCRATCH_DIR = "/scratch/llm4adr/cache"
 MODEL_NAME = "llama"
 
 tokenizer = AutoTokenizer.from_pretrained(

@@ -1,0 +1,260 @@
+{
+    "os": "Linux-4.15.0-213-generic-x86_64-with-glibc2.27",
+    "python": "3.11.3",
+    "heartbeatAt": "2024-08-09T18:27:56.615293",
+    "startedAt": "2024-08-09T18:27:55.147820",
+    "docker": null,
+    "cuda": null,
+    "args": [],
+    "state": "running",
+    "program": "/home2/adyansh/LLM4ADR/Approach/Code/training.py",
+    "codePathLocal": "training.py",
+    "codePath": "Approach/Code/training.py",
+    "git": {
+        "remote": "https://github.com/sa4s-serc/LLM4ADR",
+        "commit": "91f72ee0caa40caf7fde24900bf882e711fa8a0d"
+    },
+    "email": "adyansh.kakran@research.iiit.ac.in",
+    "root": "/home2/adyansh/LLM4ADR",
+    "host": "gnode048",
+    "username": "adyansh",
+    "executable": "/home2/adyansh/LLM4ADR/research/bin/python3",
+    "cpu_count": 20,
+    "cpu_count_logical": 40,
+    "cpu_freq": {
+        "current": 1296.092975,
+        "min": 1200.0,
+        "max": 3400.0
+    },
+    "cpu_freq_per_core": [
+        {
+            "current": 1200.506,
+            "min": 1200.0,
+            "max": 3400.0
+        },
+        {
+            "current": 2399.795,
+            "min": 1200.0,
+            "max": 3400.0
+        },
+        {
+            "current": 1202.707,
+            "min": 1200.0,
+            "max": 3400.0
+        },
+        {
+            "current": 1202.806,
+            "min": 1200.0,
+            "max": 3400.0
+        },
+        {
+            "current": 1202.738,
+            "min": 1200.0,
+            "max": 3400.0
+        },
+        {
+            "current": 1202.148,
+            "min": 1200.0,
+            "max": 3400.0
+        },
+        {
+            "current": 1526.746,
+            "min": 1200.0,
+            "max": 3400.0
+        },
+        {
+            "current": 1202.78,
+            "min": 1200.0,
+            "max": 3400.0
+        },
+        {
+            "current": 1203.017,
+            "min": 1200.0,
+            "max": 3400.0
+        },
+        {
+            "current": 1203.426,
+            "min": 1200.0,
+            "max": 3400.0
+        },
+        {
+            "current": 1202.622,
+            "min": 1200.0,
+            "max": 3400.0
+        },
+        {
+            "current": 1283.266,
+            "min": 1200.0,
+            "max": 3400.0
+        },
+        {
+            "current": 1202.742,
+            "min": 1200.0,
+            "max": 3400.0
+        },
+        {
+            "current": 1438.331,
+            "min": 1200.0,
+            "max": 3400.0
+        },
+        {
+            "current": 2061.927,
+            "min": 1200.0,
+            "max": 3400.0
+        },
+        {
+            "current": 1202.588,
+            "min": 1200.0,
+            "max": 3400.0
+        },
+        {
+            "current": 1202.603,
+            "min": 1200.0,
+            "max": 3400.0
+        },
+        {
+            "current": 1203.762,
+            "min": 1200.0,
+            "max": 3400.0
+        },
+        {
+            "current": 1201.286,
+            "min": 1200.0,
+            "max": 3400.0
+        },
+        {
+            "current": 1201.387,
+            "min": 1200.0,
+            "max": 3400.0
+        },
+        {
+            "current": 1200.666,
+            "min": 1200.0,
+            "max": 3400.0
+        },
+        {
+            "current": 2400.014,
+            "min": 1200.0,
+            "max": 3400.0
+        },
+        {
+            "current": 1200.417,
+            "min": 1200.0,
+            "max": 3400.0
+        },
+        {
+            "current": 1200.752,
+            "min": 1200.0,
+            "max": 3400.0
+        },
+        {
+            "current": 1200.932,
+            "min": 1200.0,
+            "max": 3400.0
+        },
+        {
+            "current": 1200.941,
+            "min": 1200.0,
+            "max": 3400.0
+        },
+        {
+            "current": 1265.676,
+            "min": 1200.0,
+            "max": 3400.0
+        },
+        {
+            "current": 1200.929,
+            "min": 1200.0,
+            "max": 3400.0
+        },
+        {
+            "current": 1200.34,
+            "min": 1200.0,
+            "max": 3400.0
+        },
+        {
+            "current": 1200.358,
+            "min": 1200.0,
+            "max": 3400.0
+        },
+        {
+            "current": 1200.581,
+            "min": 1200.0,
+            "max": 3400.0
+        },
+        {
+            "current": 1247.862,
+            "min": 1200.0,
+            "max": 3400.0
+        },
+        {
+            "current": 1201.165,
+            "min": 1200.0,
+            "max": 3400.0
+        },
+        {
+            "current": 1309.857,
+            "min": 1200.0,
+            "max": 3400.0
+        },
+        {
+            "current": 2183.786,
+            "min": 1200.0,
+            "max": 3400.0
+        },
+        {
+            "current": 1200.741,
+            "min": 1200.0,
+            "max": 3400.0
+        },
+        {
+            "current": 1200.622,
+            "min": 1200.0,
+            "max": 3400.0
+        },
+        {
+            "current": 1200.201,
+            "min": 1200.0,
+            "max": 3400.0
+        },
+        {
+            "current": 1200.672,
+            "min": 1200.0,
+            "max": 3400.0
+        },
+        {
+            "current": 1201.086,
+            "min": 1200.0,
+            "max": 3400.0
+        }
+    ],
+    "disk": {
+        "/": {
+            "total": 219.00129318237305,
+            "used": 88.59152221679688
+        }
+    },
+    "gpu": "NVIDIA GeForce RTX 2080 Ti",
+    "gpu_count": 4,
+    "gpu_devices": [
+        {
+            "name": "NVIDIA GeForce RTX 2080 Ti",
+            "memory_total": 11811160064
+        },
+        {
+            "name": "NVIDIA GeForce RTX 2080 Ti",
+            "memory_total": 11811160064
+        },
+        {
+            "name": "NVIDIA GeForce RTX 2080 Ti",
+            "memory_total": 11811160064
+        },
+        {
+            "name": "NVIDIA GeForce RTX 2080 Ti",
+            "memory_total": 11811160064
+        }
+    ],
+    "memory": {
+        "total": 125.78239059448242
+    }
+}

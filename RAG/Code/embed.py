@@ -3,7 +3,7 @@ from langchain_community.vectorstores import FAISS
 from langchain_text_splitters import CharacterTextSplitter
 from langchain_huggingface import HuggingFaceEmbeddings
 
-CACHE_DIR = "/scratch/adyansh/cache"
+CACHE_DIR = "/scratch/llm4adr/cache"
 MODEL_NAME = "bert-base-uncased"
 
 def metadata_func(record: dict, metadata: dict) -> dict:
@@ -14,7 +14,7 @@ def metadata_func(record: dict, metadata: dict) -> dict:
 
 # Load the text
 loader = JSONLoader(
-    file_path="../../Data/ADR-data/data_rag_train.jsonl",
+    file_path="../../Data/ADR-data/data_train.jsonl",
     jq_schema=".",
     content_key="Context",
     text_content=False,

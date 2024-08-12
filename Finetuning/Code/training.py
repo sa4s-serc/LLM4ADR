@@ -17,7 +17,7 @@ if MODEL_NAME is None:
     print("Please provide a model name")
     exit(1)
     
-CACHE_DIR = "/scratch/adyansh/cache"
+CACHE_DIR = "/scratch/llm4adr/cache"
 
 tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME, cache_dir=CACHE_DIR)
 tokenizer.pad_token = tokenizer.eos_token

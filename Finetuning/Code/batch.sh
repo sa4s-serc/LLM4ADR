@@ -1,9 +1,10 @@
 #!/bin/bash
-#SBATCH -n 40
+#SBATCH -n 38
 #SBATCH --gres=gpu:4
 #SBATCH --mem-per-cpu=2G
 #SBATCH --output=output.txt
-#SBATCH --time=12:00:00
+#SBATCH --time=48:00:00
+#SBATCH -w gnode048
 
 source /home2/adyansh/miniconda3/bin/activate
 conda activate /home2/adyansh/LLM4ADR/research
@@ -11,4 +12,5 @@ conda activate /home2/adyansh/LLM4ADR/research
 cd /home2/adyansh/LLM4ADR/Finetuning/Code
 
 # python3 training.py google/flan-t5-base
-python3 training.py gpt2
+# python3 training.py gpt2
+python3 lora-training.py
