@@ -7,7 +7,7 @@ import numpy as np
 import logging
 import torch
 
-CACHE_DIR = '/scratch/adyansh/cache'
+CACHE_DIR = '/scratch/llm4adr/cache'
 CUDA_DEVICE = 'cuda:0' # 'cuda:0' or 'cuda:1' or 'auto'
 
 data = pd.read_csv('../ADR-data/context_decision.csv')

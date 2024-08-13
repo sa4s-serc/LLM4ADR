@@ -6,7 +6,7 @@ import pandas as pd
 
 x = ['Context', 'Context and Problem Statement', 'Decision Drivers', 'Decision Drivers <!-- optional -->', 'Pros and Cons of the Options', 'Problem', 'Pros and Cons of the Options <!-- optional -->']
 y = ['Decision', 'Decision Outcome', 'Decisions']
-CACHE_DIR = '/scratch/adyansh/cache'
+CACHE_DIR = '/scratch/llm4adr/cache'
 
 def extract(file):
     lines = file.readlines()

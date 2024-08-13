@@ -64,12 +64,14 @@ def perform_rag(query: str, top_k: int = 2) -> str:
     
     if len(results) != top_k:
         results = results[:top_k]
-    
+        
+    context = ''
     # context = "An architectural decision record is used to keep track of decisions made while building the project. It generally consists of a context and decision. You are an expert architect and are tasked with taking decisions given a particular context.\n Here are some examples:\n\n"
     for result in results:
         context += result.page_content + "\n## Decision\n" + result.metadata['Decision'] + "\n\n"
         
-    context += f"Now provide a decision according to the context given below:\n{query}\n## Decision\n"
+    # context += f"Now provide a decision according to the context given below:\n{query}\n## Decision\n"
+    context += query + "\n## Decision\n"
 
     return context
 
@@ -110,7 +112,7 @@ NUM_EPOCHS = 20
 
 # Set up training arguments
 training_args = Seq2SeqTrainingArguments(
-    output_dir=f'/scratch/adyansh/results/{MODEL_NAME.split("/")[-1]}',
+    output_dir=f'/scratch/llm4adr/results/{MODEL_NAME.split("/")[-1]}',
     evaluation_strategy="epoch",
     save_strategy="epoch",
     logging_steps=1,

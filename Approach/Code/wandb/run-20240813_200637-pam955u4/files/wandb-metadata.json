@@ -1,0 +1,256 @@
+{
+    "os": "Linux-4.15.0-213-generic-x86_64-with-glibc2.27",
+    "python": "3.11.3",
+    "heartbeatAt": "2024-08-13T14:36:38.234470",
+    "startedAt": "2024-08-13T14:36:37.267665",
+    "docker": null,
+    "cuda": null,
+    "args": [],
+    "state": "running",
+    "program": "/home2/adyansh/LLM4ADR/Approach/Code/training.py",
+    "codePathLocal": "training.py",
+    "codePath": "Approach/Code/training.py",
+    "git": {
+        "remote": "https://github.com/sa4s-serc/LLM4ADR",
+        "commit": "04b8db1d548f859603569ecf3262cb3cd3193371"
+    },
+    "email": "adyansh.kakran@research.iiit.ac.in",
+    "root": "/home2/adyansh/LLM4ADR",
+    "host": "gnode074",
+    "username": "adyansh",
+    "executable": "/home2/adyansh/LLM4ADR/research/bin/python3",
+    "cpu_count": 20,
+    "cpu_count_logical": 40,
+    "cpu_freq": {
+        "current": 1462.956075,
+        "min": 1200.0,
+        "max": 3400.0
+    },
+    "cpu_freq_per_core": [
+        {
+            "current": 2400.022,
+            "min": 1200.0,
+            "max": 3400.0
+        },
+        {
+            "current": 1200.365,
+            "min": 1200.0,
+            "max": 3400.0
+        },
+        {
+            "current": 2320.619,
+            "min": 1200.0,
+            "max": 3400.0
+        },
+        {
+            "current": 1203.107,
+            "min": 1200.0,
+            "max": 3400.0
+        },
+        {
+            "current": 1202.995,
+            "min": 1200.0,
+            "max": 3400.0
+        },
+        {
+            "current": 1494.028,
+            "min": 1200.0,
+            "max": 3400.0
+        },
+        {
+            "current": 1254.318,
+            "min": 1200.0,
+            "max": 3400.0
+        },
+        {
+            "current": 2396.591,
+            "min": 1200.0,
+            "max": 3400.0
+        },
+        {
+            "current": 1204.528,
+            "min": 1200.0,
+            "max": 3400.0
+        },
+        {
+            "current": 1566.067,
+            "min": 1200.0,
+            "max": 3400.0
+        },
+        {
+            "current": 1640.292,
+            "min": 1200.0,
+            "max": 3400.0
+        },
+        {
+            "current": 1238.247,
+            "min": 1200.0,
+            "max": 3400.0
+        },
+        {
+            "current": 1221.73,
+            "min": 1200.0,
+            "max": 3400.0
+        },
+        {
+            "current": 1202.777,
+            "min": 1200.0,
+            "max": 3400.0
+        },
+        {
+            "current": 1257.46,
+            "min": 1200.0,
+            "max": 3400.0
+        },
+        {
+            "current": 1201.26,
+            "min": 1200.0,
+            "max": 3400.0
+        },
+        {
+            "current": 1202.812,
+            "min": 1200.0,
+            "max": 3400.0
+        },
+        {
+            "current": 1203.026,
+            "min": 1200.0,
+            "max": 3400.0
+        },
+        {
+            "current": 1200.057,
+            "min": 1200.0,
+            "max": 3400.0
+        },
+        {
+            "current": 1203.124,
+            "min": 1200.0,
+            "max": 3400.0
+        },
+        {
+            "current": 2400.811,
+            "min": 1200.0,
+            "max": 3400.0
+        },
+        {
+            "current": 1201.938,
+            "min": 1200.0,
+            "max": 3400.0
+        },
+        {
+            "current": 2402.886,
+            "min": 1200.0,
+            "max": 3400.0
+        },
+        {
+            "current": 1200.864,
+            "min": 1200.0,
+            "max": 3400.0
+        },
+        {
+            "current": 1201.453,
+            "min": 1200.0,
+            "max": 3400.0
+        },
+        {
+            "current": 1601.061,
+            "min": 1200.0,
+            "max": 3400.0
+        },
+        {
+            "current": 1236.267,
+            "min": 1200.0,
+            "max": 3400.0
+        },
+        {
+            "current": 2400.02,
+            "min": 1200.0,
+            "max": 3400.0
+        },
+        {
+            "current": 1200.561,
+            "min": 1200.0,
+            "max": 3400.0
+        },
+        {
+            "current": 1600.915,
+            "min": 1200.0,
+            "max": 3400.0
+        },
+        {
+            "current": 1816.999,
+            "min": 1200.0,
+            "max": 3400.0
+        },
+        {
+            "current": 1228.981,
+            "min": 1200.0,
+            "max": 3400.0
+        },
+        {
+            "current": 1201.775,
+            "min": 1200.0,
+            "max": 3400.0
+        },
+        {
+            "current": 1200.01,
+            "min": 1200.0,
+            "max": 3400.0
+        },
+        {
+            "current": 1235.353,
+            "min": 1200.0,
+            "max": 3400.0
+        },
+        {
+            "current": 1201.896,
+            "min": 1200.0,
+            "max": 3400.0
+        },
+        {
+            "current": 1201.178,
+            "min": 1200.0,
+            "max": 3400.0
+        },
+        {
+            "current": 1199.969,
+            "min": 1200.0,
+            "max": 3400.0
+        },
+        {
+            "current": 1200.825,
+            "min": 1200.0,
+            "max": 3400.0
+        },
+        {
+            "current": 1200.799,
+            "min": 1200.0,
+            "max": 3400.0
+        }
+    ],
+    "disk": {
+        "/": {
+            "total": 219.00129318237305,
+            "used": 85.89250183105469
+        }
+    },
+    "gpu": "NVIDIA GeForce RTX 2080 Ti",
+    "gpu_count": 3,
+    "gpu_devices": [
+        {
+            "name": "NVIDIA GeForce RTX 2080 Ti",
+            "memory_total": 11811160064
+        },
+        {
+            "name": "NVIDIA GeForce RTX 2080 Ti",
+            "memory_total": 11811160064
+        },
+        {
+            "name": "NVIDIA GeForce RTX 2080 Ti",
+            "memory_total": 11811160064
+        }
+    ],
+    "memory": {
+        "total": 125.7826042175293
+    }
+}

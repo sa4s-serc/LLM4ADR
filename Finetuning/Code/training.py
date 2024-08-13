@@ -86,7 +86,7 @@ NUM_EPOCHS = 20
 
 # Set up training arguments
 training_args = Seq2SeqTrainingArguments(
-    output_dir=f'/scratch/adyansh/results/{MODEL_NAME}',
+    output_dir=f'/scratch/llm4adr/results/{MODEL_NAME}',
     evaluation_strategy="epoch",
     save_strategy="epoch",
     logging_steps=1,

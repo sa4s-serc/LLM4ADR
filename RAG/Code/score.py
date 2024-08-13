@@ -4,7 +4,7 @@ import nltk
 import json
 
 MODEL_NAME = "flan-t5-base-2"
-CACHE_DIR = '/scratch/adyansh/cache' 
+CACHE_DIR = '/scratch/llm4adr/cache' 
 DATA_DIR = f'../results/{MODEL_NAME}.jsonl'
 RESULT_DIR = f'../metrics/{MODEL_NAME}.json'
 PREDICTION_COL = 'Predicted'

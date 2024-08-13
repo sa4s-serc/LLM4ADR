@@ -3,8 +3,8 @@ import pandas as pd
 import nltk
 import json
 
-MODEL_NAME = "flan-t5-base"
-CACHE_DIR = '/scratch/adyansh/cache' 
+MODEL_NAME = "Meta-Llama-3-8B-Instruct"
+CACHE_DIR = '/scratch/llm4adr/cache' 
 DATA_DIR = f'../results/{MODEL_NAME}.jsonl'
 RESULT_DIR = f'../metrics/{MODEL_NAME}.json'
 PREDICTION_COL = 'Predictions'

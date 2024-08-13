@@ -81,7 +81,7 @@ test_dataset = test_dataset.map(
 )
 
 EPOCHS = 10
-BATCH_SIZE = 1
+BATCH_SIZE = 1 # Effective batch size is BATCH_SIZE * gradient_accumulation_steps
 SAVE_TOTAL_LIM = 4
 
 training_arguments = TrainingArguments(
