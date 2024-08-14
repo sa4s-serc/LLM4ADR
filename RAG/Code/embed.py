@@ -1,6 +1,6 @@
 from langchain_community.document_loaders.json_loader import JSONLoader
 from langchain_community.vectorstores import FAISS
-from langchain_text_splitters import CharacterTextSplitter
+# from langchain_text_splitters import CharacterTextSplitter
 from langchain_huggingface import HuggingFaceEmbeddings
 
 CACHE_DIR = "/scratch/llm4adr/cache"
@@ -14,7 +14,7 @@ def metadata_func(record: dict, metadata: dict) -> dict:
 
 # Load the text
 loader = JSONLoader(
-    file_path="../../Data/ADR-data/data_train.jsonl",
+    file_path="../../Data/ADR-data/data.jsonl",
     jq_schema=".",
     content_key="Context",
     text_content=False,
@@ -34,5 +34,5 @@ db = FAISS.from_documents(documents, embeddings)
 
 pkl = db.serialize_to_bytes()
 
-with open(f"../embeds/{MODEL_NAME}.pkl", "wb") as f:
+with open(f"../embeds/{MODEL_NAME}-all.pkl", "wb") as f:
     f.write(pkl)

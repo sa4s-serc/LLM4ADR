@@ -11,13 +11,21 @@ MODEL_PATH = "../models/flan-t5-base"
 # MODEL_PATH = "/scratch/llm4adr/results/flan-t5-base/checkpoint-100"
 EMBEDDING_MODEL = "bert-base-uncased"
 
-pkl = open(f'../../RAG/embeds/{EMBEDDING_MODEL}.pkl', 'rb').read()
+pkl = open(f'../../RAG/embeds/{EMBEDDING_MODEL}-test.pkl', 'rb').read()
 
 embeddings = HuggingFaceEmbeddings(model_name=EMBEDDING_MODEL, cache_folder=CACHE_DIR)
 db = FAISS.deserialize_from_bytes(embeddings=embeddings, serialized=pkl, allow_dangerous_deserialization=True)
 
 def perform_rag(query: str, top_k: int = 2) -> str:
-    results = db.similarity_search(query, k=top_k)
+    results = db.similarity_search(query, k=top_k + 1)
+    
+    for result in results:
+        if result.page_content == query:
+            results.remove(result)
+            break
+    
+    if len(results) != top_k:
+        results = results[:top_k]
     
     context = ''
     # context = "An architectural decision record is used to keep track of decisions made while building the project. It generally consists of a context and decision. You are an expert architect and are tasked with taking decisions given a particular context.\n Here are some examples:\n\n"
@@ -63,7 +71,7 @@ def main():
     data["Context"] = data["Context"].str.replace("\\n", "\n")
         
     results = infer(model, tokenizer, data, device)
-    results.to_json(f"../results/{MODEL_NAME.split('/')[1]}.jsonl", lines=True, orient="records")
+    results.to_json(f"../results/{MODEL_NAME.split('/')[1]}-all.jsonl", lines=True, orient="records")
     
 if __name__ == '__main__':
     main()

@@ -21,7 +21,7 @@ def construct_context(query: str, db: FAISS, embeddings: HuggingFaceEmbeddings, 
     
     context = "Use the provided contexts and decisions to make a more informed decision:\n\n"
     for result in results:
-        context += "## Context\n" + result.page_content + "\n## Decision\n" + result.metadata['Decision'] + "\n\n"
+        context += result.page_content + "\n## Decision\n" + result.metadata['Decision'] + "\n\n"
         
     context += f"Make sure to give decisions that are similar to the ones above.\nNow provide a decision according to the context given below:\n{query}\n## Decision\n"
     
