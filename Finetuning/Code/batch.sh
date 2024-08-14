@@ -14,3 +14,4 @@ cd /home2/adyansh/LLM4ADR/Finetuning/Code
 # python3 training.py google/flan-t5-base
 # python3 training.py gpt2
 python3 lora-inference.py
+python3 score.py

@@ -29,8 +29,9 @@ attn_implementation = "eager"
 #     bnb_4bit_use_double_quant=True,
 # )
 
-tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME, token=huggingface_token, cache_dir=CACHE_DIR)
-tokenizer.pad_token = tokenizer.eos_token
+tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME, token=huggingface_token, cache_dir=CACHE_DIR, padding_side='left')
+if tokenizer.pad_token is None:
+    tokenizer.pad_token = tokenizer.eos_token
 model = AutoModelForCausalLM.from_pretrained(MODEL_NAME, token=huggingface_token, cache_dir=CACHE_DIR, device_map="auto", torch_dtype='auto')
 # model = AutoModelForCausalLM.from_pretrained(MODEL_NAME, quantization_config=bnb_config, token=huggingface_token, cache_dir=CACHE_DIR, device_map="auto", attn_implementation=attn_implementation)
 
@@ -50,7 +51,7 @@ TRAIN_PATH = "../../Data/ADR-data/data_train.jsonl"
 VAL_PATH = "../../Data/ADR-data/data_val.jsonl"
 TEST_PATH = "../../Data/ADR-data/data_test.jsonl"
 
-train = pd.read_json(TRAIN_PATH, lines=True).sample(100)
+train = pd.read_json(TRAIN_PATH, lines=True)
 # val = train.copy()
 val = pd.read_json(VAL_PATH, lines=True)
 test = pd.read_json(TEST_PATH, lines=True)
@@ -83,12 +84,14 @@ test_dataset = test_dataset.map(
 EPOCHS = 10
 BATCH_SIZE = 1 # Effective batch size is BATCH_SIZE * gradient_accumulation_steps
 SAVE_TOTAL_LIM = 4
+ACCUMULATION_STEPS = 8
 
 training_arguments = TrainingArguments(
     output_dir=f'{CACHE_DIR}/{new_model}',
     per_device_train_batch_size=BATCH_SIZE,
     per_device_eval_batch_size=BATCH_SIZE,
-    gradient_accumulation_steps=8,
+    gradient_accumulation_steps=ACCUMULATION_STEPS,
+    eval_accumulation_steps=ACCUMULATION_STEPS,
     optim="paged_adamw_32bit",
     num_train_epochs=EPOCHS,
     evaluation_strategy="epoch",
@@ -97,7 +100,7 @@ training_arguments = TrainingArguments(
     save_steps=1,
     logging_strategy="epoch",
     logging_steps=1,
-    learning_rate=2e-4,
+    # learning_rate=2e-4,
     group_by_length=True,
     report_to="wandb",
     push_to_hub=False,
@@ -112,7 +115,7 @@ trainer = SFTTrainer(
     train_dataset=train_dataset,
     eval_dataset=val_dataset,
     peft_config=peft_config,
-    max_seq_length=512,
+    # max_seq_length=512,
     dataset_text_field="text",
     tokenizer=tokenizer,
     args=training_arguments,

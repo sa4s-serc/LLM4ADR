@@ -5,3 +5,4 @@ __pycache__
 Finetuning/Code/models/
 Approach/models/
 models
+wandb

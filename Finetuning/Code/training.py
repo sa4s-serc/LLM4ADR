@@ -20,7 +20,8 @@ if MODEL_NAME is None:
 CACHE_DIR = "/scratch/llm4adr/cache"
 
 tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME, cache_dir=CACHE_DIR)
-tokenizer.pad_token = tokenizer.eos_token
+if tokenizer.pad_token is None:
+    tokenizer.pad_token = tokenizer.eos_token
 
 if MODEL_NAME == "gpt2":
     model  = AutoModelForCausalLM.from_pretrained(MODEL_NAME, cache_dir=CACHE_DIR)
