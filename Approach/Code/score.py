@@ -3,7 +3,7 @@ import pandas as pd
 import nltk
 import json
 
-MODEL_NAME = "flan-t5-base-test"
+MODEL_NAME = "flan-t5-base-all"
 CACHE_DIR = '/scratch/llm4adr/cache' 
 DATA_DIR = f'../results/{MODEL_NAME}.jsonl'
 RESULT_DIR = f'../metrics/{MODEL_NAME}.json'

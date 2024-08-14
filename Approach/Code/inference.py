@@ -63,13 +63,17 @@ def infer(model, tokenizer, data, device) -> pd.DataFrame:
     return data
 
 def main():
-    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-    tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME, cache_dir=CACHE_DIR)
-    model = AutoModelForSeq2SeqLM.from_pretrained(MODEL_PATH, cache_dir=CACHE_DIR).to(device)
+    # device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    # tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME, cache_dir=CACHE_DIR)
+    # model = AutoModelForSeq2SeqLM.from_pretrained(MODEL_PATH, cache_dir=CACHE_DIR).to(device)
 
+    device = None
+    tokenizer = None
+    model = None
+    
     data = pd.read_json("../../Data/ADR-data/data_test.jsonl", lines=True)
     data["Context"] = data["Context"].str.replace("\\n", "\n")
-        
+            
     results = infer(model, tokenizer, data, device)
     results.to_json(f"../results/{MODEL_NAME.split('/')[1]}-all.jsonl", lines=True, orient="records")
     
