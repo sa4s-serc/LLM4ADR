@@ -11,25 +11,19 @@ import wandb
 
 load_dotenv(dotenv_path="../../.env")
 
-MODEL_NAME = "meta-llama/Meta-Llama-3-8B-Instruct"
+# MODEL_NAME = "meta-llama/Meta-Llama-3-8B-Instruct"
+MODEL_NAME = "google/gemma-2-9b-it"
 CACHE_DIR = "/scratch/llm4adr/cache"
 huggingface_token = os.getenv("HUGGINGFACE_TOKEN")
 
-os.environ["WANDB_PROJECT"]="adr_llama"
-wandb.init(project="adr_llama")
+# os.environ["WANDB_PROJECT"]="adr_llama"
+# wandb.init(project="adr_llama")
+os.environ["WANDB_PROJECT"]="adr_gemma"
+wandb.init(project="adr_gemma")
 
 torch_dtype = torch.float16
-attn_implementation = "eager"
 
-# QLoRA config
-# bnb_config = BitsAndBytesConfig(
-#     load_in_4bit=True,
-#     bnb_4bit_quant_type="nf4",
-#     bnb_4bit_compute_dtype=torch_dtype,
-#     bnb_4bit_use_double_quant=True,
-# )
-
-tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME, token=huggingface_token, cache_dir=CACHE_DIR, padding_side='left')
+tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME, token=huggingface_token, cache_dir=CACHE_DIR)
 if tokenizer.pad_token is None:
     tokenizer.pad_token = tokenizer.eos_token
 model = AutoModelForCausalLM.from_pretrained(MODEL_NAME, token=huggingface_token, cache_dir=CACHE_DIR, device_map="auto", torch_dtype='auto')
@@ -115,7 +109,7 @@ trainer = SFTTrainer(
     train_dataset=train_dataset,
     eval_dataset=val_dataset,
     peft_config=peft_config,
-    # max_seq_length=512,
+    max_seq_length=3096,
     dataset_text_field="text",
     tokenizer=tokenizer,
     args=training_arguments,
