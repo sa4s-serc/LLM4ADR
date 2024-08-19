@@ -8,6 +8,7 @@ from datasets import Dataset
 from dotenv import load_dotenv
 import os
 import wandb
+import numpy as np
 
 load_dotenv(dotenv_path="../../.env")
 
@@ -22,12 +23,16 @@ os.environ["WANDB_PROJECT"]="adr_gemma"
 wandb.init(project="adr_gemma")
 
 torch_dtype = torch.float16
+attn_implementation = 'eager'
 
-tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME, token=huggingface_token, cache_dir=CACHE_DIR)
+tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME, token=huggingface_token, cache_dir=CACHE_DIR, padding_side="right")
 if tokenizer.pad_token is None:
     tokenizer.pad_token = tokenizer.eos_token
-model = AutoModelForCausalLM.from_pretrained(MODEL_NAME, token=huggingface_token, cache_dir=CACHE_DIR, device_map="auto", torch_dtype='auto')
-# model = AutoModelForCausalLM.from_pretrained(MODEL_NAME, quantization_config=bnb_config, token=huggingface_token, cache_dir=CACHE_DIR, device_map="auto", attn_implementation=attn_implementation)
+    
+print(f"Using {tokenizer.padding_side} padding with token {tokenizer.pad_token}")
+
+# model = AutoModelForCausalLM.from_pretrained(MODEL_NAME, token=huggingface_token, cache_dir=CACHE_DIR, device_map="auto", torch_dtype='auto')
+model = AutoModelForCausalLM.from_pretrained(MODEL_NAME, token=huggingface_token, cache_dir=CACHE_DIR, device_map="auto", torch_dtype='auto', attn_implementation=attn_implementation)
 
 peft_config = LoraConfig(
     r=16,
@@ -39,7 +44,8 @@ peft_config = LoraConfig(
 )
 model = get_peft_model(model, peft_config)
 
-new_model = "llama-3-8b-ADR"
+# new_model = "llama-3-8b-ADR"
+new_model = "gemma-2-9b-ADR-3"
 
 TRAIN_PATH = "../../Data/ADR-data/data_train.jsonl"
 VAL_PATH = "../../Data/ADR-data/data_val.jsonl"
@@ -55,8 +61,8 @@ val_dataset = Dataset.from_pandas(val)
 test_dataset = Dataset.from_pandas(test)
 
 def format_chat_template(row):
-    row_json = [{"role": "user", "content": row["Context"]},
-               {"role": "assistant", "content": row["Decision"]}]
+    row_json = [{"role": "user", "content": f'You are an expert software architect. Your task is to help other software architects write Architectural Decision Records (ADRs). You will be given the context for the ADR and you need to provide the decision. The context is as follows: {row["Context"]}. Please provide the decision.'},
+               {"role": "model", "content": row["Decision"]}]
     row["text"] = tokenizer.apply_chat_template(row_json, tokenize=False)
     return row
 
@@ -85,14 +91,19 @@ training_arguments = TrainingArguments(
     per_device_train_batch_size=BATCH_SIZE,
     per_device_eval_batch_size=BATCH_SIZE,
     gradient_accumulation_steps=ACCUMULATION_STEPS,
-    eval_accumulation_steps=ACCUMULATION_STEPS,
+    eval_accumulation_steps=2,
     optim="paged_adamw_32bit",
+    gradient_checkpointing=True,
+    gradient_checkpointing_kwargs={
+        "use_reentrant": False,
+        # "offload_to_cpu": True,
+    },
     num_train_epochs=EPOCHS,
-    evaluation_strategy="epoch",
+    eval_strategy="epoch",
     save_strategy="epoch",
+    logging_strategy="epoch",
     eval_steps=1,
     save_steps=1,
-    logging_strategy="epoch",
     logging_steps=1,
     # learning_rate=2e-4,
     group_by_length=True,
@@ -104,17 +115,35 @@ training_arguments = TrainingArguments(
     run_name=None,
 )
 
+def compute_metrics(eval_pred):
+    predictions, labels = eval_pred
+    
+    print(predictions.shape, labels.shape)
+    # Decode the predictions and labels (assuming they are token IDs)
+    decoded_preds = tokenizer.batch_decode(np.argmax(predictions, axis=2), skip_special_tokens=True)
+    # decoded_labels = tokenizer.batch_decode(labels, skip_special_tokens=True)
+
+    # Print out a few predictions and their corresponding labels
+    for i in range(min(5, len(decoded_preds))):  # Printing first 5 examples
+        print(f"Prediction: {decoded_preds[i]}")
+        # print(f"Target: {decoded_labels[i]}")
+        print("="*50)
+
+    # Return an empty dictionary as we are not calculating any metrics
+    return {}
+
 trainer = SFTTrainer(
     model=model,
     train_dataset=train_dataset,
     eval_dataset=val_dataset,
     peft_config=peft_config,
-    max_seq_length=3096,
+    max_seq_length=1024,
     dataset_text_field="text",
     tokenizer=tokenizer,
     args=training_arguments,
     packing= False,
     callbacks=[WandbCallback()],
+    # compute_metrics=compute_metrics
 )
 
 trainer.train()

@@ -4,12 +4,13 @@ from transformers import AutoTokenizer, AutoModelForSeq2SeqLM
 import pandas as pd
 import torch
 from tqdm import tqdm
+import sys
 
 CACHE_DIR = "/scratch/llm4adr/cache"
-EMBEDDING_MODEL = "bert-base-uncased"
-MODEL_NAME = "google/flan-t5-base"
+EMBEDDING_MODEL = "bert-base-uncased-test"
+MODEL_NAME = sys.argv[1]
 MODEL_MAX_LENGTH = 1000
-RAG_DOCUMENTS = 2
+RAG_DOCUMENTS = 5
 
 pkl = open(f'../embeds/{EMBEDDING_MODEL}.pkl', 'rb').read()
 
@@ -17,9 +18,17 @@ embeddings = HuggingFaceEmbeddings(model_name=EMBEDDING_MODEL, cache_folder=CACH
 db = FAISS.deserialize_from_bytes(embeddings=embeddings, serialized=pkl, allow_dangerous_deserialization=True)
 
 def construct_context(query: str, db: FAISS, embeddings: HuggingFaceEmbeddings, top_k: int = 2) -> str:
-    results = db.similarity_search(query, k=top_k)
+    results = db.similarity_search(query, k=top_k+1)
     
-    context = "Use the provided contexts and decisions to make a more informed decision:\n\n"
+    for result in results:
+        if result.page_content == query:
+            results.remove(result)
+            break
+    
+    if len(results) != top_k:
+        results = results[:top_k]
+    
+    context = "You are an expert software architect who is tasked with making decisions for Architectural Decision Records (ADRs). You will be given a context and you need to provide a decision. Here are some examples:\n\n"
     for result in results:
         context += result.page_content + "\n## Decision\n" + result.metadata['Decision'] + "\n\n"
         
@@ -46,7 +55,7 @@ decision = data['Decision'].tolist()
 
 predicted_decision = []
 
-BATCH_SIZE = 16
+BATCH_SIZE = 1
 
 inputs = tokenizer(rag_context, return_tensors="pt", padding=True, truncation=True, max_length=MODEL_MAX_LENGTH, return_attention_mask=True)
 
