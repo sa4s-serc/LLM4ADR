@@ -1,86 +1,110 @@
 import google.generativeai as genai
-import os
+
 from dotenv import load_dotenv
+import os
 import pandas as pd
-from time import time, sleep
-import argparse
 from tqdm import tqdm
-
-def get_data(data: pd.DataFrame, max_length = -1):
-    context = data['Context'].tolist()
-    decision = data['Decision'].tolist()
-    for i in range(len(context)):
-        context[i] = f"This is an Architectural Decision Record. Provide a Decision for the Context given below.\n{context[i]}\n## Decision\n"
-    if max_length != -1:
-        removed = []
-        context_new = []
-        decision_new = []
-        for i, (c, d) in enumerate(zip(context, decision)):
-            if len(c) < max_length and len(d) < max_length:
-                context_new.append(c)
-                decision_new.append(d)
-            else:
-                removed.append(i)
-        context = context_new
-        decision = decision_new
-        
-        return context, decision, removed
-    return context, decision, []
-
+from datetime import datetime
+from argparse import ArgumentParser
 
 load_dotenv()
 
-genai.configure(api_key=os.getenv('GEMINI_KEY'))
+INPUT_FILE = "../../Data/ADR-data/data_test.jsonl"
+MODEL_NAME = "gemini-1.5-pro"
 
-model_name = "gemini-pro"
+genai.configure(api_key=os.environ['GEMINI'])
+model = genai.GenerativeModel(MODEL_NAME)
 
-model = genai.GenerativeModel(model_name)
+system_message = "This is an Architectural Decision Record for a software. Give a ## Decision corresponding to the ## Context provided by the User."
 
-def run(start = 0, days = 1500):
-    data = pd.read_csv('../ADR-data/context_decision.csv')
-    # data = pd.read_csv('../results/gemini-fail.csv')
+def save_jsonl(data: pd.DataFrame, file_path, append=True):
+    if append:
+        with open(file_path, "a") as file:
+            file.write(data.to_json(orient="records", lines=True))
+    else:
+        data.to_json(file_path, orient="records", lines=True)
 
-    context, decision, removed = get_data(data)
 
-    predicted_decision = []
-    new_context = []
-    new_decision = []
+def get_data(data: pd.DataFrame, max_length=-1):
+    try:
+        done_files = [
+            f for f in os.listdir("../results")
+            if f.startswith(f"{MODEL_NAME}_") and f.endswith(".jsonl") and not f.startswith(f"{MODEL_NAME}_failed")
+        ]
 
+        done = pd.DataFrame(columns=data.columns)
+        for file in done_files:
+            done = pd.concat([done, pd.read_json(f"../results/{file}", lines=True)], ignore_index=True)
+
+        done_ids = done["id"].tolist()
+        data = data[~data["id"].isin(done_ids)]
+        print(f"Already done for {len(done_ids)} records")
+    except Exception as e:
+        print(f"Error occurred: {e}")
+
+    if max_length != -1:
+        removed = []
+        data_new = pd.DataFrame(columns=data.columns)
+        for i, row in data.iterrows():
+            if len(row["Context"]) < max_length and len(row["Decision"]) < max_length:
+                data_new = data_new.append(row, ignore_index=True)
+            else:
+                removed.append(row["id"])
+        return data_new, removed
+    return data, []
+
+
+def run(start=0, num_left=10000):
+    data = pd.read_json(INPUT_FILE, lines=True)
+    print(f"Generating predictions using {MODEL_NAME}")
+
+    data, removed = get_data(data)
+    open(f"../results/{MODEL_NAME}_failed_{start}_{num_left}.jsonl", "w").close()
     done = 0
-    total = days - len(context[start:]) if days > len(context[start:]) else days
 
-    for i, c in tqdm(enumerate(context[start:]), total=total):
-        gen = None
+    total = len(data[start:start+num_left]) if num_left > len(data[start:start+num_left]) else num_left
+    print(f"Total records: {total}")
+
+    failed = []
+
+    for i, row in tqdm(data[start: start + num_left].iterrows(), total=total):
+        if i in removed:
+            continue
+
         try:
-            gen = model.generate_content(c)
-            predicted_decision.append(gen._result.candidates[0].content.parts[0].text.replace("\n", "\\n"))
+            chat = model.start_chat(
+                history=[
+                    {"role": "user", "parts": system_message}
+                ]
+            )
+            response = chat.send_message(row["Context"])
+            row["Prediction"] = response.text
+            row["GenTime"] = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+            row = row.to_frame().T
+            save_jsonl(row, f"../results/{MODEL_NAME}_{start}_{num_left}.jsonl")
+            done += 1
+
         except Exception as e:
-            print(gen,c)
-            print(e)
-            print(f"Failed for {i}")
-            predicted_decision.append("FAILED"*100)
-        new_context.append(c.replace("\n", "\\n"))
-        new_decision.append(decision[start + i].replace("\n", "\\n"))
-        done += 1
-        if done >= days:
-            print("Done for the day")
-            break
-        sleep(5)
+            print(f"Exception: {e}")
+            print(f"Failed for {row['id']}")
+            failed.append((row["id"], e))
 
-    new_decision = pd.DataFrame({'Context': new_context, 'Decision': new_decision, 'Prediction': predicted_decision})
+        if done % 100 == 0:
+            print(f"Done for {done} records")
 
-    print(f"Prediction done for {len(predicted_decision)} records")
-    # print(predicted_decision)
+    print(f"Done for {done} records")
 
-    df = pd.read_csv('../results/gemini.csv') if os.path.exists('../results/gemini.csv') else pd.DataFrame({'Context': [], 'Decision': [], 'Prediction': []})
-    df = pd.concat([df, new_decision])
-    df.to_csv('../results/gemini.csv', index=False)
-    
+    if len(failed) > 0:
+        failed_df = data[data["id"].isin([f[0] for f in failed])]
+        failed_df["Error"] = [f[1] for f in failed]
+        save_jsonl(failed_df, f"../results/{MODEL_NAME}_failed_{start}_{num_left}.jsonl", False)
+        print(f"Failed for {len(failed)} records")
+
+
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(
-                    prog='Gemini')
-    parser.add_argument('--start', type=int, default=0, help='Start index')
-    parser.add_argument('--day', type=int, default=1500, help='Number of records to predict in one day')
+    parser = ArgumentParser(prog="Gemini")
+    parser.add_argument("--start", type=int, default=0, help="Start index")
+    parser.add_argument("--num_left", type=int, default=10000, help="Number of runs left")
     args = parser.parse_args()
-    
-    run(args.start, args.day)
+
+    run(args.start, args.num_left)
