@@ -1,20 +1,25 @@
 from langchain_huggingface import HuggingFaceEmbeddings
 from langchain_community.vectorstores import FAISS
-from transformers import AutoTokenizer, AutoModelForSeq2SeqLM
+from transformers import AutoTokenizer, AutoModelForSeq2SeqLM, AutoModelForCausalLM
 import pandas as pd
 import torch
 from tqdm import tqdm
 import sys
+from dotenv import find_dotenv, load_dotenv
+import os
+
+load_dotenv(find_dotenv(raise_error_if_not_found=True))
 
 CACHE_DIR = "/scratch/llm4adr/cache"
-EMBEDDING_MODEL = "bert-base-uncased-test"
+EMBEDDING_MODEL = "bert-base-uncased"
 MODEL_NAME = sys.argv[1]
-MODEL_MAX_LENGTH = 1000
+MODEL_MAX_LENGTH = 500
 RAG_DOCUMENTS = 5
+huggingface_token = os.getenv("HUGGINGFACE_TOKEN")
 
-pkl = open(f'../embeds/{EMBEDDING_MODEL}.pkl', 'rb').read()
+pkl = open(f'../embeds/{EMBEDDING_MODEL}-test.pkl', 'rb').read()
 
-embeddings = HuggingFaceEmbeddings(model_name=EMBEDDING_MODEL, cache_folder=CACHE_DIR)
+embeddings = HuggingFaceEmbeddings(model_name=EMBEDDING_MODEL, cache_folder=CACHE_DIR, model_kwargs={'device': 'cpu'})
 db = FAISS.deserialize_from_bytes(embeddings=embeddings, serialized=pkl, allow_dangerous_deserialization=True)
 
 def construct_context(query: str, db: FAISS, embeddings: HuggingFaceEmbeddings, top_k: int = 2) -> str:
@@ -41,17 +46,21 @@ def replace_newline(text: list):
         text[i] = text[i].replace('\n', '\\n')
     return text
     
-tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME, cache_dir=CACHE_DIR, model_max_length=MODEL_MAX_LENGTH)
+data = pd.read_json('../../Data/ADR-data/data_test.jsonl', lines=True)
+rag_context = data['Context'].apply(lambda x: construct_context(x, db, embeddings, RAG_DOCUMENTS))
+context = rag_context.tolist()
+decision = data['Decision'].tolist()
 
-model = AutoModelForSeq2SeqLM.from_pretrained(MODEL_NAME, cache_dir=CACHE_DIR, device_map='auto')
+tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME, cache_dir=CACHE_DIR, model_max_length=MODEL_MAX_LENGTH, token=huggingface_token)
+
+if tokenizer.pad_token is None:
+    tokenizer.pad_token = tokenizer.eos_token
+
+model = AutoModelForCausalLM.from_pretrained(MODEL_NAME, cache_dir=CACHE_DIR, device_map='auto', token=huggingface_token)
+
+model.generation_config.pad_token_id = tokenizer.pad_token_id
 
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-
-data = pd.read_json('../../Data/ADR-data/data_test.jsonl', lines=True)
-context = data['Context']
-rag_context = context.apply(lambda x: construct_context(x, db, embeddings, RAG_DOCUMENTS)).tolist()
-context = context.tolist()
-decision = data['Decision'].tolist()
 
 predicted_decision = []
 
@@ -64,7 +73,7 @@ with torch.no_grad():
         input_ids = inputs['input_ids'][i:i+BATCH_SIZE].to(device)
         attention_mask = inputs['attention_mask'][i:i+BATCH_SIZE].to(device)
 
-        outputs = model.generate(input_ids, attention_mask=attention_mask, max_length=MODEL_MAX_LENGTH, min_length= int(MODEL_MAX_LENGTH/8))
+        outputs = model.generate(input_ids, attention_mask=attention_mask, max_new_tokens=MODEL_MAX_LENGTH, min_length= int(MODEL_MAX_LENGTH/8))
         predicted_decision.extend(tokenizer.batch_decode(outputs, skip_special_tokens=True))
 
 print(f"Prediction done for {len(predicted_decision)} records")
