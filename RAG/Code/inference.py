@@ -47,8 +47,9 @@ def replace_newline(text: list):
     return text
     
 data = pd.read_json('../../Data/ADR-data/data_test.jsonl', lines=True)
-rag_context = data['Context'].apply(lambda x: construct_context(x, db, embeddings, RAG_DOCUMENTS))
-context = rag_context.tolist()
+context = data['Context']
+rag_context = context.apply(lambda x: construct_context(x, db, embeddings, RAG_DOCUMENTS)).tolist()
+context = context.tolist()
 decision = data['Decision'].tolist()
 
 tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME, cache_dir=CACHE_DIR, model_max_length=MODEL_MAX_LENGTH, token=huggingface_token)
@@ -61,6 +62,7 @@ model = AutoModelForCausalLM.from_pretrained(MODEL_NAME, cache_dir=CACHE_DIR, de
 model.generation_config.pad_token_id = tokenizer.pad_token_id
 
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+
 
 predicted_decision = []
 
