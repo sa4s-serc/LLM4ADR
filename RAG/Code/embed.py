@@ -5,12 +5,16 @@ from langchain_huggingface import HuggingFaceEmbeddings
 from langchain_google_genai import GoogleGenerativeAIEmbeddings
 from langchain_openai import OpenAIEmbeddings
 from dotenv import find_dotenv, load_dotenv
+import os
 
 load_dotenv(find_dotenv(raise_error_if_not_found=True))
 
+print(os.environ.get("GOOGLE_API_KEY"))
+print(os.environ.get("OPENAI_API_KEY"))
+
 CACHE_DIR = "/scratch/llm4adr/cache"
-# MODEL_NAME = "bert-base-uncased" | "text-embedding-3-large" | "models/embedding-001"
-MODEL_NAME = "models/embedding-001"
+# MODEL_NAME = "bert-base-uncased" | "text-embedding-3-large" | "models/text-embedding-004"
+MODEL_NAME = "models/text-embedding-004"
 
 def metadata_func(record: dict, metadata: dict) -> dict:
 
