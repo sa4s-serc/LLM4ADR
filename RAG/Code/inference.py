@@ -7,12 +7,13 @@ from tqdm import tqdm
 import sys
 from dotenv import find_dotenv, load_dotenv
 import os
+import gc
 
 load_dotenv(find_dotenv(raise_error_if_not_found=True))
 
 CACHE_DIR = "/scratch/llm4adr/cache"
 EMBEDDING_MODEL = "bert-base-uncased"
-MODEL_NAME = sys.argv[1]
+MODEL_NAME = "google/gemma-2-9b-it"
 MODEL_MAX_LENGTH = 500
 RAG_DOCUMENTS = 5
 huggingface_token = os.getenv("HUGGINGFACE_TOKEN")
@@ -48,7 +49,9 @@ def replace_newline(text: list):
     
 data = pd.read_json('../../Data/ADR-data/data_test.jsonl', lines=True)
 context = data['Context']
+print("Running Retrieval", flush=True)
 rag_context = context.apply(lambda x: construct_context(x, db, embeddings, RAG_DOCUMENTS)).tolist()
+print("Retrieval done", flush=True)
 context = context.tolist()
 decision = data['Decision'].tolist()
 
@@ -57,7 +60,7 @@ tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME, cache_dir=CACHE_DIR, model
 if tokenizer.pad_token is None:
     tokenizer.pad_token = tokenizer.eos_token
 
-model = AutoModelForCausalLM.from_pretrained(MODEL_NAME, cache_dir=CACHE_DIR, device_map='auto', token=huggingface_token)
+model = AutoModelForCausalLM.from_pretrained(MODEL_NAME, token=huggingface_token, cache_dir=CACHE_DIR, device_map="auto", torch_dtype='auto')
 
 model.generation_config.pad_token_id = tokenizer.pad_token_id
 
@@ -77,6 +80,9 @@ with torch.no_grad():
 
         outputs = model.generate(input_ids, attention_mask=attention_mask, max_new_tokens=MODEL_MAX_LENGTH, min_length= int(MODEL_MAX_LENGTH/8))
         predicted_decision.extend(tokenizer.batch_decode(outputs, skip_special_tokens=True))
+        
+        gc.collect()
+        torch.cuda.empty_cache()
 
 print(f"Prediction done for {len(predicted_decision)} records")
 

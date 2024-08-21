@@ -1,3 +1,5 @@
+from copy import deepcopy
+from typing import NamedTuple
 from transformers import AutoTokenizer, AutoModelForCausalLM
 from transformers import TrainingArguments
 import pandas as pd
@@ -28,7 +30,7 @@ torch_dtype = torch.float16
 tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME, cache_dir=CACHE_DIR, padding_side='left', token=huggingface_token)
 if tokenizer.pad_token is None:
     tokenizer.pad_token = tokenizer.eos_token
-pkl = open(f'../../RAG/embeds/{EMBEDDING_MODEL}.pkl', 'rb').read()
+pkl = open(f'../../RAG/embeds/{EMBEDDING_MODEL}-test.pkl', 'rb').read()
 
 embeddings = HuggingFaceEmbeddings(model_name=EMBEDDING_MODEL, cache_folder=CACHE_DIR)
 db = FAISS.deserialize_from_bytes(embeddings=embeddings, serialized=pkl, allow_dangerous_deserialization=True)
@@ -46,15 +48,15 @@ peft_config = LoraConfig(
 )
 model = get_peft_model(model, peft_config)
 
-new_model = "llama-3-8b-ADR"
+new_model = "llama-3-8b-ADR-approach"
 
 TRAIN_PATH = "../../Data/ADR-data/data_train.jsonl"
 VAL_PATH = "../../Data/ADR-data/data_val.jsonl"
 TEST_PATH = "../../Data/ADR-data/data_test.jsonl"
 
-train = pd.read_json(TRAIN_PATH, lines=True)
-val = pd.read_json(VAL_PATH, lines=True)
-test = pd.read_json(TEST_PATH, lines=True)
+train = pd.read_json(TRAIN_PATH, lines=True).sample(n=100)
+val = pd.read_json(VAL_PATH, lines=True).sample(n=10)
+test = pd.read_json(TEST_PATH, lines=True).sample(n=10)
 
 def perform_rag(query: str, top_k: int = 2) -> str:
     # Get one more result than required to remove the query from the results
@@ -104,6 +106,18 @@ test_dataset = test_dataset.map(
     # num_proc=4,
 )
 
+class CustomCallback(WandbCallback):
+    
+    def __init__(self, trainer) -> None:
+        super().__init__()
+        self._trainer = trainer
+    
+    def on_epoch_end(self, args, state, control, **kwargs):
+        # if control.should_evaluate:
+        control_copy = deepcopy(control)
+        self._trainer.evaluate(eval_dataset=self._trainer.train_dataset, metric_key_prefix="train_epoch")
+        return control_copy
+
 EPOCHS = 10
 BATCH_SIZE = 1 # Effective batch size is BATCH_SIZE * gradient_accumulation_steps
 SAVE_TOTAL_LIM = 4
@@ -119,10 +133,10 @@ training_arguments = TrainingArguments(
     num_train_epochs=EPOCHS,
     evaluation_strategy="epoch",
     save_strategy="epoch",
-    eval_steps=1,
-    save_steps=1,
+    # eval_steps=1,
+    # save_steps=1,
     logging_strategy="epoch",
-    logging_steps=1,
+    # logging_steps=1,
     group_by_length=True,
     report_to="wandb",
     push_to_hub=False,
@@ -142,7 +156,11 @@ trainer = SFTTrainer(
     tokenizer=tokenizer,
     args=training_arguments,
     packing= False,
-    callbacks=[WandbCallback()],
 )
+trainer.add_callback(CustomCallback(trainer))
 
 trainer.train()
+
+# tested = trainer.predict(test_dataset)
+
+
