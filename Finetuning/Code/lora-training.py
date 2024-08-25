@@ -1,3 +1,4 @@
+from copy import deepcopy
 from transformers import AutoTokenizer, AutoModelForCausalLM, TrainingArguments, BitsAndBytesConfig
 from transformers.integrations import WandbCallback
 import pandas as pd
@@ -81,6 +82,18 @@ test_dataset = test_dataset.map(
     num_proc=4,
 )
 
+class CustomCallback(WandbCallback):
+    
+    def __init__(self, trainer) -> None:
+        super().__init__()
+        self._trainer = trainer
+    
+    def on_epoch_end(self, args, state, control, **kwargs):
+        # if control.should_evaluate:
+        control_copy = deepcopy(control)
+        self._trainer.evaluate(eval_dataset=self._trainer.train_dataset, metric_key_prefix="train_epoch")
+        return control_copy
+
 EPOCHS = 10
 BATCH_SIZE = 1 # Effective batch size is BATCH_SIZE * gradient_accumulation_steps
 SAVE_TOTAL_LIM = 4
@@ -105,7 +118,6 @@ training_arguments = TrainingArguments(
     eval_steps=1,
     save_steps=1,
     logging_steps=1,
-    # learning_rate=2e-4,
     group_by_length=True,
     report_to="wandb",
     push_to_hub=False,
@@ -114,23 +126,6 @@ training_arguments = TrainingArguments(
     greater_is_better=False,
     run_name=None,
 )
-
-def compute_metrics(eval_pred):
-    predictions, labels = eval_pred
-    
-    print(predictions.shape, labels.shape)
-    # Decode the predictions and labels (assuming they are token IDs)
-    decoded_preds = tokenizer.batch_decode(np.argmax(predictions, axis=2), skip_special_tokens=True)
-    # decoded_labels = tokenizer.batch_decode(labels, skip_special_tokens=True)
-
-    # Print out a few predictions and their corresponding labels
-    for i in range(min(5, len(decoded_preds))):  # Printing first 5 examples
-        print(f"Prediction: {decoded_preds[i]}")
-        # print(f"Target: {decoded_labels[i]}")
-        print("="*50)
-
-    # Return an empty dictionary as we are not calculating any metrics
-    return {}
 
 trainer = SFTTrainer(
     model=model,
@@ -142,8 +137,9 @@ trainer = SFTTrainer(
     tokenizer=tokenizer,
     args=training_arguments,
     packing= False,
-    callbacks=[WandbCallback()],
+    # callbacks=[WandbCallback()],
     # compute_metrics=compute_metrics
 )
+trainer.add_callback(CustomCallback(trainer))
 
 trainer.train()
