@@ -2,9 +2,11 @@ from evaluate import load
 import pandas as pd
 import nltk
 import json
+import os
 
-MODEL_NAME = "Meta-Llama-3-8B-Instruct"
-CACHE_DIR = '/scratch/llm4adr/cache' 
+MODEL_NAME = "lora-Flan-T5-base"
+# CACHE_DIR = '/scratch/llm4adr/cache' 
+CACHE_DIR = os.path.expanduser("~/Desktop/ADR/cache")
 DATA_DIR = f'../results/{MODEL_NAME}.jsonl'
 RESULT_DIR = f'../metrics/{MODEL_NAME}.json'
 PREDICTION_COL = 'Predictions'
