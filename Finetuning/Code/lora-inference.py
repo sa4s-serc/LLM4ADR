@@ -5,19 +5,23 @@ from peft import PeftModel, PeftConfig
 from tqdm import tqdm
 import dotenv
 import os
+import sys
 
 dotenv.load_dotenv(dotenv.find_dotenv(raise_error_if_not_found=True))
 
-MODEL_NAME = "meta-llama/Meta-Llama-3-8B-Instruct"
+MODEL_NAME = "google/gemma-2-9b-it"
 CACHE_DIR = "/scratch/llm4adr/cache"
-MODEL_PATH = "./models/llama-3-8b-ADR"
+MODEL_PATH = sys.argv[1]
+# MODEL_PATH = "./models/gemma-2-9b"
 HUGGINGFACE_TOKEN = os.getenv("HUGGINGFACE_TOKEN")
 
 def infer(model, tokenizer, data, device) -> pd.DataFrame:
     inputs = data["Prompts"]
-    batch_size = 8
+    batch_size = 1
     
     predictions = []
+    
+    end_of_turn = tokenizer.convert_tokens_to_ids('<end_of_turn>')
     
     for i in tqdm(range(0, len(inputs), batch_size)):
         batch = inputs[i:i+batch_size].tolist()
@@ -29,7 +33,12 @@ def infer(model, tokenizer, data, device) -> pd.DataFrame:
         outputs = []
         for i in range(len(decodes)):
             outputs.append(decodes[i][len(batch[i]):])
-                        
+            
+            eot_position = outputs[i].find(tokenizer.decode([end_of_turn]))
+            if eot_position != -1:
+                outputs[i] = outputs[i][:eot_position]
+
+
         predictions.extend(outputs)
         
     print("Maximum Length of Prediction: ", max(len(p) for p in predictions))
@@ -45,7 +54,10 @@ def preprocess_texts(data: pd.DataFrame, tokenizer: AutoTokenizer) -> None:
     prompts = []
     
     for i in data["Context"]:
-        messages = [{"role": "user", "content": i}]
+        if "system" in MODEL_PATH:
+            messages = [{"role": "user", "content": i}]
+        else:
+            messages = [{"role": "user", "content": f'You are an expert software architect. Your task is to help other software architects write Architectural Decision Records (ADRs). You will be given the context for the ADR and you need to provide the decision. The context is as follows: {i}. Please provide the decision.'}]
         prompts.append(tokenizer.apply_chat_template(messages, tokenize=False, add_generation_prompt=True))
     
     data["Prompts"] = prompts
@@ -64,10 +76,12 @@ def main():
     data = pd.read_json("../../Data/ADR-data/data_test.jsonl", lines=True)
     data["Context"] = data["Context"].str.replace("\\n", "\n")
     
+
     preprocess_texts(data, tokenizer)
     
     results = infer(model, tokenizer, data, device)
-    results.to_json(f"../results/{MODEL_NAME.split('/')[1]}.jsonl", lines=True, orient="records")
+    print(results)
+    results.to_json(f"../results/{MODEL_PATH.split('/')[1]}.jsonl", lines=True, orient="records")
     
 if __name__ == '__main__':
     main()

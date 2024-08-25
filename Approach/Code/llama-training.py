@@ -54,9 +54,9 @@ TRAIN_PATH = "../../Data/ADR-data/data_train.jsonl"
 VAL_PATH = "../../Data/ADR-data/data_val.jsonl"
 TEST_PATH = "../../Data/ADR-data/data_test.jsonl"
 
-train = pd.read_json(TRAIN_PATH, lines=True).sample(n=100)
-val = pd.read_json(VAL_PATH, lines=True).sample(n=10)
-test = pd.read_json(TEST_PATH, lines=True).sample(n=10)
+train = pd.read_json(TRAIN_PATH, lines=True)
+val = pd.read_json(VAL_PATH, lines=True)
+test = pd.read_json(TEST_PATH, lines=True)
 
 def perform_rag(query: str, top_k: int = 2) -> str:
     # Get one more result than required to remove the query from the results
@@ -82,7 +82,7 @@ val_dataset = Dataset.from_pandas(val)
 test_dataset = Dataset.from_pandas(test)
 
 def format_chat_template(row):
-    few_shot = perform_rag(row["Context"], 2)
+    few_shot = perform_rag(row["Context"], 5)
     row_json = [
         {"role": "system", "content": "You are an expert architect and are tasked with taking decisions given a particular context. Here are some examples:\n\n" + few_shot},
         {"role": "user", "content": f"Provide a decision given the context below:\n{row['Context']}"},
