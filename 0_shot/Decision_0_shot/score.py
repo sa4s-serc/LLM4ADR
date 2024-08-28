@@ -2,12 +2,10 @@ from evaluate import load
 import pandas as pd
 import nltk
 import json
+from argparse import ArgumentParser
 
-MODEL_NAME = "gpt-4o"
 CACHE_DIR = '/scratch/llm4adr/cache' 
-DATA_DIR = f'../results/{MODEL_NAME}.jsonl'
-RESULT_DIR = f'../metrics/{MODEL_NAME}.json'
-PREDICTION_COL = 'Predicted'
+PREDICTION_COL = 'Prediction'
 TRUE_COL = 'Decision'
 
 def calculate_scores(data: pd.DataFrame) -> None:
@@ -17,7 +15,6 @@ def calculate_scores(data: pd.DataFrame) -> None:
     meteor = load('meteor', cache_dir=CACHE_DIR)
     bertscore = load("bertscore", cache_dir=CACHE_DIR)
     
-    # data.rename(columns={'Prediction': 'babbage-002'}, inplace=True)
     data = data.dropna(subset=PREDICTION_COL)
     
     print('Your data is of length: ', len(data))
@@ -34,12 +31,25 @@ def calculate_scores(data: pd.DataFrame) -> None:
     cols = ['precision', 'recall', 'f1']
     for c in cols:
         results['bertscore'][c] = pd.Series(results['bertscore'][c]).mean()
+    return results
     
-    with open(RESULT_DIR, 'w') as f:
+def main(model_name: str) -> None:
+    if not model_name:
+        print("Please provide a model name")
+        return
+    print("Calculating score for:", model_name)
+    data_dir = f'../results/{model_name}.jsonl'
+    result_dir = f'../metrics/{model_name}.json'    
+
+    results = calculate_scores(pd.read_json(data_dir, lines=True))
+
+    with open(result_dir, 'w') as f:
         json.dump(results, f)
-    
-def main():
-    calculate_scores(pd.read_json(DATA_DIR, lines=True))
+
 
 if __name__ == '__main__':
-    main()
+    parser = ArgumentParser(prog="Score")
+    parser.add_argument("--model", type=str, help="Name of the model")
+    model_name = parser.parse_args().model
+
+    main(model_name)
