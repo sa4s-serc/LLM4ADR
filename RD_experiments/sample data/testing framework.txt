@@ -1,0 +1,39 @@
+## Context\nWe need to make a decision on the testing framework for our project.\n
+
+We will make use of pytest. It is a de facto standard in the Python community\nand has unrivaled power.\n
+
+
+
+## Context\nWe want a test framework that has good support for TypeScript and Node. Jest is\na fast testing framework with good resources for mocking.\n
+
+We will use Jest as our testing framework.\n
+
+
+
+## Context and Problem Statement\nSince the project started out with both JUnit4 and JUnit5, we only want one unit-testing framework in order to make testing writing consistent.\n
+
+Chosen option: "[JUnit5]", because it is the newer version and therefore has a higher maturity and a wider feature-set.\n### Positive Consequences <!-- optional -->\n* Uniform tests\n* More and newer features\n
+
+
+
+## Context\nWe need to select a testing framework to use for testing node.js applications. There are\nmany choices in this space including [Jasmine](https://jasmine.github.io/) and\n[Jest](https://facebook.github.io/jest/).\n
+
+We have decided to use Jest as our testing framework as it provides mocking and\nexpectation functions which would have to be provided separately to Jasmine. Additionally\nthe snapshot testing mechanism can be used to simplify certain types of testing and is\nparticularly beneficial to front end unit testing.\n
+
+
+
+## Context\nThe variety of JavaScript testing frameworks made available for automation testers have become a cause of confusion for many. It is only natural, the more options you have in front of you, the more time it will take for you to decide which JavaScript automation testing framework fits the best for you.\n
+
+We have decided to use the cypress testing framework for frontend and e2e testing.\n
+
+
+
+## Context\nWe want a test framework that has good support for React and TypeScript.\n[Jest](https://jestjs.io) is the standard, recommended test framework for React\napps.\n
+
+We will use Jest as our testing framework.\n
+
+
+
+##Context\nWe need to choose a testing framework for our system. It's best if it's used across all solution so that it's a standard approach.\n
+
+We decided to go with Spock, due to its readability and the fact that it's a well known framework. Some groovy langauge tricks enable quick test preparation.\n

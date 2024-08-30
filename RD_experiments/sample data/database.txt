@@ -1,0 +1,15 @@
+##Context\nWe need to choose the database for our CardOperations. The database needs to store data in persistent form but it's not required that data is stored across sessions.\nApplication is a prototype, so it should be good for a quick setup.\n
+
+We decided to go with H2 database for its ease of use, easy setup and familiarity.\n
+
+
+
+## Context\nWhile developing APIs which store metadata about datasets, versions, filter jobs\nand import jobs using Postgres, it has been found that some updates required\ncomplex transactional updates across multiple tables.\nWe need to assess our data model and decide if a relational database\nbest fits this use case, or what alternative would be best.\n
+
+MongoDB will be used to store metadata for datasets, versions, filter and import\njobs. This allows us to prioritise the read heavy interactions, storing the\ndata in the same JSON format it will be presented to users.\n
+
+
+
+## Context\nWe want to add relational database.\n
+
+We will use PostgreSQL. It's a mature database with handy features like JSON\nand hstore data types. It's fully ACID compliant including schema changes. It\nhas very good support in Django's ORM.\nAnother popular option is MySQL/MariaDB. But because it has a major bug `#28727`\n(10 years since it has been reported and it's still not fixed) breaking ACID in\nschema changes it can't be used for any serious project.\n
