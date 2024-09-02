@@ -1,0 +1,122 @@
+' @startuml
+' class HelloWorld {
+'     +main(): void
+' }
+
+' HelloWorld --> "Hello, World!"
+' @enduml
+
+
+' @startuml
+' skinparam componentStyle uml2
+
+' package "Training Phase" {
+'     [Vector DB] as DB1
+'     [Retrieve C-D Pairs] as R1
+'     [Few-shot Sample] as FS1
+'     [Pretrained LLM] as LLM1
+'     [Finetuning] as FT
+'     [Finetuned Model] as FM
+
+'     DB1 -down-> R1 : retrieves\nsimilar C-D
+'     R1 -down-> FS1 : includes\nC'-D'
+'     FS1 -right-> LLM1 : uses
+'     LLM1 -down-> FT : input
+'     FT -down-> FM : output
+' }
+
+' package "Inference Phase" {
+'     [Vector DB] as DB2
+'     [Retrieve C-D Pairs] as R2
+'     [Few-shot Sample] as FS2
+'     [Generated Decision] as GD
+
+'     [Software Architect] as SA
+
+'     SA -right-> DB2 : provides\nC'
+'     DB2 -down-> R2 : retrieves\nsimilar C-D
+'     R2 -down-> FS2 : includes\nC'
+'     FS2 -down-> GD : uses\nfinetuned model
+' }
+
+' note right of FM
+'     The finetuned model
+'     is used for generating
+'     decisions in the
+'     inference phase.
+' end note
+
+' FM ..> GD : transfers learning
+
+' @enduml
+
+@startuml
+skinparam componentStyle uml2
+
+' Color definitions
+skinparam componentBackgroundColor #DFFAD7
+skinparam actorBackgroundColor #FFF5CC
+
+' Component Styles
+skinparam rectangle {
+  BackgroundColor<<database>> #AAD8E6
+  BackgroundColor<<process>> #E6D8AA
+  BackgroundColor<<model>> #F7CAC9
+}
+skinparam actor {
+  BackgroundColor #FFD28E
+  BorderColor DarkSlateGray
+}
+
+' Components
+rectangle "Vector DB with C-D pairs" as VectorDB <<database>> {
+    [Retrieve C-D Pair]
+}
+
+' Phases
+package "Training" {
+    component [Context C'] as TrainingContext <<process>>
+    component [Decision D'] as TrainingDecision <<process>>
+    component [Retrieved Context-Decision Pairs] as RetrievedPairs1 <<process>>
+    component [Few-shot Sample] as FewShotSample1 <<process>>
+    component [Pretrained LLM] as PretrainedLLM <<model>>
+    component [Finetuning] as Finetuning <<model>>
+    component [Finetuned Model] as FinetunedModel <<model>>
+}
+
+package "Inference" {
+    component [Context C'] as InferenceContext <<process>>
+    component [Generated Decision D'] as GeneratedDecision <<model>>
+    component [Retrieved Context-Decision Pairs] as RetrievedPairs2 <<process>>
+    component [Few-shot Sample] as FewShotSample2 <<process>>
+    actor "Software Architect" as Architect
+}
+
+' Connections for Training
+TrainingContext -right-> VectorDB
+VectorDB -down-> RetrievedPairs1
+RetrievedPairs1 -down-> FewShotSample1
+TrainingDecision .down.> FewShotSample1 : add C'-D'
+FewShotSample1 -right-> PretrainedLLM
+PretrainedLLM -down-> Finetuning
+Finetuning -down-> FinetunedModel
+
+' Connections for Inference
+Architect -right-> InferenceContext
+InferenceContext -right-> VectorDB
+VectorDB -down-> RetrievedPairs2
+RetrievedPairs2 -down-> FewShotSample2
+FewShotSample2 -down-> GeneratedDecision : use Finetuned Model
+FinetunedModel .down.> GeneratedDecision : influence
+
+' Note
+note right of FinetunedModel
+    The finetuned model is used here to
+    generate decisions based on new context
+    input by the Software Architect during
+    inference.
+    BackgroundColor #E8E8E8
+end note
+
+@enduml
+
