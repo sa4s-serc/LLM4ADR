@@ -14,7 +14,7 @@ print(os.environ.get("OPENAI_API_KEY"))
 
 CACHE_DIR = "/scratch/llm4adr/cache"
 # MODEL_NAME = "bert-base-uncased" | "text-embedding-3-large" | "models/text-embedding-004"
-MODEL_NAME = "models/text-embedding-004"
+MODEL_NAME = "bert-base-uncased"
 
 def metadata_func(record: dict, metadata: dict) -> dict:
 
@@ -52,7 +52,7 @@ def main():
 
     pkl = db.serialize_to_bytes()
 
-    with open(f"../embeds/gemini_test.pkl", "wb") as f:
+    with open(f"../embeds/{MODEL_NAME}-test.pkl", "wb") as f:
         f.write(pkl)
 
 if __name__ == "__main__":
