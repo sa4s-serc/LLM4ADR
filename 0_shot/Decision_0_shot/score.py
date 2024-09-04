@@ -5,7 +5,7 @@ import json
 from argparse import ArgumentParser
 
 CACHE_DIR = '/scratch/llm4adr/cache' 
-PREDICTION_COL = 'Prediction'
+PREDICTION_COL = 'Predictions'
 TRUE_COL = 'Decision'
 
 def calculate_scores(data: pd.DataFrame) -> None:

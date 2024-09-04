@@ -26,7 +26,7 @@ def metadata_func(record: dict, metadata: dict) -> dict:
 def main():
     print()
     loader = JSONLoader(
-        file_path="../../Data/ADR-data/data_test.jsonl",
+        file_path="../../Data/ADR-data/data_train.jsonl",
         jq_schema=".",
         content_key="Context",
         text_content=False,
@@ -52,7 +52,7 @@ def main():
 
     pkl = db.serialize_to_bytes()
 
-    with open(f"../embeds/{MODEL_NAME}-test.pkl", "wb") as f:
+    with open(f"../embeds/{MODEL_NAME}-train.pkl", "wb") as f:
         f.write(pkl)
 
 if __name__ == "__main__":

@@ -17,8 +17,8 @@ from dotenv import load_dotenv, find_dotenv
 
 load_dotenv(find_dotenv(raise_error_if_not_found=True))
 
-# os.environ["WANDB_LOG_MODEL"]="false"
-# os.environ["WANDB_WATCH"]="false"
+os.environ["WANDB_LOG_MODEL"]="false"
+os.environ["WANDB_WATCH"]="false"
 
 MODEL_NAME = "google/gemma-2-9b-it"
 EMBEDDING_MODEL = "bert-base-uncased"
@@ -29,17 +29,16 @@ CACHE_DIR = "/scratch/llm4adr/cache"
 torch_dtype = torch.float16
 attn_implementation = 'eager'
 
-tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME, cache_dir=CACHE_DIR, padding_side='left', token=huggingface_token)
+tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME, cache_dir=CACHE_DIR, padding_side='right', token=huggingface_token)
 if tokenizer.pad_token is None:
     tokenizer.pad_token = tokenizer.eos_token
 
-pkl = open(f'../../RAG/embeds/{EMBEDDING_MODEL}-test.pkl', 'rb').read()
+pkl = open(f'../../RAG/embeds/{EMBEDDING_MODEL}-train.pkl', 'rb').read()
 
 embeddings = HuggingFaceEmbeddings(model_name=EMBEDDING_MODEL, cache_folder=CACHE_DIR)
 db = FAISS.deserialize_from_bytes(embeddings=embeddings, serialized=pkl, allow_dangerous_deserialization=True)
 
 model = AutoModelForCausalLM.from_pretrained(MODEL_NAME, token=huggingface_token, cache_dir=CACHE_DIR, device_map="auto", torch_dtype='auto', attn_implementation=attn_implementation)
-# model = AutoModelForCausalLM.from_pretrained(MODEL_NAME, quantization_config=bnb_config, token=huggingface_token, cache_dir=CACHE_DIR, device_map="auto", attn_implementation=attn_implementation)
 
 peft_config = LoraConfig(
     r=16,
