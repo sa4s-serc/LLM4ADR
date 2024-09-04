@@ -151,6 +151,7 @@ training_arguments = TrainingArguments(
     metric_for_best_model="eval_loss",
     greater_is_better=False,
     run_name=None,
+    deepspeed='deepspeed.json',
 )
 
 trainer = SFTTrainer(
