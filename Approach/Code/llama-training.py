@@ -18,6 +18,7 @@ load_dotenv(find_dotenv(raise_error_if_not_found=True))
 
 os.environ["WANDB_LOG_MODEL"]="false"
 os.environ["WANDB_WATCH"]="false"
+# os.environ["PYTORCH_CUDA_ALLOC_CONF"] = "expandable_segments:True"
 
 MODEL_NAME = "meta-llama/Meta-Llama-3-8B-Instruct"
 EMBEDDING_MODEL = "bert-base-uncased"
@@ -27,10 +28,11 @@ CACHE_DIR = "/scratch/llm4adr/cache"
 
 torch_dtype = torch.float16
 
-tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME, cache_dir=CACHE_DIR, padding_side='left', token=huggingface_token)
+tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME, cache_dir=CACHE_DIR, padding_side='right', token=huggingface_token)
 if tokenizer.pad_token is None:
     tokenizer.pad_token = tokenizer.eos_token
-pkl = open(f'../../RAG/embeds/{EMBEDDING_MODEL}-test.pkl', 'rb').read()
+    
+pkl = open(f'../../RAG/embeds/{EMBEDDING_MODEL}-train.pkl', 'rb').read()
 
 embeddings = HuggingFaceEmbeddings(model_name=EMBEDDING_MODEL, cache_folder=CACHE_DIR)
 db = FAISS.deserialize_from_bytes(embeddings=embeddings, serialized=pkl, allow_dangerous_deserialization=True)
@@ -56,21 +58,25 @@ TEST_PATH = "../../Data/ADR-data/data_test.jsonl"
 
 train = pd.read_json(TRAIN_PATH, lines=True)
 val = pd.read_json(VAL_PATH, lines=True)
-test = pd.read_json(TEST_PATH, lines=True)
+test = pd.read_json(TEST_PATH, lines=True).sample(0)
 
-def perform_rag(query: str, top_k: int = 2) -> str:
-    # Get one more result than required to remove the query from the results
-    results = db.similarity_search(query, k=top_k + 1)
+def count_tokens(text: str) -> int:
+    encoding = tokenizer(text, return_tensors="pt")
+    return encoding.input_ids.size(1)
+
+def perform_rag(query: str, qid: int, top_k: int = 5) -> str:
+    results = db.similarity_search(query, k=top_k+20, labels=True)
     
-    # Remove the query from the results
-    for result in results:
-        if result.page_content == query:
-            results.remove(result)
-            break
-    
-    if len(results) != top_k:
+    # Filter out the exact match
+    results = [result for result in results if result.metadata['id'] != qid and count_tokens(result.page_content + result.metadata["Decision"]) < 1000]
+
+    # Ensure we only have top_k results
+    if len(results) > top_k:
         results = results[:top_k]
     
+    if len(results) != top_k:
+        raise Exception("Not enough results found")
+        
     few_shot = ""
     for result in results:
         few_shot += result.page_content + "\n## Decision\n" + result.metadata['Decision'] + "\n\n"
@@ -105,6 +111,15 @@ test_dataset = test_dataset.map(
     format_chat_template,
     # num_proc=4,
 )
+
+# get max length of train and val dataset using a for loop
+max_seq_length = 0
+for i in range(len(train_dataset)):
+    max_seq_length = max(max_seq_length, count_tokens(train_dataset[i]["text"]))
+for i in range(len(val_dataset)):
+    max_seq_length = max(max_seq_length, count_tokens(val_dataset[i]["text"]))
+
+print(f"Max sequence length: {max_seq_length}")
 
 class CustomCallback(WandbCallback):
     
@@ -151,7 +166,7 @@ trainer = SFTTrainer(
     train_dataset=train_dataset,
     eval_dataset=val_dataset,
     peft_config=peft_config,
-    max_seq_length=1024,
+    max_seq_length=max_seq_length,
     dataset_text_field="text",
     tokenizer=tokenizer,
     args=training_arguments,

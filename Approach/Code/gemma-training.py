@@ -1,5 +1,6 @@
 from copy import deepcopy
 from typing import NamedTuple
+from langchain_core.documents.base import Document
 from transformers import AutoTokenizer, AutoModelForCausalLM
 from transformers import TrainingArguments
 import pandas as pd
@@ -28,16 +29,16 @@ CACHE_DIR = "/scratch/llm4adr/cache"
 torch_dtype = torch.float16
 attn_implementation = 'eager'
 
-tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME, cache_dir=CACHE_DIR, padding_side='left', token=huggingface_token)
+tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME, cache_dir=CACHE_DIR, padding_side='right', token=huggingface_token)
 if tokenizer.pad_token is None:
     tokenizer.pad_token = tokenizer.eos_token
-pkl = open(f'../../RAG/embeds/{EMBEDDING_MODEL}-test.pkl', 'rb').read()
+
+pkl = open(f'../../RAG/embeds/{EMBEDDING_MODEL}-train.pkl', 'rb').read()
 
 embeddings = HuggingFaceEmbeddings(model_name=EMBEDDING_MODEL, cache_folder=CACHE_DIR)
 db = FAISS.deserialize_from_bytes(embeddings=embeddings, serialized=pkl, allow_dangerous_deserialization=True)
 
 model = AutoModelForCausalLM.from_pretrained(MODEL_NAME, token=huggingface_token, cache_dir=CACHE_DIR, device_map="auto", torch_dtype='auto', attn_implementation=attn_implementation)
-# model = AutoModelForCausalLM.from_pretrained(MODEL_NAME, quantization_config=bnb_config, token=huggingface_token, cache_dir=CACHE_DIR, device_map="auto", attn_implementation=attn_implementation)
 
 peft_config = LoraConfig(
     r=16,
@@ -55,23 +56,27 @@ TRAIN_PATH = "../../Data/ADR-data/data_train.jsonl"
 VAL_PATH = "../../Data/ADR-data/data_val.jsonl"
 TEST_PATH = "../../Data/ADR-data/data_test.jsonl"
 
-train = pd.read_json(TRAIN_PATH, lines=True)
-val = pd.read_json(VAL_PATH, lines=True)
-test = pd.read_json(TEST_PATH, lines=True)
+train = pd.read_json(TRAIN_PATH, lines=True).sample(10, random_state=42)
+val = pd.read_json(VAL_PATH, lines=True).sample(1, random_state=42)
+test = pd.read_json(TEST_PATH, lines=True).sample(0)
 
-def perform_rag(query: str, top_k: int = 2) -> str:
-    # Get one more result than required to remove the query from the results
-    results = db.similarity_search(query, k=top_k + 1)
+def count_tokens(text: str) -> int:
+    encoding = tokenizer(text, return_tensors="pt")
+    return encoding.input_ids.size(1)
+
+def perform_rag(query: str, qid: int, top_k: int = 5) -> str:
+    results = db.similarity_search(query, k=top_k+20, labels=True)
     
-    # Remove the query from the results
-    for result in results:
-        if result.page_content == query:
-            results.remove(result)
-            break
-    
-    if len(results) != top_k:
+    # Filter out the exact match
+    results = [result for result in results if result.metadata['id'] != qid and count_tokens(result.page_content + result.metadata["Decision"]) < 1000]
+
+    # Ensure we only have top_k results
+    if len(results) > top_k:
         results = results[:top_k]
     
+    if len(results) != top_k:
+        raise Exception("Not enough results found")
+        
     few_shot = ""
     for result in results:
         few_shot += result.page_content + "\n## Decision\n" + result.metadata['Decision'] + "\n\n"
@@ -83,7 +88,7 @@ val_dataset = Dataset.from_pandas(val)
 test_dataset = Dataset.from_pandas(test)
 
 def format_chat_template(row):
-    few_shot = perform_rag(row["Context"], 2)
+    few_shot = perform_rag(row["Context"], row["id"], 2)
     row_json = [
         {"role": "user", "content": f"You are an expert architect and are tasked with taking decisions given a particular context. Here are some examples:\n\n{few_shot}\nProvide a decision given the context below:\n{row['Context']}"},
         {"role": "model", "content": row["Decision"]}
@@ -153,7 +158,7 @@ trainer = SFTTrainer(
     train_dataset=train_dataset,
     eval_dataset=val_dataset,
     peft_config=peft_config,
-    max_seq_length=1024,
+    max_seq_length=3000,
     dataset_text_field="text",
     tokenizer=tokenizer,
     args=training_arguments,
