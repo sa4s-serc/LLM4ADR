@@ -18,7 +18,7 @@ tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME, cache_dir=CACHE_DIR, paddi
 if tokenizer.pad_token is None:
     tokenizer.pad_token = tokenizer.eos_token
     
-pkl = open(f'../../RAG/embeds/{EMBEDDING_MODEL}-train.pkl', 'rb').read()
+pkl = open(f'../../RAG/embeds/{EMBEDDING_MODEL}-test.pkl', 'rb').read()
 
 embeddings = HuggingFaceEmbeddings(model_name=EMBEDDING_MODEL, cache_folder=CACHE_DIR)
 db = FAISS.deserialize_from_bytes(embeddings=embeddings, serialized=pkl, allow_dangerous_deserialization=True)
@@ -64,10 +64,10 @@ train = pd.read_json(TRAIN_PATH, lines=True)
 val = pd.read_json(VAL_PATH, lines=True)
 test = pd.read_json(TEST_PATH, lines=True)
 
-train = train.apply(format_chat_template, axis=1)
-val = val.apply(format_chat_template, axis=1)
+# train = train.apply(format_chat_template, axis=1)
+# val = val.apply(format_chat_template, axis=1)
 test = test.apply(format_chat_template, axis=1)
 
-train.to_json("../retrieved/train.jsonl", lines=True, orient="records")
-val.to_json("../retrieved/val.jsonl", lines=True, orient="records")
+# train.to_json("../retrieved/train.jsonl", lines=True, orient="records")
+# val.to_json("../retrieved/val.jsonl", lines=True, orient="records")
 test.to_json("../retrieved/test.jsonl", lines=True, orient="records")

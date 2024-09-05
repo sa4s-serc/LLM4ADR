@@ -61,8 +61,8 @@ val = pd.read_json(VAL_PATH, lines=True)
 test = pd.read_json(TEST_PATH, lines=True).sample(0)
 
 def count_tokens(text: str) -> int:
-    encoding = tokenizer(text, return_tensors="pt")
-    return encoding.input_ids.size(1)
+    tokenized_input = tokenizer.tokenize(text)
+    return len(tokenized_input)
 
 def perform_rag(query: str, qid: int, top_k: int = 5) -> str:
     results = db.similarity_search(query, k=top_k+20, labels=True)
@@ -88,7 +88,7 @@ val_dataset = Dataset.from_pandas(val)
 test_dataset = Dataset.from_pandas(test)
 
 def format_chat_template(row):
-    few_shot = perform_rag(row["Context"], 5)
+    few_shot = perform_rag(row["Context"], 2)
     row_json = [
         {"role": "system", "content": "You are an expert architect and are tasked with taking decisions given a particular context. Here are some examples:\n\n" + few_shot},
         {"role": "user", "content": f"Provide a decision given the context below:\n{row['Context']}"},
@@ -113,13 +113,13 @@ test_dataset = test_dataset.map(
 )
 
 # get max length of train and val dataset using a for loop
-max_seq_length = 0
-for i in range(len(train_dataset)):
-    max_seq_length = max(max_seq_length, count_tokens(train_dataset[i]["text"]))
-for i in range(len(val_dataset)):
-    max_seq_length = max(max_seq_length, count_tokens(val_dataset[i]["text"]))
+# max_seq_length = 0
+# for i in range(len(train_dataset)):
+#     max_seq_length = max(max_seq_length, count_tokens(train_dataset[i]["text"]))
+# for i in range(len(val_dataset)):
+#     max_seq_length = max(max_seq_length, count_tokens(val_dataset[i]["text"]))
 
-print(f"Max sequence length: {max_seq_length}")
+# print(f"Max sequence length: {max_seq_length}")
 
 class CustomCallback(WandbCallback):
     
@@ -148,10 +148,12 @@ training_arguments = TrainingArguments(
     num_train_epochs=EPOCHS,
     evaluation_strategy="epoch",
     save_strategy="epoch",
-    # eval_steps=1,
-    # save_steps=1,
+    # gradient_checkpointing=True,
+    # gradient_checkpointing_kwargs={
+    #    "use_reentrant": False,
+        # "offload_to_cpu": True,
+    # },
     logging_strategy="epoch",
-    # logging_steps=1,
     group_by_length=True,
     report_to="wandb",
     push_to_hub=False,
@@ -166,7 +168,7 @@ trainer = SFTTrainer(
     train_dataset=train_dataset,
     eval_dataset=val_dataset,
     peft_config=peft_config,
-    max_seq_length=max_seq_length,
+    max_seq_length=2000,
     dataset_text_field="text",
     tokenizer=tokenizer,
     args=training_arguments,
