@@ -88,7 +88,7 @@ val_dataset = Dataset.from_pandas(val)
 test_dataset = Dataset.from_pandas(test)
 
 def format_chat_template(row):
-    few_shot = perform_rag(row["Context"], 2)
+    few_shot = perform_rag(row["Context"], row["id"], 2)
     row_json = [
         {"role": "system", "content": "You are an expert architect and are tasked with taking decisions given a particular context. Here are some examples:\n\n" + few_shot},
         {"role": "user", "content": f"Provide a decision given the context below:\n{row['Context']}"},
@@ -148,11 +148,10 @@ training_arguments = TrainingArguments(
     num_train_epochs=EPOCHS,
     evaluation_strategy="epoch",
     save_strategy="epoch",
-    # gradient_checkpointing=True,
-    # gradient_checkpointing_kwargs={
-    #    "use_reentrant": False,
-        # "offload_to_cpu": True,
-    # },
+    gradient_checkpointing=True,
+    gradient_checkpointing_kwargs={
+       "use_reentrant": False,
+    },
     logging_strategy="epoch",
     group_by_length=True,
     report_to="wandb",
@@ -168,7 +167,7 @@ trainer = SFTTrainer(
     train_dataset=train_dataset,
     eval_dataset=val_dataset,
     peft_config=peft_config,
-    max_seq_length=2000,
+    max_seq_length=3000,
     dataset_text_field="text",
     tokenizer=tokenizer,
     args=training_arguments,

@@ -1,7 +1,7 @@
 from copy import deepcopy
 from typing import NamedTuple
 from langchain_core.documents.base import Document
-from transformers import AutoTokenizer, AutoModelForCausalLM
+from transformers import AutoTokenizer, AutoModelForCausalLM, BitsAndBytesConfig
 from transformers import TrainingArguments
 import pandas as pd
 import torch
@@ -38,7 +38,14 @@ pkl = open(f'../../RAG/embeds/{EMBEDDING_MODEL}-train.pkl', 'rb').read()
 embeddings = HuggingFaceEmbeddings(model_name=EMBEDDING_MODEL, cache_folder=CACHE_DIR)
 db = FAISS.deserialize_from_bytes(embeddings=embeddings, serialized=pkl, allow_dangerous_deserialization=True)
 
-model = AutoModelForCausalLM.from_pretrained(MODEL_NAME, token=huggingface_token, cache_dir=CACHE_DIR, device_map="auto", torch_dtype='auto', attn_implementation=attn_implementation)
+bnb_config = BitsAndBytesConfig(
+    load_in_4bit=True,
+    bnb_4bit_quant_type="nf4",
+    bnb_4bit_compute_dtype=torch_dtype,
+    bnb_4bit_use_double_quant=True,
+)
+
+model = AutoModelForCausalLM.from_pretrained(MODEL_NAME, token=huggingface_token, quantization_config=bnb_config, cache_dir=CACHE_DIR, device_map='balanced', torch_dtype='auto', attn_implementation=attn_implementation)
 
 peft_config = LoraConfig(
     r=16,
@@ -135,11 +142,10 @@ training_arguments = TrainingArguments(
     gradient_accumulation_steps=ACCUMULATION_STEPS,
     eval_accumulation_steps=2,
     optim="paged_adamw_32bit",
-    gradient_checkpointing=True,
-    gradient_checkpointing_kwargs={
-        "use_reentrant": False,
-        # "offload_to_cpu": True,
-    },
+    # gradient_checkpointing=True,
+    # gradient_checkpointing_kwargs={
+    #     "use_reentrant": False,
+    # },
     num_train_epochs=EPOCHS,
     evaluation_strategy="epoch",
     save_strategy="epoch",
