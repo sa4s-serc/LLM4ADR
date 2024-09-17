@@ -8,7 +8,8 @@ from datasets import Dataset
 
 load_dotenv(find_dotenv(raise_error_if_not_found=True))
 
-MODEL_NAME = "google/gemma-2-9b-it"
+# MODEL_NAME = "google/gemma-2-9b-it"
+MODEL_NAME = "meta-llama/Meta-Llama-3-8B-Instruct"
 EMBEDDING_MODEL = "bert-base-uncased"
 huggingface_token: str | None = os.getenv("HUGGINGFACE_TOKEN")
 # wandb.init(project="adr_novel_gemma")
@@ -18,7 +19,8 @@ tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME, cache_dir=CACHE_DIR, paddi
 if tokenizer.pad_token is None:
     tokenizer.pad_token = tokenizer.eos_token
     
-pkl = open(f'../../RAG/embeds/{EMBEDDING_MODEL}-test.pkl', 'rb').read()
+pkl = open(f'../../RAG/embeds/{EMBEDDING_MODEL}-train.pkl', 'rb').read()
+# pkl = open(f'../../RAG/embeds/{EMBEDDING_MODEL}-test.pkl', 'rb').read()
 
 embeddings = HuggingFaceEmbeddings(model_name=EMBEDDING_MODEL, cache_folder=CACHE_DIR)
 db = FAISS.deserialize_from_bytes(embeddings=embeddings, serialized=pkl, allow_dangerous_deserialization=True)
@@ -52,22 +54,29 @@ def perform_rag(query: str, qid: int, top_k: int = 5) -> str:
 
 def format_chat_template(row):
     few_shot = perform_rag(row["Context"], row["id"], 2)
-    row_json = [
-        {"role": "user", "content": f"You are an expert architect and are tasked with taking decisions given a particular context. Here are some examples:\n\n{few_shot}\nProvide a decision given the context below:\n{row['Context']}"},
-        {"role": "model", "content": row["Decision"]}
-    ]
+    if "gemma" in MODEL_NAME:
+        row_json = [
+            {"role": "user", "content": f"You are an expert architect and are tasked with taking decisions given a particular context. Here are some examples:\n\n{few_shot}\nProvide a decision given the context below:\n{row['Context']}"},
+            {"role": "model", "content": row["Decision"]}
+        ]
+    else:
+        row_json = [
+            {"role": "system", "content": "You are an expert architect and are tasked with taking decisions given a particular context. Here are some examples:\n\n" + few_shot},
+            {"role": "user", "content": f"Provide a decision given the context below:\n{row['Context']}"},
+            {"role": "assistant", "content": row["Decision"]}
+        ]
     row["text"] = tokenizer.apply_chat_template(row_json, tokenize=False)
     row["text"] = row["text"].replace("\\n", "\n")
     return row
 
 train = pd.read_json(TRAIN_PATH, lines=True)
 val = pd.read_json(VAL_PATH, lines=True)
-test = pd.read_json(TEST_PATH, lines=True)
+test: pd.DataFrame = pd.read_json(TEST_PATH, lines=True)
 
-# train = train.apply(format_chat_template, axis=1)
-# val = val.apply(format_chat_template, axis=1)
-test = test.apply(format_chat_template, axis=1)
+train = train.apply(format_chat_template, axis=1)
+val = val.apply(format_chat_template, axis=1)
+# test = test.apply(format_chat_template, axis=1)
 
-# train.to_json("../retrieved/train.jsonl", lines=True, orient="records")
-# val.to_json("../retrieved/val.jsonl", lines=True, orient="records")
-test.to_json("../retrieved/test.jsonl", lines=True, orient="records")
+train.to_json("../retrieved/train_llama.jsonl", lines=True, orient="records")
+val.to_json("../retrieved/val_llama.jsonl", lines=True, orient="records")
+# test.to_json("../retrieved/test_llama.jsonl", lines=True, orient="records")
