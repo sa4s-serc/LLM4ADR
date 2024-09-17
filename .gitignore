@@ -6,3 +6,4 @@ Finetuning/Code/models/
 Approach/models/
 models
 wandb
+.DS_Store
