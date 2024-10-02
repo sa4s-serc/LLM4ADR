@@ -4,8 +4,15 @@ from langchain_community.vectorstores import FAISS
 import os
 from datasets import Dataset
 import pandas as pd
+from dotenv import load_dotenv
 
+print("Loaded libraries")
+
+load_dotenv()
 huggingface_token: str | None = os.getenv("HUGGINGFACE_TOKEN")
+
+if huggingface_token is None:
+    raise Exception("Huggingface token not set")
 
 CACHE_DIR = "/scratch/llm4adr/cache"
 MODEL_NAME = "google/gemma-2-9b-it"
@@ -23,11 +30,15 @@ test = pd.read_json(TEST_PATH, lines=True)
 tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME, cache_dir=CACHE_DIR, padding_side='left', token=huggingface_token)
 if tokenizer.pad_token is None:
     tokenizer.pad_token = tokenizer.eos_token
-pkl = open(f'../../RAG/embeds/{EMBEDDING_MODEL}-test.pkl', 'rb').read()
+pkl = open(f'../../RAG/embeds/{EMBEDDING_MODEL}-train.pkl', 'rb').read()
+
+print("Loaded tokenizer and embeddings")
+ 
 
 embeddings = HuggingFaceEmbeddings(model_name=EMBEDDING_MODEL, cache_folder=CACHE_DIR)
 db = FAISS.deserialize_from_bytes(embeddings=embeddings, serialized=pkl, allow_dangerous_deserialization=True)
 
+print("Loaded FAISS index")
 
 def perform_rag(query: str, qid: int, db: FAISS, top_k: int = RAG_DOCUMENTS) -> str:
     results = db.similarity_search(query, k=top_k+1, labels=True)
@@ -59,7 +70,7 @@ val_dataset = Dataset.from_pandas(val)
 test_dataset = Dataset.from_pandas(test)
 
 def format_chat_template(row):
-    few_shot, ret_list = perform_rag(row["Context"], RAG_DOCUMENTS)
+    few_shot, ret_list = perform_rag(query = row["Context"], qid= row["id"], db=db, top_k=RAG_DOCUMENTS)
     row_json = [
         {"role": "user", "content": f"You are an expert architect and are tasked with taking decisions given a particular context. Here are some examples:\n\n{few_shot}\nProvide a decision given the context below:\n{row['Context']}"},
         {"role": "model", "content": row["Decision"]}
@@ -86,3 +97,8 @@ train_dataset.save_to_disk("../../Data/ADR-data/train_dataset")
 val_dataset.save_to_disk("../../Data/ADR-data/val_dataset")
 test_dataset.save_to_disk("../../Data/ADR-data/test_dataset")
 
+
+# Save the dataset as jsonl
+train_dataset.to_json("../../Data/ADR-data/train_dataset.jsonl", orient="records", lines=True)
+val_dataset.to_json("../../Data/ADR-data/val_dataset.jsonl", orient="records", lines=True)
+test_dataset.to_json("../../Data/ADR-data/test_dataset.jsonl", orient="records", lines=True)
