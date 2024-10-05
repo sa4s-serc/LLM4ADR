@@ -1,0 +1,32 @@
+{
+  "citation": "",
+  "description": "",
+  "features": {
+    "File Name": {
+      "dtype": "string",
+      "_type": "Value"
+    },
+    "Context": {
+      "dtype": "string",
+      "_type": "Value"
+    },
+    "Decision": {
+      "dtype": "string",
+      "_type": "Value"
+    },
+    "tokens": {
+      "dtype": "int64",
+      "_type": "Value"
+    },
+    "id": {
+      "dtype": "int64",
+      "_type": "Value"
+    },
+    "text": {
+      "dtype": "string",
+      "_type": "Value"
+    }
+  },
+  "homepage": "",
+  "license": ""
+}

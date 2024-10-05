@@ -8,8 +8,8 @@ from datasets import Dataset
 
 load_dotenv(find_dotenv(raise_error_if_not_found=True))
 
-# MODEL_NAME = "google/gemma-2-9b-it"
-MODEL_NAME = "meta-llama/Meta-Llama-3-8B-Instruct"
+MODEL_NAME = "google/gemma-2-9b-it"
+# MODEL_NAME = "meta-llama/Meta-Llama-3-8B-Instruct"
 EMBEDDING_MODEL = "bert-base-uncased"
 huggingface_token: str | None = os.getenv("HUGGINGFACE_TOKEN")
 # wandb.init(project="adr_novel_gemma")
@@ -50,7 +50,7 @@ def perform_rag(query: str, qid: int, top_k: int = 5) -> str:
     for result in results:
         few_shot += result.page_content + "\n## Decision\n" + result.metadata['Decision'] + "\n\n"
 
-    return few_shot
+    return few_shot.replace("\\n", "\n")
 
 def format_chat_template(row):
     few_shot = perform_rag(row["Context"], row["id"], 2)
@@ -65,18 +65,21 @@ def format_chat_template(row):
             {"role": "user", "content": f"Provide a decision given the context below:\n{row['Context']}"},
             {"role": "assistant", "content": row["Decision"]}
         ]
-    row["text"] = tokenizer.apply_chat_template(row_json, tokenize=False)
-    row["text"] = row["text"].replace("\\n", "\n")
+    # row["text"] = tokenizer.apply_chat_template(row_json, tokenize=False)
+    # row["text"] = row["text"].replace("\\n", "\n")
+    
+    # stringify the list of dictionaries
+    row["text"] = str(row_json)
     return row
 
-train = pd.read_json(TRAIN_PATH, lines=True)
-val = pd.read_json(VAL_PATH, lines=True)
-test: pd.DataFrame = pd.read_json(TEST_PATH, lines=True)
+train = pd.read_json(TRAIN_PATH, lines=True).sample(100)
+val = pd.read_json(VAL_PATH, lines=True).sample(100)
+test: pd.DataFrame = pd.read_json(TEST_PATH, lines=True).sample(100)
 
 train = train.apply(format_chat_template, axis=1)
 val = val.apply(format_chat_template, axis=1)
 # test = test.apply(format_chat_template, axis=1)
 
-train.to_json("../retrieved/train_llama.jsonl", lines=True, orient="records")
-val.to_json("../retrieved/val_llama.jsonl", lines=True, orient="records")
+train.to_json("../retrieved/testing-2/train.jsonl", lines=True, orient="records")
+val.to_json("../retrieved/testing-2/valid.jsonl", lines=True, orient="records")
 # test.to_json("../retrieved/test_llama.jsonl", lines=True, orient="records")
