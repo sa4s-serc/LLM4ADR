@@ -7,13 +7,15 @@ from langchain_community.vectorstores import FAISS
 from dotenv import load_dotenv, find_dotenv
 import os
 from peft import PeftModel
+import sys
 
 load_dotenv(find_dotenv(raise_error_if_not_found=True))
 
 MODEL_NAME = "google/gemma-2-9b-it"
 CACHE_DIR = "/scratch/llm4adr/cache"
 # MODEL_PATH = "../models/flan-t5-base"
-MODEL_PATH = "../models/gemma-2-9b"
+MODEL_PATH = sys.argv[1]
+# MODEL_PATH = "rudradhar/autotrain-gemma-10"
 EMBEDDING_MODEL = "bert-base-uncased"
 HUGGINGFACE_TOKEN = os.getenv("HUGGINGFACE_TOKEN")
 
@@ -28,7 +30,6 @@ def count_tokens(text: str, tokenizer: AutoTokenizer) -> int:
 
 def perform_rag(query: str, qid: int, tokenizer: AutoTokenizer, top_k: int = 5) -> str:
     results = db.similarity_search(query, k=top_k+20, labels=True)
-    print(results[0])
     
     # Filter out the exact match
     results = [result for result in results if result.metadata['id'] != qid and count_tokens(result.page_content + result.metadata["Decision"], tokenizer) < 1000]
@@ -55,7 +56,7 @@ def preprocess_texts(data: pd.DataFrame, tokenizer: AutoTokenizer) -> None:
     
     for index, row in data.iterrows():
         # print(row)
-        few_shot = perform_rag(row["Context"], row["id"], tokenizer, 5)
+        few_shot = perform_rag(row["Context"], row["id"], tokenizer, 2)
         messages = [{"role": "user", "content": f'You are an expert architect and are tasked with taking decisions given a particular context. Here are some examples:\n\n{few_shot}\nProvide a decision given the context below:\n{row["Context"]}'}]
         prompts.append(tokenizer.apply_chat_template(messages, tokenize=False, add_generation_prompt=True))
     
@@ -66,19 +67,22 @@ def infer(model, tokenizer, data, device) -> pd.DataFrame:
     batch_size = 1
     
     predictions = []
-        
-    for i in tqdm(range(0, len(inputs), batch_size)):
-        batch = inputs[i:i+batch_size].tolist()
-        
-        input_ids = tokenizer(batch, padding=True, truncation=True, return_tensors="pt", add_special_tokens=False).to(device)
-        outputs = model.generate(**input_ids, max_new_tokens=512, pad_token_id=tokenizer.pad_token_id)
-        decodes = tokenizer.batch_decode(outputs)
-        
-        outputs = []
-        for i in range(len(decodes)):
-            outputs.append(decodes[i][len(batch[i]):])
-        
-        predictions.extend(outputs)
+    
+    with torch.no_grad():
+        for i in tqdm(range(0, len(inputs), batch_size)):
+            batch = inputs[i:i+batch_size].tolist()
+            
+            input_ids = tokenizer(batch, truncation=True, return_tensors="pt", add_special_tokens=False, max_length=3000).to(device)
+            outputs = model.generate(**input_ids, max_new_tokens=512, pad_token_id=tokenizer.pad_token_id).detach().cpu()
+            decodes = tokenizer.batch_decode(outputs)
+            
+            outputs = []
+            for i in range(len(decodes)):
+                outputs.append(decodes[i][len(batch[i]):])
+            
+            predictions.extend(outputs)
+            
+            torch.cuda.empty_cache()
         
     print("Maximum Length of Prediction: ", max(len(p) for p in predictions))
     print("Maximum Length of Decision: ", max(len(d) for d in data["Decision"]))
@@ -91,20 +95,22 @@ def infer(model, tokenizer, data, device) -> pd.DataFrame:
 
 def main():
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-    tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME, cache_dir=CACHE_DIR, model_max_length=512, padding_side='left', token=HUGGINGFACE_TOKEN)
+    tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME, cache_dir=CACHE_DIR, model_max_length=3000, padding_side='left', token=HUGGINGFACE_TOKEN)
     if tokenizer.pad_token is None:
         tokenizer.pad_token = tokenizer.eos_token
     model = AutoModelForCausalLM.from_pretrained(MODEL_NAME, token=HUGGINGFACE_TOKEN, cache_dir=CACHE_DIR, device_map="auto", torch_dtype='auto')
     
     model = PeftModel.from_pretrained(model, MODEL_PATH, token=HUGGINGFACE_TOKEN, cache_dir=CACHE_DIR)
-    
-    data = pd.read_json("../../Data/ADR-data/data_test.jsonl", lines=True).sample(1, random_state=44)
-    data["Context"] = data["Context"].str.replace("\\n", "\n")
-    
+    model.eval()
+	    
+    data = pd.read_json("../../Data/ADR-data/data_test.jsonl", lines=True)
+    data["Context"] = data["Context"].apply(lambda x: x.replace("\\n", "\n"))
+
     preprocess_texts(data, tokenizer)
+    data = data.reindex(data.Prompts.str.len().sort_values(ascending=False).index).reset_index(drop=True)
             
     results = infer(model, tokenizer, data, device)
-    results.to_json(f"../results/{MODEL_NAME.split('/')[1]}.jsonl", lines=True, orient="records")
+    results.to_json(f"../results/{MODEL_PATH.split('/')[1]}.jsonl", lines=True, orient="records")
     
 if __name__ == '__main__':
     main()

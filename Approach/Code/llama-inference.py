@@ -7,13 +7,14 @@ from langchain_huggingface import HuggingFaceEmbeddings
 from langchain_community.vectorstores import FAISS
 from dotenv import find_dotenv, load_dotenv
 import os
-import tiktoken
+import sys
 
 load_dotenv(find_dotenv(raise_error_if_not_found=True))
 
 MODEL_NAME = "meta-llama/Meta-Llama-3-8B-Instruct"
 CACHE_DIR = "/scratch/llm4adr/cache"
-MODEL_PATH = "./models/llama-2-8b"
+MODEL_PATH = "rudradhar/autotrain-llama-5"
+# MODEL_PATH = sys.argv[1]
 # MODEL_PATH = "/scratch/llm4adr/results/flan-t5-base/checkpoint-100"
 EMBEDDING_MODEL = "bert-base-uncased"
 
@@ -29,13 +30,13 @@ def count_tokens(text: str, tokenizer: AutoTokenizer):
     tokens = tokenizer.encode(text)
     return len(tokens)
 
-def perform_rag(query: str, tokenizer: AutoTokenizer, top_k: int = 2) -> str:
+def perform_rag(query: str, tokenizer: AutoTokenizer, qid:int = 0, top_k: int = 2) -> str:
     retrieved = db.similarity_search(query, k=15)
 
     results = []
     
     for result in retrieved:
-        if result.page_content != query and count_tokens(result.page_content + result.metadata["Decision"], tokenizer) <= 1000:
+        if result.page_content != query and result.metadata['id'] != qid and count_tokens(result.page_content + result.metadata["Decision"], tokenizer) <= 1000:
             results.append(result)
             
         if len(results) == top_k:
@@ -81,8 +82,8 @@ def infer(model, tokenizer, data, device) -> pd.DataFrame:
 def preprocess_texts(data: pd.DataFrame, tokenizer: AutoTokenizer) -> None:
     prompts = []
 
-    for i in data["Context"]:
-        prompts.append(perform_rag(i, tokenizer, 2))
+    for i, row in data.iterrows():
+        prompts.append(perform_rag(row["Context"], tokenizer, qid=row["id"]))
 
     data["Prompts"] = prompts
 
@@ -106,7 +107,7 @@ def main():
     data = data.reindex(data.Prompts.str.len().sort_values(ascending=False).index).reset_index(drop=True)
     
     results = infer(model, tokenizer, data, device)
-    results.to_json(f"../results/{MODEL_NAME.split('/')[1]}.jsonl", lines=True, orient="records")
+    results.to_json(f"../results/{MODEL_PATH.split('/')[1]}.jsonl", lines=True, orient="records")
     
 if __name__ == '__main__':
     main()

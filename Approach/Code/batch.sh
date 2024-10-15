@@ -4,16 +4,23 @@
 #SBATCH --mem-per-cpu=2G
 #SBATCH --output=output.txt
 #SBATCH --time=4-00:00:00
-#SBATCH -w gnode092
+#SBATCH -w gnode062
 
-source /home2/adyansh/miniconda3/bin/activate
-conda activate /home2/adyansh/LLM4ADR/research
+source ~/miniconda3/bin/activate
+conda activate ~/LLM4ADR/research
 
-cd /home2/adyansh/LLM4ADR/Approach/Code
+cd ~/LLM4ADR/Approach/Code
 
 # python3 inference.py
-# python3 score.py
 # python3 llama-training.py
 # python3 gemma-training.py
-python3 autotrain-eval.py rudradhar/autotrain-llama-1
-python3 autotrain-eval.py rudradhar/autotrain-llama-2
+
+
+# python3 autotrain-eval.py rudradhar/autotrain-gemma-10
+# python3 autotrain-eval.py rudradhar/autotrain-gemma-5
+#python3 gemma-inference.py rudradhar/autotrain-gemma-10
+#python3 score.py autotrain-gemma-10
+python3 gemma-inference.py rudradhar/autotrain-gemma-5
+python3 score.py autotrain-gemma-5
+python3 gemma-inference.py rudradhar/autotrain-gemma-8
+python3 score.py autotrain-gemma-8

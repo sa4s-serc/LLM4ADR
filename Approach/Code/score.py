@@ -2,8 +2,10 @@ from evaluate import load
 import pandas as pd
 import nltk
 import json
+import sys
 
-MODEL_NAME = "Meta-Llama-3-8B-Instruct"
+# MODEL_NAME = "Meta-Llama-3-8B-Instruct"
+MODEL_NAME = sys.argv[1]
 CACHE_DIR = '/scratch/llm4adr/cache' 
 DATA_DIR = f'../results/{MODEL_NAME}.jsonl'
 RESULT_DIR = f'../metrics/{MODEL_NAME}.json'

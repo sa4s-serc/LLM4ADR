@@ -8,10 +8,13 @@ from transformers.integrations import WandbCallback
 
 CACHE_DIR = "/scratch/llm4adr/cache"
 
-base_model = "meta-llama/Meta-Llama-3-8B-Instruct"
-# base_model = "google/gemma-2-9b-it"
+# base_model = "meta-llama/Meta-Llama-3-8B-Instruct"
+base_model = "google/gemma-2-9b-it"
 adapter_model = sys.argv[1]
 # adapter_model = "rudradhar/test-100-gemma"
+
+if "llama" in adapter_model:
+    base_model = "meta-llama/Meta-Llama-3-8B-Instruct"
 
 huggingface_token_RD_personal = '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'
 huggingface_token_RD_research = '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'
