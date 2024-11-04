@@ -5,6 +5,7 @@ import pandas as pd
 from datasets import Dataset
 import sys
 from transformers.integrations import WandbCallback
+import torch
 
 CACHE_DIR = "/scratch/llm4adr/cache"
 
@@ -30,6 +31,7 @@ model.eval()
 
 # TRAIN_PATH = "../../Data/ADR-data/data_train.jsonl"
 VAL_PATH = "../retrieved/val.jsonl"
+# VAL_PATH = "../retrieved/train.jsonl"
 # TEST_PATH = "../../Data/ADR-data/data_test.jsonl"
 
 # train = pd.read_json(TRAIN_PATH, lines=True).sample(10, random_state=42)
@@ -68,11 +70,18 @@ def tokenize_function(examples):
 
 tokenized_dataset = val_dataset.map(tokenize_function)
 
+def get_length(example):
+    return len(example['input_ids'])
+
+tokenized_dataset = tokenized_dataset.sort("input_ids", reverse=True, key=get_length)
+
 training_args = TrainingArguments(
-    output_dir="./results",
+    output_dir=CACHE_DIR,
     per_device_eval_batch_size=1,
     do_train=False,
     do_eval=True,
+    eval_accumulation_steps=8,
+    torch_empty_cache_steps=1
 )
 
 trainer = Trainer(
@@ -82,8 +91,8 @@ trainer = Trainer(
     tokenizer=tokenizer,
     callbacks=[WandbCallback()],
 )
-
-eval_results = trainer.evaluate()
+with torch.no_grad():
+    eval_results = trainer.evaluate()
 
 # write the results to a json file in results folder
 with open(f"./results/{adapter_model.split('/')[-1]}_eval_results.json", "w") as f:
