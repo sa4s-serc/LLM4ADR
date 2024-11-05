@@ -11,7 +11,8 @@ import wandb
 from copy import deepcopy
 
 MODEL_NAME = "google/flan-t5-base"
-CACHE_DIR = os.path.expanduser("~/Desktop/ADR/cache")
+# CACHE_DIR = os.path.expanduser("~/Desktop/ADR/cache")
+CACHE_DIR = "/scratch/llm4adr/cache"
 
 os.environ["WANDB_PROJECT"]="adr_Flan_T5"
 wandb.init(project="adr_Flan_T5")
@@ -33,7 +34,7 @@ peft_config = LoraConfig(
     # target_modules=['up_proj', 'down_proj', 'gate_proj', 'k_proj', 'q_proj', 'v_proj', 'o_proj'] # for llama, gemma
     target_modules=["q", "v"] # for Flan-T5
 )
-# model = get_peft_model(model, peft_config)
+model = get_peft_model(model, peft_config)
 
 TRAIN_PATH = "../../Data/ADR-data/data_train.jsonl"
 VAL_PATH = "../../Data/ADR-data/data_val.jsonl"
@@ -119,8 +120,7 @@ training_arguments = TrainingArguments(
     metric_for_best_model="eval_loss",
     greater_is_better=False,
     run_name=None,
-    eval_on_start=True,
-
+    # eval_on_start=True,
 )
 
 trainer = SFTTrainer(
