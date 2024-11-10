@@ -50,6 +50,29 @@ def infer(model, tokenizer, data, device) -> pd.DataFrame:
     
     return data
 
+def preprocess_text(context: str, tokenizer: AutoTokenizer) -> None:    
+    messages = [{"role": "user", "content": f'You are an expert software architect. Your task is to help other software architects write Architectural Decision Records (ADRs). You will be given the context for the ADR and you need to provide the decision. The context is as follows: {context}. Please provide the decision.'}]
+
+    prompt = (tokenizer.apply_chat_template(messages, tokenize=False, add_generation_prompt=True))
+    
+    return prompt
+
+def predict(model, tokenizer, input_str, device) -> str:
+    end_of_turn = tokenizer.convert_tokens_to_ids('<end_of_turn>')
+    
+    inputs = tokenizer(input_str, padding=True, truncation=True, return_tensors="pt", add_special_tokens=False).to(device)
+    outputs = model.generate(**inputs, max_new_tokens=512, pad_token_id=tokenizer.pad_token_id)
+    decoded_output = tokenizer.decode(outputs[0], skip_special_tokens=True)
+    
+    generated_text = decoded_output[len(input_str):]
+    
+    eot_position = generated_text.find(tokenizer.decode([end_of_turn]))
+    if eot_position != -1:
+        generated_text = generated_text[:eot_position]
+    
+    return generated_text
+
+
 def preprocess_texts(data: pd.DataFrame, tokenizer: AutoTokenizer) -> None:
     prompts = []
     

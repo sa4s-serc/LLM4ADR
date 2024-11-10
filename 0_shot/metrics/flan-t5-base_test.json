@@ -1,1 +1,26 @@
-{"rouge": {"rouge1": 0.08779159201224894, "rouge2": 0.02288868097692353, "rougeL": 0.07257814915187852, "rougeLsum": 0.07272664842031587}, "bleu": {"bleu": 0.009326731416268497, "precisions": [0.039392427495202234, 0.008907641819034223, 0.005213259305605501, 0.004136500345749777], "brevity_penalty": 1.0, "length_ratio": 2.971200629870889, "translation_length": 483037, "reference_length": 162573}, "meteor": {"meteor": 0.07042434390107628}, "bertscore": {"precision": 0.6907545795508655, "recall": 0.7896880072270295, "f1": 0.7350016267867778, "hashcode": "roberta-large_L17_no-idf_version=0.3.12(hug_trans=4.44.2)"}}
+{
+  "rouge": {
+    "rouge1": 0.08779159201224894,
+    "rouge2": 0.02288868097692353,
+    "rougeL": 0.07257814915187852,
+    "rougeLsum": 0.07272664842031587
+  },
+  "bleu": {
+    "bleu": 0.009326731416268497,
+    "precisions": [
+      0.039392427495202234, 0.008907641819034223, 0.005213259305605501,
+      0.004136500345749777
+    ],
+    "brevity_penalty": 1.0,
+    "length_ratio": 2.971200629870889,
+    "translation_length": 483037,
+    "reference_length": 162573
+  },
+  "meteor": { "meteor": 0.07042434390107628 },
+  "bertscore": {
+    "precision": 0.6907545795508655,
+    "recall": 0.7896880072270295,
+    "f1": 0.7350016267867778,
+    "hashcode": "roberta-large_L17_no-idf_version=0.3.12(hug_trans=4.44.2)"
+  }
+}
