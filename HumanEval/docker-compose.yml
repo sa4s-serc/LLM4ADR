@@ -1,0 +1,28 @@
+services:
+  postgres:
+    image: postgres
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: root
+      POSTGRES_DB: llm4adr
+    volumes:
+      - ./data:/var/lib/postgresql/data
+
+  streamlit:
+    build: .
+    expose:
+      - "8501"
+    volumes:
+      - ./app:/app
+
+  nginx:
+    image: nginx:alpine
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+    depends_on:
+      - streamlit
+      - postgres
