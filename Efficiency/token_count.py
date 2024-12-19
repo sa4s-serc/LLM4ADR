@@ -1,9 +1,6 @@
 import tiktoken
 from transformers import AutoTokenizer
 import pandas as pd
-from datetime import datetime
-import time
-from datetime import timedelta
 
 from dotenv import load_dotenv
 import os
@@ -31,13 +28,19 @@ mapping = {
     '5': ['input', 'output', tokenizer_llama],
 }
 
+def get_seconds(time_str):
+    hours, minutes, seconds = time_str.split(":")
+    total_seconds = int(hours) * 3600 + int(minutes) * 60 + float(seconds)
+    return total_seconds
+
 
 def analyse(approach: str):
     appr_data = pd.read_json(f'approach_{approach}.json', lines=True)
 
-    token_data = pd.DataFrame(columns=['input_tokens', 'output_tokens'])
-    token_data['input_tokens'] = appr_data[mapping[approach][0]].apply(lambda x: count_tokens(x, mapping[approach][2]))
-    token_data['output_tokens'] = appr_data[mapping[approach][1]].apply(lambda x: count_tokens(x, mapping[approach][2]))
+    token_data = pd.DataFrame(columns=['input_tokens', 'output_tokens', 'time'])
+    token_data['input_tokens'] = appr_data[mapping[approach][0]].apply(lambda x: count_tokens(x, mapping[approach][2])) if approach not in ['1', '2'] else appr_data['input_tokens']
+    token_data['output_tokens'] = appr_data[mapping[approach][1]].apply(lambda x: count_tokens(x, mapping[approach][2])) if approach not in ['1', '2'] else appr_data['output_tokens']
+    token_data['time'] = appr_data['time'].apply(lambda x: get_seconds(x))
 
     token_data.to_json(f'approach_{approach}_tokens.json', orient='records', lines=True)
 

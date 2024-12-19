@@ -27,11 +27,11 @@ openai_client = openai.Client(api_key=os.environ['OPENAI'])
 HUGGINGFACE_TOKEN = os.environ['HF_TOKEN']
 CACHE_DIR = '/tmp'
 
-pkl = open('app/text-embedding-3-large_eval.pkl', 'rb').read()
+pkl = open('../HumanEval/app/text-embedding-3-large_eval.pkl', 'rb').read()
 embeddings = OpenAIEmbeddings(model="text-embedding-3-large", openai_api_key=os.environ['OPENAI'])
 vect_db_openai = FAISS.deserialize_from_bytes(embeddings=embeddings, serialized=pkl, allow_dangerous_deserialization=True)
 
-pkl = open('app/bert-base-uncased_eval.pkl', 'rb').read()
+pkl = open('../HumanEval/app/bert-base-uncased_eval.pkl', 'rb').read()
 embeddings = HuggingFaceEmbeddings(model_name="bert-base-uncased", cache_folder=CACHE_DIR)
 vect_db_bert = FAISS.deserialize_from_bytes(embeddings=embeddings, serialized=pkl, allow_dangerous_deserialization=True)
 
@@ -59,6 +59,8 @@ async def approach_one(context, qid):
     log['context'] = context
     log['response'] = response.text
     log['time'] = datetime.now() - time_start
+    log['input_tokens'] = response.usage_metadata.prompt_token_count
+    log['output_tokens'] = response.usage_metadata.candidates_token_count
     return log
 
 
@@ -108,6 +110,8 @@ async def approach_two(context, qid):
     log['response'] = pred
     log['matched_ids'] = matched_ids
     log['time'] = datetime.now() - time_start
+    log['input_tokens'] = response.usage.prompt_tokens
+    log['output_tokens'] = response.usage.completion_tokens
 
     return log
 
@@ -351,7 +355,6 @@ def get_response(data, approach_num, sleep_time=10):
 
 
 data = pd.read_csv('efficiency.csv')
-# data = data.head(5)
 
 
 if __name__ == '__main__':
