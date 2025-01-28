@@ -41,8 +41,24 @@ def analyse(approach: str):
     token_data.to_json(f'approach_{approach}_tokens.json', orient='records', lines=True)
 
 
-analyse('1')
-analyse('2')
-analyse('3')
-analyse('4')
-analyse('5')
+def analayse_flant5_gpu():
+    appr_data = pd.read_json('approach_4_gpu.json')
+    print(appr_data.columns)
+    print(appr_data.head())
+
+    token_data = pd.DataFrame(columns=['input_tokens', 'output_tokens', 'time'])
+    token_data['input_tokens'] = appr_data['input'].apply(lambda x: count_tokens(x, tokenizer_flant5))
+    token_data['output_tokens'] = appr_data['response'].apply(lambda x: count_tokens(x, tokenizer_flant5))
+    token_data['time'] = appr_data['time'].apply(lambda x: get_seconds(x))
+    print(token_data.head())
+
+    token_data.to_json('approach_4_gpu_tokens.json', orient='records', lines=True)
+
+# analyse('1')
+# analyse('2')
+# analyse('3')
+# analyse('4')
+# analyse('5')
+
+analayse_flant5_gpu()
+
