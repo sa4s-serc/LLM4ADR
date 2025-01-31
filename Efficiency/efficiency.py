@@ -9,7 +9,9 @@ import openai
 from langchain_openai import OpenAIEmbeddings
 from langchain_huggingface import HuggingFaceEmbeddings
 from langchain_community.vectorstores import FAISS
-from transformers import AutoTokenizer
+from transformers import AutoTokenizer, AutoModelForSeq2SeqLM
+
+import torch
 
 from datetime import datetime
 import time
@@ -38,9 +40,13 @@ vect_db_bert = FAISS.deserialize_from_bytes(embeddings=embeddings, serialized=pk
 system_message = "This is an Architectural Decision Record for a software. Give a ## Decision corresponding to the ## Context provided by the User."
 error_message = "[ERROR]: An error occurred while generating decision. Please rate anything for this decision."
 
-tokenizer_flant5 = AutoTokenizer.from_pretrained("google/flan-t5-base", cache_dir=CACHE_DIR, max_length=1000, padding_side='left')
+tokenizer_flant5 = AutoTokenizer.from_pretrained("google/flan-t5-base", cache_dir=CACHE_DIR)
 tokenizer_llama = AutoTokenizer.from_pretrained("meta-llama/Meta-Llama-3-8B-Instruct", cache_dir=CACHE_DIR, model_max_length=4000, padding_side='left', token=HUGGINGFACE_TOKEN)
 tokenizer_gemma = AutoTokenizer.from_pretrained("google/gemma-2-9b-it", model_max_length=3000, padding_side='left', token=HUGGINGFACE_TOKEN)
+
+
+device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+flant5_model = AutoModelForSeq2SeqLM.from_pretrained("../Approach/models/flant5", cache_dir=CACHE_DIR).to(device)
 
 
 async def approach_one(context, qid):
@@ -221,6 +227,65 @@ async def approach_four(context, qid):
         return error_message
     response = response.json()[0]['generated_text']
     
+    log['context'] = context
+    log['input'] = updated_context
+    log['response'] = response
+    log['matched_ids'] = ids
+    log['time'] = datetime.now() - time_start
+
+    response = response.replace("<pad>", "").strip()
+    response = response.replace('\\n', ' \n ')
+    response = response.replace('.n', ' \n ')
+    response = "## Decision\n" + response
+
+    log['post'] = response
+
+    return log
+
+
+async def approach_four_gpu(context, qid):
+    "Novel approach using FlanT5"
+    # return "Approach four"
+
+    log = {}
+    time_start = datetime.now()
+
+    def perform_rag(query: str, db: FAISS, top_k: int = 2) -> str:
+        retrieved = db.similarity_search(query, k=5)
+
+        results = []
+        retrieved_ids = []
+        
+        for result in retrieved:
+            if (qid != result.metadata['id']) and (count_tokens(result.page_content + result.metadata["Decision"], tokenizer_flant5) <= 1000):
+                results.append(result)
+
+            if len(results) == top_k:
+                break
+        
+        if len(results) != top_k:
+            raise Exception("Not enough results found")
+        
+        context = ''
+        for result in results:
+            context += result.page_content + "\n## Decision\n" + result.metadata['Decision'] + "\n\n"
+            retrieved_ids.append(result.metadata['id'])
+
+        context += query + "\n## Decision\n"
+        return context, retrieved_ids
+
+    updated_context, ids = perform_rag(context, vect_db_bert)
+    if len(ids) == 0:
+        return error_message
+
+    print("Here")
+    input_ids = tokenizer_flant5(updated_context, padding="max_length", truncation=True, return_tensors="pt").to(device)
+    outputs = flant5_model.generate(input_ids["input_ids"], max_length=1000)
+    decodes = tokenizer_flant5.decode(outputs[0])
+    response = decodes
+
+    print(response)
+
     log['context'] = context
     log['input'] = updated_context
     log['response'] = response

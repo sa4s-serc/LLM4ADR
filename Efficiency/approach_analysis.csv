@@ -1,6 +1,7 @@
-approach,input_tokens,output_tokens,time
-Zero-shot,157.18,111.23,14.048874449999998
-Few-shot RAG,1495.03,164.68,5.30279716
-Fine-tuned,141.18,97.22,3.88115924
-DRAFT FlanT5,831.53,133.22,46.57054486000001
-DRAFT LAMA,718.42,58.72,2.43171801
+approach           ,input_tokens       ,output_tokens      ,time
+Zero-shot          , 157.18            ,111.23             ,14.048874449999998
+Few-shot RAG       ,1495.03            ,164.68             , 5.30279716
+Fine-tuned         , 141.18            , 97.22             , 3.88115924
+DRAFT FlanT5       , 831.53            ,133.22             ,46.57054486000001
+DRAFT FlanT5 - GPU , 856.8016276703968 ,174.26958290946084 , 3.7637138280773144
+DRAFT LLAMA        , 718.42            , 58.72             , 2.43171801
