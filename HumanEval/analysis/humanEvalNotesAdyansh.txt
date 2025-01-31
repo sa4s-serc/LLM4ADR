@@ -1,0 +1,7 @@
+Most users reported that the Flan T5 approach often repeated decisions it had learned before. It struggled to handle completely new contexts, often producing random or irrelevant outputs. For example, in row 31 of the Adyansh Humaneval sheet, this behavior is evident.
+
+Another observation is that users were not always objective during the evaluation. They often focused on the specific software recommended in the decisions rather than the quality of the reasoning. For instance, in row 15, a review criticized the recommendation of SQL/MiniO, suggesting MongoDB instead, even though the original recommendation might have been valid.
+
+It's also clear that our approach tends to make smaller, simpler decisions, which users generally disliked. Many comments highlighted a need for more detailed responses and better explanations of the rationale behind decisions.
+
+Additionally, users often rated solutions poorly if they didn't align with their own preferences or expectations. For example, in row 40, our approach suggested an efficient software for collecting feedback, but the user preferred a manual method for collecting stats. While the software might be better, the user's review reflected personal bias rather than objective evaluation.
