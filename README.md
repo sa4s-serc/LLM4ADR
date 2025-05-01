@@ -32,7 +32,7 @@ The LLMs used the study were picked from the rankings in [Chatbot Arena (formerl
 The details are given in the 'LLMs' directory.
 
 ### Approaches
-We generated Design Decisions from Decision Contexts using various LLMs with Prompting, Fine-tuning, Retrieval Augmented Few shot Generation, and DRAFT (Domain Specific Retreival Augumented Few Shot fine Tuninng).
+We generated Design Decisions from Decision Contexts using various LLMs with Prompting, Fine-tuning, Retrieval Augmented Few shot Generation, and DRAFT (Domain specific Retreival Augumented Few Shot Tuninng).
 We evaluated their effectiveness with automated metrics which is standard in NLP Literature. Our results showed that DRAFT performs better than other approaches in generating Design Decisions.
 The experimental details for these 4 approaches are given the directories 'Prompting', 'Finetuning', 'RAG', and 'DRAFT' respectively.
 Inside each of those directories, there are code, output in jsonl files (in result directory), calculated metrics (in metrics directory), and other details of the experiments.
