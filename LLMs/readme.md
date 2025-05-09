@@ -1,1 +1,1 @@
-taken on 15 July 24
+This is a snapshot of the LMSys Chatbot Arena as of 15-07-2024. The data scraped for the website was put in [raw-data](raw-data.json) and processed using [extract](extract.py). The main ranking is listed in [lmsys](lmsys.csv). Screenshots of the leaderboard at the time are in the [screenshots](screenshots) folder.

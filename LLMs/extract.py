@@ -10,7 +10,7 @@ def extract(file_path: str) -> pd.DataFrame:
     return df
     
 def main():
-    df = extract('data.json')
+    df = extract('raw-data.json')
     df.to_csv('lmsys.csv', index=False)
 
 if __name__ == '__main__':
