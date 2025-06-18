@@ -109,7 +109,6 @@ training_arguments = TrainingArguments(
     gradient_checkpointing=True,
     gradient_checkpointing_kwargs={
         "use_reentrant": False,
-        # "offload_to_cpu": True,
     },
     num_train_epochs=EPOCHS,
     eval_strategy="epoch",

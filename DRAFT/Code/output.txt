@@ -1,177 +1,0 @@
-==========================================
-SLURM_JOB_ID = 1227424
-SLURM_NODELIST = gnode062
-SLURM_JOB_GPUS = 0,1,2,3
-==========================================
-2024-10-19 23:43:45.232855: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:479] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
-2024-10-19 23:43:45.255558: E external/local_xla/xla/stream_executor/cuda/cuda_dnn.cc:10575] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
-2024-10-19 23:43:45.255591: E external/local_xla/xla/stream_executor/cuda/cuda_blas.cc:1442] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
-2024-10-19 23:43:45.270644: I tensorflow/core/platform/cpu_feature_guard.cc:210] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
-To enable the following instructions: AVX2 FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
-2024-10-19 23:43:49.137351: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
-Loading checkpoint shards:   0%|          | 0/4 [00:00<?, ?it/s]Loading checkpoint shards:  25%|██▌       | 1/4 [00:01<00:03,  1.05s/it]Loading checkpoint shards:  50%|█████     | 2/4 [00:02<00:02,  1.03s/it]Loading checkpoint shards:  75%|███████▌  | 3/4 [00:03<00:01,  1.02s/it]Loading checkpoint shards: 100%|██████████| 4/4 [00:03<00:00,  1.09it/s]Loading checkpoint shards: 100%|██████████| 4/4 [00:03<00:00,  1.04it/s]
-Map:   0%|          | 0/982 [00:00<?, ? examples/s]Map:   3%|▎         | 25/982 [00:00<00:03, 246.43 examples/s]Map:   6%|▌         | 55/982 [00:00<00:03, 269.38 examples/s]Map:   9%|▊         | 84/982 [00:00<00:03, 277.55 examples/s]Map:  12%|█▏        | 118/982 [00:00<00:02, 298.26 examples/s]Map:  15%|█▌        | 148/982 [00:00<00:02, 292.12 examples/s]Map:  18%|█▊        | 179/982 [00:00<00:02, 297.71 examples/s]Map:  22%|██▏       | 214/982 [00:00<00:02, 310.40 examples/s]Map:  27%|██▋       | 261/982 [00:00<00:02, 307.09 examples/s]Map:  30%|███       | 296/982 [00:00<00:02, 312.35 examples/s]Map:  34%|███▎      | 331/982 [00:01<00:02, 320.95 examples/s]Map:  38%|███▊      | 374/982 [00:01<00:02, 298.61 examples/s]Map:  41%|████▏     | 407/982 [00:01<00:01, 302.80 examples/s]Map:  45%|████▍     | 441/982 [00:01<00:01, 309.08 examples/s]Map:  49%|████▉     | 483/982 [00:01<00:01, 295.42 examples/s]Map:  54%|█████▎    | 527/982 [00:01<00:01, 289.74 examples/s]Map:  57%|█████▋    | 562/982 [00:01<00:01, 302.06 examples/s]Map:  60%|██████    | 593/982 [00:01<00:01, 301.51 examples/s]Map:  64%|██████▍   | 628/982 [00:02<00:01, 312.53 examples/s]Map:  68%|██████▊   | 671/982 [00:02<00:01, 298.01 examples/s]Map:  72%|███████▏  | 703/982 [00:02<00:00, 300.01 examples/s]Map:  75%|███████▍  | 736/982 [00:02<00:00, 305.55 examples/s]Map:  79%|███████▉  | 778/982 [00:02<00:00, 292.45 examples/s]Map:  82%|████████▏ | 810/982 [00:02<00:00, 293.27 examples/s]Map:  87%|████████▋ | 859/982 [00:02<00:00, 287.62 examples/s]Map:  91%|█████████ | 890/982 [00:02<00:00, 290.70 examples/s]Map:  95%|█████████▍| 930/982 [00:03<00:00, 277.54 examples/s]Map:  98%|█████████▊| 963/982 [00:03<00:00, 285.48 examples/s]Map: 100%|██████████| 982/982 [00:04<00:00, 218.78 examples/s]
-Detected kernel version 4.15.0, which is below the recommended minimum of 5.5.0; this can cause the process to hang. It is recommended to upgrade the kernel to the minimum version or higher.
-You are adding a <class 'transformers.integrations.integration_utils.WandbCallback'> to the callbacks of this Trainer, but there is already one. The currentlist of callbacks is
-:DefaultFlowCallback
-TensorBoardCallback
-WandbCallback
-CodeCarbonCallback
-[codecarbon INFO @ 23:44:34] [setup] RAM Tracking...
-[codecarbon WARNING @ 23:44:34] Could not find mem= after running `scontrol show job $SLURM_JOB_ID` to count SLURM-available RAM. Using the machine's total RAM.
-[codecarbon INFO @ 23:44:34] [setup] GPU Tracking...
-[codecarbon INFO @ 23:44:34] Tracking Nvidia GPU via pynvml
-[codecarbon INFO @ 23:44:34] [setup] CPU Tracking...
-[codecarbon WARNING @ 23:44:34] No CPU tracking mode found. Falling back on CPU constant mode.
-[codecarbon WARNING @ 23:44:35] We saw that you have a Intel(R) Xeon(R) CPU E5-2640 v4 @ 2.40GHz but we don't know it. Please contact us.
-[codecarbon INFO @ 23:44:35] CPU Model on constant consumption mode: Intel(R) Xeon(R) CPU E5-2640 v4 @ 2.40GHz
-[codecarbon INFO @ 23:44:35] >>> Tracker's metadata:
-[codecarbon INFO @ 23:44:35]   Platform system: Linux-4.15.0-213-generic-x86_64-with-glibc2.27
-[codecarbon INFO @ 23:44:35]   Python version: 3.11.3
-[codecarbon INFO @ 23:44:35]   CodeCarbon version: 2.3.5
-[codecarbon INFO @ 23:44:35]   Available RAM : 125.782 GB
-[codecarbon INFO @ 23:44:35]   CPU count: 36
-[codecarbon INFO @ 23:44:35]   CPU model: Intel(R) Xeon(R) CPU E5-2640 v4 @ 2.40GHz
-[codecarbon INFO @ 23:44:35]   GPU count: 4
-[codecarbon INFO @ 23:44:35]   GPU model: 4 x NVIDIA GeForce RTX 2080 Ti
-[2024-10-19 23:44:39,790] [INFO] [real_accelerator.py:203:get_accelerator] Setting ds_accelerator to cuda (auto detect)
-Warning: The default cache directory for DeepSpeed Triton autotune, /home2/adyansh/.triton/autotune, appears to be on an NFS system. While this is generally acceptable, if you experience slowdowns or hanging when DeepSpeed exits, it is recommended to set the TRITON_CACHE_DIR environment variable to a non-NFS path.
-Traceback (most recent call last):
-  File "/home2/adyansh/LLM4ADR/Approach/Code/autotrain-eval.py", line 90, in <module>
-    eval_results = trainer.evaluate()
-                   ^^^^^^^^^^^^^^^^^^
-  File "/home2/adyansh/LLM4ADR/research/lib/python3.11/site-packages/transformers/trainer.py", line 3666, in evaluate
-    output = eval_loop(
-             ^^^^^^^^^^
-  File "/home2/adyansh/LLM4ADR/research/lib/python3.11/site-packages/transformers/trainer.py", line 3857, in evaluation_loop
-    losses, logits, labels = self.prediction_step(model, inputs, prediction_loss_only, ignore_keys=ignore_keys)
-                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home2/adyansh/LLM4ADR/research/lib/python3.11/site-packages/transformers/trainer.py", line 4075, in prediction_step
-    loss, outputs = self.compute_loss(model, inputs, return_outputs=True)
-                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home2/adyansh/LLM4ADR/research/lib/python3.11/site-packages/transformers/trainer.py", line 3363, in compute_loss
-    outputs = model(**inputs)
-              ^^^^^^^^^^^^^^^
-  File "/home2/adyansh/LLM4ADR/research/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1553, in _wrapped_call_impl
-    return self._call_impl(*args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home2/adyansh/LLM4ADR/research/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1562, in _call_impl
-    return forward_call(*args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home2/adyansh/LLM4ADR/research/lib/python3.11/site-packages/peft/peft_model.py", line 1577, in forward
-    return self.base_model(
-           ^^^^^^^^^^^^^^^^
-  File "/home2/adyansh/LLM4ADR/research/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1553, in _wrapped_call_impl
-    return self._call_impl(*args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home2/adyansh/LLM4ADR/research/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1562, in _call_impl
-    return forward_call(*args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home2/adyansh/LLM4ADR/research/lib/python3.11/site-packages/peft/tuners/tuners_utils.py", line 188, in forward
-    return self.model.forward(*args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home2/adyansh/LLM4ADR/research/lib/python3.11/site-packages/accelerate/hooks.py", line 170, in new_forward
-    output = module._old_forward(*args, **kwargs)
-             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home2/adyansh/LLM4ADR/research/lib/python3.11/site-packages/transformers/models/gemma2/modeling_gemma2.py", line 1026, in forward
-    loss = loss_fct(shift_logits, shift_labels)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home2/adyansh/LLM4ADR/research/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1553, in _wrapped_call_impl
-    return self._call_impl(*args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home2/adyansh/LLM4ADR/research/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1562, in _call_impl
-    return forward_call(*args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home2/adyansh/LLM4ADR/research/lib/python3.11/site-packages/torch/nn/modules/loss.py", line 1188, in forward
-    return F.cross_entropy(input, target, weight=self.weight,
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home2/adyansh/LLM4ADR/research/lib/python3.11/site-packages/torch/nn/functional.py", line 3104, in cross_entropy
-    return torch._C._nn.cross_entropy_loss(input, target, weight, _Reduction.get_enum(reduction), ignore_index, label_smoothing)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 2.86 GiB. GPU 0 has a total capacity of 10.75 GiB of which 2.15 GiB is free. Including non-PyTorch memory, this process has 8.60 GiB memory in use. Of the allocated memory 7.57 GiB is allocated by PyTorch, and 11.88 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
-2024-10-19 23:45:03.598174: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:479] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
-2024-10-19 23:45:03.620685: E external/local_xla/xla/stream_executor/cuda/cuda_dnn.cc:10575] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
-2024-10-19 23:45:03.620714: E external/local_xla/xla/stream_executor/cuda/cuda_blas.cc:1442] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
-2024-10-19 23:45:03.636603: I tensorflow/core/platform/cpu_feature_guard.cc:210] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
-To enable the following instructions: AVX2 FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
-2024-10-19 23:45:06.423363: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
-Loading checkpoint shards:   0%|          | 0/4 [00:00<?, ?it/s]Loading checkpoint shards:  25%|██▌       | 1/4 [00:01<00:03,  1.05s/it]Loading checkpoint shards:  50%|█████     | 2/4 [00:02<00:02,  1.04s/it]Loading checkpoint shards:  75%|███████▌  | 3/4 [00:03<00:01,  1.02s/it]Loading checkpoint shards: 100%|██████████| 4/4 [00:03<00:00,  1.09it/s]Loading checkpoint shards: 100%|██████████| 4/4 [00:03<00:00,  1.05it/s]
-Map:   0%|          | 0/982 [00:00<?, ? examples/s]Map:   3%|▎         | 28/982 [00:00<00:03, 262.49 examples/s]Map:   6%|▌         | 60/982 [00:00<00:03, 289.37 examples/s]Map:  10%|▉         | 95/982 [00:00<00:02, 305.26 examples/s]Map:  13%|█▎        | 131/982 [00:00<00:02, 321.72 examples/s]Map:  17%|█▋        | 165/982 [00:00<00:02, 321.60 examples/s]Map:  21%|██        | 204/982 [00:00<00:02, 342.52 examples/s]Map:  26%|██▌       | 254/982 [00:00<00:02, 336.73 examples/s]Map:  29%|██▉       | 288/982 [00:00<00:02, 335.16 examples/s]Map:  33%|███▎      | 323/982 [00:00<00:01, 334.13 examples/s]Map:  37%|███▋      | 365/982 [00:01<00:02, 304.58 examples/s]Map:  41%|████      | 401/982 [00:01<00:01, 314.55 examples/s]Map:  44%|████▍     | 434/982 [00:01<00:01, 316.46 examples/s]Map:  49%|████▉     | 480/982 [00:01<00:01, 308.78 examples/s]Map:  53%|█████▎    | 525/982 [00:01<00:01, 300.86 examples/s]Map:  57%|█████▋    | 560/982 [00:01<00:01, 311.40 examples/s]Map:  60%|██████    | 594/982 [00:01<00:01, 314.67 examples/s]Map:  64%|██████▍   | 629/982 [00:01<00:01, 320.30 examples/s]Map:  68%|██████▊   | 671/982 [00:02<00:01, 300.36 examples/s]Map:  72%|███████▏  | 703/982 [00:02<00:00, 302.30 examples/s]Map:  75%|███████▌  | 737/982 [00:02<00:00, 308.89 examples/s]Map:  79%|███████▉  | 779/982 [00:02<00:00, 294.09 examples/s]Map:  82%|████████▏ | 810/982 [00:02<00:00, 294.65 examples/s]Map:  87%|████████▋ | 859/982 [00:02<00:00, 288.28 examples/s]Map:  91%|█████████ | 890/982 [00:02<00:00, 291.90 examples/s]Map:  95%|█████████▍| 930/982 [00:03<00:00, 279.09 examples/s]Map:  98%|█████████▊| 959/982 [00:03<00:00, 281.66 examples/s]Map: 100%|██████████| 982/982 [00:04<00:00, 223.62 examples/s]
-Detected kernel version 4.15.0, which is below the recommended minimum of 5.5.0; this can cause the process to hang. It is recommended to upgrade the kernel to the minimum version or higher.
-You are adding a <class 'transformers.integrations.integration_utils.WandbCallback'> to the callbacks of this Trainer, but there is already one. The currentlist of callbacks is
-:DefaultFlowCallback
-TensorBoardCallback
-WandbCallback
-CodeCarbonCallback
-[codecarbon INFO @ 23:45:44] [setup] RAM Tracking...
-[codecarbon WARNING @ 23:45:45] Could not find mem= after running `scontrol show job $SLURM_JOB_ID` to count SLURM-available RAM. Using the machine's total RAM.
-[codecarbon INFO @ 23:45:45] [setup] GPU Tracking...
-[codecarbon INFO @ 23:45:45] Tracking Nvidia GPU via pynvml
-[codecarbon INFO @ 23:45:45] [setup] CPU Tracking...
-[codecarbon WARNING @ 23:45:45] No CPU tracking mode found. Falling back on CPU constant mode.
-[codecarbon WARNING @ 23:45:46] We saw that you have a Intel(R) Xeon(R) CPU E5-2640 v4 @ 2.40GHz but we don't know it. Please contact us.
-[codecarbon INFO @ 23:45:46] CPU Model on constant consumption mode: Intel(R) Xeon(R) CPU E5-2640 v4 @ 2.40GHz
-[codecarbon INFO @ 23:45:46] >>> Tracker's metadata:
-[codecarbon INFO @ 23:45:46]   Platform system: Linux-4.15.0-213-generic-x86_64-with-glibc2.27
-[codecarbon INFO @ 23:45:46]   Python version: 3.11.3
-[codecarbon INFO @ 23:45:46]   CodeCarbon version: 2.3.5
-[codecarbon INFO @ 23:45:46]   Available RAM : 125.782 GB
-[codecarbon INFO @ 23:45:46]   CPU count: 36
-[codecarbon INFO @ 23:45:46]   CPU model: Intel(R) Xeon(R) CPU E5-2640 v4 @ 2.40GHz
-[codecarbon INFO @ 23:45:46]   GPU count: 4
-[codecarbon INFO @ 23:45:46]   GPU model: 4 x NVIDIA GeForce RTX 2080 Ti
-[2024-10-19 23:45:50,422] [INFO] [real_accelerator.py:203:get_accelerator] Setting ds_accelerator to cuda (auto detect)
-Warning: The default cache directory for DeepSpeed Triton autotune, /home2/adyansh/.triton/autotune, appears to be on an NFS system. While this is generally acceptable, if you experience slowdowns or hanging when DeepSpeed exits, it is recommended to set the TRITON_CACHE_DIR environment variable to a non-NFS path.
-Traceback (most recent call last):
-  File "/home2/adyansh/LLM4ADR/Approach/Code/autotrain-eval.py", line 90, in <module>
-    eval_results = trainer.evaluate()
-                   ^^^^^^^^^^^^^^^^^^
-  File "/home2/adyansh/LLM4ADR/research/lib/python3.11/site-packages/transformers/trainer.py", line 3666, in evaluate
-    output = eval_loop(
-             ^^^^^^^^^^
-  File "/home2/adyansh/LLM4ADR/research/lib/python3.11/site-packages/transformers/trainer.py", line 3857, in evaluation_loop
-    losses, logits, labels = self.prediction_step(model, inputs, prediction_loss_only, ignore_keys=ignore_keys)
-                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home2/adyansh/LLM4ADR/research/lib/python3.11/site-packages/transformers/trainer.py", line 4075, in prediction_step
-    loss, outputs = self.compute_loss(model, inputs, return_outputs=True)
-                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home2/adyansh/LLM4ADR/research/lib/python3.11/site-packages/transformers/trainer.py", line 3363, in compute_loss
-    outputs = model(**inputs)
-              ^^^^^^^^^^^^^^^
-  File "/home2/adyansh/LLM4ADR/research/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1553, in _wrapped_call_impl
-    return self._call_impl(*args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home2/adyansh/LLM4ADR/research/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1562, in _call_impl
-    return forward_call(*args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home2/adyansh/LLM4ADR/research/lib/python3.11/site-packages/peft/peft_model.py", line 1577, in forward
-    return self.base_model(
-           ^^^^^^^^^^^^^^^^
-  File "/home2/adyansh/LLM4ADR/research/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1553, in _wrapped_call_impl
-    return self._call_impl(*args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home2/adyansh/LLM4ADR/research/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1562, in _call_impl
-    return forward_call(*args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home2/adyansh/LLM4ADR/research/lib/python3.11/site-packages/peft/tuners/tuners_utils.py", line 188, in forward
-    return self.model.forward(*args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home2/adyansh/LLM4ADR/research/lib/python3.11/site-packages/accelerate/hooks.py", line 170, in new_forward
-    output = module._old_forward(*args, **kwargs)
-             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home2/adyansh/LLM4ADR/research/lib/python3.11/site-packages/transformers/models/gemma2/modeling_gemma2.py", line 1026, in forward
-    loss = loss_fct(shift_logits, shift_labels)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home2/adyansh/LLM4ADR/research/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1553, in _wrapped_call_impl
-    return self._call_impl(*args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home2/adyansh/LLM4ADR/research/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1562, in _call_impl
-    return forward_call(*args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home2/adyansh/LLM4ADR/research/lib/python3.11/site-packages/torch/nn/modules/loss.py", line 1188, in forward
-    return F.cross_entropy(input, target, weight=self.weight,
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home2/adyansh/LLM4ADR/research/lib/python3.11/site-packages/torch/nn/functional.py", line 3104, in cross_entropy
-    return torch._C._nn.cross_entropy_loss(input, target, weight, _Reduction.get_enum(reduction), ignore_index, label_smoothing)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 2.86 GiB. GPU 0 has a total capacity of 10.75 GiB of which 2.15 GiB is free. Including non-PyTorch memory, this process has 8.60 GiB memory in use. Of the allocated memory 7.57 GiB is allocated by PyTorch, and 11.88 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
