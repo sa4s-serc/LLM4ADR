@@ -2,7 +2,7 @@
 
 This repository contains codes and data for our paper [DRAFT-ing Architectural Design Decisions using LLMs](https://arxiv.org/abs/2504.08207)
 
-In this paper we cam up with a novel approach DRAFT (Domain Specific Retreival Augumented Few Shot fine Tuninng), to generate Architectural Design Decisions from Decision Contexts in ADRs (Architecture Decision Records).
+In this paper we propose a novel approach DRAFT (Domain-Specific Retreival Augumented Few-shot fine-Tuninng), to generate Architectural Design Decisions from Decision Contexts in ADRs (Architecture Decision Records).
 
 <br>
 
@@ -28,7 +28,7 @@ The data used in this study consists of 4,911 ADRs, sourced from a previous stud
 The extracted data along with the code is given in the 'Data' directory.
 
 ### LLMs
-The LLMs used the study were picked from the rankings in [Chatbot Arena (formerly LMSYS)](https://lmarena.ai/) with some filtration criteria.
+The LLMs used the study were picked from the rankings in [LMArena (formerly LMSYS)](https://lmarena.ai/) with some filtration criteria.
 The details are given in the 'LLMs' directory.
 
 ### Approaches
@@ -38,7 +38,7 @@ The experimental details for these 4 approaches are given the directories 'Promp
 Inside each of those directories, there are code, output in jsonl files (in result directory), calculated metrics (in metrics directory), and other details of the experiments.
 
 ### Efficiency
-We also evluated effeciency of DRAFT with respect to other approaches using token count, and response time. This experiment was done with the LLMs performing best in each of the approaches.
+We also evaluated efficiency of DRAFT with respect to other approaches using token count, and response time. This experiment was done with the LLMs performing best in each of the approaches.
 The results showed DRAFT is not inefficient with respect to other approaches. The details are given in the 'Efficiency' directory.
 
 ### Human Evaluations

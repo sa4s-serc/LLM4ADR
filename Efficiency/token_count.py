@@ -41,7 +41,7 @@ def analyse(approach: str):
     token_data.to_json(f'approach_{approach}_tokens.json', orient='records', lines=True)
 
 
-def analayse_flant5_gpu():
+def analyse_flant5_gpu():
     appr_data = pd.read_json('approach_4_gpu.json')
     print(appr_data.columns)
     print(appr_data.head())
@@ -60,5 +60,5 @@ def analayse_flant5_gpu():
 # analyse('4')
 # analyse('5')
 
-analayse_flant5_gpu()
+analyse_flant5_gpu()
 
